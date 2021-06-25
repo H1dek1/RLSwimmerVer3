@@ -2,10 +2,11 @@
 #define SWIMMER
 
 #include "params.hpp"
-#include "swimmer.hpp"
+#include "skeleton_swimmer.hpp"
 
 namespace MicroSwimmer
 {
+using namespace Eigen;
 SkeletonSwimmer::SkeletonSwimmer(int model_type, bool is_output, double action_period, double max_arm_length)
 {
   this->is_record = is_output;
@@ -21,12 +22,12 @@ SkeletonSwimmer::SkeletonSwimmer(int model_type, bool is_output, double action_p
   /* load model */
   // number of arm and joint
   std::ifstream num_in(models_dir_path+"num_states.txt", std::ios::in);
-  it(!num_in){
+  if(!num_in){
     std::cout << "[self ERROR] No file \"num_states.txt\"" << std::endl;
     std::exit(0);
   }
-  this->num_in >> n_joint;
-  this->num_in >> n_arms;
+  num_in >> n_joints;
+  num_in >> n_arms;
   this->n_joint_states = 3 * this->n_joints;
   this->n_arm_states   = 3 * this->n_arms;
   this->init_joint_positions  = VectorXd::Zero(this->n_joint_states);
@@ -36,16 +37,16 @@ SkeletonSwimmer::SkeletonSwimmer(int model_type, bool is_output, double action_p
   this->action_vec = VectorXd::Zero(this->n_arm_states);
   // initial position
   std::ifstream init_in(models_dir_path+"init_pos.txt", std::ios::in);
-  it(!init_in){
+  if(!init_in){
     std::cout << "[self ERROR] No file \"init_pos.txt\"" << std::endl;
     std::exit(0);
   }
-  for(unsigned int i = 0; i < this->n_joints_states; ++i){
+  for(unsigned int i = 0; i < this->n_joint_states; ++i){
     init_in >> this->init_joint_positions(i);
   }
   // translation matrix from arm to joint
   std::ifstream matrix_in(models_dir_path+"trans_mat.txt", std::ios::in);
-  it(!matrix_in){
+  if(!matrix_in){
     std::cout << "[self ERROR] No file \"trans_mat.txt\"" << std::endl;
     std::exit(0);
   }
@@ -77,7 +78,7 @@ std::vector<double> SkeletonSwimmer::reset()
       << "_loadtime" << this->load_time << 
       "maxlength" << this->l_max << ".csv";
     std::string full_path = runfile_path.string() + OUT_DIRECTORY_PATH + record_file_name.str();
-    fout.open(fill_path, std::ios::out);
+    fout.open(full_path, std::ios::out);
     if(!fout){
       std::cout << "[self ERROR] CANNOT MAKE NEW RESULT FILE." << std::endl;
       std::exit(0);
@@ -85,15 +86,15 @@ std::vector<double> SkeletonSwimmer::reset()
   }
   step_counter = 0;
   this->joint_positions = this->init_joint_positions;
-  for(unsigned int i = 0; i < 3; i ++i){
+  for(unsigned int i = 0; i < 3; ++i){
     for(unsigned int id_joint = 0; id_joint < this->n_joints; ++id_joint){
-      this->prev_center_position += this->init_joint_position(i + 3*id_joint) / this->n_joints;
+      this->prev_center_position(i) += this->init_joint_positions(i + 3*id_joint) / this->n_joints;
     }
   }
   return this->getObservation();
 }
 
-std::tupl<std::vector<double>, double, bool, int> SkeletonSwimmer::step(std::vector<double> actions)
+std::tuple<std::vector<double>, double, bool, int> SkeletonSwimmer::step(std::vector<double> actions)
 {
   /* check input action */
   if(actions.size() != this->n_arms){
@@ -121,11 +122,10 @@ std::tupl<std::vector<double>, double, bool, int> SkeletonSwimmer::step(std::vec
   }
 
   /* for Reinforcement Learning */
-  double reward = REWARD_GAIN * (this->center_position - this-prev_center_position).dot(this->target_unit_vec);
+  double reward = REWARD_GAIN * (this->center_position - this->prev_center_position).dot(this->target_unit_vec);
+  bool done = false;
   if(this->step_counter+1 >= MAX_STEP){
-    bool done = True;
-  }else{
-    bool done False;
+    bool done = true;
   }
   this->step_counter += 1;
   this->prev_center_position = this->center_position;
@@ -137,7 +137,7 @@ void SkeletonSwimmer::calculateArmExtendVelocity()
 {
 }
 
-void SkeletonSwimmer::calculatingJointVelocity()
+void SkeletonSwimmer::calculateJointVelocity()
 {
 }
 
@@ -149,9 +149,9 @@ std::vector<double> SkeletonSwimmer::getObservation()
 {
   std::vector<double> observation(this->n_joint_states);
   for(unsigned int i = 0; this->n_joint_states; ++i){
-    observation[i] = this->joint_position(i) - this->center_position(i%3);
+    observation[i] = this->joint_positions(i) - this->center_position(i%3);
   }
-  return observation
+  return observation;
 }
 
 int SkeletonSwimmer::getNumStates() const
@@ -164,6 +164,5 @@ int SkeletonSwimmer::getNumActions() const
   return this->n_arms;
 }
 }
- 
 
 #endif //SWIMMER

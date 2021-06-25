@@ -12,7 +12,7 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/../)
 add_subdirectory(pybind11)
 #add_subdirectory(module)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include/)
-add_library(swimmer 
-  src/swimmer.cpp)
-pybind11_add_module(skeleton_swimmer wrapper.cpp)
-target_link_libraries(skeleton_swimmer PRIVATE swimmer)
+add_library(skeleton_swimmer 
+  src/skeleton_swimmer.cpp)
+pybind11_add_module(skeleton_swimmer_wrapper wrapper.cpp)
+target_link_libraries(skeleton_swimmer_wrapper PRIVATE skeleton_swimmer)

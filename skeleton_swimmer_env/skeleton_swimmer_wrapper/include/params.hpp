@@ -15,7 +15,7 @@ namespace MicroSwimmer {
   // max length of each arm required less than 2
   const double L_MAX = 1.5;
   // sphere radius required less than 0.5
-  const double A = 0.3
+  const double A = 0.3;
   // max time of 1 episode
   const double MAX_TIME = 1000;
   // the period to change input value
@@ -37,6 +37,7 @@ namespace MicroSwimmer {
   const int MAX_STEP = int(MAX_TIME / LOAD_TIME);
   const int MAX_ITER = int(LOAD_TIME / DT);
   const int OUT_ITER = int(OUTPUT_INTERVAL / DT);
+}
   
 
 #endif //PARAMS_H

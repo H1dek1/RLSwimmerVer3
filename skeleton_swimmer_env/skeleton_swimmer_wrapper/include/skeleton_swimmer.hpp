@@ -4,7 +4,7 @@
 
 namespace MicroSwimmer
 {
-using namspace Eigen;
+using namespace Eigen;
 
 class SkeletonSwimmer
 {
@@ -21,7 +21,7 @@ class SkeletonSwimmer
     int getNumActions() const;
 
   private:
-    std::vector<double> getObservations() const;
+    std::vector<double> getObservation();
     void output(int itr);
     void calculateArmExtendVelocity();
     void calculateJointVelocity();
@@ -55,7 +55,7 @@ class SkeletonSwimmer
   private:
     std::ofstream fout;
     std::filesystem::path runfile_path;
-}
+};
 }
 
 #endif //SWIMMER_H
