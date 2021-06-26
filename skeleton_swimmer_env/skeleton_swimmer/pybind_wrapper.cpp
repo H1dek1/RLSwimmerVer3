@@ -5,7 +5,7 @@
 
 namespace py = pybind11;
 
-PYBIND11_MODULE(skeleton_swimmer, m){
+PYBIND11_MODULE(skeleton_swimmer, m) {
   py::class_<MicroSwimmer::SkeletonSwimmer>(m, "SkeletonSwimmer")
     .def(py::init<int, bool, double, double>())
     .def("getNumStates", &MicroSwimmer::SkeletonSwimmer::getNumStates)

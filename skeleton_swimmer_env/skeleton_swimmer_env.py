@@ -1,11 +1,10 @@
-from skeleton_swimmer_env import skeleton_swimmer_wrapper as sm
+from skeleton_swimmer_env.skeleton_swimmer import SkeletonSwimmer
 import gym
 import numpy as np
 
 class SkeletonSwimmerEnv(gym.Env):
     def __init__(self, isRecord=False, swimmer_type=10, action_period=1, max_arm_length=0.5):
-        print(dir(sm))
-        self.swimmer = sm.SkeletonSwimmer(swimmer_type, isRecord, action_period, max_arm_length)
+        self.swimmer = SkeletonSwimmer(swimmer_type, isRecord, action_period, max_arm_length)
         self.n_states = self.swimmer.getNumStates()
         self.n_actions = self.swimmer.getNumActions()
         #print(self.n_states)

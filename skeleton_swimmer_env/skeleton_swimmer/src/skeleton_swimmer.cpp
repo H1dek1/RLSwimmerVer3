@@ -4,9 +4,12 @@
 #include "params.hpp"
 #include "skeleton_swimmer.hpp"
 
+#define DEBUG_MODE false
+
 namespace MicroSwimmer
 {
 using namespace Eigen;
+
 SkeletonSwimmer::SkeletonSwimmer(int model_type, bool is_output, double action_period, double max_arm_length)
 {
   this->is_record = is_output;
@@ -17,7 +20,7 @@ SkeletonSwimmer::SkeletonSwimmer(int model_type, bool is_output, double action_p
   /* get swimmer type */
   this->swimmer_type = model_type;
   this->runfile_path = std::filesystem::current_path();
-  std::string models_dir_path = this->runfile_path.string() + "/swimmer_env/models/type_" + std::to_string(this->swimmer_type) + "/";
+  std::string models_dir_path = this->runfile_path.string() + "/../../models/type_" + std::to_string(this->swimmer_type) + "/";
 
   /* load model */
   // number of arm and joint
@@ -51,12 +54,12 @@ SkeletonSwimmer::SkeletonSwimmer(int model_type, bool is_output, double action_p
     std::exit(0);
   }
   for(unsigned int i = 0; i < this->n_joints; ++i){
-    for(unsigned int j = 0; j < this->n_joints; ++j){
+    for(unsigned int j = 0; j < this->n_arms; ++j){
       int val;
       matrix_in >> val;
       if(val == 1){
         this->trans_arm2joint.block(3*i, 3*j, 3, 3) = Matrix3d::Identity();
-      }else if(val == 1){
+      }else if(val == -1){
         this->trans_arm2joint.block(3*i, 3*j, 3, 3) = -Matrix3d::Identity();
       }
     }
@@ -107,17 +110,12 @@ std::tuple<std::vector<double>, double, bool, int> SkeletonSwimmer::step(std::ve
       std::exit(0);
     }
   }
-  /* transform action shape */
-  for(unsigned int id_arm = 0; id_arm < this->n_arms; ++id_arm){
-    this->action_vec.segment(3*id_arm, 3) = Vector3d::Constant(actions[id_arm]);
-  }
-
   /* proceed simulation */
   for(unsigned int itr = 0; itr < MAX_ITER; ++itr){
-    this->calculateArmExtendVelocity();
+  //for(unsigned int itr = 0; itr < 5; ++itr){
+    this->calculateArmExtendVelocity(actions);
     this->calculateJointVelocity();
     this->updateJointPosition();
-    
     if(this->is_record && itr%OUT_ITER == 0) this->output(itr);
   }
 
@@ -133,22 +131,88 @@ std::tuple<std::vector<double>, double, bool, int> SkeletonSwimmer::step(std::ve
   return {this->getObservation(), reward, done, {}};
 }
 
-void SkeletonSwimmer::calculateArmExtendVelocity()
+void SkeletonSwimmer::output(int itr)
 {
+
+}
+
+void SkeletonSwimmer::calculateArmExtendVelocity(std::vector<double> actions)
+{
+  /* calculate arm unit vector */
+  VectorXd arm_vector = this->trans_arm2joint.transpose() * this->joint_positions;
+  VectorXd arm_length(this->n_arm_states);
+
+  for(unsigned int id_arm = 0; id_arm < n_arms; ++id_arm){
+    arm_length.segment(3*id_arm, 3) = Vector3d::Constant(
+        sqrt(
+          std::pow(arm_vector(3*id_arm+0), 2.0)
+          +std::pow(arm_vector(3*id_arm+1), 2.0)
+          +std::pow(arm_vector(3*id_arm+2), 2.0)
+          )
+        );
+  }
+  VectorXd arm_unit_vec = arm_vector.array() / arm_length.array();
+  /* check arm length */
+  for(unsigned int id_arm = 0; id_arm < n_arms; ++id_arm){
+    if(arm_length(3*id_arm) + (actions[id_arm]*DT) > this->l_max 
+        || arm_length(3*id_arm) + (actions[id_arm]*DT) < 1.0){
+      actions[id_arm] = 0.0;
+    }
+  }
+  /* transform action shape */
+  for(unsigned int id_arm = 0; id_arm < this->n_arms; ++id_arm){
+    this->action_vec.segment(3*id_arm, 3) = Vector3d::Constant(actions[id_arm]);
+  }
+
+  /* calculate arm velocity */
+  this->arm_velocities = this->action_vec.array() * arm_unit_vec.array();
+
 }
 
 void SkeletonSwimmer::calculateJointVelocity()
 {
+  /* make Green Function */
+  MatrixXd Green(this->n_joint_states, this->n_joint_states);
+
+  for(unsigned int i = 0; i < this->n_joints; ++i){
+    for(unsigned int j = 0; j < this->n_joints; ++j){
+      if(i == j){
+        Green.block(3*i, 3*j, 3, 3) = 1.0 / (6.0*M_PI*A) * Matrix3d::Identity();
+      }else{
+        Vector3d r_vec_ij = this->joint_positions.segment(3*j, 3) - this->joint_positions.segment(3*i, 3);
+        double r_ij = r_vec_ij.norm();
+        double r3_ij = std::pow(r_ij, 3.0);
+        Green.block(3*i, 3*j, 3, 3) = 1.0 / (8.0*M_PI) 
+          * (Matrix3d::Identity() / r_ij + (r_vec_ij * r_vec_ij.transpose() / r3_ij));
+      }
+    }
+  }
+
+  MatrixXd coef_mat = this->trans_arm2joint.transpose() * Green * this->trans_arm2joint;
+
+  if(DEBUG_MODE) std::cout << "[DEBUG] det(coef_mat) " << std::endl << coef_mat.determinant() << std::endl;
+
+  if(coef_mat.determinant() == 0){
+    std::cout << "Matrix R^t G R is singuler Matrix. Cannot calculate arm forces" << std::endl;
+    std::exit(0);
+  }
+  VectorXd arm_forces = coef_mat.inverse() * this->arm_velocities;
+  if(DEBUG_MODE) std::cout << "[DEBUG] arm_forces " << std::endl << arm_forces.transpose() << std::endl;
+
+  this->joint_velocities = Green * this->trans_arm2joint * arm_forces;
+
+  if(DEBUG_MODE) std::cout << "[DEBUG] joint_velocities " << std::endl << joint_velocities.transpose() << std::endl;
 }
 
 void SkeletonSwimmer::updateJointPosition()
 {
+  this->joint_positions += this->joint_velocities * DT;
 }
 
 std::vector<double> SkeletonSwimmer::getObservation()
 {
   std::vector<double> observation(this->n_joint_states);
-  for(unsigned int i = 0; this->n_joint_states; ++i){
+  for(unsigned int i = 0; i < this->n_joint_states; ++i){
     observation[i] = this->joint_positions(i) - this->center_position(i%3);
   }
   return observation;

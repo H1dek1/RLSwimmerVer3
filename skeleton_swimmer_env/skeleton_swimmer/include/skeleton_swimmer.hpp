@@ -23,7 +23,7 @@ class SkeletonSwimmer
   private:
     std::vector<double> getObservation();
     void output(int itr);
-    void calculateArmExtendVelocity();
+    void calculateArmExtendVelocity(std::vector<double> actions);
     void calculateJointVelocity();
     void updateJointPosition();
 
@@ -46,6 +46,8 @@ class SkeletonSwimmer
     VectorXd joint_positions;
     VectorXd joint_velocities;
     VectorXd joint_forces;
+    VectorXd arm_velocities;
+    VectorXd arm_lengths;
     MatrixXd trans_arm2joint;
 
     Vector3d center_position;
