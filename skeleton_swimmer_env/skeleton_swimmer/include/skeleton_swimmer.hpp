@@ -8,46 +8,49 @@ using namespace Eigen;
 
 class SkeletonSwimmer
 {
-  /* Member functions */
+  /* Public Member Functions */
   public:
     std::vector<double> reset();
     std::tuple<std::vector<double>, double, bool, int>
-      step(std::vector<double> actions);
+      step(const std::vector<double> actions);
   public:
+    /* Constructor & Destuctor */
     SkeletonSwimmer(int model_type, bool is_output, double action_period, double max_arm_lengh);
     ~SkeletonSwimmer();
+    /* Getter */
+    size_t getNumStates() const;
+    size_t getNumActions() const;
 
-    int getNumStates() const;
-    int getNumActions() const;
-
+  /* Private Member Functions */
   private:
     std::vector<double> getObservation();
-    void output(int itr);
-    void calculateArmExtendVelocity(std::vector<double> actions);
-    void calculateJointVelocity();
-    void updateJointPosition();
+    void output();
+    void updateCenterPosition();
+    void miniStep(const std::vector<double> actions);
+    //std::tuple<VectorXd, MatrixXd> splitLengthAndDirection(VectorXd vector);
+    void splitLengthAndDirection(VectorXd vector);
 
   /* Member variables */
   private:
-    bool is_record;
-    int step_counter;
-    int swimmer_type;
-    double load_time;
-    double l_max;
+    const bool   is_record;
+    const int    swimmer_type;
+    const double load_time;
+    const double l_max;
+    unsigned int step_counter;
+    unsigned int total_itr;
 
-    int n_joints;
-    int n_arms;
-    int n_states;
-    int n_joint_states;
-    int n_arm_states;
+    size_t n_joints; // n
+    size_t n_arms;   // m
+    size_t n_joint_states; // 3n
+    size_t n_arm_states;   // 3m
 
+    /* Extended actions */
     VectorXd action_vec;
+    /* initial joint position */
     VectorXd init_joint_positions;
     VectorXd joint_positions;
     VectorXd joint_velocities;
     VectorXd joint_forces;
-    VectorXd arm_velocities;
-    VectorXd arm_lengths;
     MatrixXd trans_arm2joint;
 
     Vector3d center_position;
@@ -56,7 +59,7 @@ class SkeletonSwimmer
 
   private:
     std::ofstream fout;
-    std::filesystem::path runfile_path;
+    const std::filesystem::path runfile_path;
 };
 }
 

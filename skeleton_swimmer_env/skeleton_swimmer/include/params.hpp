@@ -13,25 +13,25 @@
 namespace MicroSwimmer {
   /* swimmer setting */
   // max length of each arm required less than 2
-  const double L_MAX = 1.5;
+  constexpr double L_MAX = 1.5;
   // sphere radius required less than 0.5
-  const double A = 0.3;
+  constexpr double A = 0.3;
   // max time of 1 episode
-  const double MAX_TIME = 1000;
+  constexpr double MAX_TIME = 1000;
   // the period to change input value
-  const double LOAD_TIME = 10;
+  constexpr double LOAD_TIME = 10;
   // reward gain
-  const double REWARD_GAIN = 30.0;
+  constexpr double REWARD_GAIN = 30.0;
 
   /* output settings */
   // interval of output state
-  const double OUTPUT_INTERVAL = 1.0e-1;
+  constexpr double OUTPUT_INTERVAL = 1.0e-1;
   // output directory path
-  const std::string OUT_DIRECTORY_PATH = "/sim/result";
+  const std::string OUT_DIRECTORY_PATH = "/sim/result/";
 
   /* simulation */
   // update interval
-  const double DT = 1.0e-2;
+  constexpr double DT = 1.0e-2;
 
   /* iteration setting */
   const int MAX_STEP = int(MAX_TIME / LOAD_TIME);
