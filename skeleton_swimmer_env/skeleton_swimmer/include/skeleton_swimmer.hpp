@@ -55,6 +55,8 @@ class SkeletonSwimmer
     VectorXd sphere_velocities;
     VectorXd arm_forces;
     MatrixXd connection_arm2sph;
+    VectorXd input_actions;
+    VectorXd arm_lengths;
 
     Vector3d center_position;
     Vector3d prev_center_position;

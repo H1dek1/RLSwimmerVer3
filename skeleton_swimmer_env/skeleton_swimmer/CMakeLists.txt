@@ -7,10 +7,10 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/../)
+set(CMAKE_CXX_FLAGS "-O3 -std=c++17 -Wall -Wextra -fopenmp")
 #message("${CMAKE_CURRENT_SOURCE_DIR}")
 
 add_subdirectory(pybind11)
-#add_subdirectory(module)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include/)
 add_library(skeleton_swimmer_src
   src/skeleton_swimmer.cpp)

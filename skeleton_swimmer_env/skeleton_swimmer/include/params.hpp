@@ -29,7 +29,7 @@ namespace MicroSwimmer {
 
   /* simulation */
   // update interval
-  constexpr double DT = 1.0e-4;
+  constexpr double DT = 1.0e-3;
 
   /* iteration setting */
   const int OUT_ITER = int(OUTPUT_INTERVAL / DT);

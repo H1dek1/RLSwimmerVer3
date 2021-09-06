@@ -2,7 +2,7 @@
 #include <eigen3/Eigen/Core>
 
 int main(void){
-  bool output_flag = true;
+  bool output_flag = false;
   int model_type = 10;
   double action_period = 10.0;
   double max_arm_length = 1.5;
@@ -19,7 +19,7 @@ int main(void){
   }
   std::cout << std::endl;
   Eigen::VectorXd actions(2);
-  actions << 0.5, -0.5;
+  actions << 0.5, 0.5;
   auto [obs2, reward, done, info] = swimmer.step(actions);
   std::cout << "Step" << std::endl;
   for(auto x : obs2){

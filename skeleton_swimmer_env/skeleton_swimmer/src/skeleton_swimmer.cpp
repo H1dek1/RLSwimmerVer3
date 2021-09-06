@@ -17,7 +17,7 @@ SkeletonSwimmer::SkeletonSwimmer(int model_type, bool is_output, double action_p
   MAX_STEP(static_cast<int>(MAX_TIME/action_period)),
   MAX_ITER(static_cast<int>(action_period/DT))
 {
-  std::string models_dir_path = this->RUNFILE_PATH.string() + "/../../models/type_" + std::to_string(this->SWIMMER_TYPE) + "/";
+  std::string models_dir_path = this->RUNFILE_PATH.string() + "/models/type_" + std::to_string(this->SWIMMER_TYPE) + "/";
 
   /* load model */
   // set number of arm and sphere
@@ -103,15 +103,15 @@ SkeletonSwimmer::step(const VectorXd actions)
     std::exit(0);
   }
   for(size_t i = 0; i < this->n_arms; ++i){
-    auto action = actions(i);
-    if(std::abs(action) > 1.0){
+    if(std::abs(actions(i)) > 1.0){
       std::cout << "[self ERROR] The value is out of range" << std::endl;
       std::exit(0);
     }
   }
+  this->input_actions = actions;
   /* Iteration */
   for(unsigned int itr = 0; itr < this->MAX_ITER; ++itr){
-    this->miniStep(actions);
+    this->miniStep(this->input_actions);
     if(this->IS_RECORD && this->total_itr%OUT_ITER == 0){
       this->output(); // using this->total_itr
     }
@@ -139,6 +139,7 @@ void SkeletonSwimmer::miniStep(const VectorXd actions)
 
   /* Arm length and direction */
   auto [arm_lengths, arm_directions] = this->splitLengthAndDirection(arm_vector, this->n_arms);
+  this->arm_lengths = arm_lengths;
 
   /* Translational Matrix */
   MatrixXd arm2sph = this->connection_arm2sph * arm_directions;
@@ -147,7 +148,7 @@ void SkeletonSwimmer::miniStep(const VectorXd actions)
   auto stokeslet = this->calculateStokeslet(this->sphere_positions, this->n_spheres);
 
   /* Clipping ArmExtensive velocity */
-  auto clipped_actions = this->clipActions(actions, arm_lengths);
+  auto clipped_actions = this->clipActions(actions, this->arm_lengths);
 
   /* calculate sphere velocity */
   MatrixXd trans_mat = arm2sph.transpose() * stokeslet * arm2sph;
@@ -210,7 +211,23 @@ MatrixXd SkeletonSwimmer::calculateStokeslet(const VectorXd positions, const siz
 
 void SkeletonSwimmer::output()
 {
-  fout << this->total_itr*DT << std::endl;
+  fout << this->total_itr*DT << ",";
+  for(size_t id_sph = 0; id_sph < this->n_spheres; ++id_sph){
+    fout << this->sphere_positions(3*id_sph + 0) << ",";
+    fout << this->sphere_positions(3*id_sph + 1) << ",";
+    fout << this->sphere_positions(3*id_sph + 2) << ",";
+  }
+  for(size_t id_arm = 0; id_arm < this->n_arms; ++id_arm){
+    fout << this->arm_forces(id_arm) << ",";
+  }
+  for(size_t id_arm = 0; id_arm < this->n_arms; ++id_arm){
+    if(id_arm == this->n_arms-1){
+      fout << this->arm_lengths(id_arm);
+    }else{
+      fout << this->arm_lengths(id_arm) << ",";
+    }
+  }
+  fout << std::endl;
 }
 
 std::vector<double> SkeletonSwimmer::getObservation()
