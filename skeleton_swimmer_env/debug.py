@@ -4,6 +4,8 @@ from skeleton_swimmer import SkeletonSwimmer
 
 def main():
     env = SkeletonSwimmer(10, False, 2.0, 1.5)
+    print(env.getNumActions())
+    print(env.getNumStates())
     print(env)
     obs = env.reset()
     print('obs')
@@ -19,3 +21,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+

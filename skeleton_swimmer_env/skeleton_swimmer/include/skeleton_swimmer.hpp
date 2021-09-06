@@ -23,7 +23,7 @@ class SkeletonSwimmer
 
   /* Private Member Functions */
   private:
-    VectorXd getObservation();
+    VectorXd getObservation() const;
     void output();
     void updateCenterPosition();
     void miniStep(const VectorXd actions);
@@ -53,10 +53,12 @@ class SkeletonSwimmer
     VectorXd init_sphere_positions;
     VectorXd sphere_positions;
     VectorXd sphere_velocities;
-    VectorXd arm_forces;
+
     MatrixXd connection_arm2sph;
+
     VectorXd input_actions;
     VectorXd arm_lengths;
+    VectorXd arm_forces;
 
     Vector3d center_position;
     Vector3d prev_center_position;

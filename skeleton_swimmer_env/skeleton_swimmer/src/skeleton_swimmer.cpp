@@ -19,8 +19,7 @@ SkeletonSwimmer::SkeletonSwimmer(int model_type, bool is_output, double action_p
 {
   std::string models_dir_path = this->RUNFILE_PATH.string() + "/models/type_" + std::to_string(this->SWIMMER_TYPE) + "/";
 
-  /* load model */
-  // set number of arm and sphere
+  /* load number of spheres and arms */
   std::ifstream num_in(models_dir_path+"num_states.txt", std::ios::in);
   if(!num_in){
     std::cout << "[self ERROR] No file \"num_states.txt\"" << std::endl;
@@ -33,7 +32,8 @@ SkeletonSwimmer::SkeletonSwimmer(int model_type, bool is_output, double action_p
   this->init_sphere_positions = VectorXd::Zero(this->n_sphere_states);
   this->sphere_velocities     = VectorXd::Zero(this->n_sphere_states);
   this->connection_arm2sph    = MatrixXd::Zero(this->n_sphere_states, this->n_arm_states);
-  // initial position
+
+  /* load initial positions */
   std::ifstream init_in(models_dir_path+"init_pos.txt", std::ios::in);
   if(!init_in){
     std::cout << "[self ERROR] No file \"init_pos.txt\"" << std::endl;
@@ -42,7 +42,8 @@ SkeletonSwimmer::SkeletonSwimmer(int model_type, bool is_output, double action_p
   for(size_t i = 0; i < this->n_sphere_states; ++i){
     init_in >> this->init_sphere_positions(i);
   }
-  // translation matrix from arm to sphere
+
+  /* load connection information matrix */
   std::ifstream matrix_in(models_dir_path+"trans_mat.txt", std::ios::in);
   if(!matrix_in){
     std::cout << "[self ERROR] No file \"trans_mat.txt\"" << std::endl;
@@ -64,7 +65,9 @@ SkeletonSwimmer::SkeletonSwimmer(int model_type, bool is_output, double action_p
 
 SkeletonSwimmer::~SkeletonSwimmer()
 {
-  fout.close();
+  if(fout.is_open()){
+    fout.close();
+  }
 }
 
 //std::vector<double> SkeletonSwimmer::reset()
@@ -86,23 +89,26 @@ VectorXd SkeletonSwimmer::reset()
       std::exit(0);
     }
   }
-  /* Initialize All States */
+
+  /* Initialize All Variables */
   this->step_counter = 0;
   this->total_itr    = 0;
   this->sphere_positions = this->init_sphere_positions;
   this->updateCenterPosition();
   this->prev_center_position = this->center_position;
-  return this->sphere_positions;
+
+  return this->getObservation();
 }
 
 std::tuple<VectorXd, double, bool, int> 
 SkeletonSwimmer::step(const VectorXd actions)
 {
-  /* check input action */
+  /* check input action size */
   if(static_cast<size_t>(actions.rows()) != this->n_arms){
     std::cout << "[self ERROR] The action size is wrong" << std::endl;
     std::exit(0);
   }
+  /* check input action values */
   for(size_t i = 0; i < this->n_arms; ++i){
     if(std::abs(actions(i)) > 1.0){
       std::cout << "[self ERROR] The value is out of range" << std::endl;
@@ -110,6 +116,7 @@ SkeletonSwimmer::step(const VectorXd actions)
     }
   }
   this->input_actions = actions;
+
   /* Iteration */
   for(unsigned int itr = 0; itr < this->MAX_ITER; ++itr){
     this->miniStep(this->input_actions);
@@ -231,7 +238,7 @@ void SkeletonSwimmer::output()
   fout << std::endl;
 }
 
-VectorXd SkeletonSwimmer::getObservation()
+VectorXd SkeletonSwimmer::getObservation() const
 {
   VectorXd rel_pos = this->sphere_positions;
   for(size_t id_sphere = 0; id_sphere < this->n_spheres; ++id_sphere){
