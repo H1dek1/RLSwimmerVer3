@@ -10,8 +10,8 @@ class SkeletonSwimmer
 {
   /* Public Member Functions */
   public:
-    std::vector<double> reset();
-    std::tuple<std::vector<double>, double, bool, int>
+    VectorXd reset();
+    std::tuple<VectorXd, double, bool, int>
       step(const VectorXd actions);
   public:
     /* Constructor & Destuctor */
@@ -23,7 +23,7 @@ class SkeletonSwimmer
 
   /* Private Member Functions */
   private:
-    std::vector<double> getObservation();
+    VectorXd getObservation();
     void output();
     void updateCenterPosition();
     void miniStep(const VectorXd actions);

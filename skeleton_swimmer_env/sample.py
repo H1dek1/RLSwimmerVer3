@@ -8,9 +8,11 @@ def main():
     obs = env.reset()
     print('obs')
     print(type(obs))
+    print(obs)
     actions = np.array([0.5, -0.5])
     obs, reward, done, _ = env.step(actions)
     print(obs)
+    print(type(obs))
     print('reward', reward)
     print('Done', done)
 

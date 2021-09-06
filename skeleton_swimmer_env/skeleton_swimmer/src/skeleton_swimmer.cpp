@@ -67,7 +67,8 @@ SkeletonSwimmer::~SkeletonSwimmer()
   fout.close();
 }
 
-std::vector<double> SkeletonSwimmer::reset()
+//std::vector<double> SkeletonSwimmer::reset()
+VectorXd SkeletonSwimmer::reset()
 {
   /* Set record file */
   if(fout.is_open()){
@@ -91,10 +92,10 @@ std::vector<double> SkeletonSwimmer::reset()
   this->sphere_positions = this->init_sphere_positions;
   this->updateCenterPosition();
   this->prev_center_position = this->center_position;
-  return this->getObservation();
+  return this->sphere_positions;
 }
 
-std::tuple<std::vector<double>, double, bool, int> 
+std::tuple<VectorXd, double, bool, int> 
 SkeletonSwimmer::step(const VectorXd actions)
 {
   /* check input action */
@@ -230,14 +231,13 @@ void SkeletonSwimmer::output()
   fout << std::endl;
 }
 
-std::vector<double> SkeletonSwimmer::getObservation()
+VectorXd SkeletonSwimmer::getObservation()
 {
-  std::vector<double> observation(this->n_sphere_states);
-  // FIXME
-  for(unsigned int i = 0; i < this->n_sphere_states; ++i){
-    observation[i] = this->sphere_positions(i) - this->center_position(i%3);
+  VectorXd rel_pos = this->sphere_positions;
+  for(size_t id_sphere = 0; id_sphere < this->n_spheres; ++id_sphere){
+    rel_pos.segment(3*id_sphere, 3) -= this->center_position;
   }
-  return observation;
+  return rel_pos;
 }
 
 void SkeletonSwimmer::updateCenterPosition()
