@@ -12,7 +12,7 @@ class SkeletonSwimmer
   public:
     std::vector<double> reset();
     std::tuple<std::vector<double>, double, bool, int>
-      step(const std::vector<double> actions);
+      step(const VectorXd actions);
   public:
     /* Constructor & Destuctor */
     SkeletonSwimmer(int model_type, bool is_output, double action_period, double max_arm_lengh);
@@ -26,32 +26,35 @@ class SkeletonSwimmer
     std::vector<double> getObservation();
     void output();
     void updateCenterPosition();
-    void miniStep(const std::vector<double> actions);
-    //std::tuple<VectorXd, MatrixXd> splitLengthAndDirection(VectorXd vector);
-    void splitLengthAndDirection(VectorXd vector);
+    void miniStep(const VectorXd actions);
+    std::tuple<VectorXd, MatrixXd> splitLengthAndDirection(const VectorXd vector, const size_t n_split) const;
+    MatrixXd calculateStokeslet(const VectorXd positions, const size_t n_sph) const;
+    VectorXd clipActions(const VectorXd actions, const VectorXd lengths) const;
 
   /* Member variables */
   private:
-    const bool   is_record;
-    const int    swimmer_type;
-    const double load_time;
-    const double l_max;
+    const bool   IS_RECORD;
+    const int    SWIMMER_TYPE;
+    const double LOAD_TIME;
+    const double L_MAX;
+    const size_t MAX_STEP;
+    const size_t MAX_ITER;
     unsigned int step_counter;
     unsigned int total_itr;
 
-    size_t n_joints; // n
+    size_t n_spheres; // n
     size_t n_arms;   // m
-    size_t n_joint_states; // 3n
+    size_t n_sphere_states; // 3n
     size_t n_arm_states;   // 3m
 
     /* Extended actions */
     VectorXd action_vec;
-    /* initial joint position */
-    VectorXd init_joint_positions;
-    VectorXd joint_positions;
-    VectorXd joint_velocities;
-    VectorXd joint_forces;
-    MatrixXd trans_arm2joint;
+    /* initial sphere position */
+    VectorXd init_sphere_positions;
+    VectorXd sphere_positions;
+    VectorXd sphere_velocities;
+    VectorXd arm_forces;
+    MatrixXd connection_arm2sph;
 
     Vector3d center_position;
     Vector3d prev_center_position;
@@ -59,7 +62,7 @@ class SkeletonSwimmer
 
   private:
     std::ofstream fout;
-    const std::filesystem::path runfile_path;
+    const std::filesystem::path RUNFILE_PATH;
 };
 }
 

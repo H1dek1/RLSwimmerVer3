@@ -12,14 +12,12 @@
 
 namespace MicroSwimmer {
   /* swimmer setting */
-  // max length of each arm required less than 2
-  constexpr double L_MAX = 1.5;
+  // min length of each arm must be 1
+  constexpr double L_MIN = 1.0;
   // sphere radius required less than 0.5
   constexpr double A = 0.3;
   // max time of 1 episode
   constexpr double MAX_TIME = 1000;
-  // the period to change input value
-  constexpr double LOAD_TIME = 10;
   // reward gain
   constexpr double REWARD_GAIN = 30.0;
 
@@ -31,12 +29,14 @@ namespace MicroSwimmer {
 
   /* simulation */
   // update interval
-  constexpr double DT = 1.0e-2;
+  constexpr double DT = 1.0e-4;
 
   /* iteration setting */
-  const int MAX_STEP = int(MAX_TIME / LOAD_TIME);
-  const int MAX_ITER = int(LOAD_TIME / DT);
   const int OUT_ITER = int(OUTPUT_INTERVAL / DT);
+
+  /* Coefficient of Stokeslet */
+  const     double COEF1 = 1 / (6*M_PI*A);
+  constexpr double COEF2 = 1 / (8*M_PI);
 }
   
 
