@@ -17,7 +17,7 @@ SkeletonSwimmer::SkeletonSwimmer(int model_type, bool is_output, double action_p
   MAX_STEP(static_cast<int>(MAX_TIME/action_period)),
   MAX_ITER(static_cast<int>(action_period/DT))
 {
-  std::string models_dir_path = this->RUNFILE_PATH.string() + "/models/type_" + std::to_string(this->SWIMMER_TYPE) + "/";
+  std::string models_dir_path = this->RUNFILE_PATH.string() + MODEL_LOAD_PATH + "/type_" + std::to_string(this->SWIMMER_TYPE) + "/";
 
   /* load number of spheres and arms */
   std::ifstream num_in(models_dir_path+"num_states.txt", std::ios::in);
@@ -25,8 +25,8 @@ SkeletonSwimmer::SkeletonSwimmer(int model_type, bool is_output, double action_p
     std::cout << "[self ERROR] No file \"num_states.txt\"" << std::endl;
     std::exit(0);
   }
-  num_in >> n_spheres;
-  num_in >> n_arms;
+  num_in >> this->n_spheres;
+  num_in >> this->n_arms;
   this->n_sphere_states = 3 * this->n_spheres;
   this->n_arm_states    = 3 * this->n_arms;
   this->init_sphere_positions = VectorXd::Zero(this->n_sphere_states);
@@ -100,7 +100,7 @@ VectorXd SkeletonSwimmer::reset()
   return this->getObservation();
 }
 
-std::tuple<VectorXd, double, bool, int> 
+std::tuple<VectorXd, double, bool, std::map<std::string, double>> 
 SkeletonSwimmer::step(const VectorXd actions)
 {
   /* check input action size */
@@ -204,12 +204,12 @@ MatrixXd SkeletonSwimmer::calculateStokeslet(const VectorXd positions, const siz
     Vector3d target_pos = positions.segment(3*id_target, 3);
     for(size_t id_to = 0; id_to < n_sph; ++id_to){
       if(id_target == id_to){
-        stokeslet.block(3*id_target, 3*id_to, 3, 3) = COEF1 * Matrix3d::Identity();
+        stokeslet.block(3*id_target, 3*id_to, 3, 3) = COEF_SELF * Matrix3d::Identity();
       }else{
         Vector3d rel_vec = positions.segment(3*id_to, 3) - target_pos;
         double norm = 1.0 / rel_vec.norm();
         double norm3 = std::pow(norm, 3);
-        stokeslet.block(3*id_target, 3*id_to, 3, 3) = COEF2 * ((Matrix3d::Identity()*norm) + (rel_vec*rel_vec.transpose()*norm3));
+        stokeslet.block(3*id_target, 3*id_to, 3, 3) = COEF_OTHER * ((Matrix3d::Identity()*norm) + (rel_vec*rel_vec.transpose()*norm3));
       }
     }
   }

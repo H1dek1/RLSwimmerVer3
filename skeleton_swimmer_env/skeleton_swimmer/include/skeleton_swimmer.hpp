@@ -11,7 +11,7 @@ class SkeletonSwimmer
   /* Public Member Functions */
   public:
     VectorXd reset();
-    std::tuple<VectorXd, double, bool, int>
+    std::tuple<VectorXd, double, bool, std::map<std::string, double>>
       step(const VectorXd actions);
   public:
     /* Constructor & Destuctor */
