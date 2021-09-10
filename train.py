@@ -13,7 +13,7 @@ from stable_baselines3 import PPO
 swimmer_type = int(10)
 reward_gain  = 30.0
 load_time    = 1.0
-max_arm_length = 1.5
+max_arm_length = 2.0
 
 def main():
     """"""""""""""""""""
