@@ -10,17 +10,17 @@ from stable_baselines3.common.env_util import make_vec_env
 from stable_baselines3.common.evaluation import evaluate_policy
 from stable_baselines3 import PPO
 
-swimmer_type = int(20)
+swimmer_type = int(10)
 reward_gain  = 30.0
-load_time    = 10.0
-max_arm_length = 1.5
+load_time    = 1.0
+max_arm_length = 1.9
 
 def main():
     """"""""""""""""""""
     " Hyper Parameters "
     """"""""""""""""""""
     n_envs     = 16
-    time_steps = int(2e+6)
+    time_steps = int(1e+6)
     epoch      = 2
     
     """"""""""""""""""""
@@ -28,7 +28,7 @@ def main():
     """"""""""""""""""""
     multi_process    = True
     create_new_model = True
-    load_model_name  = f'ppo_type{swimmer_type}_action_period{load_time}_maxlength{max_arm_length}_env{n_envs}_20210615_125221.zip'
+    load_model_name  = f'ppo_type{swimmer_type}_actionperiod{load_time}_maxlength{max_arm_length}_rewardgain{reward_gain}_env{n_envs}_20210913_120231'
 
     save_model = True
 
@@ -40,7 +40,7 @@ def main():
     log_dir = f'./rl/logs/type_{swimmer_type}/'
     os.makedirs(log_dir, exist_ok=True)
     now = datetime.datetime.now()
-    model_name = f'ppo_type{swimmer_type}_action_period{load_time}_maxlength{max_arm_length}_env{n_envs}_' + now.strftime('%Y%m%d_%H%M%S')
+    model_name = f'ppo_type{swimmer_type}_actionperiod{load_time}_maxlength{max_arm_length}_rewardgain{reward_gain}_env{n_envs}_' + now.strftime('%Y%m%d_%H%M%S')
 
     """"""""""""""""""""
     " Constructing Env "
@@ -57,7 +57,11 @@ def main():
     else:
         env = make_vec_env('SkeletonSwimmer-v0',
                 n_envs=n_envs,
-                env_kwargs=dict(isRecord=False, swimmer_type=swimmer_type, action_period=action_period, max_arm_length=max_arm_length),
+                env_kwargs=dict(
+                    isRecord=False, 
+                    swimmer_type=swimmer_type, 
+                    action_period=action_period, 
+                    max_arm_length=max_arm_length),
                 monitor_dir=(log_dir+model_name+'_monitor'))
 
 

@@ -88,6 +88,24 @@ VectorXd SkeletonSwimmer::reset()
       std::cout << "[self ERROR] CANNOT MAKE NEW RESULT FILE." << std::endl;
       std::exit(0);
     }
+    /* Header */
+  fout << "Time" << ",";
+  for(size_t id_sph = 0; id_sph < this->n_spheres; ++id_sph){
+    fout << "sphere_pos_" << id_sph << "_x" << ",";
+    fout << "sphere_pos_" << id_sph << "_y" << ",";
+    fout << "sphere_pos_" << id_sph << "_z" << ",";
+  }
+  for(size_t id_arm = 0; id_arm < this->n_arms; ++id_arm){
+    fout << "arm_force_" << id_arm << ",";
+  }
+  for(size_t id_arm = 0; id_arm < this->n_arms; ++id_arm){
+    if(id_arm == this->n_arms-1){
+      fout << "arm_length_" << id_arm;
+    }else{
+      fout << "arm_length_" << id_arm << ",";
+    }
+  }
+  fout << std::endl;
   }
 
   /* Initialize All Variables */
@@ -131,7 +149,7 @@ SkeletonSwimmer::step(const VectorXd actions)
   double reward = REWARD_GAIN * (this->center_position - this->prev_center_position).dot(this->target_unit_vec);
 
   bool done = false;
-  if(this->step_counter > this->MAX_STEP){
+  if(this->step_counter >= this->MAX_STEP-1){
     done = true;
   }
   this->step_counter += 1;
