@@ -4,3 +4,4 @@
 /skeleton_swimmer_env/skeleton_swimmer/build/
 /rl/logs/
 /.venv3.8/
+/.python-version

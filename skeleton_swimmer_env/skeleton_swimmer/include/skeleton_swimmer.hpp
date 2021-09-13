@@ -13,23 +13,26 @@ class SkeletonSwimmer
     VectorXd reset();
     std::tuple<VectorXd, double, bool, std::map<std::string, double>>
       step(const VectorXd actions);
-  public:
-    /* Constructor & Destuctor */
-    SkeletonSwimmer(int model_type, bool is_output, double action_period, double max_arm_lengh);
-    ~SkeletonSwimmer();
+
     /* Getter */
     size_t getNumStates() const;
     size_t getNumActions() const;
 
+  public:
+    /* Constructor & Destuctor */
+    SkeletonSwimmer(int model_type, bool is_output, double action_period, double max_arm_lengh);
+    ~SkeletonSwimmer();
+
   /* Private Member Functions */
   private:
     VectorXd getObservation() const;
-    void output();
-    void updateCenterPosition();
-    void miniStep(const VectorXd actions);
-    std::tuple<VectorXd, MatrixXd> splitLengthAndDirection(const VectorXd vector, const size_t n_split) const;
+    void     output();
+    void     updateCenterPosition();
+    void     miniStep(const VectorXd actions);
     MatrixXd calculateStokeslet(const VectorXd positions, const size_t n_sph) const;
     VectorXd clipActions(const VectorXd actions, const VectorXd lengths) const;
+    std::tuple<VectorXd, MatrixXd> 
+      splitLengthAndDirection(const VectorXd vector, const size_t n_split) const;
 
   /* Member variables */
   private:
