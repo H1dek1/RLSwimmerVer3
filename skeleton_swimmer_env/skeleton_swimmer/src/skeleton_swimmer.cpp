@@ -89,23 +89,23 @@ VectorXd SkeletonSwimmer::reset()
       std::exit(0);
     }
     /* Header */
-  fout << "Time" << ",";
-  for(size_t id_sph = 0; id_sph < this->n_spheres; ++id_sph){
-    fout << "sphere_pos_" << id_sph << "_x" << ",";
-    fout << "sphere_pos_" << id_sph << "_y" << ",";
-    fout << "sphere_pos_" << id_sph << "_z" << ",";
-  }
-  for(size_t id_arm = 0; id_arm < this->n_arms; ++id_arm){
-    fout << "arm_force_" << id_arm << ",";
-  }
-  for(size_t id_arm = 0; id_arm < this->n_arms; ++id_arm){
-    if(id_arm == this->n_arms-1){
-      fout << "arm_length_" << id_arm;
-    }else{
-      fout << "arm_length_" << id_arm << ",";
+    fout << "Time" << ",";
+    for(size_t id_sph = 0; id_sph < this->n_spheres; ++id_sph){
+      fout << "sphere_pos_" << id_sph << "_x" << ",";
+      fout << "sphere_pos_" << id_sph << "_y" << ",";
+      fout << "sphere_pos_" << id_sph << "_z" << ",";
     }
-  }
-  fout << std::endl;
+    for(size_t id_arm = 0; id_arm < this->n_arms; ++id_arm){
+      fout << "arm_force_" << id_arm << ",";
+    }
+    for(size_t id_arm = 0; id_arm < this->n_arms; ++id_arm){
+      if(id_arm == this->n_arms-1){
+        fout << "arm_length_" << id_arm;
+      }else{
+        fout << "arm_length_" << id_arm << ",";
+      }
+    }
+    fout << std::endl;
   }
 
   /* Initialize All Variables */
@@ -138,10 +138,10 @@ SkeletonSwimmer::step(const VectorXd actions)
   /* Iteration */
   for(unsigned int itr = 0; itr < this->MAX_ITER; ++itr){
     this->miniStep(this->input_actions);
+    this->total_itr += 1;
     if(this->IS_RECORD && this->total_itr%OUT_ITER == 0){
       this->output(); // using this->total_itr
     }
-    this->total_itr += 1;
   }
   this->updateCenterPosition();
 

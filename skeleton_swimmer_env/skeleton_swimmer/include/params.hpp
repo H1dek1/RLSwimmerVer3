@@ -35,7 +35,7 @@ namespace MicroSwimmer {
   // output directory path
   const std::string OUT_DIRECTORY_PATH = "/sim/result/";
   // interval of output state
-  constexpr double OUTPUT_INTERVAL = 1.0e-1;
+  constexpr double OUTPUT_INTERVAL = 1.0e-2;
   constexpr int    OUT_ITER = static_cast<int>(OUTPUT_INTERVAL / DT);
 
   /* model loading directory */
