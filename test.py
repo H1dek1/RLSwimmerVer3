@@ -20,10 +20,10 @@ parser.add_argument('--deterministic', type=strtobool,
 
 
 def main():
-    swimmer_type   = int(10)
-    load_time      = 1.0
+    swimmer_type   = int(20)
+    load_time      = 50.0
     max_arm_length = 1.9
-    reward_gain    = 30.0
+    reward_gain    = 100.0
     n_envs         = 16
     args = parser.parse_args()
 
@@ -53,7 +53,7 @@ def main():
     Load RL Model
     """
     load_dir = f'./rl/trained_models/type_{swimmer_type}/period{load_time}_length{max_arm_length}/'
-    model_name = f'ppo_type{swimmer_type}_actionperiod{load_time}_maxlength{max_arm_length}_rewardgain{reward_gain}_env{n_envs}_20210913_151322'
+    model_name = f'ppo_type{swimmer_type}_actionperiod{load_time}_maxlength{max_arm_length}_rewardgain{reward_gain}_env{n_envs}_20210915_115524'
 
     model = PPO.load(path=(load_dir+model_name))
 
@@ -91,10 +91,11 @@ def simulate(env, model, **kwargs):
     while(done == False):
         action, _states = model.predict(obs, deterministic=kwargs['deterministic'])
         print(action)
-        obs, reward, done, _ = env.step(action)
+        obs, reward, done, info = env.step(action)
         epi_reward += reward
         if done == True: break
 
+    print('final position ', info)
     print('episode reward is ', epi_reward)
     #with open('learned_result_type{}.csv'.format(swimmer_type), mode='a') as f:
     #    writer = csv.writer(f, delimiter=',')

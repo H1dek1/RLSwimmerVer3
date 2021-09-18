@@ -9,7 +9,7 @@
 #include <fstream>
 #include <sstream>
 #include <filesystem>
-#include <eigen3/Eigen/Dense>
+#include <Eigen/Dense>
 
 namespace MicroSwimmer {
   /* swimmer parameters */
@@ -29,13 +29,13 @@ namespace MicroSwimmer {
 
   /* Reinforcement Learning parameters */
   // reward gain
-  constexpr double REWARD_GAIN = 30.0;
+  constexpr double REWARD_GAIN = 100.0;
 
   /* output parameters */
   // output directory path
   const std::string OUT_DIRECTORY_PATH = "/sim/result/";
   // interval of output state
-  constexpr double OUTPUT_INTERVAL = 1.0e-2;
+  constexpr double OUTPUT_INTERVAL = 1.0e-1;
   constexpr int    OUT_ITER = static_cast<int>(OUTPUT_INTERVAL / DT);
 
   /* model loading directory */

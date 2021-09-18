@@ -10,9 +10,9 @@ from stable_baselines3.common.env_util import make_vec_env
 from stable_baselines3.common.evaluation import evaluate_policy
 from stable_baselines3 import PPO
 
-swimmer_type = int(10)
-reward_gain  = 30.0
-load_time    = 1.0
+swimmer_type = int(20)
+reward_gain  = 100.0
+load_time    = 0.2
 max_arm_length = 1.9
 
 def main():
@@ -21,14 +21,20 @@ def main():
     """"""""""""""""""""
     n_envs     = 16
     time_steps = int(1e+6)
-    epoch      = 2
+    epoch      = 20
     
     """"""""""""""""""""
     " Learning Setting "
     """"""""""""""""""""
     multi_process    = True
-    create_new_model = True
-    load_model_name  = f'ppo_type{swimmer_type}_actionperiod{load_time}_maxlength{max_arm_length}_rewardgain{reward_gain}_env{n_envs}_20210913_120231'
+    create_new_model = False
+    load_model_name  = f'ppo' \
+            f'_type{swimmer_type}' \
+            f'_actionperiod{load_time}' \
+            f'_maxlength{max_arm_length}' \
+            f'_rewardgain{reward_gain}' \
+            f'_env{n_envs}' \
+            f'_20210916_210258'
 
     save_model = True
 
@@ -116,6 +122,7 @@ def main():
     mean_reward, std_reward = evaluate_policy(model, 
             eval_env, n_eval_episodes=2, deterministic=True)
     print(f'Mean reward: {mean_reward} +/- {std_reward:.2f}')
+    max_score = mean_reward
 
     """""""""""""""""
     "    TRAINING   "
@@ -131,9 +138,10 @@ def main():
                 eval_env, n_eval_episodes=5)
         print(f'Mean reward: {mean_reward} +/- {std_reward:.2f}')
 
-        if(save_model == True):
+        if save_model == True and mean_reward > max_score:
             print('*'*10, ' SAVING MODEL ', '*'*10)
             model.save(model_save_dir+model_name)
+            max_score = mean_reward
 
 
 def testModel(model):

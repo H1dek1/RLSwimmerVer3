@@ -11,7 +11,7 @@ class SkeletonSwimmer
   /* Public Member Functions */
   public:
     VectorXd reset();
-    std::tuple<VectorXd, double, bool, std::map<std::string, double>>
+    std::tuple<VectorXd, double, bool, std::map<std::string, VectorXd>>
       step(const VectorXd actions);
 
     /* Getter */
@@ -50,21 +50,26 @@ class SkeletonSwimmer
     size_t n_sphere_states; // 3n
     size_t n_arm_states;   // 3m
 
-    /* Extended actions */
-    VectorXd action_vec;
-    /* initial sphere position */
+    /* initial sphere positions : 3n */
     VectorXd init_sphere_positions;
+    /* sphere positions : 3n */
     VectorXd sphere_positions;
+    /* sphere velocities : 3n */
     VectorXd sphere_velocities;
-
+    /* Connection Matrix from arm to sphere : 3m x 3n*/
     MatrixXd connection_arm2sph;
-
+    /* input arm actions : m */
     VectorXd input_actions;
+    /* arm lengths : m */
     VectorXd arm_lengths;
+    /* arm force vectors : 3m */
     VectorXd arm_forces;
 
+    /* center position : 3 */
     Vector3d center_position;
+    /* previous center position : 3 */
     Vector3d prev_center_position;
+    /* target unit vector : 3 */
     Vector3d target_unit_vec;
 
   private:

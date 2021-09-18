@@ -30,7 +30,6 @@ SkeletonSwimmer::SkeletonSwimmer(int model_type, bool is_output, double action_p
   this->n_sphere_states = 3 * this->n_spheres;
   this->n_arm_states    = 3 * this->n_arms;
   this->init_sphere_positions = VectorXd::Zero(this->n_sphere_states);
-  this->sphere_velocities     = VectorXd::Zero(this->n_sphere_states);
   this->connection_arm2sph    = MatrixXd::Zero(this->n_sphere_states, this->n_arm_states);
 
   /* load initial positions */
@@ -79,9 +78,10 @@ VectorXd SkeletonSwimmer::reset()
   }
   if(this->IS_RECORD){
     std::stringstream record_file_name;
-    record_file_name << "type" << this->SWIMMER_TYPE 
-      << "_period" << this->LOAD_TIME << 
-      "_maxlength" << this->L_MAX << ".csv";
+    record_file_name << "type" << this->SWIMMER_TYPE
+      << "_radius" << A
+      << "_period" << this->LOAD_TIME
+      << "_maxlength" << this->L_MAX << ".csv";
     std::string full_path = RUNFILE_PATH.string() + OUT_DIRECTORY_PATH + record_file_name.str();
     fout.open(full_path, std::ios::out);
     if(!fout){
@@ -108,17 +108,21 @@ VectorXd SkeletonSwimmer::reset()
     fout << std::endl;
   }
 
-  /* Initialize All Variables */
-  this->step_counter = 0;
-  this->total_itr    = 0;
-  this->sphere_positions = this->init_sphere_positions;
+  /* Reset All Variables */
+  this->step_counter      = 0;
+  this->total_itr         = 0;
+  this->input_actions     = VectorXd::Zero(this->n_arms);
+  this->arm_lengths       = VectorXd::Ones(this->n_arms);
+  this->arm_forces        = VectorXd::Zero(this->n_arm_states);
+  this->sphere_positions  = this->init_sphere_positions;
+  this->sphere_velocities = VectorXd::Zero(this->n_sphere_states);
   this->updateCenterPosition();
   this->prev_center_position = this->center_position;
 
   return this->getObservation();
 }
 
-std::tuple<VectorXd, double, bool, std::map<std::string, double>> 
+std::tuple<VectorXd, double, bool, std::map<std::string, VectorXd>> 
 SkeletonSwimmer::step(const VectorXd actions)
 {
   /* check input action size */
@@ -137,11 +141,11 @@ SkeletonSwimmer::step(const VectorXd actions)
 
   /* Iteration */
   for(unsigned int itr = 0; itr < this->MAX_ITER; ++itr){
-    this->miniStep(this->input_actions);
-    this->total_itr += 1;
     if(this->IS_RECORD && this->total_itr%OUT_ITER == 0){
       this->output(); // using this->total_itr
     }
+    this->miniStep(this->input_actions);
+    this->total_itr += 1;
   }
   this->updateCenterPosition();
 
@@ -152,10 +156,17 @@ SkeletonSwimmer::step(const VectorXd actions)
   if(this->step_counter >= this->MAX_STEP-1){
     done = true;
   }
+
+  /* update counter */
   this->step_counter += 1;
+  /* update center position */
   this->prev_center_position = this->center_position;
 
-  return {this->getObservation(), reward, done, {}};
+  /* Additional information */
+  std::map<std::string, VectorXd> info;
+  info["center"] = this->center_position;
+
+  return {this->getObservation(), reward, done, info};
 }
 
 void SkeletonSwimmer::miniStep(const VectorXd actions)
@@ -185,6 +196,7 @@ void SkeletonSwimmer::miniStep(const VectorXd actions)
   }
   this->arm_forces = trans_mat.inverse() * clipped_actions;
   this->sphere_velocities = stokeslet * arm2sph * this->arm_forces;
+
   /* update positions */
   this->sphere_positions += this->sphere_velocities * DT;
 }
@@ -207,11 +219,13 @@ std::tuple<VectorXd, MatrixXd> SkeletonSwimmer::splitLengthAndDirection(VectorXd
 {
   MatrixXd direction_mat = MatrixXd::Zero(3*n_split, n_split);
   VectorXd length_vec(n_split);
+
   for(size_t id_arm = 0; id_arm < n_split; ++id_arm){
     VectorXd one_vec = vector.segment(3*id_arm, 3);
     length_vec(id_arm) = one_vec.norm();
     direction_mat.block(3*id_arm, id_arm, 3, 1) = one_vec.normalized();
   }
+
   return{length_vec, direction_mat};
 }
 
@@ -225,9 +239,12 @@ MatrixXd SkeletonSwimmer::calculateStokeslet(const VectorXd positions, const siz
         stokeslet.block(3*id_target, 3*id_to, 3, 3) = COEF_SELF * Matrix3d::Identity();
       }else{
         Vector3d rel_vec = positions.segment(3*id_to, 3) - target_pos;
-        double norm = 1.0 / rel_vec.norm();
-        double norm3 = std::pow(norm, 3);
-        stokeslet.block(3*id_target, 3*id_to, 3, 3) = COEF_OTHER * ((Matrix3d::Identity()*norm) + (rel_vec*rel_vec.transpose()*norm3));
+        double inverted_norm = 1.0 / rel_vec.norm();
+        double inverted_norm3 = std::pow(inverted_norm, 3);
+        stokeslet.block(3*id_target, 3*id_to, 3, 3) = COEF_OTHER * (
+            (Matrix3d::Identity()*inverted_norm) 
+            + (rel_vec*rel_vec.transpose()*inverted_norm3)
+            );
       }
     }
   }
