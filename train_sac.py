@@ -8,7 +8,7 @@ from stable_baselines3.common.monitor import Monitor
 from stable_baselines3.common.vec_env import SubprocVecEnv
 from stable_baselines3.common.env_util import make_vec_env
 from stable_baselines3.common.evaluation import evaluate_policy
-from stable_baselines3 import PPO
+from stable_baselines3 import SAC
 
 swimmer_type = int(20)
 reward_gain  = 100.0
@@ -19,16 +19,14 @@ def main():
     """"""""""""""""""""
     " Hyper Parameters "
     """"""""""""""""""""
-    n_envs     = 16
     time_steps = int(1e+6)
     epoch      = 9
     
     """"""""""""""""""""
     " Learning Setting "
     """"""""""""""""""""
-    multi_process    = True
     create_new_model = True
-    load_model_name  = f'ppo' \
+    load_model_name  = f'sac' \
             f'_type{swimmer_type}' \
             f'_actionperiod{load_time}' \
             f'_maxlength{max_arm_length}' \
@@ -46,29 +44,16 @@ def main():
     log_dir = f'./rl/logs/type_{swimmer_type}/'
     os.makedirs(log_dir, exist_ok=True)
     now = datetime.datetime.now()
-    model_name = f'ppo_type{swimmer_type}_actionperiod{load_time}_maxlength{max_arm_length}_rewardgain{reward_gain}_env{n_envs}_' + now.strftime('%Y%m%d_%H%M%S')
+    model_name = f'sac_type{swimmer_type}_actionperiod{load_time}_maxlength{max_arm_length}_rewardgain{reward_gain}_env{n_envs}_' + now.strftime('%Y%m%d_%H%M%S')
 
     """"""""""""""""""""
     " Constructing Env "
     """"""""""""""""""""
-    if multi_process:
-        env = SubprocVecEnv(
-                [lambda: Monitor(gym.make('SkeletonSwimmer-v0', 
-                    isRecord=False, 
-                    swimmer_type=swimmer_type, 
-                    action_period=load_time, 
-                    max_arm_length=max_arm_length), 
-                log_dir) for i in range(n_envs)], 
-                start_method='spawn')
-    else:
-        env = make_vec_env('SkeletonSwimmer-v0',
-                n_envs=n_envs,
-                env_kwargs=dict(
-                    isRecord=False, 
-                    swimmer_type=swimmer_type, 
-                    action_period=action_period, 
-                    max_arm_length=max_arm_length),
-                monitor_dir=(log_dir+model_name+'_monitor'))
+    env = gym.make('SkeletonSwimmer-v0',
+            isRecord=False, 
+            swimmer_type=swimmer_type,
+            action_period=load_time,
+            max_arm_length=max_arm_length)
 
 
     """""""""""""""""""""
@@ -77,35 +62,15 @@ def main():
     if(create_new_model):
         """ New Model
         """
-        model = PPO(
+        model = SAC(
                 policy='MlpPolicy',
                 env=env,
-                learning_rate=0.0003,
-                n_steps=2048,
-                batch_size=64,
-                n_epochs=10,
-                gamma=0.99,
-                gae_lambda=0.95,
-                clip_range=0.2,
-                clip_range_vf=None,
-                ent_coef=0.0,
-                vf_coef=0.5,
-                max_grad_norm=0.5,
-                use_sde=True,
-                sde_sample_freq=4,
-                target_kl=None,
-                tensorboard_log=log_dir,
-                create_eval_env=False,
-                policy_kwargs=None,
                 verbose=0,
-                seed=None,
-                device='cpu',
-                _init_setup_model=True
                 )
     else:
         """ Loading Model
         """
-        model = PPO.load(model_save_dir+load_model_name, tensorboard_log=log_dir)
+        model = SAC.load(model_save_dir+load_model_name, tensorboard_log=log_dir)
         model.set_env(env)
 
     """""""""""""""""""""""
