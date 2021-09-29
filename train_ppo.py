@@ -12,8 +12,8 @@ from stable_baselines3 import PPO
 
 swimmer_type = int(20)
 reward_gain  = 100.0
-load_time    = 0.2
-max_arm_length = 1.9
+load_time    = 50.0
+max_arm_length = 1.5
 
 def main():
     """"""""""""""""""""
@@ -21,20 +21,20 @@ def main():
     """"""""""""""""""""
     n_envs     = 16
     time_steps = int(1e+6)
-    epoch      = 20
+    epoch      = 9
     
     """"""""""""""""""""
     " Learning Setting "
     """"""""""""""""""""
     multi_process    = True
-    create_new_model = False
+    create_new_model = True
     load_model_name  = f'ppo' \
             f'_type{swimmer_type}' \
             f'_actionperiod{load_time}' \
             f'_maxlength{max_arm_length}' \
             f'_rewardgain{reward_gain}' \
             f'_env{n_envs}' \
-            f'_20210916_210258'
+            f'_20210922_150935'
 
     save_model = True
 
