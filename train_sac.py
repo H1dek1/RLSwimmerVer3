@@ -10,7 +10,7 @@ from stable_baselines3.common.env_util import make_vec_env
 from stable_baselines3.common.evaluation import evaluate_policy
 from stable_baselines3 import SAC
 
-swimmer_type = int(20)
+swimmer_type = int(10)
 reward_gain  = 100.0
 load_time    = 1.0
 max_arm_length = 1.1
@@ -31,7 +31,6 @@ def main():
             f'_actionperiod{load_time}' \
             f'_maxlength{max_arm_length}' \
             f'_rewardgain{reward_gain}' \
-            f'_env{n_envs}' \
             f'_20210922_150935'
 
     save_model = True
@@ -44,7 +43,7 @@ def main():
     log_dir = f'./rl/logs/type_{swimmer_type}/'
     os.makedirs(log_dir, exist_ok=True)
     now = datetime.datetime.now()
-    model_name = f'sac_type{swimmer_type}_actionperiod{load_time}_maxlength{max_arm_length}_rewardgain{reward_gain}_env{n_envs}_' + now.strftime('%Y%m%d_%H%M%S')
+    model_name = f'sac_type{swimmer_type}_actionperiod{load_time}_maxlength{max_arm_length}_rewardgain{reward_gain}_' + now.strftime('%Y%m%d_%H%M%S')
 
     """"""""""""""""""""
     " Constructing Env "

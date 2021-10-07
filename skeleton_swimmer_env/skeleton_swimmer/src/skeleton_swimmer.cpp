@@ -9,13 +9,13 @@ namespace MicroSwimmer
 using namespace Eigen;
 
 SkeletonSwimmer::SkeletonSwimmer(int model_type, bool is_output, double action_period, double max_arm_length) : 
-  IS_RECORD(is_output), 
-  LOAD_TIME(action_period), 
-  L_MAX(max_arm_length), 
-  SWIMMER_TYPE(model_type),
-  RUNFILE_PATH(std::filesystem::current_path()),
-  MAX_STEP(static_cast<int>(MAX_TIME/action_period)),
-  MAX_ITER(static_cast<int>(action_period/DT))
+  IS_RECORD(    is_output                                ), 
+  LOAD_TIME(    action_period                            ), 
+  L_MAX(        max_arm_length                           ), 
+  SWIMMER_TYPE( model_type                               ),
+  RUNFILE_PATH( std::filesystem::current_path()          ),
+  MAX_STEP(     static_cast<int>(MAX_TIME/action_period) ),
+  MAX_ITER(     static_cast<int>(action_period/DT)       )
 {
   std::string models_dir_path = this->RUNFILE_PATH.string() + MODEL_LOAD_PATH + "/type_" + std::to_string(this->SWIMMER_TYPE) + "/";
 

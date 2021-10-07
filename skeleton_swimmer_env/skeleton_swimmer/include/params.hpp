@@ -29,7 +29,7 @@ namespace MicroSwimmer {
 
   /* Reinforcement Learning parameters */
   // reward gain
-  constexpr double REWARD_GAIN = 100.0;
+  constexpr double REWARD_GAIN = 30.0;
 
   /* output parameters */
   // output directory path

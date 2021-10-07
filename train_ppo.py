@@ -11,9 +11,9 @@ from stable_baselines3.common.evaluation import evaluate_policy
 from stable_baselines3 import PPO
 
 swimmer_type = int(20)
-reward_gain  = 100.0
-load_time    = 1.0
-max_arm_length = 1.1
+reward_gain  = 30.0
+action_period    = 1.0
+max_arm_length = 1.9
 
 def main():
     """"""""""""""""""""
@@ -30,23 +30,23 @@ def main():
     create_new_model = True
     load_model_name  = f'ppo' \
             f'_type{swimmer_type}' \
-            f'_actionperiod{load_time}' \
+            f'_actionperiod{action_period}' \
             f'_maxlength{max_arm_length}' \
             f'_rewardgain{reward_gain}' \
             f'_env{n_envs}' \
-            f'_20210922_150935'
+            f'_20211005_111749'
 
     save_model = True
 
     """"""""""""""""""""
     " Log Setting      "
     """"""""""""""""""""
-    model_save_dir = f'./rl/trained_models/type_{swimmer_type}/period{load_time}_length{max_arm_length}/'
+    model_save_dir = f'./rl/trained_models/type_{swimmer_type}/period{action_period}_length{max_arm_length}/'
     os.makedirs(model_save_dir, exist_ok=True)
     log_dir = f'./rl/logs/type_{swimmer_type}/'
     os.makedirs(log_dir, exist_ok=True)
     now = datetime.datetime.now()
-    model_name = f'ppo_type{swimmer_type}_actionperiod{load_time}_maxlength{max_arm_length}_rewardgain{reward_gain}_env{n_envs}_' + now.strftime('%Y%m%d_%H%M%S')
+    model_name = f'ppo_type{swimmer_type}_actionperiod{action_period}_maxlength{max_arm_length}_rewardgain{reward_gain}_env{n_envs}_' + now.strftime('%Y%m%d_%H%M%S')
 
     """"""""""""""""""""
     " Constructing Env "
@@ -56,7 +56,7 @@ def main():
                 [lambda: Monitor(gym.make('SkeletonSwimmer-v0', 
                     isRecord=False, 
                     swimmer_type=swimmer_type, 
-                    action_period=load_time, 
+                    action_period=action_period, 
                     max_arm_length=max_arm_length), 
                 log_dir) for i in range(n_envs)], 
                 start_method='spawn')
@@ -112,7 +112,7 @@ def main():
     " Env for Evaluation  "
     """""""""""""""""""""""
     eval_env = Monitor(gym.make('SkeletonSwimmer-v0', 
-            swimmer_type=swimmer_type, isRecord=False, action_period=load_time, max_arm_length=max_arm_length))
+            swimmer_type=swimmer_type, isRecord=False, action_period=action_period, max_arm_length=max_arm_length))
 
     """""""""""""""
     "   TESTING   "
@@ -147,7 +147,7 @@ def main():
 def testModel(model):
     print('*'*10, ' TEST MODEL ', '*'*10)
     env = gym.make('SkeletonSwimmer-v0', 
-            swimmer_type=swimmer_type, isRecord=False, action_period=load_time, max_arm_length=max_arm_length)
+            swimmer_type=swimmer_type, isRecord=False, action_period=action_period, max_arm_length=max_arm_length)
 
     obs = env.reset()
     for i in range(50):
