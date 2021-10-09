@@ -21,9 +21,9 @@ parser.add_argument('--deterministic', type=strtobool,
 
 def main():
     swimmer_type   = int(20)
-    load_time      = 1.0
-    max_arm_length = 1.9
-    reward_gain    = 30.0
+    load_time      = 50.0
+    max_arm_length = 1.1
+    reward_gain    = 5000.0
     n_envs         = 16
     args = parser.parse_args()
 
@@ -32,7 +32,7 @@ def main():
         is_record = False
     elif args.mode == 'simulate':
         print('simulate')
-        is_record = False
+        is_record = True
     else:
         print('Wrong Value')
         sys.exit(0)
@@ -61,7 +61,7 @@ def main():
             f'_maxlength{max_arm_length}' \
             f'_rewardgain{reward_gain}' \
             f'_env{n_envs}' \
-            f'_20211007_162224'
+            f'_20211004_175144'
 
     model = PPO.load(path=(load_dir+model_name))
 
@@ -98,6 +98,7 @@ def simulate(env, model, **kwargs):
     obs = env.reset()
     step_counter = 0
     while(done == False):
+    #for i in range(10):
         action, _states = model.predict(obs, deterministic=kwargs['deterministic'])
         #print('action')
         print(action)
