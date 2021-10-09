@@ -12,8 +12,8 @@ from stable_baselines3 import PPO
 
 swimmer_type = int(20)
 reward_gain  = 30.0
-action_period    = 1.0
-max_arm_length = 1.9
+action_period    = 50.0
+max_arm_length = 1.5
 
 def main():
     """"""""""""""""""""

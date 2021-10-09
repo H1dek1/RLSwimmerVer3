@@ -21,9 +21,9 @@ parser.add_argument('--deterministic', type=strtobool,
 
 def main():
     swimmer_type   = int(20)
-    load_time      = 0.2
+    load_time      = 1.0
     max_arm_length = 1.9
-    reward_gain    = 100.0
+    reward_gain    = 30.0
     n_envs         = 16
     args = parser.parse_args()
 
@@ -61,7 +61,7 @@ def main():
             f'_maxlength{max_arm_length}' \
             f'_rewardgain{reward_gain}' \
             f'_env{n_envs}' \
-            f'_20210917_154115_best'
+            f'_20211007_162224'
 
     model = PPO.load(path=(load_dir+model_name))
 
