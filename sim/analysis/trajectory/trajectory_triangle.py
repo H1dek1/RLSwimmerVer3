@@ -14,8 +14,12 @@ def main():
 
     fig, ax = plt.subplots(1, 1)
     #ax.set_aspect('equal')
+    #ax.set_ylim(-0.1, 0.1)
+    ax.set_xlabel(r'$x$')
+    ax.set_ylabel(r'$y$')
     ax.plot(df['centroid_x'][:int(plot_time/dt)], df['centroid_y'][:int(plot_time/dt)])
     plt.show()
+    fig.savefig('period0.2_length1.9.png')
 
 
 if __name__ == '__main__':

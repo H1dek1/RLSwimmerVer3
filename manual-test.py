@@ -102,23 +102,34 @@ def main():
             [-1., -1.,  -0.7],
             [-1., -1., -1.],
             ]
+    action0 = [
+            [ 1.,  1., -1.],
+            [ 1.,  1.,  1.],
+            [-1., -1.,  1.],
+            [-1., -1., -1.],
+            ]
 
-    action_list = actionA
+    action_list = action0
     done = False
     episode_reward = 0
     step_counter = 0
     env.reset()
     while not done:
-    #for i in range(100):
-        print('*'*40)
-        print('i =', step_counter)
+    #for i in range(5000):
+        #print('*'*40)
+        #print('i =', step_counter)
         action = action_list[step_counter%len(action_list)]
-        print('action:', step_counter%len(action_list))
-        obs, reward, done, _ = env.step(action)
+        #print('action:', step_counter%len(action_list))
+        print('i =', step_counter)
+        print(action)
+        obs, reward, done, info = env.step(action)
         #print('reward:', reward)
         step_counter += 1
         episode_reward += reward
+        if done == True:
+            break
 
+    print('final position ', info)
     print('Episode Reward:', episode_reward)
 
 
