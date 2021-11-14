@@ -10,16 +10,16 @@ from stable_baselines3.common.env_util import make_vec_env
 from stable_baselines3.common.evaluation import evaluate_policy
 from stable_baselines3 import SAC
 
-swimmer_type = int(10)
-reward_gain  = 100.0
-load_time    = 1.0
+swimmer_type = int(20)
+reward_gain  = 1000.0
+load_time    = 0.1
 max_arm_length = 1.1
 
 def main():
     """"""""""""""""""""
     " Hyper Parameters "
     """"""""""""""""""""
-    time_steps = int(1e+6)
+    time_steps = int(2e+6)
     epoch      = 9
     
     """"""""""""""""""""
@@ -65,6 +65,7 @@ def main():
                 policy='MlpPolicy',
                 env=env,
                 verbose=0,
+                tensorboard_log=log_dir,
                 )
     else:
         """ Loading Model
@@ -76,7 +77,7 @@ def main():
     " Env for Evaluation  "
     """""""""""""""""""""""
     eval_env = Monitor(gym.make('SkeletonSwimmer-v0', 
-            swimmer_type=swimmer_type, isRecord=False, action_period=load_time, max_arm_length=max_arm_length))
+            swimmer_type=swimmer_type, isRecord=False, action_period=load_time, max_arm_length=max_arm_length), log_dir)
 
     """""""""""""""
     "   TESTING   "
@@ -105,7 +106,9 @@ def main():
         if save_model == True and mean_reward > max_score:
             print('*'*10, ' SAVING MODEL ', '*'*10)
             model.save(model_save_dir+model_name)
-            max_score = mean_reward
+            if mean_reward > max_score:
+                print('Update best model')
+                max_score = mean_reward
 
 
 def testModel(model):

@@ -16,7 +16,7 @@ namespace MicroSwimmer {
   // min length of each arm must be 1
   constexpr double L_MIN = 1.0;
   // sphere radius required less than 0.5
-  constexpr double A = 0.3;
+  constexpr double A = 0.1;
   // Coefficients of Stokeslet
   constexpr double COEF_SELF  = 1 / (6*M_PI*A);
   constexpr double COEF_OTHER = 1 / (8*M_PI);
@@ -29,7 +29,7 @@ namespace MicroSwimmer {
 
   /* Reinforcement Learning parameters */
   // reward gain
-  constexpr double REWARD_GAIN = 30.0;
+  constexpr double REWARD_GAIN = 1000.0;
 
   /* output parameters */
   // output directory path

@@ -11,16 +11,16 @@ from stable_baselines3.common.evaluation import evaluate_policy
 from stable_baselines3 import PPO
 
 swimmer_type = int(20)
-reward_gain  = 30.0
-action_period    = 50.0
-max_arm_length = 1.5
+reward_gain  = 1000.0
+action_period    = 0.1
+max_arm_length = 1.1
 
 def main():
     """"""""""""""""""""
     " Hyper Parameters "
     """"""""""""""""""""
     n_envs     = 16
-    time_steps = int(1e+6)
+    time_steps = int(2e+6)
     epoch      = 9
     
     """"""""""""""""""""
@@ -138,10 +138,13 @@ def main():
                 eval_env, n_eval_episodes=5)
         print(f'Mean reward: {mean_reward} +/- {std_reward:.2f}')
 
-        if save_model == True and mean_reward > max_score:
+        if save_model == True:
             print('*'*10, ' SAVING MODEL ', '*'*10)
             model.save(model_save_dir+model_name)
-            max_score = mean_reward
+            if mean_reward > max_score:
+                print('update best model')
+                model.save(model_save_dir+model_name+'_best')
+                max_score = mean_reward
 
 
 def testModel(model):
