@@ -7,7 +7,7 @@ import csv
 
 from stable_baselines3.common.monitor import Monitor
 from stable_baselines3.common.evaluation import evaluate_policy
-from stable_baselines3 import PPO
+from stable_baselines3 import PPO, SAC
 
 import skeleton_swimmer_env
 
@@ -28,8 +28,8 @@ def main():
     params = {
             'swimmer_type':    20,
             'is_record' :      False,
-            'action_interval': 0.1,   # 0.5 ~ 30
-            'max_length':      1.1,   # 0.1 ~ 0.8
+            'action_interval': 0.7,   # 0.5 ~ 30
+            'max_length':      1.7,   # 0.1 ~ 0.8
             }
 
     if args.mode == 'evaluate':
@@ -55,6 +55,7 @@ def main():
     Load RL Model
     """
     model = PPO.load(args.model)
+    # model = SAC.load(args.model)
 
     """
     Run

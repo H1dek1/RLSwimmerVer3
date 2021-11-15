@@ -99,6 +99,9 @@ VectorXd SkeletonSwimmer::reset()
       fout << "arm_force_" << id_arm << ",";
     }
     for(size_t id_arm = 0; id_arm < this->n_arms; ++id_arm){
+      fout << "arm_extensile_velocity_" << id_arm << ",";
+    }
+    for(size_t id_arm = 0; id_arm < this->n_arms; ++id_arm){
       if(id_arm == this->n_arms-1){
         fout << "arm_length_" << id_arm;
       }else{
@@ -262,6 +265,9 @@ void SkeletonSwimmer::output()
   }
   for(size_t id_arm = 0; id_arm < this->n_arms; ++id_arm){
     fout << this->arm_forces(id_arm) << ",";
+  }
+  for(size_t id_arm = 0; id_arm < this->n_arms; ++id_arm){
+    fout << this->input_actions(id_arm) << ",";
   }
   for(size_t id_arm = 0; id_arm < this->n_arms; ++id_arm){
     if(id_arm == this->n_arms-1){
