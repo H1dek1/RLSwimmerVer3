@@ -17,11 +17,11 @@ def main():
     params = {
             'swimmer_type':    20,
             'is_record':       False,
-            'action_interval': 0.5,
-            'max_length':      1.5,
-            'reward_gain':     1.0/0.006267,
-            'penalty_gain':    1.0/0.6372,
-            'epsilon':         0.0,
+            'action_interval': 0.4,
+            'max_length':      1.4,
+            'reward_gain':     1.0/0.004478,
+            'penalty_gain':    1.0/0.4971,
+            'epsilon':         0.1,
             }
     """"""""""""""""""""
     " Hyper Parameters "
@@ -61,8 +61,8 @@ def main():
 
     now = datetime.datetime.now()
     model_name = f'ppo_env{n_envs}' \
-            f'_rewardgain{params["reward_gain"]:.2f}_' \
-            f'_penaltygain{params["penalty_gain"]:.2f}_' \
+            f'_rewardgain{params["reward_gain"]:.2f}' \
+            f'_penaltygain{params["penalty_gain"]:.2f}' \
             f'_epsilon{params["epsilon"]}_' \
             + now.strftime('%Y%m%d_%H%M%S')
 
