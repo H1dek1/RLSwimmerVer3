@@ -20,17 +20,20 @@ class SkeletonSwimmer
 
   public:
     /* Constructor & Destuctor */
-    SkeletonSwimmer(int model_type, bool is_output, double action_period, double max_arm_lengh, double reward_gain, double epsilon);
+    SkeletonSwimmer(int model_type, bool is_output, double action_period, double max_arm_lengh, double reward_gain, double penalty_gain, double epsilon);
     ~SkeletonSwimmer();
 
   /* Private Member Functions */
   private:
-    VectorXd getObservation() const;
-    void     output();
-    void     updateCenterPosition();
-    void     miniStep(const VectorXd actions);
-    MatrixXd calculateStokeslet(const VectorXd positions, const size_t n_sph) const;
-    VectorXd clipActions(const VectorXd actions, const VectorXd lengths) const;
+    VectorXd
+      getObservation() const;
+    void output();
+    void updateCenterPosition();
+    void miniStep(const VectorXd actions);
+    MatrixXd
+      calculateStokeslet(const VectorXd positions, const size_t n_sph) const;
+    VectorXd
+      clipActions(const VectorXd actions, const VectorXd lengths) const;
     std::tuple<VectorXd, MatrixXd> 
       splitLengthAndDirection(const VectorXd vector, const size_t n_split) const;
 
@@ -39,6 +42,7 @@ class SkeletonSwimmer
     const bool   IS_RECORD;
     const int    SWIMMER_TYPE;
     const double REWARD_GAIN;
+    const double PENALTY_GAIN;
     const double ACTION_INTERVAL;
     const double L_MAX;
     const size_t MAX_STEP;
@@ -59,13 +63,17 @@ class SkeletonSwimmer
     /* sphere velocities : 3n */
     VectorXd sphere_velocities;
     /* Connection Matrix from arm to sphere : 3m x 3n*/
-    MatrixXd connection_arm2sph;
+    MatrixXd incident_matrix_arm2sph;
     /* input arm actions : m */
     VectorXd input_actions;
     /* arm lengths : m */
     VectorXd arm_lengths;
     /* arm force vectors : 3m */
     VectorXd arm_forces;
+    /* arm force vectors : m */
+    VectorXd energy_consumption;
+    VectorXd output_energy_consumption;
+    VectorXd step_energy_consumption;
 
     /* center position : 3 */
     Vector3d center_position;

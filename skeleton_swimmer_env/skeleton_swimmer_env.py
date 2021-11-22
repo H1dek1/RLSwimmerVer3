@@ -3,7 +3,7 @@ import gym
 import numpy as np
 
 class SkeletonSwimmerEnv(gym.Env):
-    def __init__(self, isRecord=False, swimmer_type=10, action_period=1, max_arm_length=1.5, reward_gain=1.0, epsilon=0.0):
+    def __init__(self, isRecord=False, swimmer_type=10, action_period=1, max_arm_length=1.5, reward_gain=1.0, penalty_gain=1.0, epsilon=0.0):
 
         self.swimmer = SkeletonSwimmer(
                 swimmer_type,
@@ -11,6 +11,7 @@ class SkeletonSwimmerEnv(gym.Env):
                 action_period, 
                 max_arm_length,
                 reward_gain,
+                penalty_gain,
                 epsilon)
 
         self._swimmer_type = swimmer_type
@@ -44,7 +45,7 @@ class SkeletonSwimmerEnv(gym.Env):
         print('In python, obs=', obs)
         print(type(obs))
         print('step function')
-        action = np.array([0.5, 1.0])
+        action = np.array([0.0, 1.0])
         obs, reward, done, info = self.step(action)
         print('obs', obs)
         print('reward', reward)
