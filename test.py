@@ -32,9 +32,9 @@ def main():
             'is_record' :      False,
             'action_interval': 0.5,   # 0.5 ~ 30
             'max_length':      1.5,   # 0.1 ~ 0.9
-            'reward_gain':     1.0/0.00627,
+            'reward_gain':     1.0/0.006267,
             'penalty_gain':    1.0/0.6372,
-            'epsilon':         0.3,
+            'epsilon':         0.0,
             }
 
     if args.mode == 'evaluate':

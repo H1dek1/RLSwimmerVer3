@@ -19,16 +19,16 @@ def main():
             'is_record':       False,
             'action_interval': 0.5,
             'max_length':      1.5,
-            'reward_gain':     1.0,
-            'penalty_gain':    1.0,
+            'reward_gain':     1.0/0.006267,
+            'penalty_gain':    1.0/0.6372,
             'epsilon':         0.0,
             }
     """"""""""""""""""""
     " Hyper Parameters "
     """"""""""""""""""""
     n_envs     = 16
-    time_steps = int(0)
-    epoch      = 1
+    time_steps = int(2_000_000)
+    epoch      = 9
     
     """"""""""""""""""""
     " Learning Setting "
@@ -49,7 +49,8 @@ def main():
     model_save_dir = f'./rl/trained_models/' \
             f'type_{params["swimmer_type"]}/' \
             f'interval{params["action_interval"]}' \
-            f'_maxlength{params["max_length"]}/'
+            f'_maxlength{params["max_length"]}/' \
+            f'epsilon{params["epsilon"]}/'
     os.makedirs(model_save_dir, exist_ok=True)
 
     log_save_dir = f'./rl/logs/' \
@@ -60,7 +61,9 @@ def main():
 
     now = datetime.datetime.now()
     model_name = f'ppo_env{n_envs}' \
-            f'_rewardgain{params["reward_gain"]}_' \
+            f'_rewardgain{params["reward_gain"]:.2f}_' \
+            f'_penaltygain{params["penalty_gain"]:.2f}_' \
+            f'_epsilon{params["epsilon"]}_' \
             + now.strftime('%Y%m%d_%H%M%S')
 
     """"""""""""""""""""
