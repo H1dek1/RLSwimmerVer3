@@ -8,14 +8,17 @@ namespace MicroSwimmer
 {
 using namespace Eigen;
 
-SkeletonSwimmer::SkeletonSwimmer(int model_type, bool is_output, double action_period, double max_arm_length) : 
-  IS_RECORD(    is_output                                ), 
-  LOAD_TIME(    action_period                            ), 
-  L_MAX(        max_arm_length                           ), 
-  SWIMMER_TYPE( model_type                               ),
-  RUNFILE_PATH( std::filesystem::current_path()          ),
-  MAX_STEP(     static_cast<int>(MAX_TIME/action_period) ),
-  MAX_ITER(     static_cast<int>(action_period/DT)       )
+SkeletonSwimmer::SkeletonSwimmer(int model_type, bool is_output=false, double action_interval=0.5, double max_arm_length=1.5, double reward_gain=1.0, double penalty_gain=1.0, double epsilon=0.0) : 
+  IS_RECORD(       is_output                                  ), 
+  REWARD_GAIN(     reward_gain                                ), 
+  PENALTY_GAIN(    penalty_gain                               ), 
+  ACTION_INTERVAL( action_interval                            ), 
+  EPSILON(         epsilon                                    ), 
+  L_MAX(           max_arm_length                             ), 
+  SWIMMER_TYPE(    model_type                                 ),
+  RUNFILE_PATH(    std::filesystem::current_path()            ),
+  MAX_STEP(        static_cast<int>(MAX_TIME/action_interval) ),
+  MAX_ITER(        static_cast<int>(action_interval/DT)       )
 {
   std::string models_dir_path = this->RUNFILE_PATH.string() + MODEL_LOAD_PATH + "/type_" + std::to_string(this->SWIMMER_TYPE) + "/";
 
@@ -30,7 +33,7 @@ SkeletonSwimmer::SkeletonSwimmer(int model_type, bool is_output, double action_p
   this->n_sphere_states = 3 * this->n_spheres;
   this->n_arm_states    = 3 * this->n_arms;
   this->init_sphere_positions = VectorXd::Zero(this->n_sphere_states);
-  this->connection_arm2sph    = MatrixXd::Zero(this->n_sphere_states, this->n_arm_states);
+  this->incident_matrix_arm2sph    = MatrixXd::Zero(this->n_sphere_states, this->n_arm_states);
 
   /* load initial positions */
   std::ifstream init_in(models_dir_path+"init_pos.txt", std::ios::in);
@@ -53,9 +56,9 @@ SkeletonSwimmer::SkeletonSwimmer(int model_type, bool is_output, double action_p
       int val;
       matrix_in >> val;
       if(val == 1){
-        this->connection_arm2sph.block(3*i, 3*j, 3, 3) = Matrix3d::Identity();
+        this->incident_matrix_arm2sph.block(3*i, 3*j, 3, 3) = Matrix3d::Identity();
       }else if(val == -1){
-        this->connection_arm2sph.block(3*i, 3*j, 3, 3) = -Matrix3d::Identity();
+        this->incident_matrix_arm2sph.block(3*i, 3*j, 3, 3) = -Matrix3d::Identity();
       }
     }
   }
@@ -80,7 +83,7 @@ VectorXd SkeletonSwimmer::reset()
     std::stringstream record_file_name;
     record_file_name << "type" << this->SWIMMER_TYPE
       << "_radius" << A
-      << "_period" << this->LOAD_TIME
+      << "_interval" << this->ACTION_INTERVAL
       << "_maxlength" << this->L_MAX << ".csv";
     std::string full_path = RUNFILE_PATH.string() + OUT_DIRECTORY_PATH + record_file_name.str();
     fout.open(full_path, std::ios::out);
@@ -97,9 +100,8 @@ VectorXd SkeletonSwimmer::reset()
     }
     for(size_t id_arm = 0; id_arm < this->n_arms; ++id_arm){
       fout << "arm_force_" << id_arm << ",";
-    }
-    for(size_t id_arm = 0; id_arm < this->n_arms; ++id_arm){
-      fout << "arm_extensile_velocity_" << id_arm << ",";
+      fout << "input_action_" << id_arm << ",";
+      fout << "arm_energy_consumption_" << id_arm << ",";
     }
     for(size_t id_arm = 0; id_arm < this->n_arms; ++id_arm){
       if(id_arm == this->n_arms-1){
@@ -112,20 +114,23 @@ VectorXd SkeletonSwimmer::reset()
   }
 
   /* Reset All Variables */
-  this->step_counter      = 0;
-  this->total_itr         = 0;
-  this->input_actions     = VectorXd::Zero(this->n_arms);
-  this->arm_lengths       = VectorXd::Ones(this->n_arms);
-  this->arm_forces        = VectorXd::Zero(this->n_arm_states);
-  this->sphere_positions  = this->init_sphere_positions;
-  this->sphere_velocities = VectorXd::Zero(this->n_sphere_states);
+  this->step_counter       = 0;
+  this->total_itr          = 0;
+  this->input_actions      = VectorXd::Zero(this->n_arms);
+  this->arm_lengths        = VectorXd::Ones(this->n_arms);
+  this->arm_forces         = VectorXd::Zero(this->n_arm_states);
+  this->energy_consumption = VectorXd::Zero(this->n_arms);
+  this->output_energy_consumption = VectorXd::Zero(this->n_arms);
+  this->step_energy_consumption = VectorXd::Zero(this->n_arms);
+  this->sphere_positions   = this->init_sphere_positions;
+  this->sphere_velocities  = VectorXd::Zero(this->n_sphere_states);
   this->updateCenterPosition();
   this->prev_center_position = this->center_position;
 
   return this->getObservation();
 }
 
-std::tuple<VectorXd, double, bool, std::map<std::string, VectorXd>> 
+std::tuple<VectorXd, double, bool, std::unordered_map<std::string, VectorXd>> 
 SkeletonSwimmer::step(const VectorXd actions)
 {
   /* check input action size */
@@ -141,6 +146,7 @@ SkeletonSwimmer::step(const VectorXd actions)
     }
   }
   this->input_actions = actions;
+  this->step_energy_consumption = VectorXd::Zero(this->n_arms);
 
   /* Iteration */
   for(unsigned int itr = 0; itr < this->MAX_ITER; ++itr){
@@ -152,22 +158,29 @@ SkeletonSwimmer::step(const VectorXd actions)
   }
   this->updateCenterPosition();
 
-  /* for Reinforcement Learning */
-  double reward = REWARD_GAIN * (this->center_position - this->prev_center_position).dot(this->target_unit_vec);
-
+  /* Judgement for finish */
   bool done = false;
   if(this->step_counter >= this->MAX_STEP-1){
     done = true;
   }
 
+  /* Rward */
+  Vector3d displacement = this->center_position - this->prev_center_position;
+  double displacement_reward = this->REWARD_GAIN  * displacement.dot(this->target_unit_vec);
+  double energy_penalty      = this->PENALTY_GAIN * this->step_energy_consumption.sum();
+  double reward = ((1.0-this->EPSILON)*displacement_reward) - (this->EPSILON*energy_penalty);
+
+  /* Additional information */
+  std::unordered_map<std::string, VectorXd> info;
+  info["center"] = this->center_position;
+  info["displacement"] = Vector2d::Zero();
+  info["displacement"] = displacement;
+  info["energy_penalty"] = this->step_energy_consumption;
+
   /* update counter */
   this->step_counter += 1;
   /* update center position */
   this->prev_center_position = this->center_position;
-
-  /* Additional information */
-  std::map<std::string, VectorXd> info;
-  info["center"] = this->center_position;
 
   return {this->getObservation(), reward, done, info};
 }
@@ -175,19 +188,19 @@ SkeletonSwimmer::step(const VectorXd actions)
 void SkeletonSwimmer::miniStep(const VectorXd actions)
 {
   /* Arm Vector (3m x 1) */
-  VectorXd arm_vector = this->connection_arm2sph.transpose() * this->sphere_positions;
+  VectorXd arm_vector = this->incident_matrix_arm2sph.transpose() * this->sphere_positions;
 
   /* Arm length and direction */
   auto [arm_lengths, arm_directions] = this->splitLengthAndDirection(arm_vector, this->n_arms);
   this->arm_lengths = arm_lengths;
 
   /* Translational Matrix */
-  MatrixXd arm2sph = this->connection_arm2sph * arm_directions;
+  MatrixXd arm2sph = this->incident_matrix_arm2sph * arm_directions;
 
   /* Stokeslet */
   auto stokeslet = this->calculateStokeslet(this->sphere_positions, this->n_spheres);
 
-  /* Clipping ArmExtensive velocity */
+  /* Clipping ArmExtensile velocity */
   auto clipped_actions = this->clipActions(actions, this->arm_lengths);
 
   /* calculate sphere velocity */
@@ -202,6 +215,11 @@ void SkeletonSwimmer::miniStep(const VectorXd actions)
 
   /* update positions */
   this->sphere_positions += this->sphere_velocities * DT;
+
+  /* calculate Energy Consumption */
+  this->energy_consumption = this->arm_forces.array() * clipped_actions.array() * DT;
+  this->output_energy_consumption += this->energy_consumption;
+  this->step_energy_consumption   += this->energy_consumption;
 }
 
 VectorXd SkeletonSwimmer::clipActions(const VectorXd actions, const VectorXd lengths) const
@@ -265,9 +283,8 @@ void SkeletonSwimmer::output()
   }
   for(size_t id_arm = 0; id_arm < this->n_arms; ++id_arm){
     fout << this->arm_forces(id_arm) << ",";
-  }
-  for(size_t id_arm = 0; id_arm < this->n_arms; ++id_arm){
     fout << this->input_actions(id_arm) << ",";
+    fout << this->output_energy_consumption(id_arm) << ",";
   }
   for(size_t id_arm = 0; id_arm < this->n_arms; ++id_arm){
     if(id_arm == this->n_arms-1){
@@ -277,6 +294,7 @@ void SkeletonSwimmer::output()
     }
   }
   fout << std::endl;
+  this->output_energy_consumption = VectorXd::Zero(this->n_arms);
 }
 
 VectorXd SkeletonSwimmer::getObservation() const

@@ -10,65 +10,89 @@ from stable_baselines3.common.env_util import make_vec_env
 from stable_baselines3.common.evaluation import evaluate_policy
 from stable_baselines3 import PPO
 
-swimmer_type = int(20)
-reward_gain  = 1000.0
-action_period    = 0.9
-max_arm_length = 1.9
-
 def main():
+    """"""""""""""""""""""""""
+    " Environment Parameters "
+    """"""""""""""""""""""""""
+    params = {
+            'swimmer_type':    20,
+            'is_record':       False,
+            'action_interval': 0.5,
+            'max_length':      1.5,
+            'reward_gain':     1.0,
+            'penalty_gain':    1.0,
+            'epsilon':         0.0,
+            }
     """"""""""""""""""""
     " Hyper Parameters "
     """"""""""""""""""""
     n_envs     = 16
-    time_steps = int(2e+6)
-    epoch      = 9
+    time_steps = int(0)
+    epoch      = 1
     
     """"""""""""""""""""
     " Learning Setting "
     """"""""""""""""""""
     multi_process    = True
     create_new_model = True
+    save_model       = True
     load_model_name  = f'ppo' \
-            f'_type{swimmer_type}' \
-            f'_actionperiod{action_period}' \
-            f'_maxlength{max_arm_length}' \
-            f'_rewardgain{reward_gain}' \
             f'_env{n_envs}' \
+            f'_type{params["swimmer_type"]}' \
+            f'_rewardgain{params["reward_gain"]}' \
             f'_20211005_111749'
 
-    save_model = True
 
     """"""""""""""""""""
     " Log Setting      "
     """"""""""""""""""""
-    model_save_dir = f'./rl/trained_models/type_{swimmer_type}/period{action_period}_length{max_arm_length}/'
+    model_save_dir = f'./rl/trained_models/' \
+            f'type_{params["swimmer_type"]}/' \
+            f'interval{params["action_interval"]}' \
+            f'_maxlength{params["max_length"]}/'
     os.makedirs(model_save_dir, exist_ok=True)
-    log_dir = f'./rl/logs/type_{swimmer_type}/'
-    os.makedirs(log_dir, exist_ok=True)
+
+    log_save_dir = f'./rl/logs/' \
+            f'type_{params["swimmer_type"]}/' \
+            f'interval{params["action_interval"]}' \
+            f'_maxlength{params["max_length"]}/'
+    os.makedirs(log_save_dir, exist_ok=True)
+
     now = datetime.datetime.now()
-    model_name = f'ppo_type{swimmer_type}_actionperiod{action_period}_maxlength{max_arm_length}_rewardgain{reward_gain}_env{n_envs}_' + now.strftime('%Y%m%d_%H%M%S')
+    model_name = f'ppo_env{n_envs}' \
+            f'_rewardgain{params["reward_gain"]}_' \
+            + now.strftime('%Y%m%d_%H%M%S')
 
     """"""""""""""""""""
     " Constructing Env "
     """"""""""""""""""""
     if multi_process:
         env = SubprocVecEnv(
-                [lambda: Monitor(gym.make('SkeletonSwimmer-v0', 
-                    isRecord=False, 
-                    swimmer_type=swimmer_type, 
-                    action_period=action_period, 
-                    max_arm_length=max_arm_length), 
-                log_dir) for i in range(n_envs)], 
+                [lambda: Monitor(
+                    gym.make(
+                        'SkeletonSwimmer-v0', 
+                        isRecord=params['is_record'], 
+                        swimmer_type=params['swimmer_type'], 
+                        action_interval=params['action_interval'], 
+                        max_arm_length=params['max_length'],
+                        reward_gain=params['reward_gain'],
+                        penalty_gain=params['penalty_gain'],
+                        epsilon=params['epsilon'],
+                        ), 
+                    log_save_dir) for i in range(n_envs)], 
                 start_method='spawn')
     else:
         env = make_vec_env('SkeletonSwimmer-v0',
                 n_envs=n_envs,
                 env_kwargs=dict(
-                    isRecord=False, 
-                    swimmer_type=swimmer_type, 
-                    action_period=action_period, 
-                    max_arm_length=max_arm_length),
-                monitor_dir=(log_dir+model_name+'_monitor'))
+                    isRecord=params['is_record'], 
+                    swimmer_type=params['swimmer_type'], 
+                    action_interval=params['action_interval'], 
+                    max_arm_length=params['max_length'],
+                    reward_gain=params['reward_gain'],
+                    penalty_gain=params['penalty_gain'],
+                    epsilon=params['epsilon']),
+                monitor_dir=(log_save_dir+model_name+'_monitor'))
 
 
     """""""""""""""""""""
@@ -94,7 +118,7 @@ def main():
                 use_sde=True,
                 sde_sample_freq=4,
                 target_kl=None,
-                tensorboard_log=log_dir,
+                tensorboard_log=log_save_dir,
                 create_eval_env=False,
                 policy_kwargs=None,
                 verbose=0,
@@ -105,22 +129,34 @@ def main():
     else:
         """ Loading Model
         """
-        model = PPO.load(model_save_dir+load_model_name, tensorboard_log=log_dir)
+        model = PPO.load(
+                model_save_dir+load_model_name,
+                tensorboard_log=log_save_dir)
         model.set_env(env)
 
     """""""""""""""""""""""
     " Env for Evaluation  "
     """""""""""""""""""""""
-    eval_env = Monitor(gym.make('SkeletonSwimmer-v0', 
-            swimmer_type=swimmer_type, isRecord=False, action_period=action_period, max_arm_length=max_arm_length))
+    eval_env = Monitor(
+            gym.make(
+                'SkeletonSwimmer-v0',
+                isRecord=params['is_record'],
+                swimmer_type=params['swimmer_type'],
+                action_interval=params['action_interval'],
+                max_arm_length=params['max_length'],
+                reward_gain=params['reward_gain'],
+                penalty_gain=params['penalty_gain'],
+                epsilon=params['epsilon'],
+                )
+            )
 
     """""""""""""""
     "   TESTING   "
     """""""""""""""
-    testModel(model)
+    testModel(model, params)
     print('*'*10, ' EVALUATING ', '*'*10)
     mean_reward, std_reward = evaluate_policy(model, 
-            eval_env, n_eval_episodes=2, deterministic=True)
+            eval_env, n_eval_episodes=1, deterministic=True)
     print(f'Mean reward: {mean_reward} +/- {std_reward:.2f}')
     max_score = mean_reward
 
@@ -132,13 +168,14 @@ def main():
         print('*'*10, ' LEARNING ', '*'*10)
         model.learn(total_timesteps=int(time_steps), 
                 tb_log_name=model_name)
-        testModel(model)
+        testModel(model, params)
+
         print('*'*10, ' EVALUATING ', '*'*10)
         mean_reward, std_reward = evaluate_policy(model, 
                 eval_env, n_eval_episodes=5)
         print(f'Mean reward: {mean_reward} +/- {std_reward:.2f}')
 
-        if save_model == True:
+        if save_model:
             print('*'*10, ' SAVING MODEL ', '*'*10)
             model.save(model_save_dir+model_name)
             if mean_reward > max_score:
@@ -147,17 +184,28 @@ def main():
                 max_score = mean_reward
 
 
-def testModel(model):
+def testModel(model, params):
     print('*'*10, ' TEST MODEL ', '*'*10)
-    env = gym.make('SkeletonSwimmer-v0', 
-            swimmer_type=swimmer_type, isRecord=False, action_period=action_period, max_arm_length=max_arm_length)
 
-    obs = env.reset()
+    test_env = Monitor(
+            gym.make(
+                'SkeletonSwimmer-v0',
+                isRecord=params['is_record'],
+                swimmer_type=params['swimmer_type'],
+                action_interval=params['action_interval'],
+                max_arm_length=params['max_length'],
+                reward_gain=params['reward_gain'],
+                penalty_gain=params['penalty_gain'],
+                epsilon=params['epsilon'],
+                )
+            )
+
+    obs = test_env.reset()
     for i in range(50):
         action, _states = model.predict(obs, deterministic=True)
         print(action)
-        obs, reward, done, _ = env.step(action)
-        if done == True: break
+        obs, reward, done, info = test_env.step(action)
+        if done: break
 
 
 if __name__ == '__main__':

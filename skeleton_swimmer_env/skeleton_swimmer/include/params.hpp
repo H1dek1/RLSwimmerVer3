@@ -6,6 +6,7 @@
 #include <array>
 #include <tuple>
 #include <map>
+#include <unordered_map>
 #include <fstream>
 #include <sstream>
 #include <filesystem>
@@ -26,10 +27,6 @@ namespace MicroSwimmer {
   constexpr double DT = 1.0e-3;
   // max time of 1 episode
   constexpr double MAX_TIME = 1000;
-
-  /* Reinforcement Learning parameters */
-  // reward gain
-  constexpr double REWARD_GAIN = 1000.0;
 
   /* output parameters */
   // output directory path
