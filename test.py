@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 import sys
+import numpy as np
+import matplotlib.pyplot as plt
 from distutils.util import strtobool
 import argparse
 import gym
@@ -28,15 +30,18 @@ def main():
     params = {
             'swimmer_type':    20,
             'is_record' :      False,
-            'action_interval': 0.9,   # 0.5 ~ 30
-            'max_length':      1.9,   # 0.1 ~ 0.8
+            'action_interval': 0.5,   # 0.5 ~ 30
+            'max_length':      1.5,   # 0.1 ~ 0.9
+            'reward_gain':     1.0/0.00627,
+            'penalty_gain':    1.0/0.6372,
+            'epsilon':         0.3,
             }
 
     if args.mode == 'evaluate':
         print('evaluate')
     elif args.mode == 'simulate':
         print('simulate')
-        params['is_record'] = True
+        # params['is_record'] = True
     else:
         print('Wrong Value')
         sys.exit(0)
@@ -47,8 +52,11 @@ def main():
     env = Monitor(gym.make('SkeletonSwimmer-v0',
             isRecord=params['is_record'],
             swimmer_type=params['swimmer_type'],
-            action_period=params['action_interval'],
+            action_interval=params['action_interval'],
             max_arm_length=params['max_length'],
+            reward_gain=params['reward_gain'],
+            penalty_gain=params['penalty_gain'],
+            epsilon=params['epsilon'],
             ))
 
     """
@@ -73,17 +81,60 @@ def main():
 def simulate(env, model, deterministic):
     print('*'*10, ' SIMULATING ', '*'*10)
     epi_reward = 0
+    displacement_list = []
+    penalty_list = []
+    reward_list = []
     done = False
     obs = env.reset()
     # for i in range(1):
     while(done == False):
         action, _states = model.predict(obs, deterministic=deterministic)
-        print(action)
-        obs, reward, done, _ = env.step(action)
+        # print(action)
+        obs, reward, done, info = env.step(action)
         epi_reward += reward
+        displacement_list.append(info['displacement'][0])
+        penalty_list.append(info['energy_penalty'].sum())
+        reward_list.append(reward)
         if done == True: break
 
-    print('episode reward is ', epi_reward)
+    # displacement_list /= abs(np.median(displacement_list))
+    # penalty_list      /= abs(np.median(penalty_list))
+
+    displacement_list = np.array(displacement_list)
+    penalty_list = np.array(penalty_list)
+    reward_list = np.array(reward_list)
+
+    print('episode reward is', epi_reward)
+
+    print('displacement')
+    print('mean      ', np.mean(displacement_list))
+    print('abs mean  ', np.mean(abs(displacement_list)))
+    print('median    ', np.median(displacement_list))
+    print('abs median', np.median(abs(displacement_list)))
+    print('var       ', np.var(displacement_list))
+    print('min       ', np.min(displacement_list))
+    print('max       ', np.max(displacement_list))
+
+    print('penalty')
+    print('mean  ', np.mean(penalty_list))
+    print('median', np.median(penalty_list))
+    print('var   ', np.var(penalty_list))
+    print('min   ', np.min(penalty_list))
+    print('max   ', np.max(penalty_list))
+
+    print('reward')
+    print('mean      ', np.mean(reward_list))
+    print('abs mean  ', np.mean(abs(reward_list)))
+    print('median    ', np.median(reward_list))
+    print('abs median', np.median(abs(reward_list)))
+    print('var       ', np.var(reward_list))
+    print('min       ', np.min(reward_list))
+    print('max       ', np.max(reward_list))
+    fig, ax = plt.subplots(1, 1)
+    ax.plot(range(len(displacement_list)), displacement_list, label='displacement')
+    ax.plot(range(len(displacement_list)), penalty_list, label='penalty')
+    ax.legend()
+    # plt.show()
     #with open('learned_result_type{}.csv'.format(swimmer_type), mode='a') as f:
     #    writer = csv.writer(f, delimiter=',')
     #    writer.writerow([loadtime, epi_reward])

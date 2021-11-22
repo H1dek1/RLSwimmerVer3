@@ -165,15 +165,16 @@ SkeletonSwimmer::step(const VectorXd actions)
   }
 
   /* Rward */
-  double proceed_reward = this->REWARD_GAIN * (this->center_position - this->prev_center_position).dot(this->target_unit_vec);
-  double energy_penalty = this->PENALTY_GAIN * this->step_energy_consumption.sum();
-  double reward = ((1-this->EPSILON)*proceed_reward) - (this->EPSILON*energy_penalty);
+  Vector3d displacement = this->center_position - this->prev_center_position;
+  double displacement_reward = this->REWARD_GAIN  * displacement.dot(this->target_unit_vec);
+  double energy_penalty      = this->PENALTY_GAIN * this->step_energy_consumption.sum();
+  double reward = ((1.0-this->EPSILON)*displacement_reward) - (this->EPSILON*energy_penalty);
 
   /* Additional information */
   std::unordered_map<std::string, VectorXd> info;
   info["center"] = this->center_position;
-  info["proceed_reward"] = Vector2d::Zero();
-  info["proceed_reward"](0) = proceed_reward;
+  info["displacement"] = Vector2d::Zero();
+  info["displacement"] = displacement;
   info["energy_penalty"] = this->step_energy_consumption;
 
   /* update counter */

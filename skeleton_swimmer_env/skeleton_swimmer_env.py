@@ -3,12 +3,12 @@ import gym
 import numpy as np
 
 class SkeletonSwimmerEnv(gym.Env):
-    def __init__(self, isRecord=False, swimmer_type=10, action_period=1, max_arm_length=1.5, reward_gain=1.0, penalty_gain=1.0, epsilon=0.0):
+    def __init__(self, isRecord=False, swimmer_type=10, action_interval=1, max_arm_length=1.5, reward_gain=1.0, penalty_gain=1.0, epsilon=0.0):
 
         self.swimmer = SkeletonSwimmer(
                 swimmer_type,
                 isRecord,
-                action_period, 
+                action_interval, 
                 max_arm_length,
                 reward_gain,
                 penalty_gain,
