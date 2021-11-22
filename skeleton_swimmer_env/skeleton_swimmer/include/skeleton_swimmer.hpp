@@ -11,7 +11,7 @@ class SkeletonSwimmer
   /* Public Member Functions */
   public:
     VectorXd reset();
-    std::tuple<VectorXd, double, bool, std::map<std::string, VectorXd>>
+    std::tuple<VectorXd, double, bool, std::unordered_map<std::string, VectorXd>>
       step(const VectorXd actions);
 
     /* Getter */
@@ -20,7 +20,7 @@ class SkeletonSwimmer
 
   public:
     /* Constructor & Destuctor */
-    SkeletonSwimmer(int model_type, bool is_output, double action_period, double max_arm_lengh);
+    SkeletonSwimmer(int model_type, bool is_output, double action_period, double max_arm_lengh, double reward_gain, double epsilon);
     ~SkeletonSwimmer();
 
   /* Private Member Functions */
@@ -38,10 +38,12 @@ class SkeletonSwimmer
   private:
     const bool   IS_RECORD;
     const int    SWIMMER_TYPE;
-    const double LOAD_TIME;
+    const double REWARD_GAIN;
+    const double ACTION_INTERVAL;
     const double L_MAX;
     const size_t MAX_STEP;
     const size_t MAX_ITER;
+    const double EPSILON;
     unsigned int step_counter;
     unsigned int total_itr;
 

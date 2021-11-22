@@ -8,14 +8,16 @@ namespace MicroSwimmer
 {
 using namespace Eigen;
 
-SkeletonSwimmer::SkeletonSwimmer(int model_type, bool is_output, double action_period, double max_arm_length) : 
-  IS_RECORD(    is_output                                ), 
-  LOAD_TIME(    action_period                            ), 
-  L_MAX(        max_arm_length                           ), 
-  SWIMMER_TYPE( model_type                               ),
-  RUNFILE_PATH( std::filesystem::current_path()          ),
-  MAX_STEP(     static_cast<int>(MAX_TIME/action_period) ),
-  MAX_ITER(     static_cast<int>(action_period/DT)       )
+SkeletonSwimmer::SkeletonSwimmer(int model_type, bool is_output, double action_interval, double max_arm_length, double reward_gain, double epsilon) : 
+  IS_RECORD(       is_output                                  ), 
+  REWARD_GAIN(     reward_gain                                ), 
+  ACTION_INTERVAL( action_interval                            ), 
+  EPSILON(         epsilon                                    ), 
+  L_MAX(           max_arm_length                             ), 
+  SWIMMER_TYPE(    model_type                                 ),
+  RUNFILE_PATH(    std::filesystem::current_path()            ),
+  MAX_STEP(        static_cast<int>(MAX_TIME/action_interval) ),
+  MAX_ITER(        static_cast<int>(action_interval/DT)       )
 {
   std::string models_dir_path = this->RUNFILE_PATH.string() + MODEL_LOAD_PATH + "/type_" + std::to_string(this->SWIMMER_TYPE) + "/";
 
@@ -80,7 +82,7 @@ VectorXd SkeletonSwimmer::reset()
     std::stringstream record_file_name;
     record_file_name << "type" << this->SWIMMER_TYPE
       << "_radius" << A
-      << "_period" << this->LOAD_TIME
+      << "_interval" << this->ACTION_INTERVAL
       << "_maxlength" << this->L_MAX << ".csv";
     std::string full_path = RUNFILE_PATH.string() + OUT_DIRECTORY_PATH + record_file_name.str();
     fout.open(full_path, std::ios::out);
@@ -125,7 +127,7 @@ VectorXd SkeletonSwimmer::reset()
   return this->getObservation();
 }
 
-std::tuple<VectorXd, double, bool, std::map<std::string, VectorXd>> 
+std::tuple<VectorXd, double, bool, std::unordered_map<std::string, VectorXd>> 
 SkeletonSwimmer::step(const VectorXd actions)
 {
   /* check input action size */
@@ -153,21 +155,28 @@ SkeletonSwimmer::step(const VectorXd actions)
   this->updateCenterPosition();
 
   /* for Reinforcement Learning */
-  double reward = REWARD_GAIN * (this->center_position - this->prev_center_position).dot(this->target_unit_vec);
 
   bool done = false;
   if(this->step_counter >= this->MAX_STEP-1){
     done = true;
   }
 
+  double proceed_reward = (this->center_position - this->prev_center_position).dot(this->target_unit_vec);
+  double energy_penalty = 0;
+  double reward = this->REWARD_GAIN * proceed_reward;
+
+  /* Additional information */
+  std::unordered_map<std::string, VectorXd> info;
+  info["center"] = this->center_position;
+  info["proceed_reward"] = Vector2d::Zero();
+  info["energy_penalty"] = Vector2d::Zero();
+  info["proceed_reward"](0) = proceed_reward;
+  info["energy_penalty"](0) = energy_penalty;
+
   /* update counter */
   this->step_counter += 1;
   /* update center position */
   this->prev_center_position = this->center_position;
-
-  /* Additional information */
-  std::map<std::string, VectorXd> info;
-  info["center"] = this->center_position;
 
   return {this->getObservation(), reward, done, info};
 }
