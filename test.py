@@ -28,8 +28,8 @@ def main():
     params = {
             'swimmer_type':    20,
             'is_record' :      False,
-            'action_interval': 0.7,   # 0.5 ~ 30
-            'max_length':      1.7,   # 0.1 ~ 0.8
+            'action_interval': 0.9,   # 0.5 ~ 30
+            'max_length':      1.9,   # 0.1 ~ 0.8
             }
 
     if args.mode == 'evaluate':

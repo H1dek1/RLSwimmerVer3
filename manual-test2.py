@@ -9,8 +9,10 @@ import skeleton_swimmer_env
 
 def main():
     df = pd.DataFrame(columns=['trained_params', 'simulate_params', 'thousand_reward'])
-    action_intervals = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]
-    for idx in range(1,10):
+    # action_intervals = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]
+    action_intervals = [0.9]
+    # for idx in range(1,10):
+    for idx in [9]:
         print(str(idx).zfill(3))
         actions = np.loadtxt(
                 f'sim/optimal_action_pattern/radius0.1/' \

@@ -8,8 +8,8 @@ import skeleton_swimmer_env
 def main():
     is_record = True
     swimmer_type = 20
-    action_period = 1.5
-    max_arm_length = 1.5
+    action_period  = 0.1
+    max_arm_length = 1.1
 
     env = gym.make('SkeletonSwimmer-v0', 
             isRecord=is_record, 
@@ -17,13 +17,22 @@ def main():
             action_period=action_period, 
             max_arm_length=max_arm_length)
 
-    actions = np.loadtxt('sim/optimal_action_pattern/radius0.1/type_20/005.csv', delimiter=',')
+    actions0 = [
+            [-1.0, -1.0, -1.0],
+            [ 1.0, -1.0, -1.0],
+            [ 1.0,  1.0, -1.0],
+            [-1.0,  1.0, -1.0],
+            ]
+    actions1 = np.loadtxt('sim/optimal_action_pattern/radius0.1/type_20/009_long.csv', delimiter=',')
     done = False
     episode_reward = 0
     step_counter = 0
     env.reset()
     while not done:
-        action = actions[step_counter%len(actions)]
+        if step_counter < 0:
+            action = actions0[step_counter%len(actions0)]
+        else:
+            action = actions1[step_counter%len(actions1)]
         #print('action:', step_counter%len(action_list))
         print('i =', step_counter)
         print(action)

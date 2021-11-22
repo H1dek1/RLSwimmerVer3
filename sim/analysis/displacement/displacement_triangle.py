@@ -6,8 +6,9 @@ import pandas as pd
 n_sph = 3
 
 dt = 0.1
-plot_time = 50
-all_df = pd.read_csv('../../result/type20_radius0.3_period0.2_maxlength1.1.csv')
+plot_time = 500
+all_df = pd.read_csv('../../result/type20_radius0.1_period0.9_maxlength1.9.csv')
+# all_df = pd.read_csv('../../result/radius0.1/same_period_maxlength/type20_radius0.1_period0.9_maxlength1.9.csv')
 
 print(all_df.columns)
 

@@ -7,8 +7,9 @@ import matplotlib.pyplot as plt
 def main():
     n_sph = 3
     dt = 0.1
-    plot_time = 300
-    df = pd.read_csv('../../result/type20_radius0.3_period0.2_maxlength1.9.csv')
+    plot_time = 1000
+    df = pd.read_csv('../../result/type20_radius0.1_period0.1_maxlength1.1.csv')
+    # df = pd.read_csv('../../result/radius0.1/same_period_maxlength/type20_radius0.1_period0.9_maxlength1.9.csv')
     df['centroid_x'] = sum([df[f'sphere_pos_{i}_x'] for i in range(n_sph)]) / n_sph
     df['centroid_y'] = sum([df[f'sphere_pos_{i}_y'] for i in range(n_sph)]) / n_sph
 
