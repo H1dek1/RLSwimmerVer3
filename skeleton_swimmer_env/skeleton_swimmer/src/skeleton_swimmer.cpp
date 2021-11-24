@@ -84,7 +84,9 @@ VectorXd SkeletonSwimmer::reset()
     record_file_name << "type" << this->SWIMMER_TYPE
       << "_radius" << A
       << "_interval" << this->ACTION_INTERVAL
-      << "_maxlength" << this->L_MAX << ".csv";
+      << "_maxlength" << this->L_MAX 
+      << "_epsilon" << this->EPSILON 
+      << ".csv";
     std::string full_path = RUNFILE_PATH.string() + OUT_DIRECTORY_PATH + record_file_name.str();
     fout.open(full_path, std::ios::out);
     if(!fout){

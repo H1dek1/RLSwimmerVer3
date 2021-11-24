@@ -21,7 +21,7 @@ def main():
             'max_length':      1.4,
             'reward_gain':     1.0/0.004478,
             'penalty_gain':    1.0/0.4971,
-            'epsilon':         0.1,
+            'epsilon':         0.12,
             }
     """"""""""""""""""""
     " Hyper Parameters "
@@ -38,9 +38,10 @@ def main():
     save_model       = True
     load_model_name  = f'ppo' \
             f'_env{n_envs}' \
-            f'_type{params["swimmer_type"]}' \
-            f'_rewardgain{params["reward_gain"]}' \
-            f'_20211005_111749'
+            f'_rewardgain{params["reward_gain"]:.2f}' \
+            f'_penaltygain{params["penalty_gain"]:.2f}' \
+            f'_epsilon{params["epsilon"]}' \
+            f'_20211123_174106'
 
 
     """"""""""""""""""""
