@@ -32,9 +32,9 @@ def main():
             'is_record' :      False,
             'action_interval': 0.4,   # 0.5 ~ 30
             'max_length':      1.4,   # 0.1 ~ 0.9
-            'reward_gain':     1.0/0.006267,
-            'penalty_gain':    1.0/0.6372,
-            'epsilon':         0.0,
+            'reward_gain':     1.0/0.004478,
+            'penalty_gain':    1.0/0.4971,
+            'epsilon':         0.15,
             }
 
     if args.mode == 'evaluate':
@@ -89,7 +89,7 @@ def simulate(env, model, deterministic):
     # for i in range(1):
     while(done == False):
         action, _states = model.predict(obs, deterministic=deterministic)
-        # print(action)
+        print(action)
         obs, reward, done, info = env.step(action)
         epi_reward += reward
         displacement_list.append(info['displacement'][0])
