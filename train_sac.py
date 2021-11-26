@@ -26,7 +26,6 @@ def main():
     """"""""""""""""""""
     " Hyper Parameters "
     """"""""""""""""""""
-    n_envs     = 16
     time_steps = int(0)
     epoch      = 1
     
@@ -37,9 +36,9 @@ def main():
     create_new_model = True
     save_model       = True
     load_model_name  = f'sac' \
-            f'_env{n_envs}' \
-            f'_type{params["swimmer_type"]}' \
-            f'_rewardgain{params["reward_gain"]}' \
+            f'_rewardgain{params["reward_gain"]:.2f}' \
+            f'_penaltygain{params["penalty_gain"]:.2f}' \
+            f'_epsilon{params["epsilon"]}' \
             f'_20211005_111749'
 
 
@@ -50,6 +49,7 @@ def main():
             f'type_{params["swimmer_type"]}/' \
             f'interval{params["action_interval"]}' \
             f'_maxlength{params["max_length"]}/'
+            f'epsilon{params["epsilon"]}/'
     os.makedirs(model_save_dir, exist_ok=True)
 
     log_save_dir = f'./rl/logs/' \
@@ -59,8 +59,10 @@ def main():
     os.makedirs(log_save_dir, exist_ok=True)
 
     now = datetime.datetime.now()
-    model_name = f'sac_env{n_envs}' \
-            f'_rewardgain{params["reward_gain"]}_' \
+    model_name = f'sac' \
+            f'_rewardgain{params["reward_gain"]:.2f}' \
+            f'_penaltygain{params["penalty_gain"]:.2f}' \
+            f'_epsilon{params["epsilon"]}_' \
             + now.strftime('%Y%m%d_%H%M%S')
 
     """"""""""""""""""""
