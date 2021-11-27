@@ -22,6 +22,7 @@ def main():
             'reward_gain':     1.0/0.006964,
             'penalty_gain':    1.0/0.9554,
             'epsilon':         0.23,
+            'epsilon':         0.22,
             }
     """"""""""""""""""""
     " Hyper Parameters "
@@ -41,7 +42,11 @@ def main():
             f'_rewardgain{params["reward_gain"]:.2f}' \
             f'_penaltygain{params["penalty_gain"]:.2f}' \
             f'_epsilon{params["epsilon"]}' \
+<<<<<<< HEAD
             f'_20211123_174106'
+=======
+            f'_20211125_191251'
+>>>>>>> 85ba2c97e9766dc48ee24e9a16042d867909886e
 
 
     """"""""""""""""""""
