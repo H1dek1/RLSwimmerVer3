@@ -21,7 +21,7 @@ def main():
             'max_length':      1.4,
             'reward_gain':     1.0/0.004478,
             'penalty_gain':    1.0/0.4971,
-            'epsilon':         0.12,
+            'epsilon':         0.14,
             }
     """"""""""""""""""""
     " Hyper Parameters "
