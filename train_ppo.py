@@ -17,8 +17,8 @@ def main():
     params = {
             'swimmer_type':    20,
             'is_record':       False,
-            'action_interval': 0.4,
-            'max_length':      1.4,
+            'action_interval': 0.1,
+            'max_length':      1.1,
             'reward_gain':     1.0/0.004478,
             'penalty_gain':    1.0/0.4971,
             'epsilon':         0.14,
@@ -41,7 +41,11 @@ def main():
             f'_rewardgain{params["reward_gain"]:.2f}' \
             f'_penaltygain{params["penalty_gain"]:.2f}' \
             f'_epsilon{params["epsilon"]}' \
+<<<<<<< HEAD
             f'_20211123_174106'
+=======
+            f'_20211125_191251'
+>>>>>>> 85ba2c97e9766dc48ee24e9a16042d867909886e
 
 
     """"""""""""""""""""
