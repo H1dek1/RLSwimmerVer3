@@ -30,11 +30,11 @@ def main():
     params = {
             'swimmer_type':    20,
             'is_record' :      False,
-            'action_interval': 0.4,   # 0.5 ~ 30
-            'max_length':      1.4,   # 0.1 ~ 0.9
-            'reward_gain':     1.0/0.004478,
-            'penalty_gain':    1.0/0.4971,
-            'epsilon':         0.15,
+            'action_interval': 0.3,   # 0.5 ~ 30
+            'max_length':      1.3,   # 0.1 ~ 0.9
+            'reward_gain':     300,
+            'penalty_gain':    1.0,
+            'epsilon':         0.0,
             }
 
     if args.mode == 'evaluate':

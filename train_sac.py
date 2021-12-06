@@ -17,17 +17,17 @@ def main():
     params = {
             'swimmer_type':    20,
             'is_record':       False,
-            'action_interval': 0.5,
-            'max_length':      1.5,
-            'reward_gain':     1.0,
-            'penalty_gain':    1.0,
-            'epsilon':         0.0,
+            'action_interval': 0.1,
+            'max_length':      1.1,
+            'reward_gain':     1.0/0.001482,
+            'penalty_gain':    1.0/0.1458,
+            'epsilon':         0.05,
             }
     """"""""""""""""""""
     " Hyper Parameters "
     """"""""""""""""""""
-    time_steps = int(0)
-    epoch      = 1
+    time_steps = int(2_000_000)
+    epoch      = 9
     
     """"""""""""""""""""
     " Learning Setting "
@@ -48,7 +48,7 @@ def main():
     model_save_dir = f'./rl/trained_models/' \
             f'type_{params["swimmer_type"]}/' \
             f'interval{params["action_interval"]}' \
-            f'_maxlength{params["max_length"]}/'
+            f'_maxlength{params["max_length"]}/' \
             f'epsilon{params["epsilon"]}/'
     os.makedirs(model_save_dir, exist_ok=True)
 
