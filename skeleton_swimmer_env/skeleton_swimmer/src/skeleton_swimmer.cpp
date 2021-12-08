@@ -86,6 +86,7 @@ VectorXd SkeletonSwimmer::reset()
       << "_interval" << this->ACTION_INTERVAL
       << "_maxlength" << this->L_MAX 
       << "_epsilon" << this->EPSILON 
+      // << "_relativereward" 
       << ".csv";
     std::string full_path = RUNFILE_PATH.string() + OUT_DIRECTORY_PATH + record_file_name.str();
     fout.open(full_path, std::ios::out);
@@ -171,6 +172,7 @@ SkeletonSwimmer::step(const VectorXd actions)
   double displacement_reward = this->REWARD_GAIN  * displacement.dot(this->target_unit_vec);
   double energy_penalty      = this->PENALTY_GAIN * this->step_energy_consumption.sum();
   double reward = ((1.0-this->EPSILON)*displacement_reward) - (this->EPSILON*energy_penalty);
+  // double reward = displacement_reward / energy_penalty;
 
   /* Additional information */
   std::unordered_map<std::string, VectorXd> info;
