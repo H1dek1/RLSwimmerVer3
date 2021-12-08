@@ -28,13 +28,14 @@ def main():
     " Environment Parameters "
     """"""""""""""""""""""""""
     params = {
-            'swimmer_type':    20,
-            'is_record' :      False,
-            'action_interval': 0.3,   # 0.5 ~ 30
-            'max_length':      1.3,   # 0.1 ~ 0.9
-            'reward_gain':     300,
-            'penalty_gain':    1.0,
-            'epsilon':         0.0,
+            'swimmer_type':      20,
+            'is_record' :        False,
+            'action_interval':   0.3,   # 0.5 ~ 30
+            'max_length':        1.3,   # 0.1 ~ 0.9
+            'reward_gain':       300,
+            'penalty_gain':      1.0,
+            'epsilon':           0.0,
+            'reward_per_energy': True,
             }
 
     if args.mode == 'evaluate':
@@ -57,6 +58,7 @@ def main():
             reward_gain=params['reward_gain'],
             penalty_gain=params['penalty_gain'],
             epsilon=params['epsilon'],
+            reward_per_energy=params['reward_per_energy'],
             ))
 
     """

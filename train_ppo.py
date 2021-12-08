@@ -15,13 +15,14 @@ def main():
     " Environment Parameters "
     """"""""""""""""""""""""""
     params = {
-            'swimmer_type':    20,
-            'is_record':       False,
-            'action_interval': 0.3,
-            'max_length':      1.6,
-            'reward_gain':     300.0,
-            'penalty_gain':    1.0,
-            'epsilon':         0.0,
+            'swimmer_type':      20,
+            'is_record':         False,
+            'action_interval':   0.3,
+            'max_length':        1.3,
+            'reward_gain':       300.0,
+            'penalty_gain':      3.0,
+            'epsilon':           0.0,
+            'reward_per_energy': True,
             }
     """"""""""""""""""""
     " Hyper Parameters "
@@ -41,18 +42,12 @@ def main():
             f'_rewardgain{params["reward_gain"]:.2f}' \
             f'_penaltygain{params["penalty_gain"]:.2f}' \
             f'_epsilon{params["epsilon"]}' \
-            f'_20211123_174106'
+            f'_20211206_174827'
 
 
     """"""""""""""""""""
     " Log Setting      "
     """"""""""""""""""""
-    model_save_dir = f'./rl/trained_models/' \
-            f'type_{params["swimmer_type"]}/' \
-            f'interval{params["action_interval"]}' \
-            f'_maxlength{params["max_length"]}/' \
-            f'epsilon{params["epsilon"]}/'
-    os.makedirs(model_save_dir, exist_ok=True)
 
     log_save_dir = f'./rl/logs/' \
             f'type_{params["swimmer_type"]}/' \
@@ -61,11 +56,32 @@ def main():
     os.makedirs(log_save_dir, exist_ok=True)
 
     now = datetime.datetime.now()
-    model_name = f'ppo_env{n_envs}' \
-            f'_rewardgain{params["reward_gain"]:.2f}' \
-            f'_penaltygain{params["penalty_gain"]:.2f}' \
-            f'_epsilon{params["epsilon"]}_' \
-            + now.strftime('%Y%m%d_%H%M%S')
+    if params['reward_per_energy']:
+        model_save_dir = f'./rl/trained_models/' \
+                f'type_{params["swimmer_type"]}/' \
+                f'interval{params["action_interval"]}' \
+                f'_maxlength{params["max_length"]}/' \
+                f'reward_per_energy/'
+        os.makedirs(model_save_dir, exist_ok=True)
+
+        model_name = f'ppo_env{n_envs}' \
+                f'_rewardgain{params["reward_gain"]:.2f}' \
+                f'_penaltygain{params["penalty_gain"]:.2f}' \
+                f'_rewardPerEnergy_' \
+                + now.strftime('%Y%m%d_%H%M%S')
+    else:
+        model_save_dir = f'./rl/trained_models/' \
+                f'type_{params["swimmer_type"]}/' \
+                f'interval{params["action_interval"]}' \
+                f'_maxlength{params["max_length"]}/' \
+                f'epsilon{params["epsilon"]}/'
+        os.makedirs(model_save_dir, exist_ok=True)
+
+        model_name = f'ppo_env{n_envs}' \
+                f'_rewardgain{params["reward_gain"]:.2f}' \
+                f'_penaltygain{params["penalty_gain"]:.2f}' \
+                f'_epsilon{params["epsilon"]}_' \
+                + now.strftime('%Y%m%d_%H%M%S')
 
     """"""""""""""""""""
     " Constructing Env "
@@ -82,6 +98,7 @@ def main():
                         reward_gain=params['reward_gain'],
                         penalty_gain=params['penalty_gain'],
                         epsilon=params['epsilon'],
+                        reward_per_energy=params['reward_per_energy'],
                         ), 
                     log_save_dir) for i in range(n_envs)], 
                 start_method='spawn')
@@ -95,7 +112,9 @@ def main():
                     max_arm_length=params['max_length'],
                     reward_gain=params['reward_gain'],
                     penalty_gain=params['penalty_gain'],
-                    epsilon=params['epsilon']),
+                    epsilon=params['epsilon'],
+                    reward_per_energy=params['reward_per_energy'],
+                    ),
                 monitor_dir=(log_save_dir+model_name+'_monitor'))
 
 
@@ -151,6 +170,7 @@ def main():
                 reward_gain=params['reward_gain'],
                 penalty_gain=params['penalty_gain'],
                 epsilon=params['epsilon'],
+                reward_per_energy=params['reward_per_energy'],
                 )
             )
 
@@ -201,6 +221,7 @@ def testModel(model, params):
                 reward_gain=params['reward_gain'],
                 penalty_gain=params['penalty_gain'],
                 epsilon=params['epsilon'],
+                reward_per_energy=params['reward_per_energy'],
                 )
             )
 

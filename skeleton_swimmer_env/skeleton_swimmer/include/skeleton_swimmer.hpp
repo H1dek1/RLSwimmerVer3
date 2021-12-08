@@ -20,7 +20,7 @@ class SkeletonSwimmer
 
   public:
     /* Constructor & Destuctor */
-    SkeletonSwimmer(int model_type, bool is_output, double action_period, double max_arm_lengh, double reward_gain, double penalty_gain, double epsilon);
+    SkeletonSwimmer(int model_type, bool is_output, double action_period, double max_arm_lengh, double reward_gain, double penalty_gain, double epsilon, bool reward_per_energy);
     ~SkeletonSwimmer();
 
   /* Private Member Functions */
@@ -44,10 +44,11 @@ class SkeletonSwimmer
     const double REWARD_GAIN;
     const double PENALTY_GAIN;
     const double ACTION_INTERVAL;
+    const double EPSILON;
+    const bool   REWARD_PER_ENERGY;
     const double L_MAX;
     const size_t MAX_STEP;
     const size_t MAX_ITER;
-    const double EPSILON;
     unsigned int step_counter;
     unsigned int total_itr;
 

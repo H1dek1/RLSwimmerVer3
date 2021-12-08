@@ -7,13 +7,14 @@ import skeleton_swimmer_env
 
 def main():
     params = {
-            'swimmer_type':    20,
-            'is_record':       False,
-            'action_interval': 0.7,
-            'max_length':      1.7,
-            'reward_gain':     1.0/0.006964,
-            'penalty_gain':    1.0/0.9554,
-            'epsilon':         0.3,
+            'swimmer_type':      20,
+            'is_record':         False,
+            'action_interval':   0.7,
+            'max_length':        1.7,
+            'reward_gain':       1.0/0.006964,
+            'penalty_gain':      1.0/0.9554,
+            'epsilon':           0.3,
+            'reward_per_energy': True,
             }
 
     env = gym.make(
@@ -25,6 +26,7 @@ def main():
             reward_gain=params['reward_gain'],
             penalty_gain=params['penalty_gain'],
             epsilon=params['epsilon'],
+            reward_per_energy=params['reward_per_energy'],
             )
 
     actions0 = [
@@ -58,7 +60,8 @@ def main():
     episode_reward = 0
     step_counter = 0
     env.reset()
-    while not done:
+    # while not done:
+    for i in range(10):
         if step_counter < 0:
             action = actions3[step_counter%len(actions3)]
         else:
@@ -67,6 +70,7 @@ def main():
         print('i =', step_counter)
         print(action)
         obs, reward, done, info = env.step(action)
+        print(reward)
         #print('reward:', reward)
         step_counter += 1
         episode_reward += reward

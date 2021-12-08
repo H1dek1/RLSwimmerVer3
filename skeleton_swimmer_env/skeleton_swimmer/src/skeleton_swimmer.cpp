@@ -8,17 +8,18 @@ namespace MicroSwimmer
 {
 using namespace Eigen;
 
-SkeletonSwimmer::SkeletonSwimmer(int model_type, bool is_output=false, double action_interval=0.5, double max_arm_length=1.5, double reward_gain=1.0, double penalty_gain=1.0, double epsilon=0.0) : 
-  IS_RECORD(       is_output                                  ), 
-  REWARD_GAIN(     reward_gain                                ), 
-  PENALTY_GAIN(    penalty_gain                               ), 
-  ACTION_INTERVAL( action_interval                            ), 
-  EPSILON(         epsilon                                    ), 
-  L_MAX(           max_arm_length                             ), 
-  SWIMMER_TYPE(    model_type                                 ),
-  RUNFILE_PATH(    std::filesystem::current_path()            ),
-  MAX_STEP(        static_cast<int>(MAX_TIME/action_interval) ),
-  MAX_ITER(        static_cast<int>(action_interval/DT)       )
+SkeletonSwimmer::SkeletonSwimmer(int model_type, bool is_output=false, double action_interval=0.5, double max_arm_length=1.5, double reward_gain=1.0, double penalty_gain=1.0, double epsilon=0.0, bool reward_per_energy=false) : 
+  IS_RECORD(         is_output                                  ), 
+  REWARD_GAIN(       reward_gain                                ), 
+  PENALTY_GAIN(      penalty_gain                               ), 
+  EPSILON(           epsilon                                    ), 
+  REWARD_PER_ENERGY( reward_per_energy                          ), 
+  ACTION_INTERVAL(   action_interval                            ), 
+  L_MAX(             max_arm_length                             ), 
+  SWIMMER_TYPE(      model_type                                 ),
+  RUNFILE_PATH(      std::filesystem::current_path()            ),
+  MAX_STEP(          static_cast<int>(MAX_TIME/action_interval) ),
+  MAX_ITER(          static_cast<int>(action_interval/DT)       )
 {
   std::string models_dir_path = this->RUNFILE_PATH.string() + MODEL_LOAD_PATH + "/type_" + std::to_string(this->SWIMMER_TYPE) + "/";
 
@@ -81,13 +82,21 @@ VectorXd SkeletonSwimmer::reset()
   }
   if(this->IS_RECORD){
     std::stringstream record_file_name;
-    record_file_name << "type" << this->SWIMMER_TYPE
-      << "_radius" << A
-      << "_interval" << this->ACTION_INTERVAL
-      << "_maxlength" << this->L_MAX 
-      << "_epsilon" << this->EPSILON 
-      // << "_relativereward" 
-      << ".csv";
+    if(this->REWARD_PER_ENERGY == true){
+      record_file_name << "type" << this->SWIMMER_TYPE
+        << "_radius" << A
+        << "_interval" << this->ACTION_INTERVAL
+        << "_maxlength" << this->L_MAX 
+        << "_relativereward" 
+        << ".csv";
+    }else{
+      record_file_name << "type" << this->SWIMMER_TYPE
+        << "_radius" << A
+        << "_interval" << this->ACTION_INTERVAL
+        << "_maxlength" << this->L_MAX 
+        << "_epsilon" << this->EPSILON 
+        << ".csv";
+    }
     std::string full_path = RUNFILE_PATH.string() + OUT_DIRECTORY_PATH + record_file_name.str();
     fout.open(full_path, std::ios::out);
     if(!fout){
@@ -171,13 +180,19 @@ SkeletonSwimmer::step(const VectorXd actions)
   Vector3d displacement = this->center_position - this->prev_center_position;
   double displacement_reward = this->REWARD_GAIN  * displacement.dot(this->target_unit_vec);
   double energy_penalty      = this->PENALTY_GAIN * this->step_energy_consumption.sum();
-  double reward = ((1.0-this->EPSILON)*displacement_reward) - (this->EPSILON*energy_penalty);
-  // double reward = displacement_reward / energy_penalty;
+
+  double reward;
+  if(this->REWARD_PER_ENERGY == true){
+    // reward = displacement_reward / (energy_penalty);
+    reward = displacement_reward / (0.1 + energy_penalty);
+    // reward = ((1.0-this->EPSILON)*displacement_reward) - (this->EPSILON*energy_penalty);
+  }else{
+    reward = ((1.0-this->EPSILON)*displacement_reward) - (this->EPSILON*energy_penalty);
+  }
 
   /* Additional information */
   std::unordered_map<std::string, VectorXd> info;
   info["center"] = this->center_position;
-  info["displacement"] = Vector2d::Zero();
   info["displacement"] = displacement;
   info["energy_penalty"] = this->step_energy_consumption;
 
@@ -221,7 +236,13 @@ void SkeletonSwimmer::miniStep(const VectorXd actions)
   this->sphere_positions += this->sphere_velocities * DT;
 
   /* calculate Energy Consumption */
-  this->energy_consumption = this->arm_forces.array() * clipped_actions.array() * DT;
+  this->energy_consumption = (this->arm_forces.array() * clipped_actions.array() * DT).abs();
+  // VectorXd tmp = VectorXd::Zero(5);
+  // tmp << -1, 1, 0.5, -0.2, 0.0;
+  // std::cout << tmp.transpose() << std::endl;
+  // std::cout << tmp.cwiseAbs().transpose() << std::endl;
+  // std::cout << tmp.array().abs().transpose() << std::endl;
+  // std::cout << tmp.array().cwiseAbs().transpose() << std::endl;
   this->output_energy_consumption += this->energy_consumption;
   this->step_energy_consumption   += this->energy_consumption;
 }
