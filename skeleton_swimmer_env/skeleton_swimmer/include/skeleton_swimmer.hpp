@@ -20,7 +20,7 @@ class SkeletonSwimmer
 
   public:
     /* Constructor & Destuctor */
-    SkeletonSwimmer(int model_type, bool is_output, double action_period, double max_arm_lengh, double reward_gain, double penalty_gain, double epsilon, bool reward_per_energy);
+    SkeletonSwimmer(int model_type, bool on_record, double action_period, double max_arm_lengh, double reward_gain, double penalty_gain, double epsilon, bool reward_per_energy);
     ~SkeletonSwimmer();
 
   /* Private Member Functions */
@@ -39,7 +39,7 @@ class SkeletonSwimmer
 
   /* Member variables */
   private:
-    const bool   IS_RECORD;
+    const bool   ON_RECORD;
     const int    SWIMMER_TYPE;
     const double REWARD_GAIN;
     const double PENALTY_GAIN;

@@ -8,8 +8,8 @@ namespace MicroSwimmer
 {
 using namespace Eigen;
 
-SkeletonSwimmer::SkeletonSwimmer(int model_type, bool is_output=false, double action_interval=0.5, double max_arm_length=1.5, double reward_gain=1.0, double penalty_gain=1.0, double epsilon=0.0, bool reward_per_energy=false) : 
-  IS_RECORD(         is_output                                  ), 
+SkeletonSwimmer::SkeletonSwimmer(int model_type, bool on_record=false, double action_interval=0.5, double max_arm_length=1.5, double reward_gain=1.0, double penalty_gain=1.0, double epsilon=0.0, bool reward_per_energy=false) : 
+  ON_RECORD(         on_record                                  ), 
   REWARD_GAIN(       reward_gain                                ), 
   PENALTY_GAIN(      penalty_gain                               ), 
   EPSILON(           epsilon                                    ), 
@@ -80,7 +80,7 @@ VectorXd SkeletonSwimmer::reset()
   if(fout.is_open()){
     fout.close();
   }
-  if(this->IS_RECORD){
+  if(this->ON_RECORD){
     std::stringstream record_file_name;
     if(this->REWARD_PER_ENERGY == true){
       record_file_name << "type" << this->SWIMMER_TYPE
@@ -162,7 +162,7 @@ SkeletonSwimmer::step(const VectorXd actions)
 
   /* Iteration */
   for(unsigned int itr = 0; itr < this->MAX_ITER; ++itr){
-    if(this->IS_RECORD && this->total_itr%OUT_ITER == 0){
+    if(this->ON_RECORD && this->total_itr%OUT_ITER == 0){
       this->output(); // using this->total_itr
     }
     this->miniStep(this->input_actions);
