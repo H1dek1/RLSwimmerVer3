@@ -182,7 +182,7 @@ SkeletonSwimmer::step(const VectorXd actions)
   double energy_penalty      = this->PENALTY_GAIN * this->step_energy_consumption.sum();
 
   double reward;
-  if(this->REWARD_PER_ENERGY == true){
+  if(this->REWARD_PER_ENERGY){
     // reward = displacement_reward / (energy_penalty);
     reward = displacement_reward / (1.0 + energy_penalty);
     // reward = ((1.0-this->EPSILON)*displacement_reward) - (this->EPSILON*energy_penalty);

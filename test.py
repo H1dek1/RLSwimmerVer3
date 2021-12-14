@@ -30,19 +30,19 @@ def main():
     params = {
             'swimmer_type':      20,
             'is_record' :        False,
-            'action_interval':   0.3,   # 0.5 ~ 30
-            'max_length':        1.3,   # 0.1 ~ 0.9
+            'action_interval':   0.9,   # 0.5 ~ 30
+            'max_length':        1.9,   # 0.1 ~ 0.9
             'reward_gain':       300,
             'penalty_gain':      1.0,
             'epsilon':           0.0,
-            'reward_per_energy': True,
+            'reward_per_energy': False,
             }
 
     if args.mode == 'evaluate':
         print('evaluate')
     elif args.mode == 'simulate':
         print('simulate')
-        # params['is_record'] = True
+        params['is_record'] = True
     else:
         print('Wrong Value')
         sys.exit(0)
