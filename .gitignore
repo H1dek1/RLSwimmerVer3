@@ -5,3 +5,4 @@
 /rl/logs/
 /.venv3.8/
 /.python-version
+/sim/analysis/notebook/__pycache__/

@@ -28,20 +28,21 @@ def main():
     " Environment Parameters "
     """"""""""""""""""""""""""
     params = {
-            'swimmer_type':    20,
-            'is_record' :      False,
-            'action_interval': 0.3,   # 0.5 ~ 30
-            'max_length':      1.3,   # 0.1 ~ 0.9
-            'reward_gain':     300,
-            'penalty_gain':    1.0,
-            'epsilon':         0.0,
+            'swimmer_type':      20,
+            'on_record' :        False,
+            'action_interval':   0.3,   # 0.5 ~ 30
+            'max_length':        1.3,   # 0.1 ~ 0.9
+            'reward_gain':       1.0,
+            'penalty_gain':      1.0,
+            'epsilon':           0.0,
+            'reward_per_energy': False,
             }
 
     if args.mode == 'evaluate':
         print('evaluate')
     elif args.mode == 'simulate':
         print('simulate')
-        # params['is_record'] = True
+        # params['on_record'] = True
     else:
         print('Wrong Value')
         sys.exit(0)
@@ -50,13 +51,14 @@ def main():
     Cunstruct Env
     """
     env = Monitor(gym.make('SkeletonSwimmer-v0',
-            isRecord=params['is_record'],
+            onRecord=params['on_record'],
             swimmer_type=params['swimmer_type'],
             action_interval=params['action_interval'],
             max_arm_length=params['max_length'],
             reward_gain=params['reward_gain'],
             penalty_gain=params['penalty_gain'],
             epsilon=params['epsilon'],
+            reward_per_energy=params['reward_per_energy'],
             ))
 
     """
