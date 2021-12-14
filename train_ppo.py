@@ -16,7 +16,7 @@ def main():
     """"""""""""""""""""""""""
     params = {
             'swimmer_type':      20,
-            'is_record':         False,
+            'on_record':         False,
             'action_interval':   0.3,
             'max_length':        1.3,
             'reward_gain':       300.0,
@@ -91,7 +91,7 @@ def main():
                 [lambda: Monitor(
                     gym.make(
                         'SkeletonSwimmer-v0', 
-                        isRecord=params['is_record'], 
+                        onRecord=params['on_record'], 
                         swimmer_type=params['swimmer_type'], 
                         action_interval=params['action_interval'], 
                         max_arm_length=params['max_length'],
@@ -106,7 +106,7 @@ def main():
         env = make_vec_env('SkeletonSwimmer-v0',
                 n_envs=n_envs,
                 env_kwargs=dict(
-                    isRecord=params['is_record'], 
+                    onRecord=params['on_record'], 
                     swimmer_type=params['swimmer_type'], 
                     action_interval=params['action_interval'], 
                     max_arm_length=params['max_length'],
@@ -163,7 +163,7 @@ def main():
     eval_env = Monitor(
             gym.make(
                 'SkeletonSwimmer-v0',
-                isRecord=params['is_record'],
+                onRecord=params['on_record'],
                 swimmer_type=params['swimmer_type'],
                 action_interval=params['action_interval'],
                 max_arm_length=params['max_length'],
@@ -214,7 +214,7 @@ def testModel(model, params):
     test_env = Monitor(
             gym.make(
                 'SkeletonSwimmer-v0',
-                isRecord=params['is_record'],
+                onRecord=params['on_record'],
                 swimmer_type=params['swimmer_type'],
                 action_interval=params['action_interval'],
                 max_arm_length=params['max_length'],

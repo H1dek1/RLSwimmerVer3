@@ -3,11 +3,11 @@ import gym
 import numpy as np
 
 class SkeletonSwimmerEnv(gym.Env):
-    def __init__(self, isRecord=False, swimmer_type=10, action_interval=1, max_arm_length=1.5, reward_gain=1.0, penalty_gain=1.0, epsilon=0.0, reward_per_energy=False):
+    def __init__(self, onRecord=False, swimmer_type=10, action_interval=1, max_arm_length=1.5, reward_gain=1.0, penalty_gain=1.0, epsilon=0.0, reward_per_energy=False):
 
         self.swimmer = SkeletonSwimmer(
                 swimmer_type,
-                isRecord,
+                onRecord,
                 action_interval, 
                 max_arm_length,
                 reward_gain,
