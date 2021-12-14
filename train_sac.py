@@ -17,11 +17,11 @@ def main():
     params = {
             'swimmer_type':    20,
             'is_record':       False,
-            'action_interval': 0.1,
-            'max_length':      1.1,
-            'reward_gain':     1.0/0.001482,
-            'penalty_gain':    1.0/0.1458,
-            'epsilon':         0.05,
+            'action_interval': 0.9,
+            'max_length':      1.3,
+            'reward_gain':     100.0,
+            'penalty_gain':    1.0,
+            'epsilon':         0.0,
             }
     """"""""""""""""""""
     " Hyper Parameters "
