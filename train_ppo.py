@@ -17,9 +17,9 @@ def main():
     params = {
             'swimmer_type':      20,
             'on_record':         False,
-            'action_interval':   0.9,
+            'action_interval':   0.3,
             'max_length':        1.9,
-            'reward_gain':       1.0/0.009255,
+            'reward_gain':       1.0/0.002890,
             'penalty_gain':      1.0,
             'epsilon':           0.0,
             'reward_per_energy': True,
@@ -35,14 +35,15 @@ def main():
     " Learning Setting "
     """"""""""""""""""""
     multi_process    = True
-    create_new_model = True
+    create_new_model = False
     save_model       = True
     load_model_name  = f'ppo' \
             f'_env{n_envs}' \
             f'_rewardgain{params["reward_gain"]:.2f}' \
             f'_penaltygain{params["penalty_gain"]:.2f}' \
-            f'_epsilon{params["epsilon"]}' \
-            f'_20211206_174827'
+            f'_rewardPerEnergy' \
+            f'_20211216_023526'
+            # f'_epsilon{params["epsilon"]}' \
 
 
     """"""""""""""""""""
