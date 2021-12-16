@@ -17,10 +17,10 @@ def main():
     params = {
             'swimmer_type':      20,
             'on_record':         False,
-            'action_interval':   0.3,
-            'max_length':        1.3,
-            'reward_gain':       1.0/0.003057,
-            'penalty_gain':      1.0/0.3700,
+            'action_interval':   0.9,
+            'max_length':        1.9,
+            'reward_gain':       1.0/0.009255,
+            'penalty_gain':      1.0,
             'epsilon':           0.0,
             'reward_per_energy': True,
             }
