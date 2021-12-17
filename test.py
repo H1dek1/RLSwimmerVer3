@@ -30,13 +30,14 @@ def main():
     params = {
             'swimmer_type':      20,
             'on_record' :        False,
-            'action_interval':   0.3,   # 0.5 ~ 30
-            'max_length':        1.9,   # 0.1 ~ 0.9
-            'reward_gain':       1.0,
-            'penalty_gain':      1.0,
-            'epsilon':           0.0,
-            'reward_per_energy': False,
+            'action_interval':   0.3,
+            'max_length':        1.3,
+            'consider_energy': True,
             }
+    df = pd.read_csv('sim/analysis/phase_diagram/characteristic_values/type20/displacement_energy.csv')
+    ref = df[(df['action_interval'] == params['action_interval']) & (df['max_arm_length'] == params['max_length'])]
+    params['displacement_gain'] = 1.0 / ref['onestep_displacement'].values[0]
+    params['energy_gain'] = 1.0 / ref['onestep_energyconsumption'].values[0]
 
     if args.mode == 'evaluate':
         print('evaluate')
@@ -55,10 +56,9 @@ def main():
             swimmer_type=params['swimmer_type'],
             action_interval=params['action_interval'],
             max_arm_length=params['max_length'],
-            reward_gain=params['reward_gain'],
-            penalty_gain=params['penalty_gain'],
-            epsilon=params['epsilon'],
-            reward_per_energy=params['reward_per_energy'],
+            displacement_gain=params['displacement_gain'],
+            penalty_gain=params['energy_gain'],
+            consider_energy=params['consider_energy'],
             ))
 
     """

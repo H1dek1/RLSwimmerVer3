@@ -2,6 +2,8 @@
 import datetime
 import os 
 import gym
+import numpy as np
+import pandas as pd
 import skeleton_swimmer_env
 
 from stable_baselines3.common.monitor import Monitor
@@ -17,13 +19,14 @@ def main():
     params = {
             'swimmer_type':      20,
             'on_record':         False,
-            'action_interval':   0.3,
+            'action_interval':   0.9,
             'max_length':        1.9,
-            'reward_gain':       1.0/0.002890,
-            'penalty_gain':      1.0,
-            'epsilon':           0.0,
-            'reward_per_energy': True,
+            'consider_energy': True,
             }
+    df = pd.read_csv('sim/analysis/phase_diagram/characteristic_values/type20/displacement_energy.csv')
+    ref = df[(df['action_interval'] == params['action_interval']) & (df['max_arm_length'] == params['max_length'])]
+    params['displacement_gain'] = 1.0 / ref['onestep_displacement'].values[0]
+    params['energy_gain'] = 1.0 / ref['onestep_energyconsumption'].values[0]
     """"""""""""""""""""
     " Hyper Parameters "
     """"""""""""""""""""
@@ -35,15 +38,21 @@ def main():
     " Learning Setting "
     """"""""""""""""""""
     multi_process    = True
-    create_new_model = False
+    create_new_model = True
     save_model       = True
-    load_model_name  = f'ppo' \
-            f'_env{n_envs}' \
-            f'_rewardgain{params["reward_gain"]:.2f}' \
-            f'_penaltygain{params["penalty_gain"]:.2f}' \
-            f'_rewardPerEnergy' \
-            f'_20211216_023526'
-            # f'_epsilon{params["epsilon"]}' \
+    if params['consider_energy']:
+        load_model_name = f'ppo' \
+                f'_env{n_envs}' \
+                f'_displacementgain{params["displacement_gain"]:.2f}' \
+                f'_energygain{params["energy_gain"]:.2f}' \
+                f'_considerEnergy' \
+                f'_20211216_023526'
+    else:
+        load_model_name = f'ppo' \
+                f'_env{n_envs}' \
+                f'_displacementgain{params["displacement_gain"]:.2f}' \
+                f'_notConsiderEnergy' \
+                f'_20211216_023526'
 
 
     """"""""""""""""""""
@@ -57,31 +66,31 @@ def main():
     os.makedirs(log_save_dir, exist_ok=True)
 
     now = datetime.datetime.now()
-    if params['reward_per_energy']:
+    if params['consider_energy']:
         model_save_dir = f'./rl/trained_models/' \
                 f'type_{params["swimmer_type"]}/' \
                 f'interval{params["action_interval"]}' \
                 f'_maxlength{params["max_length"]}/' \
-                f'reward_per_energy/'
+                f'consider_energy/'
         os.makedirs(model_save_dir, exist_ok=True)
 
         model_name = f'ppo_env{n_envs}' \
-                f'_rewardgain{params["reward_gain"]:.2f}' \
-                f'_penaltygain{params["penalty_gain"]:.2f}' \
-                f'_rewardPerEnergy_' \
+                f'_displacementgain{params["displacement_gain"]:.2f}' \
+                f'_energygain{params["energy_gain"]:.2f}' \
+                f'_considerEnergy_' \
                 + now.strftime('%Y%m%d_%H%M%S')
     else:
         model_save_dir = f'./rl/trained_models/' \
                 f'type_{params["swimmer_type"]}/' \
                 f'interval{params["action_interval"]}' \
                 f'_maxlength{params["max_length"]}/' \
-                f'epsilon{params["epsilon"]}/'
+                f'not_consider_energy/'
         os.makedirs(model_save_dir, exist_ok=True)
 
         model_name = f'ppo_env{n_envs}' \
-                f'_rewardgain{params["reward_gain"]:.2f}' \
-                f'_penaltygain{params["penalty_gain"]:.2f}' \
-                f'_epsilon{params["epsilon"]}_' \
+                f'_displacementgain{params["displacement_gain"]:.2f}' \
+                f'_energygain{params["energy_gain"]:.2f}' \
+                f'_notConsiderEnergy_' \
                 + now.strftime('%Y%m%d_%H%M%S')
 
     """"""""""""""""""""
@@ -96,10 +105,9 @@ def main():
                         swimmer_type=params['swimmer_type'], 
                         action_interval=params['action_interval'], 
                         max_arm_length=params['max_length'],
-                        reward_gain=params['reward_gain'],
-                        penalty_gain=params['penalty_gain'],
-                        epsilon=params['epsilon'],
-                        reward_per_energy=params['reward_per_energy'],
+                        displacement_gain=params['displacement_gain'],
+                        energy_gain=params['energy_gain'],
+                        consider_energy=params['consider_energy'],
                         ), 
                     log_save_dir) for i in range(n_envs)], 
                 start_method='spawn')
@@ -111,10 +119,9 @@ def main():
                     swimmer_type=params['swimmer_type'], 
                     action_interval=params['action_interval'], 
                     max_arm_length=params['max_length'],
-                    reward_gain=params['reward_gain'],
-                    penalty_gain=params['penalty_gain'],
-                    epsilon=params['epsilon'],
-                    reward_per_energy=params['reward_per_energy'],
+                    displacement_gain=params['displacement_gain'],
+                    energy_gain=params['energy_gain'],
+                    consider_energy=params['consider_energy'],
                     ),
                 monitor_dir=(log_save_dir+model_name+'_monitor'))
 
@@ -168,10 +175,9 @@ def main():
                 swimmer_type=params['swimmer_type'],
                 action_interval=params['action_interval'],
                 max_arm_length=params['max_length'],
-                reward_gain=params['reward_gain'],
-                penalty_gain=params['penalty_gain'],
-                epsilon=params['epsilon'],
-                reward_per_energy=params['reward_per_energy'],
+                displacement_gain=params['displacement_gain'],
+                energy_gain=params['energy_gain'],
+                consider_energy=params['consider_energy'],
                 )
             )
 
@@ -219,10 +225,9 @@ def testModel(model, params):
                 swimmer_type=params['swimmer_type'],
                 action_interval=params['action_interval'],
                 max_arm_length=params['max_length'],
-                reward_gain=params['reward_gain'],
-                penalty_gain=params['penalty_gain'],
-                epsilon=params['epsilon'],
-                reward_per_energy=params['reward_per_energy'],
+                displacement_gain=params['displacement_gain'],
+                energy_gain=params['energy_gain'],
+                consider_energy=params['consider_energy'],
                 )
             )
 

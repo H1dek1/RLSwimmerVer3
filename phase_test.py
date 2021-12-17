@@ -27,10 +27,9 @@ def main():
                     swimmer_type=int(swimmer_type), 
                     action_interval=interval, 
                     max_arm_length=max_length,
-                    reward_gain=1.0,
-                    penalty_gain=1.0,
-                    epsilon=0.0,
-                    reward_per_energy=False)
+                    displacement_gain=1.0,
+                    energy_gain=1.0,
+                    consider_energy=False)
 
             done = False
             step_counter = 0

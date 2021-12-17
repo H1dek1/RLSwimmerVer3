@@ -8,13 +8,14 @@ def main():
     params = {
             'swimmer_type':      20,
             'on_record':         False,
-            'action_interval':   0.3,
+            'action_interval':   0.6,
             'max_length':        1.6,
-            'reward_gain':       300.0,
-            'penalty_gain':      1.0,
-            'epsilon':           0.0,
-            'reward_per_energy': False,
+            'consider_energy':   False,
             }
+    df = pd.read_csv('sim/analysis/phase_diagram/characteristic_values/type20/displacement_energy.csv')
+    ref = df[(df['action_interval'] == params['action_interval']) & (df['max_arm_length'] == params['max_length'])]
+    params['displacement_gain'] = 1.0 / ref['onestep_displacement'].values[0]
+    params['energy_gain'] = 1.0 / ref['onestep_energyconsumption'].values[0]
 
     env = gym.make(
             'SkeletonSwimmer-v0',
@@ -22,10 +23,9 @@ def main():
             swimmer_type=params['swimmer_type'],
             action_interval=params['action_interval'],
             max_arm_length=params['max_length'],
-            reward_gain=params['reward_gain'],
-            penalty_gain=params['penalty_gain'],
-            epsilon=params['epsilon'],
-            reward_per_energy=params['reward_per_energy'],
+            displacement_gain=params['displacement_gain'],
+            energy_gain=params['energy_gain'],
+            consider_energy=params['consider_energy'],
             )
 
     actions0 = [
@@ -34,7 +34,7 @@ def main():
             [ 1.0,  1.0, -1.0],
             [-1.0,  1.0, -1.0],
             ]
-    actions = np.loadtxt('swimming_method/type20/d.csv', delimiter=',')
+    actions = np.loadtxt('swimming_method/type20/a.csv', delimiter=',')
     # actions *= 0.1
 
     done = False
