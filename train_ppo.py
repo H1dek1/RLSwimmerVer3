@@ -195,10 +195,18 @@ def main():
     "    TRAINING   "
     """""""""""""""""
     print('*'*10, ' START ', '*'*10)
-    for _ in range(epoch):
+    for i in range(epoch):
         print('*'*10, ' LEARNING ', '*'*10)
-        model.learn(total_timesteps=int(time_steps), 
-                tb_log_name=model_name)
+        if i == 0:
+            model.learn(
+                    total_timesteps=int(time_steps), 
+                    tb_log_name=model_name,
+                    reset_num_timesteps=True)
+        else:
+            model.learn(
+                    total_timesteps=int(time_steps), 
+                    tb_log_name=model_name,
+                    reset_num_timesteps=False)
         testModel(model, params)
 
         print('*'*10, ' EVALUATING ', '*'*10)

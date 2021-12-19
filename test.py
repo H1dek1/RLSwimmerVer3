@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import sys
 import numpy as np
+import pandas as pd
 import matplotlib.pyplot as plt
 from distutils.util import strtobool
 import argparse
@@ -30,8 +31,8 @@ def main():
     params = {
             'swimmer_type':      20,
             'on_record' :        False,
-            'action_interval':   0.3,
-            'max_length':        1.3,
+            'action_interval':   0.9,
+            'max_length':        1.9,
             'consider_energy': True,
             }
     df = pd.read_csv('sim/analysis/phase_diagram/characteristic_values/type20/displacement_energy.csv')
@@ -57,7 +58,7 @@ def main():
             action_interval=params['action_interval'],
             max_arm_length=params['max_length'],
             displacement_gain=params['displacement_gain'],
-            penalty_gain=params['energy_gain'],
+            energy_gain=params['energy_gain'],
             consider_energy=params['consider_energy'],
             ))
 
