@@ -41,14 +41,31 @@ SkeletonSwimmer::SkeletonSwimmer(int model_type, bool on_record=false, double ac
     std::cout << "[self ERROR] No file \"init_pos.txt\"" << std::endl;
     std::exit(0);
   }
-  for(size_t i = 0; i < this->n_sphere_states; ++i){
-    init_in >> this->init_sphere_positions(i);
+  for(size_t id_sphere = 0; id_sphere < this->n_spheres; ++id_sphere){
+    for(unsigned int id_dim = 0; id_dim < 3; ++id_dim){
+      init_in >> this->init_sphere_positions(3*id_sphere + id_dim);
+    }
   }
+  std::cout << this->init_sphere_positions.transpose() << std::endl;
+
+  // set gravity point to zero point
+  Vector3d centroid_pos = Vector3d::Zero();
+  for(size_t id_sphere = 0; id_sphere < this->n_spheres; ++id_sphere){
+    centroid_pos(0) += this->init_sphere_positions(3*id_sphere + 0);
+    centroid_pos(1) += this->init_sphere_positions(3*id_sphere + 1);
+    centroid_pos(2) += this->init_sphere_positions(3*id_sphere + 2);
+  }
+  centroid_pos /= this->n_spheres;
+  
+  for(size_t id_sphere = 0; id_sphere < this->n_spheres; ++id_sphere){
+    this->init_sphere_positions.segment(3*id_sphere, 3) -= centroid_pos;
+  }
+  std::cout << this->init_sphere_positions.transpose() << std::endl;
 
   /* load connection information matrix */
-  std::ifstream matrix_in(models_dir_path+"trans_mat.txt", std::ios::in);
+  std::ifstream matrix_in(models_dir_path+"incidence_matrix.txt", std::ios::in);
   if(!matrix_in){
-    std::cout << "[self ERROR] No file \"trans_mat.txt\"" << std::endl;
+    std::cout << "[self ERROR] No file \"incidence_matrix.txt\"" << std::endl;
     std::exit(0);
   }
   for(size_t i = 0; i < this->n_spheres; ++i){
