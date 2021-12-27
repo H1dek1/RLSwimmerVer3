@@ -16,13 +16,12 @@ for interval in action_intervals:
         env = gym.make(
                 'SkeletonSwimmer-v0',
                 onRecord=False,
-                swimmer_type=20,
+                swimmer_type=202,
                 action_interval=interval,
                 max_arm_length=max_length,
-                reward_gain=1.0,
-                penalty_gain=1.0,
-                epsilon=0.0,
-                reward_per_energy=False)
+                displacement_gain=1.0,
+                energy_gain=1.0,
+                consider_energy=False)
         env.reset()
         _, reward, done, info = env.step([0.0, 0.0, 0.0])
         
@@ -41,4 +40,4 @@ for interval in action_intervals:
             'onestep_energyconsumption': sum(info['energy_penalty']),
             }, ignore_index=True)
 
-df.to_csv('sim/analysis/phase_diagram/characteristic_values/type20/displacement_energy.csv', index=False)
+df.to_csv('sim/analysis/phase_diagram/characteristic_values/type202/displacement_energy.csv', index=False)
