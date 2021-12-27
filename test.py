@@ -29,11 +29,11 @@ def main():
     " Environment Parameters "
     """"""""""""""""""""""""""
     params = {
-            'swimmer_type':      20,
+            'swimmer_type':      203,
             'on_record' :        False,
             'action_interval':   0.9,
             'max_length':        1.9,
-            'consider_energy': True,
+            'consider_energy': False,
             }
     df = pd.read_csv('sim/analysis/phase_diagram/characteristic_values/type20/displacement_energy.csv')
     ref = df[(df['action_interval'] == params['action_interval']) & (df['max_arm_length'] == params['max_length'])]

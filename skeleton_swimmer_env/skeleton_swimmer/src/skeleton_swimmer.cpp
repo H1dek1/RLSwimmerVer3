@@ -46,7 +46,7 @@ SkeletonSwimmer::SkeletonSwimmer(int model_type, bool on_record=false, double ac
       init_in >> this->init_sphere_positions(3*id_sphere + id_dim);
     }
   }
-  std::cout << this->init_sphere_positions.transpose() << std::endl;
+  // std::cout << this->init_sphere_positions.transpose() << std::endl;
 
   // set gravity point to zero point
   Vector3d centroid_pos = Vector3d::Zero();
@@ -60,7 +60,7 @@ SkeletonSwimmer::SkeletonSwimmer(int model_type, bool on_record=false, double ac
   for(size_t id_sphere = 0; id_sphere < this->n_spheres; ++id_sphere){
     this->init_sphere_positions.segment(3*id_sphere, 3) -= centroid_pos;
   }
-  std::cout << this->init_sphere_positions.transpose() << std::endl;
+  // std::cout << this->init_sphere_positions.transpose() << std::endl;
 
   /* load connection information matrix */
   std::ifstream matrix_in(models_dir_path+"incidence_matrix.txt", std::ios::in);
@@ -79,6 +79,7 @@ SkeletonSwimmer::SkeletonSwimmer(int model_type, bool on_record=false, double ac
       }
     }
   }
+  // std::cout << this->incident_matrix_arm2sph << std::endl;
   this->target_unit_vec = Vector3d::UnitX();
 }
 
@@ -252,12 +253,6 @@ void SkeletonSwimmer::miniStep(const VectorXd actions)
 
   /* calculate Energy Consumption */
   this->energy_consumption = (this->arm_forces.array() * clipped_actions.array() * DT).abs();
-  // VectorXd tmp = VectorXd::Zero(5);
-  // tmp << -1, 1, 0.5, -0.2, 0.0;
-  // std::cout << tmp.transpose() << std::endl;
-  // std::cout << tmp.cwiseAbs().transpose() << std::endl;
-  // std::cout << tmp.array().abs().transpose() << std::endl;
-  // std::cout << tmp.array().cwiseAbs().transpose() << std::endl;
   this->output_energy_consumption += this->energy_consumption;
   this->step_energy_consumption   += this->energy_consumption;
 }
