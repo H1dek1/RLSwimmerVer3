@@ -21,7 +21,7 @@ def main():
             'on_record':         False,
             'action_interval':   0.3,
             'max_length':        1.3,
-            'consider_energy':   True,
+            'consider_energy':   False,
             }
     df = pd.read_csv(f'sim/analysis/phase_diagram/characteristic_values/type{params["swimmer_type"]}/displacement_energy.csv')
     ref = df[(df['action_interval'] == params['action_interval']) & (df['max_arm_length'] == params['max_length'])]
