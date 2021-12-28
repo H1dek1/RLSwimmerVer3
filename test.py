@@ -30,8 +30,8 @@ def main():
     params = {
             'swimmer_type':      20,
             'on_record' :        False,
-            'action_interval':   0.3,   # 0.5 ~ 30
-            'max_length':        1.3,   # 0.1 ~ 0.9
+            'action_interval':   0.6,   # 0.5 ~ 30
+            'max_length':        1.9,   # 0.1 ~ 0.9
             'reward_gain':       1.0,
             'penalty_gain':      1.0,
             'epsilon':           0.0,
@@ -42,7 +42,7 @@ def main():
         print('evaluate')
     elif args.mode == 'simulate':
         print('simulate')
-        # params['on_record'] = True
+        params['on_record'] = True
     else:
         print('Wrong Value')
         sys.exit(0)
