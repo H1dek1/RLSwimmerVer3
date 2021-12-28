@@ -1,4 +1,5 @@
 /skeleton_swimmer_env/build/*
+/skeleton_swimmer_env/skeleton_swimmer/pybind11/
 /skeleton_swimmer_env/__pycache__/
 /skeleton_swimmer_env/*.so
 /skeleton_swimmer_env/skeleton_swimmer/build/

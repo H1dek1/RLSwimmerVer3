@@ -7,10 +7,20 @@ import skeleton_swimmer_env
 def main():
     params = {
             'swimmer_type':      20,
+<<<<<<< HEAD
+            'on_record':         True,
+            'action_interval':   0.6,
+            'max_length':        1.9,
+            'reward_gain':       1.0,
+            'penalty_gain':      1.0,
+            'epsilon':           0.0,
+            'reward_per_energy': False,
+=======
             'on_record':         False,
             'action_interval':   0.6,
             'max_length':        1.6,
             'consider_energy':   False,
+>>>>>>> b6fd98002008315adcf21246e751de1491560ca9
             }
     df = pd.read_csv('sim/analysis/phase_diagram/characteristic_values/type20/displacement_energy.csv')
     ref = df[(df['action_interval'] == params['action_interval']) & (df['max_arm_length'] == params['max_length'])]
@@ -34,7 +44,11 @@ def main():
             [ 1.0,  1.0, -1.0],
             [-1.0,  1.0, -1.0],
             ]
+<<<<<<< HEAD
+    actions = np.loadtxt('swimming_method/type20/c.csv', delimiter=',')
+=======
     actions = np.loadtxt('swimming_method/type20/a.csv', delimiter=',')
+>>>>>>> b6fd98002008315adcf21246e751de1491560ca9
     # actions *= 0.1
 
     done = False

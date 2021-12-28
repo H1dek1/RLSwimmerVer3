@@ -11,6 +11,8 @@ def main():
     print('Max:', max(df['displacement']))
 
     fig, ax = plt.subplots(1, 1)
+    ax.set_xlabel('action interval')
+    ax.set_ylabel('max length')
     ax.set_xlim(0, 1.0)
     ax.set_ylim(1.0, 2.0)
     ax.set_aspect('equal')
@@ -23,6 +25,7 @@ def main():
             vmax=5.1,
             )
     fig.colorbar(color_bar)
+    fig.savefig('a_phase.png')
     plt.show()
 
 
