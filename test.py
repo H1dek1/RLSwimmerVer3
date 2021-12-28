@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import sys
 import numpy as np
+import pandas as pd
 import matplotlib.pyplot as plt
 from distutils.util import strtobool
 import argparse
@@ -28,13 +29,22 @@ def main():
     " Environment Parameters "
     """"""""""""""""""""""""""
     params = {
-            'swimmer_type':      20,
+            'swimmer_type':      202,
             'on_record' :        False,
+<<<<<<< HEAD
+            'action_interval':   0.6,   # 0.5 ~ 30
+            'max_length':        1.9,   # 0.1 ~ 0.9
+            'reward_gain':       1.0,
+            'penalty_gain':      1.0,
+            'epsilon':           0.0,
+            'reward_per_energy': False,
+=======
             'action_interval':   0.3,
             'max_length':        1.3,
-            'consider_energy': True,
+            'consider_energy': False,
+>>>>>>> b6fd98002008315adcf21246e751de1491560ca9
             }
-    df = pd.read_csv('sim/analysis/phase_diagram/characteristic_values/type20/displacement_energy.csv')
+    df = pd.read_csv(f'sim/analysis/phase_diagram/characteristic_values/type{params["swimmer_type"]}/displacement_energy.csv')
     ref = df[(df['action_interval'] == params['action_interval']) & (df['max_arm_length'] == params['max_length'])]
     params['displacement_gain'] = 1.0 / ref['onestep_displacement'].values[0]
     params['energy_gain'] = 1.0 / ref['onestep_energyconsumption'].values[0]
@@ -43,7 +53,7 @@ def main():
         print('evaluate')
     elif args.mode == 'simulate':
         print('simulate')
-        # params['on_record'] = True
+        params['on_record'] = True
     else:
         print('Wrong Value')
         sys.exit(0)
@@ -57,7 +67,7 @@ def main():
             action_interval=params['action_interval'],
             max_arm_length=params['max_length'],
             displacement_gain=params['displacement_gain'],
-            penalty_gain=params['energy_gain'],
+            energy_gain=params['energy_gain'],
             consider_energy=params['consider_energy'],
             ))
 

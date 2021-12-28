@@ -41,14 +41,31 @@ SkeletonSwimmer::SkeletonSwimmer(int model_type, bool on_record=false, double ac
     std::cout << "[self ERROR] No file \"init_pos.txt\"" << std::endl;
     std::exit(0);
   }
-  for(size_t i = 0; i < this->n_sphere_states; ++i){
-    init_in >> this->init_sphere_positions(i);
+  for(size_t id_sphere = 0; id_sphere < this->n_spheres; ++id_sphere){
+    for(unsigned int id_dim = 0; id_dim < 3; ++id_dim){
+      init_in >> this->init_sphere_positions(3*id_sphere + id_dim);
+    }
   }
+  // std::cout << this->init_sphere_positions.transpose() << std::endl;
+
+  // set gravity point to zero point
+  Vector3d centroid_pos = Vector3d::Zero();
+  for(size_t id_sphere = 0; id_sphere < this->n_spheres; ++id_sphere){
+    centroid_pos(0) += this->init_sphere_positions(3*id_sphere + 0);
+    centroid_pos(1) += this->init_sphere_positions(3*id_sphere + 1);
+    centroid_pos(2) += this->init_sphere_positions(3*id_sphere + 2);
+  }
+  centroid_pos /= this->n_spheres;
+  
+  for(size_t id_sphere = 0; id_sphere < this->n_spheres; ++id_sphere){
+    this->init_sphere_positions.segment(3*id_sphere, 3) -= centroid_pos;
+  }
+  // std::cout << this->init_sphere_positions.transpose() << std::endl;
 
   /* load connection information matrix */
-  std::ifstream matrix_in(models_dir_path+"trans_mat.txt", std::ios::in);
+  std::ifstream matrix_in(models_dir_path+"incidence_matrix.txt", std::ios::in);
   if(!matrix_in){
-    std::cout << "[self ERROR] No file \"trans_mat.txt\"" << std::endl;
+    std::cout << "[self ERROR] No file \"incidence_matrix.txt\"" << std::endl;
     std::exit(0);
   }
   for(size_t i = 0; i < this->n_spheres; ++i){
@@ -62,6 +79,7 @@ SkeletonSwimmer::SkeletonSwimmer(int model_type, bool on_record=false, double ac
       }
     }
   }
+  // std::cout << this->incident_matrix_arm2sph << std::endl;
   this->target_unit_vec = Vector3d::UnitX();
 }
 
@@ -115,13 +133,9 @@ VectorXd SkeletonSwimmer::reset()
       fout << "arm_energy_consumption_" << id_arm << ",";
     }
     for(size_t id_arm = 0; id_arm < this->n_arms; ++id_arm){
-      if(id_arm == this->n_arms-1){
-        fout << "arm_length_" << id_arm;
-      }else{
-        fout << "arm_length_" << id_arm << ",";
-      }
+      fout << "arm_length_" << id_arm << ",";
     }
-    fout << std::endl;
+    fout << "head_direction_x,head_direction_y,head_direction_z" << std::endl;
   }
 
   /* Reset All Variables */
@@ -193,6 +207,7 @@ SkeletonSwimmer::step(const VectorXd actions)
   info["center"] = this->center_position;
   info["displacement"] = displacement;
   info["energy_penalty"] = this->step_energy_consumption;
+  info["head_direction"] = (this->sphere_positions.segment(0, 3) - this->center_position).normalized();
 
   /* update counter */
   this->step_counter += 1;
@@ -235,12 +250,6 @@ void SkeletonSwimmer::miniStep(const VectorXd actions)
 
   /* calculate Energy Consumption */
   this->energy_consumption = (this->arm_forces.array() * clipped_actions.array() * DT).abs();
-  // VectorXd tmp = VectorXd::Zero(5);
-  // tmp << -1, 1, 0.5, -0.2, 0.0;
-  // std::cout << tmp.transpose() << std::endl;
-  // std::cout << tmp.cwiseAbs().transpose() << std::endl;
-  // std::cout << tmp.array().abs().transpose() << std::endl;
-  // std::cout << tmp.array().cwiseAbs().transpose() << std::endl;
   this->output_energy_consumption += this->energy_consumption;
   this->step_energy_consumption   += this->energy_consumption;
 }
@@ -310,13 +319,13 @@ void SkeletonSwimmer::output()
     fout << this->output_energy_consumption(id_arm) << ",";
   }
   for(size_t id_arm = 0; id_arm < this->n_arms; ++id_arm){
-    if(id_arm == this->n_arms-1){
-      fout << this->arm_lengths(id_arm);
-    }else{
-      fout << this->arm_lengths(id_arm) << ",";
-    }
+    fout << this->arm_lengths(id_arm) << ",";
   }
-  fout << std::endl;
+  Vector3d head_direction = (this->sphere_positions.segment(0, 3) - this->center_position).normalized();
+  fout << head_direction(0) << ","
+       << head_direction(1) << ","
+       << head_direction(2) << std::endl;
+  // fout << std::endl;
   this->output_energy_consumption = VectorXd::Zero(this->n_arms);
 }
 

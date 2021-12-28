@@ -6,21 +6,21 @@ import skeleton_swimmer_env
 env = gym.make(
         'SkeletonSwimmer-v0',
         onRecord=False,
-        swimmer_type=20,
+        swimmer_type=204,
         action_interval=0.1,
         max_arm_length=1.1,
         displacement_gain=1.0,
         energy_gain=1.0,
         consider_energy=True)
 
-env.reset()
-_, reward, done, info = env.step([0.0, 0.0, 0.0])
+obs = env.reset()
+print('obs')
+print(obs)
 
-initial_position = info['center']
-_, reward, done, info = env.step([0.0, 0.0, 1.0])
-final_position = info['center']
-
-displacement = final_position - initial_position
-print('vector', displacement)
-print('distance', np.linalg.norm(displacement))
-print('energy', sum(info['energy_penalty']))
+obs, reward, done, info = env.step(env.action_space.sample())
+print('obs')
+print(obs)
+print('reward', reward)
+print('done', done)
+print('info')
+print(info)

@@ -17,13 +17,13 @@ def main():
     " Environment Parameters "
     """"""""""""""""""""""""""
     params = {
-            'swimmer_type':      20,
+            'swimmer_type':      202,
             'on_record':         False,
-            'action_interval':   0.1,
-            'max_length':        1.1,
-            'consider_energy': False,
+            'action_interval':   0.9,
+            'max_length':        1.9,
+            'consider_energy':   False,
             }
-    df = pd.read_csv('sim/analysis/phase_diagram/characteristic_values/type20/displacement_energy.csv')
+    df = pd.read_csv(f'sim/analysis/phase_diagram/characteristic_values/type{params["swimmer_type"]}/displacement_energy.csv')
     ref = df[(df['action_interval'] == params['action_interval']) & (df['max_arm_length'] == params['max_length'])]
     params['displacement_gain'] = 1.0 / ref['onestep_displacement'].values[0]
     params['energy_gain'] = 1.0 / ref['onestep_energyconsumption'].values[0]
@@ -51,8 +51,9 @@ def main():
         load_model_name = f'ppo' \
                 f'_env{n_envs}' \
                 f'_displacementgain{params["displacement_gain"]:.2f}' \
+                f'_energygain{params["energy_gain"]:.2f}' \
                 f'_notConsiderEnergy' \
-                f'_20211216_023526'
+                f'_20211228_125408'
 
 
     """"""""""""""""""""
@@ -69,9 +70,9 @@ def main():
     if params['consider_energy']:
         model_save_dir = f'./rl/trained_models/' \
                 f'type_{params["swimmer_type"]}/' \
+                f'consider_energy/' \
                 f'interval{params["action_interval"]}' \
-                f'_maxlength{params["max_length"]}/' \
-                f'consider_energy/'
+                f'_maxlength{params["max_length"]}/'
         os.makedirs(model_save_dir, exist_ok=True)
 
         model_name = f'ppo_env{n_envs}' \
@@ -82,9 +83,9 @@ def main():
     else:
         model_save_dir = f'./rl/trained_models/' \
                 f'type_{params["swimmer_type"]}/' \
+                f'not_consider_energy/' \
                 f'interval{params["action_interval"]}' \
-                f'_maxlength{params["max_length"]}/' \
-                f'not_consider_energy/'
+                f'_maxlength{params["max_length"]}/'
         os.makedirs(model_save_dir, exist_ok=True)
 
         model_name = f'ppo_env{n_envs}' \
@@ -195,10 +196,19 @@ def main():
     "    TRAINING   "
     """""""""""""""""
     print('*'*10, ' START ', '*'*10)
-    for _ in range(epoch):
+    for i in range(epoch):
         print('*'*10, ' LEARNING ', '*'*10)
-        model.learn(total_timesteps=int(time_steps), 
-                tb_log_name=model_name)
+        print('Epoch:', i)
+        if i == 0:
+            model.learn(
+                    total_timesteps=int(time_steps), 
+                    tb_log_name=model_name,
+                    reset_num_timesteps=True)
+        else:
+            model.learn(
+                    total_timesteps=int(time_steps), 
+                    tb_log_name=model_name,
+                    reset_num_timesteps=False)
         testModel(model, params)
 
         print('*'*10, ' EVALUATING ', '*'*10)
