@@ -7,10 +7,10 @@ import skeleton_swimmer_env
 def main():
     params = {
             'swimmer_type':      20,
-            'on_record':         False,
-            'action_interval':   0.3,
-            'max_length':        1.6,
-            'reward_gain':       300.0,
+            'on_record':         True,
+            'action_interval':   0.6,
+            'max_length':        1.9,
+            'reward_gain':       1.0,
             'penalty_gain':      1.0,
             'epsilon':           0.0,
             'reward_per_energy': False,
@@ -34,7 +34,7 @@ def main():
             [ 1.0,  1.0, -1.0],
             [-1.0,  1.0, -1.0],
             ]
-    actions = np.loadtxt('swimming_method/type20/d.csv', delimiter=',')
+    actions = np.loadtxt('swimming_method/type20/c.csv', delimiter=',')
     # actions *= 0.1
 
     done = False

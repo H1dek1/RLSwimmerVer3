@@ -116,13 +116,9 @@ VectorXd SkeletonSwimmer::reset()
       fout << "arm_energy_consumption_" << id_arm << ",";
     }
     for(size_t id_arm = 0; id_arm < this->n_arms; ++id_arm){
-      if(id_arm == this->n_arms-1){
-        fout << "arm_length_" << id_arm;
-      }else{
-        fout << "arm_length_" << id_arm << ",";
-      }
+      fout << "arm_length_" << id_arm << ",";
     }
-    fout << std::endl;
+    fout << "head_direction_x,head_direction_y,head_direction_z" << std::endl;
   }
 
   /* Reset All Variables */
@@ -195,6 +191,7 @@ SkeletonSwimmer::step(const VectorXd actions)
   info["center"] = this->center_position;
   info["displacement"] = displacement;
   info["energy_penalty"] = this->step_energy_consumption;
+  info["head_direction"] = (this->sphere_positions.segment(0, 3) - this->center_position).normalized();
 
   /* update counter */
   this->step_counter += 1;
@@ -312,13 +309,13 @@ void SkeletonSwimmer::output()
     fout << this->output_energy_consumption(id_arm) << ",";
   }
   for(size_t id_arm = 0; id_arm < this->n_arms; ++id_arm){
-    if(id_arm == this->n_arms-1){
-      fout << this->arm_lengths(id_arm);
-    }else{
-      fout << this->arm_lengths(id_arm) << ",";
-    }
+    fout << this->arm_lengths(id_arm) << ",";
   }
-  fout << std::endl;
+  Vector3d head_direction = (this->sphere_positions.segment(0, 3) - this->center_position).normalized();
+  fout << head_direction(0) << ","
+       << head_direction(1) << ","
+       << head_direction(2) << std::endl;
+  // fout << std::endl;
   this->output_energy_consumption = VectorXd::Zero(this->n_arms);
 }
 
