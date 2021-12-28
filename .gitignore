@@ -3,6 +3,7 @@
 /skeleton_swimmer_env/__pycache__/
 /skeleton_swimmer_env/*.so
 /skeleton_swimmer_env/skeleton_swimmer/build/
+/skeleton_swimmer_env/skeleton_swimmer/pybind11/
 /rl/logs/
 /.venv3.8/
 /.python-version

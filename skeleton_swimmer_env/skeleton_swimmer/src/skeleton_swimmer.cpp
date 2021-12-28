@@ -8,12 +8,11 @@ namespace MicroSwimmer
 {
 using namespace Eigen;
 
-SkeletonSwimmer::SkeletonSwimmer(int model_type, bool on_record=false, double action_interval=0.5, double max_arm_length=1.5, double reward_gain=1.0, double penalty_gain=1.0, double epsilon=0.0, bool reward_per_energy=false) : 
+SkeletonSwimmer::SkeletonSwimmer(int model_type, bool on_record=false, double action_interval=0.5, double max_arm_length=1.5, double displacement_gain=1.0, double energy_gain=1.0, bool consider_energy=false) : 
   ON_RECORD(         on_record                                  ), 
-  REWARD_GAIN(       reward_gain                                ), 
-  PENALTY_GAIN(      penalty_gain                               ), 
-  EPSILON(           epsilon                                    ), 
-  REWARD_PER_ENERGY( reward_per_energy                          ), 
+  DISPLACEMENT_GAIN( displacement_gain                          ), 
+  ENERGY_GAIN(       energy_gain                                ), 
+  CONSIDER_ENERGY(   consider_energy                            ), 
   ACTION_INTERVAL(   action_interval                            ), 
   L_MAX(             max_arm_length                             ), 
   SWIMMER_TYPE(      model_type                                 ),
@@ -42,14 +41,31 @@ SkeletonSwimmer::SkeletonSwimmer(int model_type, bool on_record=false, double ac
     std::cout << "[self ERROR] No file \"init_pos.txt\"" << std::endl;
     std::exit(0);
   }
-  for(size_t i = 0; i < this->n_sphere_states; ++i){
-    init_in >> this->init_sphere_positions(i);
+  for(size_t id_sphere = 0; id_sphere < this->n_spheres; ++id_sphere){
+    for(unsigned int id_dim = 0; id_dim < 3; ++id_dim){
+      init_in >> this->init_sphere_positions(3*id_sphere + id_dim);
+    }
   }
+  // std::cout << this->init_sphere_positions.transpose() << std::endl;
+
+  // set gravity point to zero point
+  Vector3d centroid_pos = Vector3d::Zero();
+  for(size_t id_sphere = 0; id_sphere < this->n_spheres; ++id_sphere){
+    centroid_pos(0) += this->init_sphere_positions(3*id_sphere + 0);
+    centroid_pos(1) += this->init_sphere_positions(3*id_sphere + 1);
+    centroid_pos(2) += this->init_sphere_positions(3*id_sphere + 2);
+  }
+  centroid_pos /= this->n_spheres;
+  
+  for(size_t id_sphere = 0; id_sphere < this->n_spheres; ++id_sphere){
+    this->init_sphere_positions.segment(3*id_sphere, 3) -= centroid_pos;
+  }
+  // std::cout << this->init_sphere_positions.transpose() << std::endl;
 
   /* load connection information matrix */
-  std::ifstream matrix_in(models_dir_path+"trans_mat.txt", std::ios::in);
+  std::ifstream matrix_in(models_dir_path+"incidence_matrix.txt", std::ios::in);
   if(!matrix_in){
-    std::cout << "[self ERROR] No file \"trans_mat.txt\"" << std::endl;
+    std::cout << "[self ERROR] No file \"incidence_matrix.txt\"" << std::endl;
     std::exit(0);
   }
   for(size_t i = 0; i < this->n_spheres; ++i){
@@ -63,6 +79,7 @@ SkeletonSwimmer::SkeletonSwimmer(int model_type, bool on_record=false, double ac
       }
     }
   }
+  // std::cout << this->incident_matrix_arm2sph << std::endl;
   this->target_unit_vec = Vector3d::UnitX();
 }
 
@@ -82,19 +99,19 @@ VectorXd SkeletonSwimmer::reset()
   }
   if(this->ON_RECORD){
     std::stringstream record_file_name;
-    if(this->REWARD_PER_ENERGY == true){
+    if(this->CONSIDER_ENERGY == true){
       record_file_name << "type" << this->SWIMMER_TYPE
         << "_radius" << A
         << "_interval" << this->ACTION_INTERVAL
         << "_maxlength" << this->L_MAX 
-        << "_relativereward" 
+        << "_withEnergy" 
         << ".csv";
     }else{
       record_file_name << "type" << this->SWIMMER_TYPE
         << "_radius" << A
         << "_interval" << this->ACTION_INTERVAL
         << "_maxlength" << this->L_MAX 
-        << "_epsilon" << this->EPSILON 
+        << "_withoutEnergy"
         << ".csv";
     }
     std::string full_path = RUNFILE_PATH.string() + OUT_DIRECTORY_PATH + record_file_name.str();
@@ -174,16 +191,15 @@ SkeletonSwimmer::step(const VectorXd actions)
 
   /* Rward */
   Vector3d displacement = this->center_position - this->prev_center_position;
-  double displacement_reward = this->REWARD_GAIN  * displacement.dot(this->target_unit_vec);
-  double energy_penalty      = this->PENALTY_GAIN * this->step_energy_consumption.sum();
+  double displacement_reward = this->DISPLACEMENT_GAIN  * displacement.dot(this->target_unit_vec);
 
   double reward;
-  if(this->REWARD_PER_ENERGY){
-    // reward = displacement_reward / (energy_penalty);
-    reward = displacement_reward / (1.0 + energy_penalty);
-    // reward = ((1.0-this->EPSILON)*displacement_reward) - (this->EPSILON*energy_penalty);
+  if(this->CONSIDER_ENERGY){
+    double energy_penalty = this->ENERGY_GAIN * this->step_energy_consumption.sum();
+    reward = displacement_reward / (0.0001 + energy_penalty);
+
   }else{
-    reward = ((1.0-this->EPSILON)*displacement_reward) - (this->EPSILON*energy_penalty);
+    reward = displacement_reward;
   }
 
   /* Additional information */
@@ -234,12 +250,6 @@ void SkeletonSwimmer::miniStep(const VectorXd actions)
 
   /* calculate Energy Consumption */
   this->energy_consumption = (this->arm_forces.array() * clipped_actions.array() * DT).abs();
-  // VectorXd tmp = VectorXd::Zero(5);
-  // tmp << -1, 1, 0.5, -0.2, 0.0;
-  // std::cout << tmp.transpose() << std::endl;
-  // std::cout << tmp.cwiseAbs().transpose() << std::endl;
-  // std::cout << tmp.array().abs().transpose() << std::endl;
-  // std::cout << tmp.array().cwiseAbs().transpose() << std::endl;
   this->output_energy_consumption += this->energy_consumption;
   this->step_energy_consumption   += this->energy_consumption;
 }
