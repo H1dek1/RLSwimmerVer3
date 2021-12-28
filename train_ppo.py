@@ -38,7 +38,7 @@ def main():
     " Learning Setting "
     """"""""""""""""""""
     multi_process    = True
-    create_new_model = True
+    create_new_model = False
     save_model       = True
     if params['consider_energy']:
         load_model_name = f'ppo' \
@@ -51,8 +51,9 @@ def main():
         load_model_name = f'ppo' \
                 f'_env{n_envs}' \
                 f'_displacementgain{params["displacement_gain"]:.2f}' \
+                f'_energygain{params["energy_gain"]:.2f}' \
                 f'_notConsiderEnergy' \
-                f'_20211216_023526'
+                f'_20211228_125408'
 
 
     """"""""""""""""""""
