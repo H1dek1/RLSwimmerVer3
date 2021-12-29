@@ -38,7 +38,7 @@ def main():
     " Learning Setting "
     """"""""""""""""""""
     multi_process    = True
-    create_new_model = False
+    create_new_model = True
     save_model       = True
     if params['consider_energy']:
         load_model_name = f'ppo' \
