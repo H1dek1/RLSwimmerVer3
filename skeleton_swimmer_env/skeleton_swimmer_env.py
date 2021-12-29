@@ -3,7 +3,7 @@ import gym
 import numpy as np
 
 class SkeletonSwimmerEnv(gym.Env):
-    def __init__(self, onRecord=False, swimmer_type=10, action_interval=0.5, max_arm_length=1.5, displacement_gain=1.0, energy_gain=1.0, consider_energy=False):
+    def __init__(self, onRecord=False, swimmer_type=10, action_interval=0.5, max_arm_length=1.5, displacement_gain=1.0, energy_gain=1.0, consider_energy=False, random_init_states=False):
 
         self.swimmer = SkeletonSwimmer(
                 swimmer_type,
@@ -12,7 +12,8 @@ class SkeletonSwimmerEnv(gym.Env):
                 max_arm_length,
                 displacement_gain,
                 energy_gain,
-                consider_energy)
+                consider_energy,
+                random_init_states)
 
         self._swimmer_type = swimmer_type
         self.n_states = self.swimmer.getNumStates()

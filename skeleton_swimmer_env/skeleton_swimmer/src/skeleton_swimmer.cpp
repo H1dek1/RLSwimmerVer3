@@ -8,17 +8,18 @@ namespace MicroSwimmer
 {
 using namespace Eigen;
 
-SkeletonSwimmer::SkeletonSwimmer(int model_type, bool on_record=false, double action_interval=0.5, double max_arm_length=1.5, double displacement_gain=1.0, double energy_gain=1.0, bool consider_energy=false) : 
-  ON_RECORD(         on_record                                  ), 
-  DISPLACEMENT_GAIN( displacement_gain                          ), 
-  ENERGY_GAIN(       energy_gain                                ), 
-  CONSIDER_ENERGY(   consider_energy                            ), 
-  ACTION_INTERVAL(   action_interval                            ), 
-  L_MAX(             max_arm_length                             ), 
-  SWIMMER_TYPE(      model_type                                 ),
-  RUNFILE_PATH(      std::filesystem::current_path()            ),
-  MAX_STEP(          static_cast<int>(MAX_TIME/action_interval) ),
-  MAX_ITER(          static_cast<int>(action_interval/DT)       )
+SkeletonSwimmer::SkeletonSwimmer(int model_type, bool on_record=false, double action_interval=0.5, double max_arm_length=1.5, double displacement_gain=1.0, double energy_gain=1.0, bool consider_energy=false, bool random_init_states=false) : 
+  ON_RECORD(          on_record                                  ), 
+  DISPLACEMENT_GAIN(  displacement_gain                          ), 
+  ENERGY_GAIN(        energy_gain                                ), 
+  CONSIDER_ENERGY(    consider_energy                            ), 
+  RANDOM_INIT_STATES( random_init_states                         ), 
+  ACTION_INTERVAL(    action_interval                            ), 
+  L_MAX(              max_arm_length                             ), 
+  SWIMMER_TYPE(       model_type                                 ),
+  RUNFILE_PATH(       std::filesystem::current_path()            ),
+  MAX_STEP(           static_cast<int>(MAX_TIME/action_interval) ),
+  MAX_ITER(           static_cast<int>(action_interval/DT)       )
 {
   std::string models_dir_path = this->RUNFILE_PATH.string() + MODEL_LOAD_PATH + "/type_" + std::to_string(this->SWIMMER_TYPE) + "/";
 
@@ -79,8 +80,15 @@ SkeletonSwimmer::SkeletonSwimmer(int model_type, bool on_record=false, double ac
       }
     }
   }
-  // std::cout << this->incident_matrix_arm2sph << std::endl;
   this->target_unit_vec = Vector3d::UnitX();
+
+  // For Quaternion
+  std::ostringstream dim_oss;
+  dim_oss << this->SWIMMER_TYPE;
+  auto dim_iss = std::istringstream(
+      dim_oss.str().substr(0, 1)
+      );
+  dim_iss >> this->swimmer_dim;
 }
 
 SkeletonSwimmer::~SkeletonSwimmer()
@@ -147,8 +155,40 @@ VectorXd SkeletonSwimmer::reset()
   this->energy_consumption = VectorXd::Zero(this->n_arms);
   this->output_energy_consumption = VectorXd::Zero(this->n_arms);
   this->step_energy_consumption = VectorXd::Zero(this->n_arms);
-  this->sphere_positions   = this->init_sphere_positions;
   this->sphere_velocities  = VectorXd::Zero(this->n_sphere_states);
+
+  this->sphere_positions = this->init_sphere_positions;
+  /* Rotate initial position */
+  if (this->RANDOM_INIT_STATES) {
+    // Define random
+    std::mt19937 mt(this->rnd());
+    std::uniform_real_distribution<> rand_2pi(0.0, 2.0*M_PI);
+    // construct Quaternion
+    if (this->swimmer_dim > 1) {
+      quats.emplace_back(
+          AngleAxisd(rand_2pi(mt), Vector3d::UnitZ())
+          );
+      if (this->swimmer_dim > 2) {
+        quats.emplace_back(
+            AngleAxisd(rand_2pi(mt), Vector3d::UnitY())
+            );
+        quats.emplace_back(
+            AngleAxisd(rand_2pi(mt), Vector3d::UnitX())
+            );
+      }
+    }
+    Quaterniond total_quat = Quaterniond::Identity();
+    for (int idx = quats.size()-1; idx >= 0; --idx) {
+      total_quat *= quats[idx];
+    }
+    // Rotate each sphere
+    for (size_t id_sph = 0; id_sph < this->n_spheres; ++id_sph) {
+      this->sphere_positions.segment(3*id_sph, 3) = total_quat * this->sphere_positions.segment(3*id_sph, 3);
+    }
+  }
+
+
+
   this->updateCenterPosition();
   this->prev_center_position = this->center_position;
 

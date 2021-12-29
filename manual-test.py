@@ -8,7 +8,7 @@ import skeleton_swimmer_env
 def main():
     params = {
             'swimmer_type':      202,
-            'on_record':         True,
+            'on_record':         False,
             'action_interval':   0.3,
             'max_length':        1.3,
             'consider_energy':   False,

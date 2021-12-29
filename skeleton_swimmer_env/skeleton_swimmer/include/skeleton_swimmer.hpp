@@ -20,7 +20,7 @@ class SkeletonSwimmer
 
   public:
     /* Constructor & Destuctor */
-    SkeletonSwimmer(int model_type, bool on_record, double action_period, double max_arm_lengh, double displacement_gain, double energy_gain, bool consider_energy);
+    SkeletonSwimmer(int model_type, bool on_record, double action_period, double max_arm_lengh, double displacement_gain, double energy_gain, bool consider_energy, bool random_init_states);
     ~SkeletonSwimmer();
 
   /* Private Member Functions */
@@ -41,6 +41,7 @@ class SkeletonSwimmer
   private:
     const bool   ON_RECORD;
     const int    SWIMMER_TYPE;
+    const bool   RANDOM_INIT_STATES;
     const double DISPLACEMENT_GAIN;
     const double ENERGY_GAIN;
     const double ACTION_INTERVAL;
@@ -50,6 +51,7 @@ class SkeletonSwimmer
     const size_t MAX_ITER;
     unsigned int step_counter;
     unsigned int total_itr;
+    unsigned int swimmer_dim;
 
     size_t n_spheres; // n
     size_t n_arms;   // m
@@ -85,6 +87,10 @@ class SkeletonSwimmer
   private:
     std::ofstream fout;
     const std::filesystem::path RUNFILE_PATH;
+    std::vector<Quaterniond> quats;
+    std::random_device rnd;
+    // std::uniform_real_distribution<> rand_2pi(0.0, 2.0*M_PI);
+
 };
 }
 
