@@ -6,15 +6,16 @@ import pandas as pd
 n_sph = 3
 
 dt = 0.1
-plot_time = 500
-all_df = pd.read_csv('../../result/type20_radius0.1_period0.9_maxlength1.9.csv')
-# all_df = pd.read_csv('../../result/radius0.1/same_period_maxlength/type20_radius0.1_period0.9_maxlength1.9.csv')
+plot_time = 20
+df1 = pd.read_csv('../../result/type202_radius0.1_interval0.3_maxlength1.3_withoutEnergy_learned.csv')
+df2 = pd.read_csv('../../result/type202_radius0.1_interval0.3_maxlength1.3_withoutEnergy_manual.csv')
 
-print(all_df.columns)
-
-all_df['centroid_x'] = sum([all_df[f'sphere_pos_{i}_x'] for i in range(n_sph)]) / n_sph
-
+dfs = [df1, df2]
 fig, ax = plt.subplots(1,1)
-ax.plot(all_df['Time'][:int(plot_time/dt)], all_df['centroid_x'][:int(plot_time/dt)], lw=1.0)
+
+for df in dfs:
+    df['centroid_x'] = sum([df[f'sphere_pos_{i}_x'] for i in range(n_sph)]) / n_sph
+    ax.plot(df['Time'][:int(plot_time/dt)], df['centroid_x'][:int(plot_time/dt)], lw=1.0)
+
 ax.grid()
 plt.show()
