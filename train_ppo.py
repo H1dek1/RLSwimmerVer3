@@ -17,11 +17,12 @@ def main():
     " Environment Parameters "
     """"""""""""""""""""""""""
     params = {
-            'swimmer_type':      202,
-            'on_record':         False,
-            'action_interval':   0.7,
-            'max_length':        1.7,
-            'consider_energy':   False,
+            'swimmer_type':       202,
+            'on_record':          False,
+            'action_interval':    0.3,
+            'max_length':         1.3,
+            'consider_energy':    False,
+            'random_init_states': True
             }
     df = pd.read_csv(f'sim/analysis/phase_diagram/characteristic_values/type{params["swimmer_type"]}/displacement_energy.csv')
     ref = df[(df['action_interval'] == params['action_interval']) & (df['max_arm_length'] == params['max_length'])]
@@ -32,7 +33,7 @@ def main():
     """"""""""""""""""""
     n_envs     = 16
     time_steps = int(2_000_000)
-    epoch      = 9
+    epoch      = 10
     
     """"""""""""""""""""
     " Learning Setting "
@@ -40,6 +41,7 @@ def main():
     multi_process    = True
     create_new_model = True
     save_model       = True
+
     if params['consider_energy']:
         load_model_name = f'ppo' \
                 f'_env{n_envs}' \
@@ -59,40 +61,94 @@ def main():
     """"""""""""""""""""
     " Log Setting      "
     """"""""""""""""""""
-
-    log_save_dir = f'./rl/logs/' \
-            f'type_{params["swimmer_type"]}/' \
-            f'interval{params["action_interval"]}' \
-            f'_maxlength{params["max_length"]}/'
-    os.makedirs(log_save_dir, exist_ok=True)
-
     now = datetime.datetime.now()
     if params['consider_energy']:
-        model_save_dir = f'./rl/trained_models/' \
-                f'type_{params["swimmer_type"]}/' \
-                f'consider_energy/' \
-                f'interval{params["action_interval"]}' \
-                f'_maxlength{params["max_length"]}/'
-        os.makedirs(model_save_dir, exist_ok=True)
+        if params['random_init_states']:
+            log_save_dir = f'./rl/logs/' \
+                    f'random_init_states/' \
+                    f'type_{params["swimmer_type"]}/' \
+                    f'interval{params["action_interval"]}' \
+                    f'_maxlength{params["max_length"]}/'
+            os.makedirs(log_save_dir, exist_ok=True)
+    
+            model_save_dir = f'./rl/trained_models/' \
+                    f'random_init_states/' \
+                    f'type_{params["swimmer_type"]}/' \
+                    f'consider_energy/' \
+                    f'interval{params["action_interval"]}' \
+                    f'_maxlength{params["max_length"]}/'
+            os.makedirs(model_save_dir, exist_ok=True)
 
-        model_name = f'ppo_env{n_envs}' \
-                f'_displacementgain{params["displacement_gain"]:.2f}' \
-                f'_energygain{params["energy_gain"]:.2f}' \
-                f'_considerEnergy_' \
-                + now.strftime('%Y%m%d_%H%M%S')
+            model_name = f'ppo_env{n_envs}' \
+                    f'_displacementgain{params["displacement_gain"]:.2f}' \
+                    f'_energygain{params["energy_gain"]:.2f}' \
+                    f'_considerEnergy_' \
+                    + now.strftime('%Y%m%d_%H%M%S')
+        else:
+            log_save_dir = f'./rl/logs/' \
+                    f'const_init_states/' \
+                    f'type_{params["swimmer_type"]}/' \
+                    f'interval{params["action_interval"]}' \
+                    f'_maxlength{params["max_length"]}/'
+            os.makedirs(log_save_dir, exist_ok=True)
+    
+            model_save_dir = f'./rl/trained_models/' \
+                    f'const_init_states/' \
+                    f'type_{params["swimmer_type"]}/' \
+                    f'consider_energy/' \
+                    f'interval{params["action_interval"]}' \
+                    f'_maxlength{params["max_length"]}/'
+            os.makedirs(model_save_dir, exist_ok=True)
+
+            model_name = f'ppo_env{n_envs}' \
+                    f'_displacementgain{params["displacement_gain"]:.2f}' \
+                    f'_energygain{params["energy_gain"]:.2f}' \
+                    f'_considerEnergy_' \
+                    + now.strftime('%Y%m%d_%H%M%S')
+
     else:
-        model_save_dir = f'./rl/trained_models/' \
-                f'type_{params["swimmer_type"]}/' \
-                f'not_consider_energy/' \
-                f'interval{params["action_interval"]}' \
-                f'_maxlength{params["max_length"]}/'
-        os.makedirs(model_save_dir, exist_ok=True)
+        if params['random_init_states']:
+            log_save_dir = f'./rl/logs/' \
+                    f'random_init_states/' \
+                    f'type_{params["swimmer_type"]}/' \
+                    f'interval{params["action_interval"]}' \
+                    f'_maxlength{params["max_length"]}/'
+            os.makedirs(log_save_dir, exist_ok=True)
 
-        model_name = f'ppo_env{n_envs}' \
-                f'_displacementgain{params["displacement_gain"]:.2f}' \
-                f'_energygain{params["energy_gain"]:.2f}' \
-                f'_notConsiderEnergy_' \
-                + now.strftime('%Y%m%d_%H%M%S')
+            model_save_dir = f'./rl/trained_models/' \
+                    f'random_init_states/' \
+                    f'type_{params["swimmer_type"]}/' \
+                    f'consider_energy/' \
+                    f'interval{params["action_interval"]}' \
+                    f'_maxlength{params["max_length"]}/'
+            os.makedirs(model_save_dir, exist_ok=True)
+
+            model_name = f'ppo_env{n_envs}' \
+                    f'_displacementgain{params["displacement_gain"]:.2f}' \
+                    f'_energygain{params["energy_gain"]:.2f}' \
+                    f'_considerEnergy_' \
+                    + now.strftime('%Y%m%d_%H%M%S')
+        else:
+            log_save_dir = f'./rl/logs/' \
+                    f'const_init_states/' \
+                    f'type_{params["swimmer_type"]}/' \
+                    f'interval{params["action_interval"]}' \
+                    f'_maxlength{params["max_length"]}/'
+            os.makedirs(log_save_dir, exist_ok=True)
+    
+            model_save_dir = f'./rl/trained_models/' \
+                    f'const_init_states/' \
+                    f'type_{params["swimmer_type"]}/' \
+                    f'not_consider_energy/' \
+                    f'interval{params["action_interval"]}' \
+                    f'_maxlength{params["max_length"]}/'
+            os.makedirs(model_save_dir, exist_ok=True)
+
+            model_name = f'ppo_env{n_envs}' \
+                    f'_displacementgain{params["displacement_gain"]:.2f}' \
+                    f'_energygain{params["energy_gain"]:.2f}' \
+                    f'_notConsiderEnergy_' \
+                    + now.strftime('%Y%m%d_%H%M%S')
 
     """"""""""""""""""""
     " Constructing Env "
@@ -109,6 +165,7 @@ def main():
                         displacement_gain=params['displacement_gain'],
                         energy_gain=params['energy_gain'],
                         consider_energy=params['consider_energy'],
+                        random_init_states=params['random_init_states']
                         ), 
                     log_save_dir) for i in range(n_envs)], 
                 start_method='spawn')
@@ -179,6 +236,7 @@ def main():
                 displacement_gain=params['displacement_gain'],
                 energy_gain=params['energy_gain'],
                 consider_energy=params['consider_energy'],
+                random_init_states=params['random_init_states']
                 )
             )
 
@@ -188,7 +246,7 @@ def main():
     testModel(model, params)
     print('*'*10, ' EVALUATING ', '*'*10)
     mean_reward, std_reward = evaluate_policy(model, 
-            eval_env, n_eval_episodes=1, deterministic=False)
+            eval_env, n_eval_episodes=5, deterministic=False)
     print(f'Mean reward: {mean_reward} +/- {std_reward:.2f}')
     max_score = mean_reward
 
@@ -238,6 +296,7 @@ def testModel(model, params):
                 displacement_gain=params['displacement_gain'],
                 energy_gain=params['energy_gain'],
                 consider_energy=params['consider_energy'],
+                random_init_states=params['random_init_states']
                 )
             )
 
