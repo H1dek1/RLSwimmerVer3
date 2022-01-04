@@ -8,11 +8,12 @@ import skeleton_swimmer_env
 
 def main():
     params = {
-            'swimmer_type':      203,
-            'on_record':         True,
-            'action_interval':   0.9,
-            'max_length':        1.9,
-            'consider_energy':   False,
+            'swimmer_type':       202,
+            'on_record':          True,
+            'action_interval':    0.3,
+            'max_length':         1.3,
+            'consider_energy':    False,
+            'random_init_states': True,
             }
     df = pd.read_csv('sim/analysis/phase_diagram/characteristic_values/type20/displacement_energy.csv')
     ref = df[(df['action_interval'] == params['action_interval']) & (df['max_arm_length'] == params['max_length'])]
@@ -30,6 +31,7 @@ def main():
             displacement_gain=params['displacement_gain'],
             energy_gain=params['energy_gain'],
             consider_energy=params['consider_energy'],
+            random_init_states=params['random_init_states']
             )
 
     done = False
@@ -39,11 +41,12 @@ def main():
     env.reset()
     while not done:
     # for i in tqdm(range(1)):
-        print('step', step_counter)
-        action = np.random.randint(-1, 2, env.action_space.shape)
+        # print('step', step_counter)
+        # action = np.random.randint(-1, 2, env.action_space.shape)
+        action = env.action_space.sample()
         obs, reward, done, info = env.step(action)
-        print('Center')
-        print(info['center'])
+        # print('Center')
+        # print(info['center'])
         step_counter += 1
         rewards.append(reward)
         if done == True:
