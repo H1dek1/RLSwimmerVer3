@@ -7,8 +7,8 @@ import skeleton_swimmer_env
 
 def main():
     params = {
-            'swimmer_type':      20,
-            'on_record':         False,
+            'swimmer_type':      202,
+            'on_record':         True,
             'action_interval':   0.3,
             'max_length':        1.3,
             'consider_energy':   False,
@@ -46,7 +46,8 @@ def main():
     env.reset()
     while not done:
     # for i in range(10):
-        action = actions[step_counter%len(actions)]
+        # action = actions[step_counter%len(actions)]
+        action = actions[len(actions) - (step_counter+5)%len(actions) -1]
         #print('action:', step_counter%len(action_list))
         # print('i =', step_counter)
         # print(action)
