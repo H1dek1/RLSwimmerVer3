@@ -19,8 +19,8 @@ def main():
     params = {
             'swimmer_type':      202,
             'on_record':         False,
-            'action_interval':   0.7,
-            'max_length':        1.7,
+            'action_interval':   0.1,
+            'max_length':        1.1,
             'consider_energy':   False,
             }
     df = pd.read_csv(f'sim/analysis/phase_diagram/characteristic_values/type{params["swimmer_type"]}/displacement_energy.csv')
@@ -53,7 +53,7 @@ def main():
                 f'_displacementgain{params["displacement_gain"]:.2f}' \
                 f'_energygain{params["energy_gain"]:.2f}' \
                 f'_notConsiderEnergy' \
-                f'_20211228_125408'
+                f'_20211230_023700'
 
 
     """"""""""""""""""""
@@ -136,7 +136,7 @@ def main():
         model = PPO(
                 policy='MlpPolicy',
                 env=env,
-                learning_rate=0.0003,
+                learning_rate=0.0006,
                 n_steps=2048,
                 batch_size=64,
                 n_epochs=10,
