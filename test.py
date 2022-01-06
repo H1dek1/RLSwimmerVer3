@@ -29,11 +29,12 @@ def main():
     " Environment Parameters "
     """"""""""""""""""""""""""
     params = {
-            'swimmer_type':      202,
-            'on_record' :        False,
-            'action_interval':   0.3,   # 0.5 ~ 30
-            'max_length':        1.3,   # 0.1 ~ 0.9
-            'consider_energy': False,
+            'swimmer_type':       202,
+            'on_record' :         False,
+            'action_interval':    0.3,   # 0.5 ~ 30
+            'max_length':         1.3,   # 0.1 ~ 0.9
+            'consider_energy':    False,
+            'random_init_states': True,
             }
     df = pd.read_csv(f'sim/analysis/phase_diagram/characteristic_values/type{params["swimmer_type"]}/displacement_energy.csv')
     ref = df[(df['action_interval'] == params['action_interval']) & (df['max_arm_length'] == params['max_length'])]
@@ -60,6 +61,7 @@ def main():
             displacement_gain=params['displacement_gain'],
             energy_gain=params['energy_gain'],
             consider_energy=params['consider_energy'],
+            random_init_states=params['random_init_states']
             ))
 
     """
@@ -74,7 +76,7 @@ def main():
     if args.mode == 'evaluate':
         print('*'*10, ' EVALUATING ', '*'*10)
         mean_reward, std_reward = evaluate_policy(model,
-                env, n_eval_episodes=1, deterministic=args.deterministic)
+                env, n_eval_episodes=5, deterministic=args.deterministic)
         print(f'Mean reward: {mean_reward} +/- {std_reward:.2f}')
 
     elif args.mode == 'simulate':

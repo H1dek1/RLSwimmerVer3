@@ -3,14 +3,14 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include <array>
 #include <tuple>
-#include <map>
+#include <random>
 #include <unordered_map>
 #include <fstream>
 #include <sstream>
 #include <filesystem>
 #include <Eigen/Dense>
+#include <Eigen/Geometry>
 
 namespace MicroSwimmer {
   /* swimmer parameters */
