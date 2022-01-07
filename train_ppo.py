@@ -16,12 +16,12 @@ def main():
     """"""""""""""""""""""""""
     " Environment Parameters "
     """"""""""""""""""""""""""
-    create_new_model = False
+    create_new_model = True
     params = {
             'swimmer_type':       20,
             'on_record':          False,
             'action_interval':    0.1,
-            'max_length':         1.7,
+            'max_length':         1.9,
             'consider_energy':    False,
             'random_init_states': False
             }
