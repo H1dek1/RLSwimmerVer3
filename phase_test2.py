@@ -11,7 +11,7 @@ import skeleton_swimmer_env
 
 def main():
     swimmer_type = 20
-    swimming_way = 'a'
+    swimming_way = 'b'
     # df = pd.DataFrame(columns=['action_interval', 'max_length', 'displacement'])
     results = dict()
     results['name'] = swimming_way
