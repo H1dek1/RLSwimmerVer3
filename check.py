@@ -6,7 +6,7 @@ import skeleton_swimmer_env
 env = gym.make(
         'SkeletonSwimmer-v0',
         onRecord=False,
-        swimmer_type=204,
+        swimmer_type=20,
         action_interval=0.1,
         max_arm_length=1.1,
         displacement_gain=1.0,
