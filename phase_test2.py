@@ -20,7 +20,8 @@ def main():
             delimiter=',')
     interval_list = np.round(np.arange(0.05, 1.0, 0.05), decimals=2)
     max_length_list = np.round(np.arange(1.05, 2.0, 0.05), decimals=2)
-    beat_list = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    # beat_list = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    beat_list = [10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
     print(interval_list)
     print(max_length_list)
     # exit()
@@ -60,7 +61,7 @@ def main():
                 #     'displacement': info['center'][0],
                 #     }, ignore_index=True)
     # df.to_csv('sim/analysis/phase_diagram/data/without_energy/d_phase.csv', index=False)
-    with open(f'sim/analysis/phase_diagram/data/without_energy/{swimming_way}.json', mode='wt', encoding='utf-8') as f:
+    with open(f'sim/analysis/phase_diagram/data/without_energy/{swimming_way}_second.json', mode='wt', encoding='utf-8') as f:
           json.dump(results, f, ensure_ascii=False, indent=2)
 
 

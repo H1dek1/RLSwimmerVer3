@@ -17,11 +17,9 @@ import skeleton_swimmer_env
 parser = argparse.ArgumentParser(description=
         'This program is for evaluating or simulating trained model. 2 arguments required.')
 parser.add_argument('--mode', choices=['evaluate', 'simulate'], 
-        help='"evaluate" or "simulate"', required=False, default=True)
+        help='"evaluate" or "simulate"', required=True)
 parser.add_argument('--model', type=str, 
         help='Learned model path', required=True)
-parser.add_argument('--deterministic', type=strtobool, 
-        help='Whether choose actions deterministic or not. Default value is False', default=False)
 
 def main():
     args = parser.parse_args()
@@ -31,8 +29,8 @@ def main():
     params = {
             'swimmer_type':       20,
             'on_record' :         False,
-            'action_interval':    0.1,   # 0.5 ~ 30
-            'max_length':         1.7,   # 0.1 ~ 0.9
+            'action_interval':    0.3,   # 0.5 ~ 30
+            'max_length':         1.5,   # 0.1 ~ 0.9
             'consider_energy':    False,
             'random_init_states': False,
             }
@@ -76,14 +74,14 @@ def main():
     if args.mode == 'evaluate':
         print('*'*10, ' EVALUATING ', '*'*10)
         mean_reward, std_reward = evaluate_policy(model,
-                env, n_eval_episodes=5, deterministic=args.deterministic)
+                env, n_eval_episodes=1, deterministic=True)
         print(f'Mean reward: {mean_reward} +/- {std_reward:.2f}')
 
     elif args.mode == 'simulate':
-        simulate(env, model, args.deterministic)
+        simulate(env, model)
 
 
-def simulate(env, model, deterministic):
+def simulate(env, model):
     print('*'*10, ' SIMULATING ', '*'*10)
     epi_reward = 0
     displacement_list = []
@@ -92,8 +90,8 @@ def simulate(env, model, deterministic):
     done = False
     obs = env.reset()
     # for i in range(1):
-    while(done == False):
-        action, _states = model.predict(obs, deterministic=deterministic)
+    while not done:
+        action, _states = model.predict(obs, deterministic=True)
         print(action)
         obs, reward, done, info = env.step(action)
         epi_reward += reward
