@@ -16,13 +16,14 @@ def main():
     """"""""""""""""""""""""""
     " Environment Parameters "
     """"""""""""""""""""""""""
+    create_new_model = True
     params = {
-            'swimmer_type':       202,
+            'swimmer_type':       20,
             'on_record':          False,
             'action_interval':    0.3,
-            'max_length':         1.3,
+            'max_length':         1.5,
             'consider_energy':    False,
-            'random_init_states': True
+            'random_init_states': False
             }
     df = pd.read_csv(f'sim/analysis/phase_diagram/characteristic_values/type{params["swimmer_type"]}/displacement_energy.csv')
     ref = df[(df['action_interval'] == params['action_interval']) & (df['max_arm_length'] == params['max_length'])]
@@ -39,7 +40,6 @@ def main():
     " Learning Setting "
     """"""""""""""""""""
     multi_process    = True
-    create_new_model = True
     save_model       = True
 
     if params['consider_energy']:
@@ -246,7 +246,7 @@ def main():
     testModel(model, params)
     print('*'*10, ' EVALUATING ', '*'*10)
     mean_reward, std_reward = evaluate_policy(model, 
-            eval_env, n_eval_episodes=5, deterministic=False)
+            eval_env, n_eval_episodes=1, deterministic=True)
     print(f'Mean reward: {mean_reward} +/- {std_reward:.2f}')
     max_score = mean_reward
 
@@ -271,7 +271,7 @@ def main():
 
         print('*'*10, ' EVALUATING ', '*'*10)
         mean_reward, std_reward = evaluate_policy(model, 
-                eval_env, n_eval_episodes=5, deterministic=True)
+                eval_env, n_eval_episodes=1, deterministic=True)
         print(f'Mean reward: {mean_reward} +/- {std_reward:.2f}')
 
         if save_model:
