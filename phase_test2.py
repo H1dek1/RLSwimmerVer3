@@ -28,7 +28,7 @@ def main():
     
     for beat in tqdm(beat_list):
         results[beat] = dict()
-        actions = original_actions.repeat(2, axis=0)
+        actions = original_actions.repeat(beat, axis=0)
         for interval in tqdm(interval_list, leave=False):
             results[beat][interval] = dict()
             for max_length in tqdm(max_length_list, leave=False):
