@@ -6,11 +6,51 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 def main():
-    data = dict()
-    with open('data/without_energy/sample.json', mode='rt', encoding='utf-8') as f:
-        data = json.load(f)
+    strategy_name_list = ['sample']
+    all_strategies = dict()
+    for strategy in strategy_name_list:
+        with open(
+                f'data/without_energy/{strategy}.json',
+                mode='rt',
+                encoding='utf-8'
+                ) as f:
+            all_strategies[strategy] = json.load(f)
 
-    print(data)
+    # action_intervals = np.arange(0.05, 1.0, 0.05)
+    # max_lengths = np.arange(1.05, 2.0, 0.05)
+    # action_intervals = np.arange(0.1, 1.0, 0.4)
+    # max_lengths = np.arange(1.1, 2.0, 0.4)
+    action_intervals = np.array([0.1, 0.4, 0.7])
+    max_lengths = action_intervals + 1.0
+    print(action_intervals)
+
+    optimal_strategy = dict()
+    for interval in action_intervals:
+        """ for each interval """
+        optimal_strategy[interval] = dict()
+        for max_length in max_lengths:
+            """ for each max length """
+            optimal_strategy[interval][max_length] = dict()
+            max_name = 'None'
+            max_displacement = 0.0
+            for name, phases in all_strategies.items():
+                """ strategy A or B """
+                if 'name' in phases:
+                    phases.pop('name')
+                for beat, phase in phases.items():
+                    """ for each beating rhythm """
+                    if phase[str(round(interval, 2))][str(round(max_length, 2))] > max_displacement:
+                        max_name = name + beat
+                        max_displacement = phase[str(round(interval, 2))][str(round(max_length, 2))]
+
+            print(max_name)
+            optimal_strategy[interval][max_length]['name'] = max_name
+            optimal_strategy[interval][max_length]['displacement'] = max_displacement
+
+    # print(optimal_strategy)
+                    
+
+
 
     exit()
     df = pd.read_csv('data/without_energy/a_phase.csv')

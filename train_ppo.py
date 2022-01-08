@@ -16,12 +16,12 @@ def main():
     """"""""""""""""""""""""""
     " Environment Parameters "
     """"""""""""""""""""""""""
-    create_new_model = True
+    create_new_model = False
     params = {
             'swimmer_type':       20,
             'on_record':          False,
-            'action_interval':    0.1,
-            'max_length':         1.9,
+            'action_interval':    0.7,
+            'max_length':         1.3,
             'consider_energy':    False,
             'random_init_states': False
             }
@@ -55,7 +55,7 @@ def main():
                 f'_displacementgain{params["displacement_gain"]:.2f}' \
                 f'_energygain{params["energy_gain"]:.2f}' \
                 f'_notConsiderEnergy' \
-                f'_20220106_024504'
+                f'_20220107_181115'
 
 
     """"""""""""""""""""
@@ -193,7 +193,11 @@ def main():
         model = PPO(
                 policy='MlpPolicy',
                 env=env,
+<<<<<<< HEAD
                 learning_rate=0.0005,
+=======
+                learning_rate=0.0003,
+>>>>>>> 363b59dd0bf89354534d2dc55d571116330ea631
                 n_steps=2048,
                 batch_size=64,
                 n_epochs=10,

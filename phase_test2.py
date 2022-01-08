@@ -15,7 +15,7 @@ def main():
     # df = pd.DataFrame(columns=['action_interval', 'max_length', 'displacement'])
     results = dict()
     results['name'] = swimming_way
-    actions = np.loadtxt(
+    original_actions = np.loadtxt(
             f'swimming_method/type20/{swimming_way}.csv',
             delimiter=',')
     interval_list = np.round(np.arange(0.05, 1.0, 0.05), decimals=2)
@@ -28,6 +28,7 @@ def main():
     
     for beat in tqdm(beat_list):
         results[beat] = dict()
+        actions = original_actions.repeat(2, axis=0)
         for interval in tqdm(interval_list, leave=False):
             results[beat][interval] = dict()
             for max_length in tqdm(max_length_list, leave=False):

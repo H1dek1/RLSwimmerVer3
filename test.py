@@ -17,7 +17,7 @@ import skeleton_swimmer_env
 parser = argparse.ArgumentParser(description=
         'This program is for evaluating or simulating trained model. 2 arguments required.')
 parser.add_argument('--mode', choices=['evaluate', 'simulate'], 
-        help='"evaluate" or "simulate"', required=True)
+        help='"evaluate" or "simulate"', required=False, default=True)
 parser.add_argument('--model', type=str, 
         help='Learned model path', required=True)
 parser.add_argument('--deterministic', type=strtobool, 
