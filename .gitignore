@@ -6,5 +6,6 @@
 /skeleton_swimmer_env/skeleton_swimmer/pybind11/
 /rl/logs/
 /.venv3.8/
+/.venv3.7/
 /.python-version
 /sim/analysis/notebook/__pycache__/
