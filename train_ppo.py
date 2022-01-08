@@ -16,12 +16,12 @@ def main():
     """"""""""""""""""""""""""
     " Environment Parameters "
     """"""""""""""""""""""""""
-    create_new_model = False
+    create_new_model = True
     params = {
             'swimmer_type':       20,
             'on_record':          False,
-            'action_interval':    0.1,
-            'max_length':         1.7,
+            'action_interval':    0.3,
+            'max_length':         1.5,
             'consider_energy':    False,
             'random_init_states': False
             }
@@ -193,7 +193,7 @@ def main():
         model = PPO(
                 policy='MlpPolicy',
                 env=env,
-                learning_rate=0.00003,
+                learning_rate=0.0003,
                 n_steps=2048,
                 batch_size=64,
                 n_epochs=10,
