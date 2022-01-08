@@ -6,7 +6,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 def main():
-    strategy_name_list = ['sample']
+    strategy_name_list = ['a', 'b']
     all_strategies = dict()
     for strategy in strategy_name_list:
         with open(
@@ -16,12 +16,12 @@ def main():
                 ) as f:
             all_strategies[strategy] = json.load(f)
 
-    # action_intervals = np.arange(0.05, 1.0, 0.05)
-    # max_lengths = np.arange(1.05, 2.0, 0.05)
+    action_intervals = np.arange(0.05, 1.0, 0.05)
+    max_lengths = np.arange(1.05, 2.0, 0.05)
     # action_intervals = np.arange(0.1, 1.0, 0.4)
     # max_lengths = np.arange(1.1, 2.0, 0.4)
-    action_intervals = np.array([0.1, 0.4, 0.7])
-    max_lengths = action_intervals + 1.0
+    # action_intervals = np.array([0.1, 0.4, 0.7])
+    # max_lengths = action_intervals + 1.0
     print(action_intervals)
 
     optimal_strategy = dict()
@@ -43,11 +43,13 @@ def main():
                         max_name = name + beat
                         max_displacement = phase[str(round(interval, 2))][str(round(max_length, 2))]
 
-            print(max_name)
+            # print(max_name)
             optimal_strategy[interval][max_length]['name'] = max_name
             optimal_strategy[interval][max_length]['displacement'] = max_displacement
 
     # print(optimal_strategy)
+    with open('optimals/withoutEnergy_phaseDiagram.json', mode='wt', encoding='utf-8') as f:
+        json.dump(optimal_strategy, f, ensure_ascii=False, indent=2)
                     
 
 
