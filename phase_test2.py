@@ -11,7 +11,7 @@ import skeleton_swimmer_env
 
 def main():
     swimmer_type = 20
-    swimming_way = 'b'
+    swimming_way = 'a'
     # df = pd.DataFrame(columns=['action_interval', 'max_length', 'displacement'])
     results = dict()
     results['name'] = swimming_way
@@ -28,7 +28,7 @@ def main():
     
     for beat in tqdm(beat_list):
         results[beat] = dict()
-        actions = original_actions.repeat(2, axis=0)
+        actions = original_actions.repeat(beat, axis=0)
         for interval in tqdm(interval_list, leave=False):
             results[beat][interval] = dict()
             for max_length in tqdm(max_length_list, leave=False):
