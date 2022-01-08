@@ -23,9 +23,10 @@ def main():
         for x in action_intervals:
             name = phase[str(x)][str(y)]['name']
             if name[0] == 'a':
-                optimal_each_x.append(int(name[1])*x)
+                optimal_each_x.append(int(name[1:])*x)
             elif name[0] == 'b':
-                optimal_each_x.append(-int(name[1])*x)
+                optimal_each_x.append(-int(name[1:])*x)
+            # optimal_each_x.append(name)
 
         optimal_strategy.append(optimal_each_x)
         

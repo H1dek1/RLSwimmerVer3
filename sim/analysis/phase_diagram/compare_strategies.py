@@ -23,14 +23,15 @@ def main():
     # action_intervals = np.array([0.1, 0.4, 0.7])
     # max_lengths = action_intervals + 1.0
     print(action_intervals)
+    print(max_lengths)
 
     optimal_strategy = dict()
     for interval in action_intervals:
         """ for each interval """
-        optimal_strategy[interval] = dict()
+        optimal_strategy[str(round(interval, 2))] = dict()
         for max_length in max_lengths:
             """ for each max length """
-            optimal_strategy[interval][max_length] = dict()
+            optimal_strategy[str(round(interval, 2))][str(round(interval, 2))] = dict()
             max_name = 'None'
             max_displacement = 0.0
             for name, phases in all_strategies.items():
@@ -44,39 +45,15 @@ def main():
                         max_displacement = phase[str(round(interval, 2))][str(round(max_length, 2))]
 
             # print(max_name)
-            optimal_strategy[interval][max_length]['name'] = max_name
-            optimal_strategy[interval][max_length]['displacement'] = max_displacement
+            if round(interval, 2) == 0.95 and round(max_length, 2) == 1.05:
+                print(max_name, max_displacement)
+            optimal_strategy[str(round(interval, 2))][str(round(interval, 2))]['name'] = max_name
+            optimal_strategy[str(round(interval, 2))][str(round(interval, 2))]['displacement'] = max_displacement
 
     # print(optimal_strategy)
+    exit()
     with open('optimals/withoutEnergy_phaseDiagram.json', mode='wt', encoding='utf-8') as f:
         json.dump(optimal_strategy, f, ensure_ascii=False, indent=2)
-                    
-
-
-
-    exit()
-    df = pd.read_csv('data/without_energy/a_phase.csv')
-    print(df.columns)
-    print('Min:', min(df['displacement']))
-    print('Max:', max(df['displacement']))
-
-    fig, ax = plt.subplots(1, 1)
-    ax.set_xlabel('action interval')
-    ax.set_ylabel('max length')
-    ax.set_xlim(0, 1.0)
-    ax.set_ylim(1.0, 2.0)
-    ax.set_aspect('equal')
-    color_bar = ax.scatter(
-            df['action_interval'],
-            df['max_length'],
-            c=df['displacement'],
-            cmap='viridis',
-            vmin=0.0,
-            vmax=5.1,
-            )
-    fig.colorbar(color_bar)
-    fig.savefig('a_phase.png')
-    plt.show()
 
 
 if __name__ == '__main__':
