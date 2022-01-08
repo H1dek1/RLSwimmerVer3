@@ -17,6 +17,8 @@ def main():
     " Environment Parameters "
     """"""""""""""""""""""""""
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
     create_new_model = True
     params = {
             'swimmer_type':       20,
@@ -25,11 +27,15 @@ def main():
             'max_length':         1.5,
 =======
 <<<<<<< HEAD
+>>>>>>> 9f5e04fbded1c8c5dc672d7b7b0c571791b7c84e
     create_new_model = True
     params = {
             'swimmer_type':       20,
             'on_record':          False,
             'action_interval':    0.3,
+<<<<<<< HEAD
+            'max_length':         1.9,
+=======
             'max_length':         1.5,
 =======
     create_new_model = False
@@ -40,6 +46,7 @@ def main():
             'max_length':         1.3,
 >>>>>>> 44aafb645a039d6db1cbcc26bca29c0c20630b5f
 >>>>>>> 6155308f77dce4abd03a675a0bfc6cec281d7bf6
+>>>>>>> 9f5e04fbded1c8c5dc672d7b7b0c571791b7c84e
             'consider_energy':    False,
             'random_init_states': False
             }
