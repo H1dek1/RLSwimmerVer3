@@ -7,10 +7,10 @@ import skeleton_swimmer_env
 
 def main():
     params = {
-            'swimmer_type':      202,
+            'swimmer_type':      20,
             'on_record':         False,
-            'action_interval':   0.3,
-            'max_length':        1.3,
+            'action_interval':   0.9,
+            'max_length':        1.9,
             'consider_energy':   False,
             }
     df = pd.read_csv('sim/analysis/phase_diagram/characteristic_values/type202/displacement_energy.csv')
@@ -47,7 +47,8 @@ def main():
     while not done:
     # for i in range(10):
         # action = actions[step_counter%len(actions)]
-        action = actions[len(actions) - (step_counter+5)%len(actions) -1]
+        action = actions[(step_counter+6)%len(actions)]
+        # action = actions[len(actions) - (step_counter+2)%len(actions) -1]
         #print('action:', step_counter%len(action_list))
         # print('i =', step_counter)
         # print(action)

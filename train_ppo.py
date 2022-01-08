@@ -16,12 +16,37 @@ def main():
     """"""""""""""""""""""""""
     " Environment Parameters "
     """"""""""""""""""""""""""
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
     create_new_model = True
     params = {
             'swimmer_type':       20,
             'on_record':          False,
             'action_interval':    0.3,
+            'max_length':         1.5,
+=======
+<<<<<<< HEAD
+>>>>>>> 9f5e04fbded1c8c5dc672d7b7b0c571791b7c84e
+    create_new_model = True
+    params = {
+            'swimmer_type':       20,
+            'on_record':          False,
+            'action_interval':    0.3,
+<<<<<<< HEAD
             'max_length':         1.9,
+=======
+            'max_length':         1.5,
+=======
+    create_new_model = False
+    params = {
+            'swimmer_type':       20,
+            'on_record':          False,
+            'action_interval':    0.7,
+            'max_length':         1.3,
+>>>>>>> 44aafb645a039d6db1cbcc26bca29c0c20630b5f
+>>>>>>> 6155308f77dce4abd03a675a0bfc6cec281d7bf6
+>>>>>>> 9f5e04fbded1c8c5dc672d7b7b0c571791b7c84e
             'consider_energy':    False,
             'random_init_states': False
             }
@@ -48,14 +73,14 @@ def main():
                 f'_displacementgain{params["displacement_gain"]:.2f}' \
                 f'_energygain{params["energy_gain"]:.2f}' \
                 f'_considerEnergy' \
-                f'_20211216_023526'
+                f'_20220105_004400'
     else:
         load_model_name = f'ppo' \
                 f'_env{n_envs}' \
                 f'_displacementgain{params["displacement_gain"]:.2f}' \
                 f'_energygain{params["energy_gain"]:.2f}' \
                 f'_notConsiderEnergy' \
-                f'_20211228_125408'
+                f'_20220107_181115'
 
 
     """"""""""""""""""""
@@ -193,7 +218,15 @@ def main():
         model = PPO(
                 policy='MlpPolicy',
                 env=env,
+<<<<<<< HEAD
                 learning_rate=0.0003,
+=======
+<<<<<<< HEAD
+                learning_rate=0.0005,
+=======
+                learning_rate=0.0003,
+>>>>>>> 363b59dd0bf89354534d2dc55d571116330ea631
+>>>>>>> 6155308f77dce4abd03a675a0bfc6cec281d7bf6
                 n_steps=2048,
                 batch_size=64,
                 n_epochs=10,
