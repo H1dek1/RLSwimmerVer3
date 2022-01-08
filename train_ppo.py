@@ -16,12 +16,12 @@ def main():
     """"""""""""""""""""""""""
     " Environment Parameters "
     """"""""""""""""""""""""""
-    create_new_model = True
+    create_new_model = False
     params = {
             'swimmer_type':       20,
             'on_record':          False,
             'action_interval':    0.7,
-            'max_length':         1.1,
+            'max_length':         1.3,
             'consider_energy':    False,
             'random_init_states': False
             }
@@ -48,14 +48,14 @@ def main():
                 f'_displacementgain{params["displacement_gain"]:.2f}' \
                 f'_energygain{params["energy_gain"]:.2f}' \
                 f'_considerEnergy' \
-                f'_20211216_023526'
+                f'_20220105_004400'
     else:
         load_model_name = f'ppo' \
                 f'_env{n_envs}' \
                 f'_displacementgain{params["displacement_gain"]:.2f}' \
                 f'_energygain{params["energy_gain"]:.2f}' \
                 f'_notConsiderEnergy' \
-                f'_20211228_125408'
+                f'_20220107_181115'
 
 
     """"""""""""""""""""
@@ -246,7 +246,7 @@ def main():
     testModel(model, params)
     print('*'*10, ' EVALUATING ', '*'*10)
     mean_reward, std_reward = evaluate_policy(model, 
-            eval_env, n_eval_episodes=1, deterministic=False)
+            eval_env, n_eval_episodes=1, deterministic=True)
     print(f'Mean reward: {mean_reward} +/- {std_reward:.2f}')
     max_score = mean_reward
 
