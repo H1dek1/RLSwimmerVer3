@@ -17,7 +17,7 @@ import skeleton_swimmer_env
 parser = argparse.ArgumentParser(description=
         'This program is for evaluating or simulating trained model. 2 arguments required.')
 parser.add_argument('--mode', choices=['evaluate', 'simulate'], 
-        help='"evaluate" or "simulate"', required=True)
+        help='"evaluate" or "simulate"', required=False, default=True)
 parser.add_argument('--model', type=str, 
         help='Learned model path', required=True)
 parser.add_argument('--deterministic', type=strtobool, 
@@ -29,12 +29,12 @@ def main():
     " Environment Parameters "
     """"""""""""""""""""""""""
     params = {
-            'swimmer_type':       202,
+            'swimmer_type':       20,
             'on_record' :         False,
-            'action_interval':    0.3,   # 0.5 ~ 30
-            'max_length':         1.3,   # 0.1 ~ 0.9
+            'action_interval':    0.1,   # 0.5 ~ 30
+            'max_length':         1.7,   # 0.1 ~ 0.9
             'consider_energy':    False,
-            'random_init_states': True,
+            'random_init_states': False,
             }
     df = pd.read_csv(f'sim/analysis/phase_diagram/characteristic_values/type{params["swimmer_type"]}/displacement_energy.csv')
     ref = df[(df['action_interval'] == params['action_interval']) & (df['max_arm_length'] == params['max_length'])]
