@@ -34,7 +34,7 @@ def main():
             'consider_energy':    False,
             'random_init_states': False,
             }
-    df = pd.read_csv(f'sim/analysis/phase_diagram/characteristic_values/type{params["swimmer_type"]}/displacement_energy.csv')
+    df = pd.read_csv(f'sim/analysis/phase_diagram1/characteristic_values/type{params["swimmer_type"]}/displacement_energy.csv')
     ref = df[(df['action_interval'] == params['action_interval']) & (df['max_arm_length'] == params['max_length'])]
     params['displacement_gain'] = 1.0 / ref['onestep_displacement'].values[0]
     params['energy_gain'] = 1.0 / ref['onestep_energyconsumption'].values[0]
