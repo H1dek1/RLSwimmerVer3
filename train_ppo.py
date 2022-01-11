@@ -20,12 +20,12 @@ def main():
     params = {
             'swimmer_type':       20,
             'on_record':          False,
-            'action_interval':    0.5,
-            'max_length':         1.9,
+            'action_interval':    0.1,
+            'max_length':         1.5,
             'consider_energy':    False,
             'random_init_states': False
             }
-    df = pd.read_csv(f'sim/analysis/phase_diagram/characteristic_values/type{params["swimmer_type"]}/displacement_energy.csv')
+    df = pd.read_csv(f'sim/analysis/phase_diagram1/characteristic_values/type{params["swimmer_type"]}/displacement_energy.csv')
     ref = df[(df['action_interval'] == params['action_interval']) & (df['max_arm_length'] == params['max_length'])]
     params['displacement_gain'] = 1.0 / ref['onestep_displacement'].values[0]
     params['energy_gain'] = 1.0 / ref['onestep_energyconsumption'].values[0]
@@ -197,7 +197,7 @@ def main():
                 n_steps=2048,
                 batch_size=64,
                 n_epochs=10,
-                gamma=0.99**(params['action_interval']),
+                gamma=0.99**params['action_interval'],
                 gae_lambda=0.95,
                 clip_range=0.2,
                 clip_range_vf=None,

@@ -10,7 +10,7 @@ def main():
     all_strategies = dict()
     for strategy in strategy_name_list:
         with open(
-                f'data/without_energy/{strategy}.json',
+                f'data/without_energy/{strategy}_editted.json',
                 mode='rt',
                 encoding='utf-8'
                 ) as f:
@@ -31,28 +31,23 @@ def main():
         optimal_strategy[str(round(interval, 2))] = dict()
         for max_length in max_lengths:
             """ for each max length """
-            optimal_strategy[str(round(interval, 2))][str(round(interval, 2))] = dict()
+            optimal_strategy[str(round(interval, 2))][str(round(max_length, 2))] = dict()
             max_name = 'None'
             max_displacement = 0.0
             for name, phases in all_strategies.items():
                 """ strategy A or B """
-                if 'name' in phases:
-                    phases.pop('name')
-                for beat, phase in phases.items():
-                    """ for each beating rhythm """
-                    if phase[str(round(interval, 2))][str(round(max_length, 2))] > max_displacement:
-                        max_name = name + beat
-                        max_displacement = phase[str(round(interval, 2))][str(round(max_length, 2))]
+                if phases['data']['1'][str(round(interval, 2))][str(round(max_length, 2))] > max_displacement:
+                    max_name = name
+                    max_displacement = phases['data']['1'][str(round(interval, 2))][str(round(max_length, 2))]
 
             # print(max_name)
             if round(interval, 2) == 0.95 and round(max_length, 2) == 1.05:
                 print(max_name, max_displacement)
-            optimal_strategy[str(round(interval, 2))][str(round(interval, 2))]['name'] = max_name
-            optimal_strategy[str(round(interval, 2))][str(round(interval, 2))]['displacement'] = max_displacement
+            optimal_strategy[str(round(interval, 2))][str(round(max_length, 2))]['name'] = max_name
+            optimal_strategy[str(round(interval, 2))][str(round(max_length, 2))]['displacement'] = max_displacement
 
     # print(optimal_strategy)
-    exit()
-    with open('optimals/withoutEnergy_phaseDiagram.json', mode='wt', encoding='utf-8') as f:
+    with open('optimals/withoutEnergy_phaseDiagram1.json', mode='wt', encoding='utf-8') as f:
         json.dump(optimal_strategy, f, ensure_ascii=False, indent=2)
 
 
