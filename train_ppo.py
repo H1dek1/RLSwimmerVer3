@@ -21,8 +21,8 @@ def main():
             'swimmer_type':       20,
             'on_record':          False,
             'action_interval':    0.3,
-            'max_length':         1.7,
-            'consider_energy':    False,
+            'max_length':         1.3,
+            'consider_energy':    True,
             'random_init_states': False
             }
     df = pd.read_csv(f'sim/analysis/phase_diagram/characteristic_values/type{params["swimmer_type"]}/displacement_energy.csv')
