@@ -7,7 +7,7 @@ n_sph = 3
 
 dt = 0.1
 plot_time = 20
-df1 = pd.read_csv('../../result/type20_radius0.1_interval0.3_maxlength1.9_withoutEnergy.csv')
+df1 = pd.read_csv('../../result/type20_radius0.1_interval0.3_maxlength1.7_withoutEnergy.csv')
 
 dfs = [df1]
 fig, ax = plt.subplots(1,1)

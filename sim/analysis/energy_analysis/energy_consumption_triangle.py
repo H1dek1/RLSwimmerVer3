@@ -7,7 +7,7 @@ def main():
     dt = 0.1
     max_time = 1
     max_step = int(max_time / dt)
-    df = pd.read_csv('../../result/type20_radius0.1_interval0.3_maxlength1.3_epsilon0.csv')
+    df = pd.read_csv('../../result/type20_radius0.1_interval0.3_maxlength1.7_withoutEnergy.csv')
     print(df.columns)
 
     fig, axes = plt.subplots(2, 1)
