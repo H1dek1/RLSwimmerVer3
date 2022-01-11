@@ -20,8 +20,8 @@ def main():
     params = {
             'swimmer_type':       20,
             'on_record':          False,
-            'action_interval':    0.3,
-            'max_length':         1.7,
+            'action_interval':    0.5,
+            'max_length':         1.9,
             'consider_energy':    False,
             'random_init_states': False
             }
@@ -54,7 +54,7 @@ def main():
                 f'_env{n_envs}' \
                 f'_displacementgain{params["displacement_gain"]:.2f}' \
                 f'_energygain{params["energy_gain"]:.2f}' \
-                f'_notConsiderEnergy' \
+                f'_notConsiderEnergy_customGamma' \
                 f'_20220107_181115'
 
 
@@ -193,11 +193,11 @@ def main():
         model = PPO(
                 policy='MlpPolicy',
                 env=env,
-                learning_rate=0.0003,
+                learning_rate=0.00006,
                 n_steps=2048,
                 batch_size=64,
                 n_epochs=10,
-                gamma=0.99,
+                gamma=0.99**(params['action_interval']),
                 gae_lambda=0.95,
                 clip_range=0.2,
                 clip_range_vf=None,

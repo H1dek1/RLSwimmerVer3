@@ -29,9 +29,9 @@ def main():
     params = {
             'swimmer_type':       20,
             'on_record' :         False,
-            'action_interval':    0.3,   # 0.5 ~ 30
+            'action_interval':    0.7,   # 0.5 ~ 30
             'max_length':         1.7,   # 0.1 ~ 0.9
-            'consider_energy':    False,
+            'consider_energy':    True,
             'random_init_states': False,
             }
     df = pd.read_csv(f'sim/analysis/phase_diagram/characteristic_values/type{params["swimmer_type"]}/displacement_energy.csv')
@@ -43,7 +43,7 @@ def main():
         print('evaluate')
     elif args.mode == 'simulate':
         print('simulate')
-        params['on_record'] = True
+        # params['on_record'] = True
     else:
         print('Wrong Value')
         sys.exit(0)
