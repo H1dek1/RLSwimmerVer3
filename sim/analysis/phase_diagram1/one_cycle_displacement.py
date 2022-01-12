@@ -37,7 +37,7 @@ def plotOneCycleDisplacement(fig, ax, phase, action_intervals, max_lengths):
 def main():
 
     with open(
-            'optimals/withoutEnergy_phaseDiagram1.json',
+            '../data/optimals/withoutEnergy_phaseDiagram1.json',
             mode='rt',
             encoding='utf-8'
             ) as f:

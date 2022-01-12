@@ -13,7 +13,7 @@ def main():
     all_strategies = dict()
     for strategy_name in strategy_name_list:
         with open(
-                f'data/without_energy/{strategy_name}_editted.json',
+                f'../data/without_energy/{strategy_name}.json',
                 mode='rt',
                 encoding='utf-8'
                 ) as f:
@@ -28,7 +28,7 @@ def main():
         for length in max_lengths:
             displacement[strategy_name].append(
                     # all_strategies[strategy_name][action_interval][str(round(length, 2))]
-                    all_strategies[strategy_name][str(round(length-1, 2))][str(round(length, 2))]
+                    all_strategies[strategy_name][str(round(length-1, 2))][str(round(length, 2))]['displacement']
                     )
 
     fig, ax = plt.subplots(1, 1, figsize=(8, 3), tight_layout=True)
