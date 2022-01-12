@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 
 def main():
     with open(
-            'optimals/withoutEnergy_phaseDiagram.json',
+            '../data/optimals/withoutEnergy_phaseDiagram2.json',
             mode='rt',
             encoding='utf-8'
             ) as f:
@@ -21,7 +21,7 @@ def main():
     for y in max_lengths:
         optimal_each_x = []
         for x in action_intervals:
-            name = phase[str(x)][str(y)]['name']
+            name = phase[str(round(x, 2))][str(round(y, 2))]['name']
             if name[0] == 'a':
                 optimal_each_x.append(int(name[1:])*x)
             elif name[0] == 'b':
