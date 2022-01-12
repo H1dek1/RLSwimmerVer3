@@ -7,13 +7,14 @@ import skeleton_swimmer_env
 
 def main():
     params = {
-            'swimmer_type':      20,
-            'on_record':         False,
-            'action_interval':   0.9,
-            'max_length':        1.9,
-            'consider_energy':   False,
+            'swimmer_type':       20,
+            'on_record':          True,
+            'action_interval':    0.5,
+            'max_length':         1.5,
+            'consider_energy':    False,
+            'random_init_states': False
             }
-    df = pd.read_csv('sim/analysis/phase_diagram/characteristic_values/type202/displacement_energy.csv')
+    df = pd.read_csv('sim/analysis/data/characteristic_values/type202/displacement_energy.csv')
     ref = df[(df['action_interval'] == params['action_interval']) & (df['max_arm_length'] == params['max_length'])]
     params['displacement_gain'] = 1.0 / ref['onestep_displacement'].values[0]
     params['energy_gain'] = 1.0 / ref['onestep_energyconsumption'].values[0]
@@ -29,6 +30,7 @@ def main():
             displacement_gain=params['displacement_gain'],
             energy_gain=params['energy_gain'],
             consider_energy=params['consider_energy'],
+            random_init_states=params['random_init_states']
             )
 
     # actions0 = [
@@ -37,7 +39,7 @@ def main():
     #         [ 1.0,  1.0, -1.0],
     #         [-1.0,  1.0, -1.0],
     #         ]
-    actions = np.loadtxt('swimming_method/type20/a.csv', delimiter=',')
+    actions = np.loadtxt('swimming_method/type20/b.csv', delimiter=',')
     # actions *= 0.1
 
     done = False
@@ -47,7 +49,7 @@ def main():
     while not done:
     # for i in range(10):
         # action = actions[step_counter%len(actions)]
-        action = actions[(step_counter+6)%len(actions)]
+        action = actions[(step_counter+0)%len(actions)]
         # action = actions[len(actions) - (step_counter+2)%len(actions) -1]
         #print('action:', step_counter%len(action_list))
         # print('i =', step_counter)

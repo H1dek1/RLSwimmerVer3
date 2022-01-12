@@ -10,7 +10,7 @@ def main():
     all_strategies = dict()
     for strategy in strategy_name_list:
         with open(
-                f'data/without_energy/{strategy}_editted.json',
+                f'../data/without_energy/{strategy}.json',
                 mode='rt',
                 encoding='utf-8'
                 ) as f:
@@ -36,9 +36,9 @@ def main():
             max_displacement = 0.0
             for name, phases in all_strategies.items():
                 """ strategy A or B """
-                if phases['data']['1'][str(round(interval, 2))][str(round(max_length, 2))] > max_displacement:
+                if phases['data']['1'][str(round(interval, 2))][str(round(max_length, 2))]['displacement'] > max_displacement:
                     max_name = name
-                    max_displacement = phases['data']['1'][str(round(interval, 2))][str(round(max_length, 2))]
+                    max_displacement = phases['data']['1'][str(round(interval, 2))][str(round(max_length, 2))]['displacement']
 
             # print(max_name)
             if round(interval, 2) == 0.95 and round(max_length, 2) == 1.05:
@@ -47,7 +47,7 @@ def main():
             optimal_strategy[str(round(interval, 2))][str(round(max_length, 2))]['displacement'] = max_displacement
 
     # print(optimal_strategy)
-    with open('optimals/withoutEnergy_phaseDiagram1.json', mode='wt', encoding='utf-8') as f:
+    with open('../data/optimals/withoutEnergy_phaseDiagram1.json', mode='wt', encoding='utf-8') as f:
         json.dump(optimal_strategy, f, ensure_ascii=False, indent=2)
 
 
