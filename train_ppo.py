@@ -16,11 +16,10 @@ def main():
     """"""""""""""""""""""""""
     " Environment Parameters "
     """"""""""""""""""""""""""
-    create_new_model = True
+    create_new_model = False
     params = {
             'swimmer_type':       20,
             'on_record':          False,
-<<<<<<< HEAD
             'action_interval':    0.7,
             'max_length':         1.1,
             'consider_energy':    False,
@@ -55,8 +54,8 @@ def main():
                 f'_env{n_envs}' \
                 f'_displacementgain{params["displacement_gain"]:.2f}' \
                 f'_energygain{params["energy_gain"]:.2f}' \
-                f'_notConsiderEnergy_customGamma' \
-                f'_20220107_181115'
+                f'_notConsiderEnergy' \
+                f'_20220113_003402'
 
 
     """"""""""""""""""""
