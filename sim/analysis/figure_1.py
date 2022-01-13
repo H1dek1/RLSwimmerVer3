@@ -42,6 +42,7 @@ def main():
     axes['b'].set_title('(c)', loc='left')
 
 
+    fig.savefig('figure_1.png')
     plt.show()
 
 
