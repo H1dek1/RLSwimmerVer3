@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 
 def main():
     with open(
-            '../data/optimals/withoutEnergy_phaseDiagram2.json',
+            '../data/optimals/without_energy/withoutEnergy_phaseDiagram2.json',
             mode='rt',
             encoding='utf-8'
             ) as f:

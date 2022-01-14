@@ -52,7 +52,7 @@ def plotDisplacementPerEpisode(fig, ax, phase, action_intervals, max_lengths, mo
                          / phase[str(round(interval, 3))][str(round(length, 3))]['energy_consumption']
                         )
     if mode == 'efficiency':
-        vmax = 6.0
+        vmax = None
     else:
         vmax=None
 
