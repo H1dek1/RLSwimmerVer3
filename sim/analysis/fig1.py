@@ -15,12 +15,12 @@ def main():
     gs = fig.add_gridspec(1, 8)
     axes = dict()
     axes['pd'] = fig.add_subplot(gs[0, 0:6])
-    axes['a'] = fig.add_subplot(gs[0, 6:7])
-    axes['b'] = fig.add_subplot(gs[0, 7:8])
+    axes['a'] = fig.add_subplot(gs[0, 7:8])
+    axes['b'] = fig.add_subplot(gs[0, 6:7])
 
     """ Phase Diagram """
     drawRLPhase(fig, axes['pd'])
-    axes['pd'].set_title('(a)', loc='left')
+    axes['pd'].set_title('(a)', loc='left', fontsize=18)
 
     plot_time = dict()
     """ A swimmer """
@@ -30,7 +30,7 @@ def main():
         plot_time['a'][i] += i * (len(plot_time['a']) - 1) * 5
 
     drawSwimmer(axes['a'], df_a, plot_time['a'], ymax=18, ymin=0)
-    axes['a'].set_title('(b)', loc='left')
+    axes['a'].set_title('(c)', loc='left', fontsize=18)
 
     """ B swimmer """
     df_b = pd.read_csv('./data/strategy_record/b_interval0.5_maxlength1.5.csv')
@@ -39,10 +39,10 @@ def main():
         plot_time['b'][i] += i * (len(plot_time['b']) - 1) * 20
 
     drawSwimmer(axes['b'], df_b, plot_time['b'], ymax=18, ymin=0)
-    axes['b'].set_title('(c)', loc='left')
+    axes['b'].set_title('(b)', loc='left', fontsize=18)
 
 
-    fig.savefig('figure_1.png')
+    fig.savefig('imgs/figure_1.png')
     plt.show()
 
 

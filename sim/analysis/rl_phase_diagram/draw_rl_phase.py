@@ -19,50 +19,65 @@ def drawRLPhase(fig, ax):
     ax.set_yticklabels(np.vectorize(str)(np.round(yticks, 2)))
 
     data_list = dict()
-    data_list['a'] = np.array([
-            [0.3, 1.3],
-            [0.3, 1.5],
-
-            [0.5, 1.3],
-            [0.5, 1.5],
-            [0.5, 1.7],
-
-            [0.7, 1.3],
-            [0.7, 1.5],
-            [0.7, 1.7],
-            [0.7, 1.9],
-
-            [0.9, 1.3],
-            [0.9, 1.5],
-            [0.9, 1.7],
-            ])
     data_list['b'] = np.array([
-            [0.1, 1.1],
-            [0.3, 1.1],
-            [0.5, 1.1],
-            [0.7, 1.1],
-            [0.9, 1.1],
-            ])
+        [0.1, 1.1],
+        [0.3, 1.1],
+        [0.5, 1.1],
+        [0.7, 1.1],
+        [0.9, 1.1],
+        ])
+    data_list['a'] = np.array([
+        [0.3, 1.3],
+
+        [0.5, 1.3],
+        [0.5, 1.5],
+
+        [0.7, 1.3],
+        [0.7, 1.5],
+        [0.7, 1.7],
+
+        [0.9, 1.3],
+        [0.9, 1.5],
+        [0.9, 1.7],
+
+        [0.3, 1.5],  # 
+        [0.5, 1.7],  # 
+        [0.7, 1.9],  # 
+        ])
     data_list['c'] = np.array([
-            [0.1, 1.3],
-            [0.1, 1.5],
-            [0.1, 1.7],
-            [0.1, 1.9],
+        [0.1, 1.3],
+        [0.1, 1.5],
+        [0.1, 1.7],
+        [0.1, 1.9],
 
-            [0.3, 1.7],
-            [0.3, 1.9],
-
-            [0.5, 1.9],
-            ])
+        [0.3, 1.7],
+        ])
     data_list['d'] = np.array([
-            [0.9, 1.9],
+        ])
+    data_list['e'] = np.array([
+        [0.3, 1.9],
+        [0.5, 1.9],
+        [0.9, 1.9],
             ])
 
-    marker_list = ['o', 's', '^', 'D', 'x']
+    marker_list = ['s', '^', 'v', 'v', 'D']
+    name = [
+            'chlamy',
+            'figure eight',
+            'incomplete figure eight',
+            'incomplete figure eight',
+            'unclassifiable',
+            ]
     for i, data in enumerate(data_list.values()):
-        ax.scatter(data.T[0], data.T[1], s=100, marker=marker_list[i])
+        if i == 2:
+            ax.scatter(data.T[0], data.T[1], s=100, marker=marker_list[i], color='k', label=name[i])
+        elif len(data) == 0:
+            pass
+        else:
+            ax.scatter(data.T[0], data.T[1], s=100, marker=marker_list[i], color='k', label=name[i])
 
-    """ A """
+    ax.legend(ncol=5, bbox_to_anchor=(1.002, 0.07), fontsize=9)
+
 
 
 def main():
