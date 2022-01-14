@@ -29,21 +29,23 @@ def main():
     params = {
             'swimmer_type':       20,
             'on_record' :         False,
-            'action_interval':    0.7,   # 0.5 ~ 30
-            'max_length':         1.9,   # 0.1 ~ 0.9
-            'consider_energy':    False,
+            'action_interval':    0.5,   # 0.5 ~ 30
+            'max_length':         1.5,   # 0.1 ~ 0.9
+            'consider_energy':    True,
             'random_init_states': False,
             }
     df = pd.read_csv(f'sim/analysis/data/characteristic_values/type{params["swimmer_type"]}/displacement_energy.csv')
     ref = df[(df['action_interval'] == params['action_interval']) & (df['max_arm_length'] == params['max_length'])]
-    params['displacement_gain'] = 1.0 # / ref['onestep_displacement'].values[0]
-    params['energy_gain'] = 1.0 / ref['onestep_energyconsumption'].values[0]
+    # params['displacement_gain'] = 1.0 / ref['onestep_displacement'].values[0]
+    # params['energy_gain'] = 1.0 / ref['onestep_energyconsumption'].values[0]
+    params['displacement_gain'] = 1.0
+    params['energy_gain'] = 1.0
 
     if args.mode == 'evaluate':
         print('evaluate')
     elif args.mode == 'simulate':
         print('simulate')
-        params['on_record'] = True
+        # params['on_record'] = True
     else:
         print('Wrong Value')
         sys.exit(0)

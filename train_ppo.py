@@ -16,18 +16,13 @@ def main():
     """"""""""""""""""""""""""
     " Environment Parameters "
     """"""""""""""""""""""""""
-    create_new_model = False
+    create_new_model = True
     params = {
             'swimmer_type':       20,
             'on_record':          False,
-<<<<<<< HEAD
-            'action_interval':    0.7,
-            'max_length':         1.1,
-=======
             'action_interval':    0.5,
             'max_length':         1.5,
->>>>>>> ca5b28da013f4aef646795eb313b41f01d2e8ef1
-            'consider_energy':    False,
+            'consider_energy':    True,
             'random_init_states': False
             }
     df = pd.read_csv(f'sim/analysis/data/characteristic_values/type{params["swimmer_type"]}/displacement_energy.csv')
@@ -198,7 +193,7 @@ def main():
         model = PPO(
                 policy='MlpPolicy',
                 env=env,
-                learning_rate=0.0003,
+                learning_rate=0.0002,
                 n_steps=2048,
                 batch_size=64,
                 n_epochs=10,
