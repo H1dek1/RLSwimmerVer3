@@ -152,7 +152,6 @@ VectorXd SkeletonSwimmer::reset()
   this->input_actions      = VectorXd::Zero(this->n_arms);
   this->arm_lengths        = VectorXd::Ones(this->n_arms);
   this->arm_forces         = VectorXd::Zero(this->n_arm_states);
-  this->energy_consumption = VectorXd::Zero(this->n_arms);
   this->output_energy_consumption = VectorXd::Zero(this->n_arms);
   this->step_energy_consumption = VectorXd::Zero(this->n_arms);
   this->sphere_velocities  = VectorXd::Zero(this->n_sphere_states);
@@ -246,7 +245,7 @@ SkeletonSwimmer::step(const VectorXd actions)
   std::unordered_map<std::string, VectorXd> info;
   info["center"] = this->center_position;
   info["displacement"] = displacement;
-  info["energy_penalty"] = this->step_energy_consumption;
+  info["energy_consumption"] = this->step_energy_consumption;
   info["head_direction"] = (this->sphere_positions.segment(0, 3) - this->center_position).normalized();
 
   /* update counter */
@@ -289,9 +288,9 @@ void SkeletonSwimmer::miniStep(const VectorXd actions)
   this->sphere_positions += this->sphere_velocities * DT;
 
   /* calculate Energy Consumption */
-  this->energy_consumption = (this->arm_forces.array() * clipped_actions.array() * DT).abs();
-  this->output_energy_consumption += this->energy_consumption;
-  this->step_energy_consumption   += this->energy_consumption;
+  VectorXd energy_consumption = (this->arm_forces.array() * clipped_actions.array() * DT).abs();
+  this->output_energy_consumption += energy_consumption;
+  this->step_energy_consumption   += energy_consumption;
 }
 
 VectorXd SkeletonSwimmer::clipActions(const VectorXd actions, const VectorXd lengths) const

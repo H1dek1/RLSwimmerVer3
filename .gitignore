@@ -9,3 +9,5 @@
 /.venv3.7/
 /.python-version
 /sim/analysis/notebook/__pycache__/
+/sim/analysis/notebook/.ipynb-checkpoints/
+/sim/analysis/notebook/

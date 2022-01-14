@@ -1,0 +1,49 @@
+{
+  "name": "b",
+  "data": {
+    "1": {
+      "0.3": {
+        "1.3": {
+          "displacement": 0.9443886907417006,
+          "energy_consumption": 1590.2416150515226
+        },
+        "1.6": {
+          "displacement": 1.4464663141056828,
+          "energy_consumption": 3123.6249827053102
+        },
+        "1.9": {
+          "displacement": 0.8509760623794334,
+          "energy_consumption": 2970.8880727477263
+        }
+      },
+      "0.6": {
+        "1.3": {
+          "displacement": 0.46953055608075384,
+          "energy_consumption": 794.3904677183102
+        },
+        "1.6": {
+          "displacement": 1.4338065378487856,
+          "energy_consumption": 1650.3476205331508
+        },
+        "1.9": {
+          "displacement": 1.9753671878846626,
+          "energy_consumption": 2395.570296774458
+        }
+      },
+      "0.9": {
+        "1.3": {
+          "displacement": 0.30836288293352604,
+          "energy_consumption": 529.9728720281926
+        },
+        "1.6": {
+          "displacement": 0.9468834864457597,
+          "energy_consumption": 1101.8258831142923
+        },
+        "1.9": {
+          "displacement": 1.5474764115836022,
+          "energy_consumption": 1917.0097433075443
+        }
+      }
+    }
+  }
+}
