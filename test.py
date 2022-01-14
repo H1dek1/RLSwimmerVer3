@@ -29,23 +29,17 @@ def main():
     params = {
             'swimmer_type':       20,
             'on_record' :         False,
-<<<<<<< HEAD
             'action_interval':    0.5,   # 0.5 ~ 30
             'max_length':         1.5,   # 0.1 ~ 0.9
             'consider_energy':    True,
-=======
-            'action_interval':    0.7,   # 0.5 ~ 30
-            'max_length':         1.7,   # 0.1 ~ 0.9
-            'consider_energy':    False,
->>>>>>> 8c0f7e78c16cb2dd9060df60a577b4f0ebfd1665
             'random_init_states': False,
             }
     df = pd.read_csv(f'sim/analysis/data/characteristic_values/type{params["swimmer_type"]}/displacement_energy.csv')
     ref = df[(df['action_interval'] == params['action_interval']) & (df['max_arm_length'] == params['max_length'])]
-    # params['displacement_gain'] = 1.0 / ref['onestep_displacement'].values[0]
-    # params['energy_gain'] = 1.0 / ref['onestep_energyconsumption'].values[0]
-    params['displacement_gain'] = 1.0
-    params['energy_gain'] = 1.0
+    params['displacement_gain'] = 1.0 / ref['onestep_displacement'].values[0]
+    params['energy_gain'] = 1.0 / ref['onestep_energyconsumption'].values[0]
+    # params['displacement_gain'] = 1.0
+    # params['energy_gain'] = 1.0
 
     if args.mode == 'evaluate':
         print('evaluate')
@@ -104,7 +98,7 @@ def simulate(env, model):
         obs, reward, done, info = env.step(action)
         epi_reward += reward
         displacement_list.append(info['displacement'][0])
-        penalty_list.append(info['energy_penalty'].sum())
+        penalty_list.append(info['energy_consumption'].sum())
         reward_list.append(reward)
         if done == True: break
 
