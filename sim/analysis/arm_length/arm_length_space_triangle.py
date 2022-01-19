@@ -36,6 +36,9 @@ def main():
             ax.set_xlabel(r'$\ell_0^*$', fontsize=20)
             ax.set_ylabel(r'$\ell_1^*$', fontsize=20)
             ax.set_zlabel(r'$\ell_2^*$', fontsize=20)
+            ax.set_xlim(1, 2)
+            ax.set_ylim(1, 2)
+            ax.set_zlim(1, 2)
             ax.view_init(elev=30, azim=10)
 
             ax.plot3D(df['arm_length_0'][int(plot_start/dt):int(plot_end/dt)], df['arm_length_1'][int(plot_start/dt):int(plot_end/dt)], df['arm_length_2'][int(plot_start/dt):int(plot_end/dt)], color='C0', label=filename)
