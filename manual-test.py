@@ -9,17 +9,17 @@ def main():
     params = {
             'swimmer_type':       20,
             'on_record':          True,
-            'action_interval':    0.1,
-            'max_length':         1.3,
+            'action_interval':    0.5,
+            'max_length':         1.5,
             'consider_energy':    False,
             'random_init_states': False
             }
     df = pd.read_csv('sim/analysis/data/characteristic_values/type202/displacement_energy.csv')
     ref = df[(df['action_interval'] == params['action_interval']) & (df['max_arm_length'] == params['max_length'])]
-    params['displacement_gain'] = 1.0 / ref['onestep_displacement'].values[0]
-    params['energy_gain'] = 1.0 / ref['onestep_energyconsumption'].values[0]
-    # params['displacement_gain'] = 1.0 
-    # params['energy_gain'] = 1.0
+    # params['displacement_gain'] = 1.0 / ref['onestep_displacement'].values[0]
+    # params['energy_gain'] = 1.0 / ref['onestep_energyconsumption'].values[0]
+    params['displacement_gain'] = 1.0 
+    params['energy_gain'] = 1.0
 
     env = gym.make(
             'SkeletonSwimmer-v0',
@@ -33,21 +33,44 @@ def main():
             random_init_states=params['random_init_states']
             )
 
-    # actions0 = [
-    #         [-1.0, -1.0, -1.0],
-    #         [ 1.0, -1.0, -1.0],
-    #         [ 1.0,  1.0, -1.0],
-    #         [-1.0,  1.0, -1.0],
-    #         ]
-    actions = np.loadtxt('swimming_method/type20/b.csv', delimiter=',')
-    # actions *= 0.1
+    original_actions = np.loadtxt('swimming_method/type20/b_v2.csv', delimiter=',')
+    actions = original_actions.repeat(1, axis=0)
+    """
+    actions = np.array([
+        [1, 1, -1],
+        [-0.5, 1, -1],
+        [-1, 1, 1],
+        [-1, 0.5, 1],
+        [-1, -1, 1],
+        [-1, -1, 1],
+        [-1, -1, -1],
+        [-1, -1, -1],
+        [1, 1, -1],
+        [-1, 1, -1],
+        [-1, 1, 1],
+        [-1, 1, 1],
+        [-1, -1, 1],
+        [-1, -1, 1],
+        [-1, -1, -1],
+        [-1, -1, -1],
+        [1, -1, -1],
+        [1, -1, -1],
+        [1, -1, 1],
+        [1, -1, 1],
+        [-1, -1, 1],
+        [-1, -1, 1],
+        [-1, -1, -1],
+        [-1, -1, -1],
+        [1, 1, -1],
+        ])
+    """
 
     done = False
     episode_reward = 0
     step_counter = 0
     env.reset()
     while not done:
-    # for i in range(10):
+    # for i in range(len(actions)):
         # action = actions[step_counter%len(actions)]
         action = actions[(step_counter+0)%len(actions)]
         # action = actions[len(actions) - (step_counter+2)%len(actions) -1]

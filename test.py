@@ -38,6 +38,8 @@ def main():
     ref = df[(df['action_interval'] == params['action_interval']) & (df['max_arm_length'] == params['max_length'])]
     params['displacement_gain'] = 1.0 / ref['onestep_displacement'].values[0]
     params['energy_gain'] = 1.0 / ref['onestep_energyconsumption'].values[0]
+    # params['displacement_gain'] = 1.0
+    # params['energy_gain'] = 1.0
 
     if args.mode == 'evaluate':
         print('evaluate')
@@ -96,7 +98,7 @@ def simulate(env, model):
         obs, reward, done, info = env.step(action)
         epi_reward += reward
         displacement_list.append(info['displacement'][0])
-        penalty_list.append(info['energy_penalty'].sum())
+        penalty_list.append(info['energy_consumption'].sum())
         reward_list.append(reward)
         if done == True: break
 

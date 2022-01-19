@@ -48,14 +48,14 @@ def main():
                 f'_displacementgain{params["displacement_gain"]:.2f}' \
                 f'_energygain{params["energy_gain"]:.2f}' \
                 f'_considerEnergy' \
-                f'_20220105_004400'
+                f'_20220115_135327'
     else:
         load_model_name = f'ppo' \
                 f'_env{n_envs}' \
                 f'_displacementgain{params["displacement_gain"]:.2f}' \
                 f'_energygain{params["energy_gain"]:.2f}' \
-                f'_notConsiderEnergy_customGamma' \
-                f'_20220107_181115'
+                f'_notConsiderEnergy' \
+                f'_20220113_003402'
 
 
     """"""""""""""""""""
@@ -193,7 +193,7 @@ def main():
         model = PPO(
                 policy='MlpPolicy',
                 env=env,
-                learning_rate=0.0003,
+                learning_rate=0.0008,
                 n_steps=2048,
                 batch_size=64,
                 n_epochs=10,

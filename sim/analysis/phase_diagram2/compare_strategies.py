@@ -49,7 +49,11 @@ def main():
             optimal_strategy[str(round(interval, 2))][str(round(max_length, 2))]['displacement'] = max_displacement
 
     # print(optimal_strategy)
+<<<<<<< HEAD
     with open('../data/optimals/withoutEnergy_phaseDiagram2.json', mode='wt', encoding='utf-8') as f:
+=======
+    with open('../data/optimals/without_energy/withoutEnergy_phaseDiagram2.json', mode='wt', encoding='utf-8') as f:
+>>>>>>> 901802ed8d6dee0f63b7156344e6531592b2d2d0
         json.dump(optimal_strategy, f, ensure_ascii=False, indent=2)
 
 

@@ -28,9 +28,10 @@ def drawSwimmer(ax, df, plot_time, ymax=5.0, ymin=0.0):
 
     print('initial position:', initial)
     print('final   position:', final)
-    ax.scatter(initial[0], initial[1], color='red', marker='*')
-    ax.scatter(final[0], final[1], color='red', marker='*')
-    ax.vlines(x=initial[0], ymin=final[1], ymax=initial[1], ls='--', color='k', lw=0.5)
+    # ax.scatter(initial[0], initial[1], color='red', marker='*')
+    # ax.scatter(final[0], final[1], color='red', marker='*')
+    """ extend dot line to bottom and move left to bottom of swimmer """
+    ax.vlines(x=initial[0]-np.sqrt(3)/6, ymin=final[1]-0.5, ymax=initial[1], ls='--', color='k', lw=0.5)
 
 def drawEachSwimmer(ax, df, t, y=5.0, draw_center=False):
     dt = 0.1
@@ -46,7 +47,7 @@ def drawEachSwimmer(ax, df, t, y=5.0, draw_center=False):
     for idx in range(3):
         sph = patches.Circle(
                 xy=sphere_pos[idx],
-                radius=0.1,
+                radius=0.2,
                 fc='k',
                 zorder=1)
         ax.add_patch(sph)

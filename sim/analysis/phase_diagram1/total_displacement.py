@@ -6,8 +6,12 @@ plt.rcParams['font.family'] = 'Times New Roman'
 plt.rcParams['mathtext.fontset'] = 'cm'
 plt.rcParams['font.size'] = 15
 
-def plotTotalDisplacement(fig, ax, phase, action_intervals, max_lengths):
-    ax.set_title('1 Episode displacement')
+def plotTotalDisplacement(fig, ax, phase, action_intervals, max_lengths, per_second=False):
+    strategy_name = {'a': 'figure eight', 'b': 'chlamy'}
+    if per_second:
+        ax.set_title('velocity')
+    else:
+        ax.set_title('1 Episode displacement')
     ax.set_xlabel(r'$T^{a*}$')
     ax.set_ylabel(r'$\ell^{\rm max*}$')
     data = dict()
@@ -21,17 +25,20 @@ def plotTotalDisplacement(fig, ax, phase, action_intervals, max_lengths):
                 data[one_data['name']]['displacement'] = list()
             data[one_data['name']]['x'].append(interval)
             data[one_data['name']]['y'].append(length)
-            data[one_data['name']]['displacement'].append(one_data['displacement'])
+            if per_second:
+                data[one_data['name']]['displacement'].append(one_data['displacement'])
+            else:
+                data[one_data['name']]['displacement'].append(one_data['displacement'] / 1000.0)
 
     cmap_list = ['PuRd', 'GnBu']
     for idx, key in enumerate(data):
         mappable = ax.scatter(data[key]['x'], data[key]['y'], c=data[key]['displacement'], cmap=cmap_list[idx], vmin=0, vmax=3)
-        fig.colorbar(mappable, ax=ax, label=f'${key}$')
+        fig.colorbar(mappable, ax=ax, label=f'{strategy_name[key]}')
 
 
 def main():
     with open(
-            '../data/optimals/withoutEnergy_phaseDiagram1.json',
+            '../data/optimals/without_energy/withoutEnergy_phaseDiagram1.json',
             mode='rt',
             encoding='utf-8'
             ) as f:

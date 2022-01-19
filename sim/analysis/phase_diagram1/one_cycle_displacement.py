@@ -7,6 +7,7 @@ plt.rcParams['mathtext.fontset'] = 'cm'
 plt.rcParams['font.size'] = 15
 
 def plotOneCycleDisplacement(fig, ax, phase, action_intervals, max_lengths):
+    strategy_name = {'a': 'figure eight', 'b': 'chlamy'}
     n_step_per_cycle = {'a': 8, 'b': 4}
     ax.set_title('displacement in one cycle')
     ax.set_xlabel(r'$T^{a*}$')
@@ -31,13 +32,13 @@ def plotOneCycleDisplacement(fig, ax, phase, action_intervals, max_lengths):
     cmap_list = ['PuRd', 'GnBu']
     for idx, key in enumerate(data):
         mappable = ax.scatter(data[key]['x'], data[key]['y'], c=data[key]['one_cycle_displacement'], cmap=cmap_list[idx], vmin=0, vmax=None)
-        fig.colorbar(mappable, ax=ax, label=f'${key}$')
+        fig.colorbar(mappable, ax=ax, label=f'{strategy_name[key]}')
 
 
 def main():
 
     with open(
-            '../data/optimals/withoutEnergy_phaseDiagram1.json',
+            '../data/optimals/without_energy/withoutEnergy_phaseDiagram1.json',
             mode='rt',
             encoding='utf-8'
             ) as f:
