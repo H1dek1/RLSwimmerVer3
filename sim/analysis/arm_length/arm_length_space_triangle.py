@@ -17,7 +17,15 @@ def main():
     # intervals = np.arange(0.1, 1.0, 0.2)
     # lengths = np.arange(1.1, 2.0, 0.2)
     intervals = [0.5]
+<<<<<<< HEAD
     lengths = [1.5]
+=======
+<<<<<<< HEAD
+    lengths = [1.9]
+=======
+    lengths = [1.5, 1.7]
+>>>>>>> 901802ed8d6dee0f63b7156344e6531592b2d2d0
+>>>>>>> b2b54cb36cd7892d201e37283424d3931e071eec
     print(intervals)
 
     for interval in tqdm(intervals):
