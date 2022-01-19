@@ -45,7 +45,7 @@ def main():
         print('evaluate')
     elif args.mode == 'simulate':
         print('simulate')
-        # params['on_record'] = True
+        params['on_record'] = True
     else:
         print('Wrong Value')
         sys.exit(0)
