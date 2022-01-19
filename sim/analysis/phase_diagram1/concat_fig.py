@@ -7,14 +7,14 @@ plt.rcParams['font.family'] = 'Times New Roman'
 plt.rcParams['mathtext.fontset'] = 'cm'
 plt.rcParams['font.size'] = 10
 
-from one_cycle_period import plotOneCyclePeriod
+from number_of_cycles import plotOneCyclePeriod
 from one_cycle_displacement import plotOneCycleDisplacement
 from total_displacement import plotTotalDisplacement
 
 def main():
     fig, axes = plt.subplots(1, 3, figsize=(15, 4), tight_layout=True)
     with open(
-            'optimals/withoutEnergy_phaseDiagram1.json',
+            '../data/optimals/without_energy/withoutEnergy_phaseDiagram1.json',
             mode='rt',
             encoding='utf-8'
             ) as f:

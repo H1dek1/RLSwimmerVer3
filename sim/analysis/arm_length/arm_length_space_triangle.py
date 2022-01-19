@@ -17,7 +17,11 @@ def main():
     # intervals = np.arange(0.1, 1.0, 0.2)
     # lengths = np.arange(1.1, 2.0, 0.2)
     intervals = [0.5]
+<<<<<<< HEAD
     lengths = [1.9]
+=======
+    lengths = [1.5, 1.7]
+>>>>>>> 901802ed8d6dee0f63b7156344e6531592b2d2d0
     print(intervals)
 
     for interval in tqdm(intervals):
@@ -41,7 +45,7 @@ def main():
 
             ax.plot3D(df['arm_length_0'][int(plot_start/dt):int(plot_end/dt)], df['arm_length_1'][int(plot_start/dt):int(plot_end/dt)], df['arm_length_2'][int(plot_start/dt):int(plot_end/dt)], color='C0', label=filename)
 
-            # fig.savefig(f'img/triangle/radius0.1/interval{interval:.1f}_length{length:.1f}.png')
+            fig.savefig(f'img/custom_gamma/triangle/radius0.1/interval{interval:.1f}_length{length:.1f}.png')
             del fig
             plt.show()
 

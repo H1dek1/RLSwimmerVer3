@@ -73,7 +73,6 @@ class SkeletonSwimmer
     /* arm force vectors : 3m */
     VectorXd arm_forces;
     /* arm force vectors : m */
-    VectorXd energy_consumption;
     VectorXd output_energy_consumption;
     VectorXd step_energy_consumption;
 
