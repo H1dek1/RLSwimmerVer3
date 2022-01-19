@@ -47,7 +47,7 @@ def drawEachSwimmer(ax, df, t, y=5.0, draw_center=False):
     for idx in range(3):
         sph = patches.Circle(
                 xy=sphere_pos[idx],
-                radius=0.1,
+                radius=0.2,
                 fc='k',
                 zorder=1)
         ax.add_patch(sph)

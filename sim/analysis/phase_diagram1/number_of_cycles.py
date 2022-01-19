@@ -6,9 +6,15 @@ plt.rcParams['font.family'] = 'Times New Roman'
 plt.rcParams['mathtext.fontset'] = 'cm'
 plt.rcParams['font.size'] = 15
 
-def plotOneCyclePeriod(fig, ax, phase, action_intervals, max_lengths):
+def plotOneCyclePeriod(fig, ax, phase, action_intervals, max_lengths, per_second=False):
+    strategy_name = {'a': 'figure eight', 'b': 'chlamy'}
     n_step = {'a': 8, 'b': 4}
-    ax.set_title('Number of cycles')
+    if per_second:
+        ax.set_title('Number of cycles per second')
+    else:
+        ax.set_title('Number of cycles')
+        
+
     ax.set_xlabel(r'$T^{a*}$')
     ax.set_ylabel(r'$\ell^{\rm max*}$')
     
@@ -23,14 +29,19 @@ def plotOneCyclePeriod(fig, ax, phase, action_intervals, max_lengths):
                 data[one_data['name']]['period'] = list()
             data[one_data['name']]['x'].append(interval)
             data[one_data['name']]['y'].append(length)
-            data[one_data['name']]['period'].append(
-                    1000.0 / (n_step[one_data['name']]*interval)
-                    )
+            if per_second:
+                data[one_data['name']]['period'].append(
+                        1 / (n_step[one_data['name']]*interval)
+                        )
+            else:
+                data[one_data['name']]['period'].append(
+                        1000.0 / (n_step[one_data['name']]*interval)
+                        )
 
     cmap_list = ['PuRd', 'GnBu']
     for idx, key in enumerate(data):
-        mappable = ax.scatter(data[key]['x'], data[key]['y'], c=data[key]['period'], cmap=cmap_list[idx], vmin=0, vmax=5000)
-        fig.colorbar(mappable, ax=ax, label=f'${key}$')
+        mappable = ax.scatter(data[key]['x'], data[key]['y'], c=data[key]['period'], cmap=cmap_list[idx], vmin=0, vmax=5)
+        fig.colorbar(mappable, ax=ax, label=f'{strategy_name[key]}')
 
 
 def main():
