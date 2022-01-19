@@ -14,7 +14,7 @@ def main():
                 mode='rt',
                 encoding='utf-8'
                 ) as f:
-            all_strategies[strategy] = json.load(f)['data']
+            all_strategies[strategy] = json.load(f)
 
     action_intervals = np.arange(0.05, 1.0, 0.05)
     max_lengths = np.arange(1.05, 2.0, 0.05)
@@ -36,11 +36,9 @@ def main():
             max_displacement = 0.0
             for name, phases in all_strategies.items():
                 """ strategy A or B """
-                for beat, phase in phases.items():
-                    """ for each beating rhythm """
-                    if phase[str(round(interval, 2))][str(round(max_length, 2))]['displacement'] > max_displacement:
-                        max_name = name + beat
-                        max_displacement = phase[str(round(interval, 2))][str(round(max_length, 2))]['displacement']
+                if phases['data']['1'][str(round(interval, 2))][str(round(max_length, 2))]['displacement'] > max_displacement:
+                    max_name = name
+                    max_displacement = phases['data']['1'][str(round(interval, 2))][str(round(max_length, 2))]['displacement']
 
             # print(max_name)
             if round(interval, 2) == 0.95 and round(max_length, 2) == 1.05:
@@ -49,11 +47,7 @@ def main():
             optimal_strategy[str(round(interval, 2))][str(round(max_length, 2))]['displacement'] = max_displacement
 
     # print(optimal_strategy)
-<<<<<<< HEAD
-    with open('../data/optimals/withoutEnergy_phaseDiagram2.json', mode='wt', encoding='utf-8') as f:
-=======
-    with open('../data/optimals/without_energy/withoutEnergy_phaseDiagram2.json', mode='wt', encoding='utf-8') as f:
->>>>>>> 901802ed8d6dee0f63b7156344e6531592b2d2d0
+    with open('../data/optimals/withoutEnergy_number_of_cycles_1.json', mode='wt', encoding='utf-8') as f:
         json.dump(optimal_strategy, f, ensure_ascii=False, indent=2)
 
 

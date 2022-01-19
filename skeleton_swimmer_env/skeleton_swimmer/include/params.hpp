@@ -9,6 +9,7 @@
 #include <fstream>
 #include <sstream>
 #include <filesystem>
+#include <limits>
 #include <Eigen/Dense>
 #include <Eigen/Geometry>
 

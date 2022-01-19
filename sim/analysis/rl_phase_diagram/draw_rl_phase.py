@@ -52,29 +52,21 @@ def drawRLPhase(fig, ax):
 
         [0.3, 1.7],
         ])
-    data_list['d'] = np.array([
-        ])
     data_list['e'] = np.array([
         [0.3, 1.9],
         [0.5, 1.9],
         [0.9, 1.9],
             ])
 
-    marker_list = ['s', '^', 'v', 'v', 'D']
+    marker_list = ['s', '^', 'v', 'D']
     name = [
             'chlamy',
             'figure eight',
             'incomplete figure eight',
-            'incomplete figure eight',
             'unclassifiable',
             ]
     for i, data in enumerate(data_list.values()):
-        if i == 2:
-            ax.scatter(data.T[0], data.T[1], s=100, marker=marker_list[i], color='k', label=name[i])
-        elif len(data) == 0:
-            pass
-        else:
-            ax.scatter(data.T[0], data.T[1], s=100, marker=marker_list[i], color='k', label=name[i])
+        ax.scatter(data.T[0], data.T[1], s=100, marker=marker_list[i], color=f'C{i}', label=name[i])
 
     ax.legend(ncol=5, bbox_to_anchor=(1.002, 0.07), fontsize=9)
 

@@ -48,7 +48,7 @@ def main():
                 f'_displacementgain{params["displacement_gain"]:.2f}' \
                 f'_energygain{params["energy_gain"]:.2f}' \
                 f'_considerEnergy' \
-                f'_20220105_004400'
+                f'_20220115_135327'
     else:
         load_model_name = f'ppo' \
                 f'_env{n_envs}' \

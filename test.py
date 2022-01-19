@@ -36,7 +36,7 @@ def main():
             }
     df = pd.read_csv(f'sim/analysis/data/characteristic_values/type{params["swimmer_type"]}/displacement_energy.csv')
     ref = df[(df['action_interval'] == params['action_interval']) & (df['max_arm_length'] == params['max_length'])]
-    params['displacement_gain'] = 1.0 / ref['onestep_displacement'].values[0]
+    params['displacement_gain'] = 1.0 # / ref['onestep_displacement'].values[0]
     params['energy_gain'] = 1.0 / ref['onestep_energyconsumption'].values[0]
     # params['displacement_gain'] = 1.0
     # params['energy_gain'] = 1.0
