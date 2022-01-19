@@ -25,9 +25,9 @@ def drawDeformation(ax, df, draw_arms=True):
         df['centroid_x'] = df['sphere_pos_0_x']
         df['centroid_y'] = df['sphere_pos_0_y']
         ax.set_xlim(-1.5, 0.15)
-        ax.set_ylim(-0.85, 0.85)
+        ax.set_ylim(-1.2, 1.1)
 
-    end = 50
+    end = 40
     for i in range(3):
         df[f'rel_pos_{i}_x'] = df[f'sphere_pos_{i}_x'] - df['centroid_x']
         df[f'rel_pos_{i}_y'] = df[f'sphere_pos_{i}_y'] - df['centroid_y']
@@ -62,7 +62,7 @@ def main():
     df = pd.read_csv(filename)
 
     fig, ax = plt.subplots(1, 1, figsize=(6, 6))
-    drawDeformation(ax, df, draw_arms=False)
+    drawDeformation(ax, df, draw_arms=True)
 
     plt.show()
 
