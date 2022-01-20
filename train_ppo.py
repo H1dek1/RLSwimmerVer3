@@ -194,7 +194,7 @@ def main():
         model = PPO(
                 policy='MlpPolicy',
                 env=env,
-                learning_rate=linear_schedule(0.0003),,
+                learning_rate=linear_schedule(0.0003),
                 n_steps=2048,
                 batch_size=64,
                 n_epochs=10,
