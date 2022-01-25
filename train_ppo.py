@@ -17,12 +17,12 @@ def main():
     """"""""""""""""""""""""""
     " Environment Parameters "
     """"""""""""""""""""""""""
-    create_new_model = True
+    create_new_model = False
     params = {
             'swimmer_type':       20,
             'on_record':          False,
             'action_interval':    0.1,
-            'max_length':         1.9,
+            'max_length':         1.1,
             'consider_energy':    True,
             'random_init_states': False
             }
@@ -34,7 +34,7 @@ def main():
     " Hyper Parameters "
     """"""""""""""""""""
     n_envs     = 16
-    time_steps = int(2_000_000)
+    time_steps = int(4_000_000)
     epoch      = 10
     
     """"""""""""""""""""
@@ -194,6 +194,7 @@ def main():
         model = PPO(
                 policy='MlpPolicy',
                 env=env,
+                # learning_rate=0.0008,
                 learning_rate=linear_schedule(initial_value=0.001, final_value=0.0001),
                 n_steps=2048,
                 batch_size=64,
@@ -288,7 +289,7 @@ def linear_schedule(initial_value: float, final_value: float) -> Callable[[float
         """
         Progress will decrease from 1 to 0
         """
-        return initial_value - progress_remaining * (initial_value - final_value)
+        return final_value + progress_remaining * (initial_value - final_value)
     return func
 
 
