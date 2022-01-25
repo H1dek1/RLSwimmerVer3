@@ -49,7 +49,7 @@ def main():
                 f'_displacementgain{params["displacement_gain"]:.2f}' \
                 f'_energygain{params["energy_gain"]:.2f}' \
                 f'_considerEnergy' \
-                f'_20220119_234105'
+                f'_20220121_111653'
     else:
         load_model_name = f'ppo' \
                 f'_env{n_envs}' \
@@ -194,7 +194,7 @@ def main():
         model = PPO(
                 policy='MlpPolicy',
                 env=env,
-                learning_rate=linear_schedule(0.0003),
+                learning_rate=linear_schedule(initial_value=0.001, final_value=0.0001),
                 n_steps=2048,
                 batch_size=64,
                 n_epochs=10,
@@ -283,12 +283,12 @@ def main():
                 model.save(model_save_dir+model_name+'_best')
                 max_score = mean_reward
 
-def linear_schedule(initial_value: float) -> Callable[[float], float]:
+def linear_schedule(initial_value: float, final_value: float) -> Callable[[float], float]:
     def  func(progress_remaining: float) -> float:
         """
         Progress will decrease from 1 to 0
         """
-        return progress_remaining * initial_value
+        return initial_value - progress_remaining * (initial_value - final_value)
     return func
 
 
