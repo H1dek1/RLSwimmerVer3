@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import datetime
 import os 
+from typing import Callable
 import gym
 import numpy as np
 import pandas as pd
@@ -20,7 +21,7 @@ def main():
     params = {
             'swimmer_type':       20,
             'on_record':          False,
-            'action_interval':    0.9,
+            'action_interval':    0.1,
             'max_length':         1.1,
             'consider_energy':    True,
             'random_init_states': False
@@ -33,7 +34,7 @@ def main():
     " Hyper Parameters "
     """"""""""""""""""""
     n_envs     = 16
-    time_steps = int(2_000_000)
+    time_steps = int(4_000_000)
     epoch      = 10
     
     """"""""""""""""""""
@@ -193,7 +194,8 @@ def main():
         model = PPO(
                 policy='MlpPolicy',
                 env=env,
-                learning_rate=0.0003,
+                # learning_rate=0.0008,
+                learning_rate=linear_schedule(initial_value=0.001, final_value=0.0001),
                 n_steps=2048,
                 batch_size=64,
                 n_epochs=10,
@@ -281,6 +283,14 @@ def main():
                 print('update best model')
                 model.save(model_save_dir+model_name+'_best')
                 max_score = mean_reward
+
+def linear_schedule(initial_value: float, final_value: float) -> Callable[[float], float]:
+    def  func(progress_remaining: float) -> float:
+        """
+        Progress will decrease from 1 to 0
+        """
+        return final_value + progress_remaining * (initial_value - final_value)
+    return func
 
 
 def testModel(model, params):
