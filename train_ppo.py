@@ -17,12 +17,12 @@ def main():
     """"""""""""""""""""""""""
     " Environment Parameters "
     """"""""""""""""""""""""""
-    create_new_model = False
+    create_new_model = True
     params = {
             'swimmer_type':       20,
             'on_record':          False,
             'action_interval':    0.1,
-            'max_length':         1.1,
+            'max_length':         1.9,
             'consider_energy':    True,
             'random_init_states': False
             }
@@ -34,7 +34,7 @@ def main():
     " Hyper Parameters "
     """"""""""""""""""""
     n_envs     = 16
-    time_steps = int(4_000_000)
+    time_steps = int(2_000_000)
     epoch      = 10
     
     """"""""""""""""""""
