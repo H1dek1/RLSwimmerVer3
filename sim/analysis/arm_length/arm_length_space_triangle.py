@@ -10,18 +10,18 @@ plt.rcParams['mathtext.fontset'] = 'cm'
 plt.rcParams['font.size'] = 10
 
 def main():
-    plot_start = 100
-    plot_end   = 300
+    plot_start = 10
+    plot_end   = 100
     dt = 0.1
 
     # intervals = np.arange(0.1, 1.0, 0.2)
     # lengths = np.arange(1.1, 2.0, 0.2)
-    intervals = [0.9]
+    intervals = [0.7]
     lengths = [1.5]
 
     for interval in tqdm(intervals):
         for length in tqdm(lengths, leave=False):
-            # filename = f'../../result/radius0.1/without_energy/' \
+            # filename = f'../../result/radius0.1/without_energy/custom_gamma/' \
             #         f'type20_radius0.1_interval{interval:.1f}' \
             #         f'_maxlength{length:.1f}_withoutEnergy.csv'
             filename = f'../../result/' \
