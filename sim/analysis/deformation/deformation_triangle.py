@@ -62,7 +62,7 @@ def main():
     df = pd.read_csv(filename)
 
     fig, ax = plt.subplots(1, 1, figsize=(6, 6))
-    drawDeformation(ax, df, draw_arms=True)
+    drawDeformation(ax, df, draw_arms=False)
 
     plt.show()
 
