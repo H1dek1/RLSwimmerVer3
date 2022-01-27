@@ -21,8 +21,8 @@ def main():
     params = {
             'swimmer_type':       20,
             'on_record':          False,
-            'action_interval':    0.1,
-            'max_length':         1.9,
+            'action_interval':    0.9,
+            'max_length':         1.5,
             'consider_energy':    True,
             'random_init_states': False
             }
@@ -195,7 +195,7 @@ def main():
                 policy='MlpPolicy',
                 env=env,
                 # learning_rate=0.0008,
-                learning_rate=linear_schedule(initial_value=0.001, final_value=0.0001),
+                learning_rate=linear_schedule(initial_value=0.0008, final_value=0.0003),
                 n_steps=2048,
                 batch_size=64,
                 n_epochs=10,
