@@ -20,20 +20,20 @@ def drawSwimmer(ax, df, plot_time, ymax=5.0, ymin=0.0):
     margin = (ymax - ymin) / (len(plot_time)-1)
     for i, t in enumerate(plot_time):
         if i == 0:
-            initial = drawEachSwimmer(ax, df, t, y=ymax-margin*i, draw_center=True)
+            initial = drawEachSwimmer(ax, df, t, y=ymax-margin*i, draw_center=True, alpha=(1+i)/len(plot_time))
         elif i == len(plot_time) - 1:
-            final   = drawEachSwimmer(ax, df, t, y=ymax-margin*i, draw_center=True)
+            final   = drawEachSwimmer(ax, df, t, y=ymax-margin*i, draw_center=True, alpha=(1+i)/len(plot_time))
         else:
-            drawEachSwimmer(ax, df, t, y=ymax-margin*i, draw_center=False)
+            drawEachSwimmer(ax, df, t, y=ymax-margin*i, draw_center=False, alpha=(1+i)/len(plot_time))
 
     print('initial position:', initial)
     print('final   position:', final)
     # ax.scatter(initial[0], initial[1], color='red', marker='*')
     # ax.scatter(final[0], final[1], color='red', marker='*')
     """ extend dot line to bottom and move left to bottom of swimmer """
-    ax.vlines(x=initial[0]-np.sqrt(3)/6, ymin=final[1]-0.5, ymax=initial[1], ls='--', color='k', lw=0.5)
+    # ax.vlines(x=initial[0]-np.sqrt(3)/6, ymin=final[1]-0.5, ymax=initial[1], ls='--', color='k', lw=0.5)
 
-def drawEachSwimmer(ax, df, t, y=5.0, draw_center=False):
+def drawEachSwimmer(ax, df, t, y=5.0, draw_center=False, alpha=1.0):
     dt = 0.1
     """ sphere position """
     sphere_pos = np.empty((3, 2))
@@ -47,19 +47,21 @@ def drawEachSwimmer(ax, df, t, y=5.0, draw_center=False):
     for idx in range(3):
         sph = patches.Circle(
                 xy=sphere_pos[idx],
-                radius=0.2,
+                radius=0.05,
                 fc='k',
-                zorder=1)
+                zorder=1,
+                alpha=alpha)
         ax.add_patch(sph)
 
     """ plot arms """
-    ax.plot(sphere_pos.T[0], sphere_pos.T[1],c='k', lw=1, zorder=0)
+    ax.plot(sphere_pos.T[0], sphere_pos.T[1],c='k', lw=1, zorder=0, alpha=alpha)
     ax.plot(
             [sphere_pos[-1][0], sphere_pos[0][0]],
             [sphere_pos[-1][1], sphere_pos[0][1]],
             c='k',
             lw=1,
-            zorder=0
+            zorder=0,
+            alpha=alpha
             )
 
     if draw_center:

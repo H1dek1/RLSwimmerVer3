@@ -7,14 +7,21 @@ n_sph = 3
 
 dt = 0.1
 plot_time = 20
-df1 = pd.read_csv('../../result/type20_radius0.1_interval0.1_maxlength1.5_withoutEnergy.csv')
+df1 = pd.read_csv('../data/strategy_record/b_interval0.5_maxlength1.5.csv')
+df2 = pd.read_csv('../data/strategy_record/a_interval0.5_maxlength1.5.csv')
 
-dfs = [df1]
+dfs = [df1, df2]
 fig, ax = plt.subplots(1,1)
+ax.set_xlabel('Time')
+ax.set_ylabel('Displacement')
 
-for df in dfs:
+for i, df in enumerate(dfs):
     df['centroid_x'] = sum([df[f'sphere_pos_{i}_x'] for i in range(n_sph)]) / n_sph
-    ax.plot(df['Time'][:int(plot_time/dt)], df['centroid_x'][:int(plot_time/dt)], lw=1.0)
+    if i == 0:
+        ax.plot(df['Time'][:int(plot_time/dt)], df['centroid_x'][:int(plot_time/dt)], lw=1.0, label='Chlamy')
+    else:
+        ax.plot(df['Time'][:int(plot_time/dt)], df['centroid_x'][:int(plot_time/dt)], lw=1.0, label='Figure 8')
 
 ax.grid()
+ax.legend()
 plt.show()

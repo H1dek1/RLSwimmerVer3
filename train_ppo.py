@@ -21,8 +21,8 @@ def main():
     params = {
             'swimmer_type':       20,
             'on_record':          False,
-            'action_interval':    0.9,
-            'max_length':         1.1,
+            'action_interval':    0.3,
+            'max_length':         1.7,
             'consider_energy':    True,
             'random_init_states': False
             }
@@ -34,7 +34,7 @@ def main():
     " Hyper Parameters "
     """"""""""""""""""""
     n_envs     = 16
-    time_steps = int(2_000_000)
+    time_steps = int(4_000_000)
     epoch      = 10
     
     """"""""""""""""""""
@@ -195,7 +195,7 @@ def main():
                 policy='MlpPolicy',
                 env=env,
                 # learning_rate=0.0008,
-                learning_rate=linear_schedule(initial_value=0.0008, final_value=0.0003),
+                learning_rate=linear_schedule(initial_value=0.0005, final_value=0.0002),
                 n_steps=2048,
                 batch_size=64,
                 n_epochs=10,
