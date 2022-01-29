@@ -17,12 +17,12 @@ def main():
     """"""""""""""""""""""""""
     " Environment Parameters "
     """"""""""""""""""""""""""
-    create_new_model = True
+    create_new_model = False
     params = {
             'swimmer_type':       20,
             'on_record':          False,
-            'action_interval':    0.9,
-            'max_length':         1.1,
+            'action_interval':    0.3,
+            'max_length':         1.9,
             'consider_energy':    True,
             'random_init_states': False
             }
@@ -49,7 +49,7 @@ def main():
                 f'_displacementgain{params["displacement_gain"]:.2f}' \
                 f'_energygain{params["energy_gain"]:.2f}' \
                 f'_considerEnergy' \
-                f'_20220126_205457'
+                f'_20220128_110148'
     else:
         load_model_name = f'ppo' \
                 f'_env{n_envs}' \
