@@ -22,7 +22,7 @@ def main():
             'swimmer_type':       20,
             'on_record':          False,
             'action_interval':    0.1,
-            'max_length':         1.9,
+            'max_length':         1.7,
             'consider_energy':    True,
             'random_init_states': False
             }
@@ -34,7 +34,7 @@ def main():
     " Hyper Parameters "
     """"""""""""""""""""
     n_envs     = 16
-    time_steps = int(2_000_000)
+    time_steps = int(4_000_000)
     epoch      = 10
     
     """"""""""""""""""""
@@ -49,7 +49,7 @@ def main():
                 f'_displacementgain{params["displacement_gain"]:.2f}' \
                 f'_energygain{params["energy_gain"]:.2f}' \
                 f'_considerEnergy' \
-                f'_20220121_111653'
+                f'_20220127_011940_best'
     else:
         load_model_name = f'ppo' \
                 f'_env{n_envs}' \
@@ -195,7 +195,7 @@ def main():
                 policy='MlpPolicy',
                 env=env,
                 # learning_rate=0.0008,
-                learning_rate=linear_schedule(initial_value=0.001, final_value=0.0001),
+                learning_rate=linear_schedule(initial_value=0.0003, final_value=0.00005),
                 n_steps=2048,
                 batch_size=64,
                 n_epochs=10,
