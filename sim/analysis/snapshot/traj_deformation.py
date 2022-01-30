@@ -7,8 +7,8 @@ from snapshot import drawSwimmer
 
 def main():
     df = pd.read_csv('../data/strategy_record/a_interval0.5_maxlength1.5.csv')
-    fig, ax = plt.subplots(1, 1)
-    plot_time = np.arange(0.0, 2.5, 0.5)
+    fig, ax = plt.subplots(1, 1, tight_layout=True)
+    plot_time = np.arange(4.5, 5.5+0.1, 0.5)
     drawSwimmer(ax, df, plot_time, ymax=0.0, ymin=0.0)
     plt.show()
 
