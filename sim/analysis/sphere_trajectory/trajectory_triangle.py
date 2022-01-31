@@ -5,11 +5,11 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 def main():
-    start = 300
-    end = 10000
+    start = 0
+    end = 15
 
-    # df = pd.read_csv('../data/strategy_record/a_interval0.5_maxlength1.5.csv')
-    df = pd.read_csv('../../result/radius0.1/without_energy/custom_gamma/type20_radius0.1_interval0.3_maxlength1.9_withoutEnergy.csv')
+    df = pd.read_csv('../data/strategy_record/b_interval0.5_maxlength1.5.csv')
+    # df = pd.read_csv('../../result/radius0.1/without_energy/custom_gamma/type20_radius0.1_interval0.1_maxlength1.9_withoutEnergy.csv')
 
     fig, ax = plt.subplots(1, 1)
     ax.set_aspect('equal')
