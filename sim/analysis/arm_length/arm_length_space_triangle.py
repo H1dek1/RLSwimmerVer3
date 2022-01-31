@@ -16,17 +16,17 @@ def main():
 
     # intervals = np.arange(0.1, 1.0, 0.2)
     # lengths = np.arange(1.1, 2.0, 0.2)
-    intervals = [0.9]
-    lengths = [1.9]
+    intervals = [0.5]
+    lengths = [1.7]
 
     for interval in tqdm(intervals):
         for length in tqdm(lengths, leave=False):
-            filename = f'../../result/radius0.1/without_energy/custom_gamma/' \
-                    f'type20_radius0.1_interval{interval:.1f}' \
-                    f'_maxlength{length:.1f}_withoutEnergy.csv'
-            # filename = f'../../result/' \
+            # filename = f'../../result/radius0.1/without_energy/custom_gamma/' \
             #         f'type20_radius0.1_interval{interval:.1f}' \
-            #         f'_maxlength{length:.1f}_withEnergy.csv'
+            #         f'_maxlength{length:.1f}_withoutEnergy.csv'
+            filename = f'../../result/' \
+                    f'type20_radius0.1_interval{interval:.1f}' \
+                    f'_maxlength{length:.1f}_withEnergy.csv'
 
             df = pd.read_csv(filename)
             fig = plt.figure()
