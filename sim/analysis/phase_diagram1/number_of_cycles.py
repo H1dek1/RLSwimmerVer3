@@ -47,6 +47,7 @@ def plotOneCyclePeriod(fig, ax, phase, action_intervals, max_lengths, per_second
 def main():
     with open(
             '../data/optimals/without_energy/withoutEnergy_phaseDiagram1.json',
+            # '../data/without_energy/a.json',
             mode='rt',
             encoding='utf-8'
             ) as f:
@@ -56,7 +57,7 @@ def main():
     max_lengths = np.arange(1.05, 2.0, 0.05)
 
     fig, ax = plt.subplots(1, 1)
-    plotOneCyclePeriod(fig, ax, phase, action_intervals, max_lengths)
+    plotOneCyclePeriod(fig, ax, phase, action_intervals, max_lengths, per_second=True)
     plt.show()
 
 
