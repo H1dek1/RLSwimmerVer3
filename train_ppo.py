@@ -35,7 +35,7 @@ def main():
     """"""""""""""""""""
     n_envs     = 16
     time_steps = int(4_000_000)
-    epoch      = 10
+    epoch      = 30
     
     """"""""""""""""""""
     " Learning Setting "
@@ -195,7 +195,7 @@ def main():
                 policy='MlpPolicy',
                 env=env,
                 # learning_rate=0.0008,
-                learning_rate=linear_schedule(initial_value=0.0005, final_value=0.0001),
+                learning_rate=linear_schedule(initial_value=0.0005, final_value=0.00005),
                 n_steps=2048,
                 batch_size=64,
                 n_epochs=10,
