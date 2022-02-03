@@ -6,11 +6,11 @@ import pandas as pd
 n_sph = 3
 
 dt = 0.1
-plot_time = 20
-df1 = pd.read_csv('../data/strategy_record/b_interval0.5_maxlength1.5.csv')
-df2 = pd.read_csv('../data/strategy_record/a_interval0.5_maxlength1.5.csv')
+plot_time = 10
+df = pd.read_csv('../data/strategy_record/b_interval0.5_maxlength1.5.csv')
+# df = pd.read_csv('../../result/radius0.1/without_energy/custom_gamma/type20_radius0.1_interval0.1_maxlength1.1_withoutEnergy.csv')
 
-dfs = [df1, df2]
+dfs = [df]
 fig, ax = plt.subplots(1,1)
 ax.set_xlabel('Time')
 ax.set_ylabel('Displacement')

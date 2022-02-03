@@ -10,14 +10,14 @@ plt.rcParams['mathtext.fontset'] = 'cm'
 plt.rcParams['font.size'] = 10
 
 def main():
-    plot_start = 0
-    plot_end   = 1000
+    plot_start = 10
+    plot_end   = 50
     dt = 0.1
 
     # intervals = np.arange(0.1, 1.0, 0.2)
     # lengths = np.arange(1.1, 2.0, 0.2)
-    intervals = [0.3]
-    lengths = [1.7]
+    intervals = [0.5]
+    lengths = [1.9]
 
     for interval in tqdm(intervals):
         for length in tqdm(lengths, leave=False):

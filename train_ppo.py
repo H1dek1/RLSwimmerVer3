@@ -21,8 +21,8 @@ def main():
     params = {
             'swimmer_type':       20,
             'on_record':          False,
-            'action_interval':    0.1,
-            'max_length':         1.3,
+            'action_interval':    0.7,
+            'max_length':         1.9,
             'consider_energy':    True,
             'random_init_states': False
             }
@@ -49,7 +49,7 @@ def main():
                 f'_displacementgain{params["displacement_gain"]:.2f}' \
                 f'_energygain{params["energy_gain"]:.2f}' \
                 f'_considerEnergy' \
-                f'_20220127_011940_best'
+                f'_20220130_163042'
     else:
         load_model_name = f'ppo' \
                 f'_env{n_envs}' \
