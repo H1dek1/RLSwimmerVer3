@@ -34,8 +34,8 @@ def main():
     " Hyper Parameters "
     """"""""""""""""""""
     n_envs     = 16
-    time_steps = int(4_000_000)
-    epoch      = 10
+    time_steps = int(8_000_000)
+    epoch      = 5
     
     """"""""""""""""""""
     " Learning Setting "
@@ -195,14 +195,14 @@ def main():
                 policy='MlpPolicy',
                 env=env,
                 # learning_rate=0.0008,
-                learning_rate=linear_schedule(initial_value=0.0005, final_value=0.00005),
+                learning_rate=linear_schedule(initial_value=0.0003, final_value=0.0001),
                 n_steps=2048,
                 batch_size=64,
                 n_epochs=10,
                 gamma=0.99**params['action_interval'],
                 gae_lambda=0.95,
                 clip_range=0.2,
-                clip_range_vf=None,
+                clip_range_vf=0.2,
                 ent_coef=0.0,
                 vf_coef=0.5,
                 max_grad_norm=0.5,
