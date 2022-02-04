@@ -7,6 +7,7 @@
 /rl/logs/
 /.venv3.8/
 /.venv3.7/
+/.venv/
 /.python-version
 /sim/analysis/notebook/__pycache__/
 /sim/analysis/notebook/.ipynb-checkpoints/
