@@ -33,7 +33,7 @@ def main():
             random_init_states=params['random_init_states']
             )
 
-    original_actions = np.loadtxt('swimming_method/type20/b_v2.csv', delimiter=',')
+    original_actions = np.loadtxt('swimming_method/type20/a.csv', delimiter=',')
     actions = original_actions.repeat(1, axis=0)
     """
     actions = np.array([
