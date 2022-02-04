@@ -5,7 +5,9 @@
 /skeleton_swimmer_env/skeleton_swimmer/build/
 /skeleton_swimmer_env/skeleton_swimmer/pybind11/
 /rl/logs/
+/rl_wrong/logs/
 /.venv3.8/
+/.venv/
 /.venv3.7/
 /.venv/
 /.python-version
