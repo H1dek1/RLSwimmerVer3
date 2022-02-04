@@ -21,9 +21,9 @@ def main():
     params = {
             'swimmer_type':       20,
             'on_record':          False,
-            'action_interval':    0.7,
-            'max_length':         1.5,
-            'consider_energy':    True,
+            'action_interval':    0.9,
+            'max_length':         1.9,
+            'consider_energy':    False,
             'random_init_states': False
             }
     df = pd.read_csv(f'sim/analysis/data/characteristic_values/type{params["swimmer_type"]}/displacement_energy.csv')
@@ -34,8 +34,8 @@ def main():
     " Hyper Parameters "
     """"""""""""""""""""
     n_envs     = 16
-    time_steps = int(8_000_000)
-    epoch      = 5
+    time_steps = int(2_000_000)
+    epoch      = 10
     
     """"""""""""""""""""
     " Learning Setting "
@@ -195,14 +195,14 @@ def main():
                 policy='MlpPolicy',
                 env=env,
                 # learning_rate=0.0008,
-                learning_rate=linear_schedule(initial_value=0.0003, final_value=0.0001),
+                learning_rate=linear_schedule(initial_value=0.0008, final_value=0.0003),
                 n_steps=2048,
                 batch_size=64,
                 n_epochs=10,
                 gamma=0.99**params['action_interval'],
                 gae_lambda=0.95,
                 clip_range=0.2,
-                clip_range_vf=0.2,
+                clip_range_vf=None,
                 ent_coef=0.0,
                 vf_coef=0.5,
                 max_grad_norm=0.5,
