@@ -29,13 +29,8 @@ def main():
     params = {
             'swimmer_type':       20,
             'on_record' :         False,
-<<<<<<< HEAD
             'action_interval':    0.3,   # 0.5 ~ 30
             'max_length':         1.3,   # 0.1 ~ 0.9
-=======
-            'action_interval':    0.7,   # 0.5 ~ 30
-            'max_length':         1.7,   # 0.1 ~ 0.9
->>>>>>> 0df84a468c9c4e2449130a395fbe84d0f6593f7e
             'consider_energy':    False,
             'random_init_states': False,
             }
