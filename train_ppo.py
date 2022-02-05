@@ -21,13 +21,8 @@ def main():
     params = {
             'swimmer_type':       20,
             'on_record':          False,
-<<<<<<< HEAD
             'action_interval':    0.3,
-            'max_length':         1.3,
-=======
-            'action_interval':    0.9,
-            'max_length':         1.5,
->>>>>>> 0df84a468c9c4e2449130a395fbe84d0f6593f7e
+            'max_length':         1.7,
             'consider_energy':    False,
             'random_init_states': False
             }
@@ -61,7 +56,7 @@ def main():
                 f'_displacementgain{params["displacement_gain"]:.2f}' \
                 f'_energygain{params["energy_gain"]:.2f}' \
                 f'_notConsiderEnergy' \
-                f'_20220204_180753'
+                f'_20220205_023409'
 
 
     """"""""""""""""""""
