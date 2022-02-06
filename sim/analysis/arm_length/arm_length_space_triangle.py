@@ -17,7 +17,7 @@ def main():
 
     # intervals = np.arange(0.1, 1.0, 0.2)
     # lengths = np.arange(1.1, 2.0, 0.2)
-    intervals = [0.5]
+    intervals = [0.9]
     lengths   = [1.3]
 
     for interval in tqdm(intervals):
@@ -40,7 +40,7 @@ def main():
             ax.set_xlim(1, 2)
             ax.set_ylim(1, 2)
             ax.set_zlim(1, 2)
-            ax.view_init(elev=30, azim=10)
+            ax.view_init(elev=30, azim=20)
 
             ax.plot3D(df['arm_length_0'][int(plot_start/dt):int(plot_end/dt)], df['arm_length_1'][int(plot_start/dt):int(plot_end/dt)], df['arm_length_2'][int(plot_start/dt):int(plot_end/dt)], color='C0', label=filename)
 
