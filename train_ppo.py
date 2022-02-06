@@ -22,7 +22,7 @@ def main():
             'swimmer_type':       20,
             'on_record':          False,
             'action_interval':    0.5,
-            'max_length':         1.3,
+            'max_length':         1.7,
             'consider_energy':    False,
             'random_init_states': False
             }
