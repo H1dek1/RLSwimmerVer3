@@ -15,6 +15,7 @@ def main():
     ax.set_aspect('equal')
     ax.set_xlim(-2, 2)
     ax.set_ylim(-1.2, 1.2)
+    ax.axis('off')
     ax.set_xlabel(r'$x$', fontsize=22)
     ax.set_ylabel(r'$y$', fontsize=22)
     xticks = np.arange(-2, 3, 1)
@@ -24,30 +25,34 @@ def main():
     ax.set_yticks(yticks)
     ax.set_yticklabels(np.vectorize(str)(yticks), fontsize=12)
     plotTriangleSwimmer(fig, ax, center, direction, arm_force=False)
-    ax.text(
-            0,
-            0.8,
-            r'Micro sphere with radius $a$',
-            color='black',
-            fontsize=20
-            )
-
-    ax.text(
-            0,
-            -0.1,
-            r'Extensile arm',
-            color='black',
-            fontsize=20
-            )
 
     plt.show()
-    # fig.savefig('problem_statement.png')
+    fig.savefig('sample.pdf')
 
 def plotTriangleSwimmer(fig, ax, center, direction, arm_force=False):
     sphere_pos, arm_vector = getEachSpherePositionAndEachArmVector(center, direction)
     drawArms(ax, sphere_pos, arm_vector)
     drawSpheres(ax, sphere_pos)
     drawArmLabel(ax, sphere_pos, direction, arm_vector)
+    ax.text(
+            0.2,
+            0.7,
+            r'A micro sphere with radius $a$',
+            color='black',
+            fontsize=25,
+            va='center'
+            )
+    ax.plot([0.2, sphere_pos[0][0]], [0.7, sphere_pos[0][1]], c='k', zorder=0)
+
+    ax.text(
+            0.2,
+            -0.1,
+            r'An extensile arm',
+            color='black',
+            fontsize=25,
+            va='center'
+            )
+    ax.plot([0.2, -0.4], [-0.1, 0.08], c='k', zorder=0)
 
 def getEachSpherePositionAndEachArmVector(center, direction):
     dist = np.sqrt(3) / 2.0
@@ -63,7 +68,7 @@ def getEachSpherePositionAndEachArmVector(center, direction):
 
 def drawArms(ax, sphere_pos, arm_vector):
     beam_color = 'k'
-    beam_width = 3.0
+    beam_width = 4.0
     ax.plot(sphere_pos.T[0], sphere_pos.T[1], 
             c=beam_color, lw=beam_width, zorder=0)
     ax.plot(
@@ -94,10 +99,10 @@ def drawSpheres(ax, sphere_pos):
     for i, pos in enumerate(sphere_pos):
         sph = patches.Circle(xy=pos, radius=sph_radius, fc=fc, ec=ec, zorder=1)
         ax.add_patch(sph)
-        ax.text(pos[0], pos[1], f'{i}', color='k', ha='center', va='center', fontsize=30, fontweight='normal')
+        ax.text(pos[0], pos[1], f'{i}', color='k', ha='center', va='center', fontsize=35, fontweight='normal')
 
 def drawArmLabel(ax, sphere_pos, direction, arm_vector):
-    label_size=25
+    label_size=30
     padding = 0.8
     """ arm vector """
     for i in range(3):
