@@ -17,8 +17,8 @@ def main():
 
     # intervals = np.arange(0.1, 1.0, 0.2)
     # lengths = np.arange(1.1, 2.0, 0.2)
-    intervals = [0.7]
-    lengths   = [1.1]
+    intervals = [0.9]
+    lengths   = [1.5]
 
     for interval in tqdm(intervals):
         for length in tqdm(lengths, leave=False):
@@ -26,8 +26,9 @@ def main():
             #         f'type20_radius0.1_interval{interval:.1f}' \
             #         f'_maxlength{length:.1f}_withoutEnergy.csv'
             filename = f'../../result/' \
+                    f'wrong/radius0.1/with_energy/' \
                     f'type20_radius0.1_interval{interval:.1f}' \
-                    f'_maxlength{length:.1f}_withoutEnergy.csv'
+                    f'_maxlength{length:.1f}_withEnergy.csv'
 
             df = pd.read_csv(filename)
             fig = plt.figure()

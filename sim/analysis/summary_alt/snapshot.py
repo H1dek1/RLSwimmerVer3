@@ -4,9 +4,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 import pandas as pd
-plt.rcParams['font.family'] = 'Times New Roman'
-plt.rcParams['mathtext.fontset'] = 'cm'
-plt.rcParams['font.size'] = 15
 
 def drawSwimmer(ax, df, plot_time, ymax=5.0, ymin=0.0):
     ax.tick_params(labelbottom=False,
@@ -18,27 +15,26 @@ def drawSwimmer(ax, df, plot_time, ymax=5.0, ymin=0.0):
             right=False,
             top=False)
     ax.set_aspect('equal')
-    ax.set_xlabel(r'$x^*$', fontsize=25)
-    ax.set_ylabel(r'$y^*$', fontsize=25)
-    ax.set_xlim(-0.8, 1.0)
-    ax.set_ylim(ymin-1, ymax+1)
+    ax.set_xlim(-0.8, 1.5)
+    ax.set_ylim(ymin-1, ymax+1.2)
+    text = ['A', 'E', 'F', 'D', 'A', 'G', 'H', 'D', 'A']
     margin = (ymax - ymin) / (len(plot_time)-1)
     for i, t in enumerate(plot_time):
         if i == 0:
-            initial = drawEachSwimmer(ax, df, t, y=ymax-margin*i, draw_center=True, alpha=(1+i)/len(plot_time))
+            initial = drawEachSwimmer(ax, df, t, y=ymax-margin*i, draw_center=True, alpha=1, text=text[i])
         elif i == len(plot_time) - 1:
-            final   = drawEachSwimmer(ax, df, t, y=ymax-margin*i, draw_center=True, alpha=(1+i)/len(plot_time))
+            final   = drawEachSwimmer(ax, df, t, y=ymax-margin*i, draw_center=True, alpha=1, text=text[i])
         else:
-            drawEachSwimmer(ax, df, t, y=ymax-margin*i, draw_center=False, alpha=(1+i)/len(plot_time))
+            drawEachSwimmer(ax, df, t, y=ymax-margin*i, draw_center=False, alpha=1, text=text[i])
 
     print('initial position:', initial)
     print('final   position:', final)
     # ax.scatter(initial[0], initial[1], color='red', marker='*')
     # ax.scatter(final[0], final[1], color='red', marker='*')
     """ extend dot line to bottom and move left to bottom of swimmer """
-    # ax.vlines(x=initial[0]-np.sqrt(3)/6, ymin=final[1]-0.5, ymax=initial[1], ls='--', color='k', lw=0.5)
+    ax.vlines(x=initial[0]-np.sqrt(3)/6, ymin=final[1]-0.5, ymax=initial[1], ls='--', color='k', lw=0.5)
 
-def drawEachSwimmer(ax, df, t, y=5.0, draw_center=False, alpha=1.0):
+def drawEachSwimmer(ax, df, t, y=5.0, draw_center=False, alpha=1.0, text='A'):
     dt = 0.1
     """ sphere position """
     sphere_pos = np.empty((3, 2))
@@ -52,7 +48,7 @@ def drawEachSwimmer(ax, df, t, y=5.0, draw_center=False, alpha=1.0):
     for idx in range(3):
         sph = patches.Circle(
                 xy=sphere_pos[idx],
-                radius=0.05,
+                radius=0.1,
                 fc='k',
                 zorder=1,
                 alpha=alpha)
@@ -67,6 +63,12 @@ def drawEachSwimmer(ax, df, t, y=5.0, draw_center=False, alpha=1.0):
             lw=1,
             zorder=0,
             alpha=alpha
+            )
+    ax.text(
+            1.0,
+            y+0.5,
+            text,
+            fontsize=15
             )
 
     if draw_center:
