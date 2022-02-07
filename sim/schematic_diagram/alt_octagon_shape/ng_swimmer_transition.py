@@ -9,6 +9,8 @@ plt.rcParams['font.size'] = 12
 
 def drawNGSwimmerTransition(ax):
     ax.axis('off')
+    ax.text(-0.5, 0.2, r'$\ell_0^*$', ha='center', fontsize=15)
+    ax.text(0.5, 0.2, r'$\ell_1^*$', ha='center', fontsize=15)
     ax.set_aspect('equal')
     ax.set_xlim(-2.5, 3.2)
     # ax.set_ylim(-4.0, 1.0)
@@ -21,7 +23,12 @@ def drawNGSwimmerTransition(ax):
         [1.8, 1.0],
         [1.0, 1.0],
         ])
-    label_list = ['A', 'B', 'C', 'D', 'A']
+    label_list = [
+            r'$\mathscr{A}$',
+            r'$\mathscr{B}$',
+            r'$\mathscr{C}$',
+            r'$\mathscr{D}$',
+            r'$\mathscr{A}$']
     arrow_dict = dict(arrowstyle='->', color='k', connectionstyle='angle3, angleA=-45, angleB=45', lw=2, ls='-')
     for i in range(5):
         drawOneSwimmer(ax, center=centers[i], y=y_list[i], arm_lengths=arm_lengths[i])
@@ -31,8 +38,8 @@ def drawNGSwimmerTransition(ax):
                     xy=(2.4, y_list[i]),
                     xytext=(2.4, y_list[i-1]),
                     arrowprops=arrow_dict)
-            ax.text(2.85, (y_list[i-1]+y_list[i])/2, f'{i}', fontsize=18, color='k', va='center', ha='center')
-            circle = patches.Circle(xy=[2.858, (y_list[i-1]+y_list[i])/2], radius=0.2, fill=False, ec='k')
+            ax.text(2.9, (y_list[i-1]+y_list[i])/2, f'{i}', fontsize=18, color='k', va='center', ha='center')
+            circle = patches.Circle(xy=[2.908, (y_list[i-1]+y_list[i])/2+0.05], radius=0.2, fill=False, ec='k')
             ax.add_patch(circle)
 
 def drawOneSwimmer(ax, center, y, arm_lengths):
