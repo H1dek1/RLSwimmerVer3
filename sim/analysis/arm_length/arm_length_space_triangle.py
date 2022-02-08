@@ -17,7 +17,7 @@ def main():
 
     # intervals = np.arange(0.1, 1.0, 0.2)
     # lengths = np.arange(1.1, 2.0, 0.2)
-    intervals = [0.3]
+    intervals = [0.7]
     lengths   = [1.5]
 
     for interval in tqdm(intervals):
