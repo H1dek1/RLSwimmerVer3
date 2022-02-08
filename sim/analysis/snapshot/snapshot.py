@@ -4,6 +4,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 import pandas as pd
+plt.rcParams['font.family'] = 'Times New Roman'
+plt.rcParams['mathtext.fontset'] = 'cm'
+plt.rcParams['font.size'] = 15
 
 def drawSwimmer(ax, df, plot_time, ymax=5.0, ymin=0.0):
     ax.tick_params(labelbottom=False,
@@ -15,6 +18,8 @@ def drawSwimmer(ax, df, plot_time, ymax=5.0, ymin=0.0):
             right=False,
             top=False)
     ax.set_aspect('equal')
+    ax.set_xlabel(r'$x^*$', fontsize=25)
+    ax.set_ylabel(r'$y^*$', fontsize=25)
     ax.set_xlim(-0.8, 1.0)
     ax.set_ylim(ymin-1, ymax+1)
     margin = (ymax - ymin) / (len(plot_time)-1)

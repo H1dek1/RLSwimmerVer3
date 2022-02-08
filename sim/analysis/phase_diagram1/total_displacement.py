@@ -9,7 +9,8 @@ plt.rcParams['font.size'] = 15
 def plotTotalDisplacement(fig, ax, phase, action_intervals, max_lengths, per_second=False):
     strategy_name = {'a': 'figure eight', 'b': 'chlamy'}
     if per_second:
-        ax.set_title('velocity')
+        # ax.set_title('velocity')
+        pass
     else:
         ax.set_title('1 Episode displacement')
     ax.set_xlabel(r'$T^{a*}$')
@@ -32,7 +33,7 @@ def plotTotalDisplacement(fig, ax, phase, action_intervals, max_lengths, per_sec
 
     cmap_list = ['PuRd', 'GnBu']
     for idx, key in enumerate(data):
-        mappable = ax.scatter(data[key]['x'], data[key]['y'], c=data[key]['displacement'], cmap=cmap_list[idx], vmin=0, vmax=3)
+        mappable = ax.scatter(data[key]['x'], data[key]['y'], c=data[key]['displacement'], cmap=cmap_list[idx])
         fig.colorbar(mappable, ax=ax, label=f'{strategy_name[key]}')
 
 
