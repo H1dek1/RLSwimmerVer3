@@ -9,7 +9,8 @@ plt.rcParams['font.size'] = 15
 def plotTotalDisplacement(fig, ax, phase, action_intervals, max_lengths, per_second=False):
     strategy_name = {'a': 'figure eight', 'b': 'chlamy'}
     if per_second:
-        ax.set_title('velocity')
+        # ax.set_title('velocity')
+        pass
     else:
         ax.set_title('1 Episode displacement')
     ax.set_xlabel(r'$T^{a*}$')
@@ -26,14 +27,17 @@ def plotTotalDisplacement(fig, ax, phase, action_intervals, max_lengths, per_sec
             data[one_data['name']]['x'].append(interval)
             data[one_data['name']]['y'].append(length)
             if per_second:
-                data[one_data['name']]['displacement'].append(one_data['displacement'])
-            else:
                 data[one_data['name']]['displacement'].append(one_data['displacement'] / 1000.0)
+            else:
+                data[one_data['name']]['displacement'].append(one_data['displacement'])
 
     cmap_list = ['PuRd', 'GnBu']
     for idx, key in enumerate(data):
-        mappable = ax.scatter(data[key]['x'], data[key]['y'], c=data[key]['displacement'], cmap=cmap_list[idx], vmin=0, vmax=3)
-        fig.colorbar(mappable, ax=ax, label=f'{strategy_name[key]}')
+        mappable = ax.scatter(data[key]['x'], data[key]['y'], c=data[key]['displacement'], cmap=cmap_list[idx])
+        if idx == 0:
+            fig.colorbar(mappable, ax=ax, label=f'Synchronous')
+        else:
+            fig.colorbar(mappable, ax=ax, label=f'Alternate')
 
 
 def main():
