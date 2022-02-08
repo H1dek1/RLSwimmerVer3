@@ -29,25 +29,9 @@ def main():
     params = {
             'swimmer_type':       20,
             'on_record' :         False,
-<<<<<<< HEAD
             'action_interval':    0.7,   # 0.5 ~ 30
-            'max_length':         1.5,   # 0.1 ~ 0.9
-            'consider_energy':    True,
-=======
-<<<<<<< HEAD
-            'action_interval':    0.7,   # 0.5 ~ 30
-            'max_length':         1.1,   # 0.1 ~ 0.9
-=======
-<<<<<<< HEAD
-            'action_interval':    0.1,   # 0.5 ~ 30
-            'max_length':         1.9,   # 0.1 ~ 0.9
-=======
-            'action_interval':    0.9,   # 0.5 ~ 30
             'max_length':         1.3,   # 0.1 ~ 0.9
->>>>>>> e0b15e0b736a5aa486ed98470fa4be13f3a9736f
->>>>>>> 28869ad2e40ed1f096ed97723ac7e991c1c08a81
             'consider_energy':    False,
->>>>>>> 28d0f1464cc1677a6dadeee53fc9fa73f43961b1
             'random_init_states': False,
             }
     df = pd.read_csv(f'sim/analysis/data/characteristic_values/type{params["swimmer_type"]}/displacement_energy.csv')

@@ -1,0 +1,1489 @@
+{
+  "name": "a_triangle",
+  "data": {
+    "1": {
+      "0.05": {
+        "1.05": {
+          "displacement": 0.08267739689848962,
+          "energy_consumption": 1759.586731175849
+        },
+        "1.1": {
+          "displacement": 0.08267739689848962,
+          "energy_consumption": 1759.586731175849
+        },
+        "1.15": {
+          "displacement": 0.08267739689848962,
+          "energy_consumption": 1759.586731175849
+        },
+        "1.2": {
+          "displacement": 0.08267739689848962,
+          "energy_consumption": 1759.586731175849
+        },
+        "1.25": {
+          "displacement": 0.08267739689848962,
+          "energy_consumption": 1759.586731175849
+        },
+        "1.3": {
+          "displacement": 0.08267739689848962,
+          "energy_consumption": 1759.586731175849
+        },
+        "1.35": {
+          "displacement": 0.08267739689848962,
+          "energy_consumption": 1759.586731175849
+        },
+        "1.4": {
+          "displacement": 0.08267739689848962,
+          "energy_consumption": 1759.586731175849
+        },
+        "1.45": {
+          "displacement": 0.08267739689848962,
+          "energy_consumption": 1759.586731175849
+        },
+        "1.5": {
+          "displacement": 0.08267739689848962,
+          "energy_consumption": 1759.586731175849
+        },
+        "1.55": {
+          "displacement": 0.08267739689848962,
+          "energy_consumption": 1759.586731175849
+        },
+        "1.6": {
+          "displacement": 0.08267739689848962,
+          "energy_consumption": 1759.586731175849
+        },
+        "1.65": {
+          "displacement": 0.08267739689848962,
+          "energy_consumption": 1759.586731175849
+        },
+        "1.7": {
+          "displacement": 0.08267739689848962,
+          "energy_consumption": 1759.586731175849
+        },
+        "1.75": {
+          "displacement": 0.08267739689848962,
+          "energy_consumption": 1759.586731175849
+        },
+        "1.8": {
+          "displacement": 0.08267739689848962,
+          "energy_consumption": 1759.586731175849
+        },
+        "1.85": {
+          "displacement": 0.08267739689848962,
+          "energy_consumption": 1759.586731175849
+        },
+        "1.9": {
+          "displacement": 0.08267739689848962,
+          "energy_consumption": 1759.586731175849
+        },
+        "1.95": {
+          "displacement": 0.08267739689848962,
+          "energy_consumption": 1759.586731175849
+        }
+      },
+      "0.1": {
+        "1.05": {
+          "displacement": 0.043914953555239646,
+          "energy_consumption": 897.4173607139159
+        },
+        "1.1": {
+          "displacement": 0.18243891291492775,
+          "energy_consumption": 1774.622620631621
+        },
+        "1.15": {
+          "displacement": 0.18243891291492775,
+          "energy_consumption": 1774.622620631621
+        },
+        "1.2": {
+          "displacement": 0.18243891291492775,
+          "energy_consumption": 1774.622620631621
+        },
+        "1.25": {
+          "displacement": 0.18243891291492775,
+          "energy_consumption": 1774.622620631621
+        },
+        "1.3": {
+          "displacement": 0.18243891291492775,
+          "energy_consumption": 1774.622620631621
+        },
+        "1.35": {
+          "displacement": 0.18243891291492775,
+          "energy_consumption": 1774.622620631621
+        },
+        "1.4": {
+          "displacement": 0.18243891291492775,
+          "energy_consumption": 1774.622620631621
+        },
+        "1.45": {
+          "displacement": 0.18243891291492775,
+          "energy_consumption": 1774.622620631621
+        },
+        "1.5": {
+          "displacement": 0.18243891291492775,
+          "energy_consumption": 1774.622620631621
+        },
+        "1.55": {
+          "displacement": 0.18243891291492775,
+          "energy_consumption": 1774.622620631621
+        },
+        "1.6": {
+          "displacement": 0.18243891291492775,
+          "energy_consumption": 1774.622620631621
+        },
+        "1.65": {
+          "displacement": 0.18243891291492775,
+          "energy_consumption": 1774.622620631621
+        },
+        "1.7": {
+          "displacement": 0.18243891291492775,
+          "energy_consumption": 1774.622620631621
+        },
+        "1.75": {
+          "displacement": 0.18243891291492775,
+          "energy_consumption": 1774.622620631621
+        },
+        "1.8": {
+          "displacement": 0.18243891291492775,
+          "energy_consumption": 1774.622620631621
+        },
+        "1.85": {
+          "displacement": 0.18243891291492775,
+          "energy_consumption": 1774.622620631621
+        },
+        "1.9": {
+          "displacement": 0.18243891291492775,
+          "energy_consumption": 1774.622620631621
+        },
+        "1.95": {
+          "displacement": 0.18243891291492775,
+          "energy_consumption": 1774.622620631621
+        }
+      },
+      "0.15": {
+        "1.05": {
+          "displacement": 0.02899311227145616,
+          "energy_consumption": 598.2322629319967
+        },
+        "1.1": {
+          "displacement": 0.12371504179482146,
+          "energy_consumption": 1194.9354998652493
+        },
+        "1.15": {
+          "displacement": 0.2956584710844931,
+          "energy_consumption": 1791.231331747594
+        },
+        "1.2": {
+          "displacement": 0.2956584710844931,
+          "energy_consumption": 1791.231331747594
+        },
+        "1.25": {
+          "displacement": 0.2956584710844931,
+          "energy_consumption": 1791.231331747594
+        },
+        "1.3": {
+          "displacement": 0.2956584710844931,
+          "energy_consumption": 1791.231331747594
+        },
+        "1.35": {
+          "displacement": 0.2956584710844931,
+          "energy_consumption": 1791.231331747594
+        },
+        "1.4": {
+          "displacement": 0.2956584710844931,
+          "energy_consumption": 1791.231331747594
+        },
+        "1.45": {
+          "displacement": 0.2956584710844931,
+          "energy_consumption": 1791.231331747594
+        },
+        "1.5": {
+          "displacement": 0.2956584710844931,
+          "energy_consumption": 1791.231331747594
+        },
+        "1.55": {
+          "displacement": 0.2956584710844931,
+          "energy_consumption": 1791.231331747594
+        },
+        "1.6": {
+          "displacement": 0.2956584710844931,
+          "energy_consumption": 1791.231331747594
+        },
+        "1.65": {
+          "displacement": 0.2956584710844931,
+          "energy_consumption": 1791.231331747594
+        },
+        "1.7": {
+          "displacement": 0.2956584710844931,
+          "energy_consumption": 1791.231331747594
+        },
+        "1.75": {
+          "displacement": 0.2956584710844931,
+          "energy_consumption": 1791.231331747594
+        },
+        "1.8": {
+          "displacement": 0.2956584710844931,
+          "energy_consumption": 1791.231331747594
+        },
+        "1.85": {
+          "displacement": 0.2956584710844931,
+          "energy_consumption": 1791.231331747594
+        },
+        "1.9": {
+          "displacement": 0.2956584710844931,
+          "energy_consumption": 1791.231331747594
+        },
+        "1.95": {
+          "displacement": 0.2956584710844931,
+          "energy_consumption": 1791.231331747594
+        }
+      },
+      "0.2": {
+        "1.05": {
+          "displacement": 0.020903823182536013,
+          "energy_consumption": 448.74596630266467
+        },
+        "1.1": {
+          "displacement": 0.09110427900217553,
+          "energy_consumption": 896.3497605495658
+        },
+        "1.15": {
+          "displacement": 0.22251010026587825,
+          "energy_consumption": 1352.7548902140281
+        },
+        "1.2": {
+          "displacement": 0.4195730735814877,
+          "energy_consumption": 1810.0633291008862
+        },
+        "1.25": {
+          "displacement": 0.4195730735814877,
+          "energy_consumption": 1810.0633291008862
+        },
+        "1.3": {
+          "displacement": 0.4195730735814877,
+          "energy_consumption": 1810.0633291008862
+        },
+        "1.35": {
+          "displacement": 0.4195730735814877,
+          "energy_consumption": 1810.0633291008862
+        },
+        "1.4": {
+          "displacement": 0.4195730735814877,
+          "energy_consumption": 1810.0633291008862
+        },
+        "1.45": {
+          "displacement": 0.4195730735814877,
+          "energy_consumption": 1810.0633291008862
+        },
+        "1.5": {
+          "displacement": 0.4195730735814877,
+          "energy_consumption": 1810.0633291008862
+        },
+        "1.55": {
+          "displacement": 0.4195730735814877,
+          "energy_consumption": 1810.0633291008862
+        },
+        "1.6": {
+          "displacement": 0.4195730735814877,
+          "energy_consumption": 1810.0633291008862
+        },
+        "1.65": {
+          "displacement": 0.4195730735814877,
+          "energy_consumption": 1810.0633291008862
+        },
+        "1.7": {
+          "displacement": 0.4195730735814877,
+          "energy_consumption": 1810.0633291008862
+        },
+        "1.75": {
+          "displacement": 0.4195730735814877,
+          "energy_consumption": 1810.0633291008862
+        },
+        "1.8": {
+          "displacement": 0.4195730735814877,
+          "energy_consumption": 1810.0633291008862
+        },
+        "1.85": {
+          "displacement": 0.4195730735814877,
+          "energy_consumption": 1810.0633291008862
+        },
+        "1.9": {
+          "displacement": 0.4195730735814877,
+          "energy_consumption": 1810.0633291008862
+        },
+        "1.95": {
+          "displacement": 0.4195730735814877,
+          "energy_consumption": 1810.0633291008862
+        }
+      },
+      "0.25": {
+        "1.05": {
+          "displacement": 0.017816520399144387,
+          "energy_consumption": 358.94640533793705
+        },
+        "1.1": {
+          "displacement": 0.0750705468778395,
+          "energy_consumption": 716.9759230070757
+        },
+        "1.15": {
+          "displacement": 0.1813274419265484,
+          "energy_consumption": 1082.0466190346974
+        },
+        "1.2": {
+          "displacement": 0.3439564224133986,
+          "energy_consumption": 1455.261629615818
+        },
+        "1.25": {
+          "displacement": 0.56322566854466,
+          "energy_consumption": 1830.3677711870644
+        },
+        "1.3": {
+          "displacement": 0.56322566854466,
+          "energy_consumption": 1830.3677711870644
+        },
+        "1.35": {
+          "displacement": 0.56322566854466,
+          "energy_consumption": 1830.3677711870644
+        },
+        "1.4": {
+          "displacement": 0.56322566854466,
+          "energy_consumption": 1830.3677711870644
+        },
+        "1.45": {
+          "displacement": 0.56322566854466,
+          "energy_consumption": 1830.3677711870644
+        },
+        "1.5": {
+          "displacement": 0.56322566854466,
+          "energy_consumption": 1830.3677711870644
+        },
+        "1.55": {
+          "displacement": 0.56322566854466,
+          "energy_consumption": 1830.3677711870644
+        },
+        "1.6": {
+          "displacement": 0.56322566854466,
+          "energy_consumption": 1830.3677711870644
+        },
+        "1.65": {
+          "displacement": 0.56322566854466,
+          "energy_consumption": 1830.3677711870644
+        },
+        "1.7": {
+          "displacement": 0.56322566854466,
+          "energy_consumption": 1830.3677711870644
+        },
+        "1.75": {
+          "displacement": 0.56322566854466,
+          "energy_consumption": 1830.3677711870644
+        },
+        "1.8": {
+          "displacement": 0.56322566854466,
+          "energy_consumption": 1830.3677711870644
+        },
+        "1.85": {
+          "displacement": 0.56322566854466,
+          "energy_consumption": 1830.3677711870644
+        },
+        "1.9": {
+          "displacement": 0.56322566854466,
+          "energy_consumption": 1830.3677711870644
+        },
+        "1.95": {
+          "displacement": 0.56322566854466,
+          "energy_consumption": 1830.3677711870644
+        }
+      },
+      "0.3": {
+        "1.05": {
+          "displacement": 0.01449601106052826,
+          "energy_consumption": 299.1149112690341
+        },
+        "1.1": {
+          "displacement": 0.06184862029014477,
+          "energy_consumption": 597.4659320837447
+        },
+        "1.15": {
+          "displacement": 0.15003657215440092,
+          "energy_consumption": 901.682644705082
+        },
+        "1.2": {
+          "displacement": 0.2851517735045824,
+          "energy_consumption": 1212.699023001579
+        },
+        "1.25": {
+          "displacement": 0.47175669608254894,
+          "energy_consumption": 1531.6081850140308
+        },
+        "1.3": {
+          "displacement": 0.7074964626372245,
+          "energy_consumption": 1853.247916223766
+        },
+        "1.35": {
+          "displacement": 0.7074964626372245,
+          "energy_consumption": 1853.247916223766
+        },
+        "1.4": {
+          "displacement": 0.7074964626372245,
+          "energy_consumption": 1853.247916223766
+        },
+        "1.45": {
+          "displacement": 0.7074964626372245,
+          "energy_consumption": 1853.247916223766
+        },
+        "1.5": {
+          "displacement": 0.7074964626372245,
+          "energy_consumption": 1853.247916223766
+        },
+        "1.55": {
+          "displacement": 0.7074964626372245,
+          "energy_consumption": 1853.247916223766
+        },
+        "1.6": {
+          "displacement": 0.7074964626372245,
+          "energy_consumption": 1853.247916223766
+        },
+        "1.65": {
+          "displacement": 0.7074964626372245,
+          "energy_consumption": 1853.247916223766
+        },
+        "1.7": {
+          "displacement": 0.7074964626372245,
+          "energy_consumption": 1853.247916223766
+        },
+        "1.75": {
+          "displacement": 0.7074964626372245,
+          "energy_consumption": 1853.247916223766
+        },
+        "1.8": {
+          "displacement": 0.7074964626372245,
+          "energy_consumption": 1853.247916223766
+        },
+        "1.85": {
+          "displacement": 0.7074964626372245,
+          "energy_consumption": 1853.247916223766
+        },
+        "1.9": {
+          "displacement": 0.7074964626372245,
+          "energy_consumption": 1853.247916223766
+        },
+        "1.95": {
+          "displacement": 0.7074964626372245,
+          "energy_consumption": 1853.247916223766
+        }
+      },
+      "0.35": {
+        "1.05": {
+          "displacement": 0.0128470078146005,
+          "energy_consumption": 256.36917739022664
+        },
+        "1.1": {
+          "displacement": 0.05386944793561205,
+          "energy_consumption": 512.0764995483323
+        },
+        "1.15": {
+          "displacement": 0.12986882372280079,
+          "energy_consumption": 772.8159621555504
+        },
+        "1.2": {
+          "displacement": 0.24611796807496203,
+          "energy_consumption": 1039.393436106248
+        },
+        "1.25": {
+          "displacement": 0.40647972197082133,
+          "energy_consumption": 1312.7182509110496
+        },
+        "1.3": {
+          "displacement": 0.6135852569576254,
+          "energy_consumption": 1593.9618497286046
+        },
+        "1.35": {
+          "displacement": 0.8578000234751824,
+          "energy_consumption": 1872.8312306282555
+        },
+        "1.4": {
+          "displacement": 0.8578000234751824,
+          "energy_consumption": 1872.8312306282555
+        },
+        "1.45": {
+          "displacement": 0.8578000234751824,
+          "energy_consumption": 1872.8312306282555
+        },
+        "1.5": {
+          "displacement": 0.8578000234751824,
+          "energy_consumption": 1872.8312306282555
+        },
+        "1.55": {
+          "displacement": 0.8578000234751824,
+          "energy_consumption": 1872.8312306282555
+        },
+        "1.6": {
+          "displacement": 0.8578000234751824,
+          "energy_consumption": 1872.8312306282555
+        },
+        "1.65": {
+          "displacement": 0.8578000234751824,
+          "energy_consumption": 1872.8312306282555
+        },
+        "1.7": {
+          "displacement": 0.8578000234751824,
+          "energy_consumption": 1872.8312306282555
+        },
+        "1.75": {
+          "displacement": 0.8578000234751824,
+          "energy_consumption": 1872.8312306282555
+        },
+        "1.8": {
+          "displacement": 0.8578000234751824,
+          "energy_consumption": 1872.8312306282555
+        },
+        "1.85": {
+          "displacement": 0.8578000234751824,
+          "energy_consumption": 1872.8312306282555
+        },
+        "1.9": {
+          "displacement": 0.8578000234751824,
+          "energy_consumption": 1872.8312306282555
+        },
+        "1.95": {
+          "displacement": 0.8578000234751824,
+          "energy_consumption": 1872.8312306282555
+        }
+      },
+      "0.4": {
+        "1.05": {
+          "displacement": 0.011292840541113717,
+          "energy_consumption": 224.33230735191574
+        },
+        "1.1": {
+          "displacement": 0.0472486311632268,
+          "energy_consumption": 448.0818221632993
+        },
+        "1.15": {
+          "displacement": 0.11381701779398061,
+          "energy_consumption": 676.2327171068753
+        },
+        "1.2": {
+          "displacement": 0.21561989941815118,
+          "energy_consumption": 909.4969101967201
+        },
+        "1.25": {
+          "displacement": 0.3560332992215265,
+          "energy_consumption": 1148.6690108194862
+        },
+        "1.3": {
+          "displacement": 0.5373595467109322,
+          "energy_consumption": 1394.7639523953872
+        },
+        "1.35": {
+          "displacement": 0.7609207699941404,
+          "energy_consumption": 1648.9683473796313
+        },
+        "1.4": {
+          "displacement": 1.0214332178395622,
+          "energy_consumption": 1907.590827739954
+        },
+        "1.45": {
+          "displacement": 1.0214332178395622,
+          "energy_consumption": 1907.590827739954
+        },
+        "1.5": {
+          "displacement": 1.0214332178395622,
+          "energy_consumption": 1907.590827739954
+        },
+        "1.55": {
+          "displacement": 1.0214332178395622,
+          "energy_consumption": 1907.590827739954
+        },
+        "1.6": {
+          "displacement": 1.0214332178395622,
+          "energy_consumption": 1907.590827739954
+        },
+        "1.65": {
+          "displacement": 1.0214332178395622,
+          "energy_consumption": 1907.590827739954
+        },
+        "1.7": {
+          "displacement": 1.0214332178395622,
+          "energy_consumption": 1907.590827739954
+        },
+        "1.75": {
+          "displacement": 1.0214332178395622,
+          "energy_consumption": 1907.590827739954
+        },
+        "1.8": {
+          "displacement": 1.0214332178395622,
+          "energy_consumption": 1907.590827739954
+        },
+        "1.85": {
+          "displacement": 1.0214332178395622,
+          "energy_consumption": 1907.590827739954
+        },
+        "1.9": {
+          "displacement": 1.0214332178395622,
+          "energy_consumption": 1907.590827739954
+        },
+        "1.95": {
+          "displacement": 1.0214332178395622,
+          "energy_consumption": 1907.590827739954
+        }
+      },
+      "0.45": {
+        "1.05": {
+          "displacement": 0.008817452151599329,
+          "energy_consumption": 199.437901650106
+        },
+        "1.1": {
+          "displacement": 0.03956727790195038,
+          "energy_consumption": 398.36228969064575
+        },
+        "1.15": {
+          "displacement": 0.09746192110463221,
+          "energy_consumption": 601.1989502233001
+        },
+        "1.2": {
+          "displacement": 0.1866646143531168,
+          "energy_consumption": 808.5882349225402
+        },
+        "1.25": {
+          "displacement": 0.31018445960108115,
+          "energy_consumption": 1021.2193246416309
+        },
+        "1.3": {
+          "displacement": 0.47002251456269284,
+          "energy_consumption": 1240.0199489934575
+        },
+        "1.35": {
+          "displacement": 0.6673859761758267,
+          "energy_consumption": 1466.0225182963375
+        },
+        "1.4": {
+          "displacement": 0.9026785689045198,
+          "energy_consumption": 1700.5976706269353
+        },
+        "1.45": {
+          "displacement": 1.1696684517714233,
+          "energy_consumption": 1940.529657293026
+        },
+        "1.5": {
+          "displacement": 1.1696684517714233,
+          "energy_consumption": 1940.529657293026
+        },
+        "1.55": {
+          "displacement": 1.1696684517714233,
+          "energy_consumption": 1940.529657293026
+        },
+        "1.6": {
+          "displacement": 1.1696684517714233,
+          "energy_consumption": 1940.529657293026
+        },
+        "1.65": {
+          "displacement": 1.1696684517714233,
+          "energy_consumption": 1940.529657293026
+        },
+        "1.7": {
+          "displacement": 1.1696684517714233,
+          "energy_consumption": 1940.529657293026
+        },
+        "1.75": {
+          "displacement": 1.1696684517714233,
+          "energy_consumption": 1940.529657293026
+        },
+        "1.8": {
+          "displacement": 1.1696684517714233,
+          "energy_consumption": 1940.529657293026
+        },
+        "1.85": {
+          "displacement": 1.1696684517714233,
+          "energy_consumption": 1940.529657293026
+        },
+        "1.9": {
+          "displacement": 1.1696684517714233,
+          "energy_consumption": 1940.529657293026
+        },
+        "1.95": {
+          "displacement": 1.1696684517714233,
+          "energy_consumption": 1940.529657293026
+        }
+      },
+      "0.5": {
+        "1.05": {
+          "displacement": 0.007855185024741307,
+          "energy_consumption": 179.5145443522269
+        },
+        "1.1": {
+          "displacement": 0.03543263671964725,
+          "energy_consumption": 358.56821764493566
+        },
+        "1.15": {
+          "displacement": 0.08746521644778878,
+          "energy_consumption": 541.1368648527399
+        },
+        "1.2": {
+          "displacement": 0.1676693239806473,
+          "energy_consumption": 727.8128751709539
+        },
+        "1.25": {
+          "displacement": 0.2787388905655438,
+          "energy_consumption": 919.207087716811
+        },
+        "1.3": {
+          "displacement": 0.42252576374882594,
+          "energy_consumption": 1116.1485633351408
+        },
+        "1.35": {
+          "displacement": 0.600095753927372,
+          "energy_consumption": 1319.576365966796
+        },
+        "1.4": {
+          "displacement": 0.8117867087903635,
+          "energy_consumption": 1530.7185676349732
+        },
+        "1.45": {
+          "displacement": 1.0573970225711322,
+          "energy_consumption": 1751.0069910043417
+        },
+        "1.5": {
+          "displacement": 1.3298198537829646,
+          "energy_consumption": 1977.8837210470583
+        },
+        "1.55": {
+          "displacement": 1.3298198537829646,
+          "energy_consumption": 1977.8837210470583
+        },
+        "1.6": {
+          "displacement": 1.3298198537829646,
+          "energy_consumption": 1977.8837210470583
+        },
+        "1.65": {
+          "displacement": 1.3298198537829646,
+          "energy_consumption": 1977.8837210470583
+        },
+        "1.7": {
+          "displacement": 1.3298198537829646,
+          "energy_consumption": 1977.8837210470583
+        },
+        "1.75": {
+          "displacement": 1.3298198537829646,
+          "energy_consumption": 1977.8837210470583
+        },
+        "1.8": {
+          "displacement": 1.3298198537829646,
+          "energy_consumption": 1977.8837210470583
+        },
+        "1.85": {
+          "displacement": 1.3298198537829646,
+          "energy_consumption": 1977.8837210470583
+        },
+        "1.9": {
+          "displacement": 1.3298198537829646,
+          "energy_consumption": 1977.8837210470583
+        },
+        "1.95": {
+          "displacement": 1.3298198537829646,
+          "energy_consumption": 1977.8837210470583
+        }
+      },
+      "0.55": {
+        "1.05": {
+          "displacement": 0.0079057394825409,
+          "energy_consumption": 163.1517869077721
+        },
+        "1.1": {
+          "displacement": 0.03374255120960682,
+          "energy_consumption": 325.8849374680416
+        },
+        "1.15": {
+          "displacement": 0.08184180488940972,
+          "energy_consumption": 491.80981894519675
+        },
+        "1.2": {
+          "displacement": 0.155538237560808,
+          "energy_consumption": 661.4746314364959
+        },
+        "1.25": {
+          "displacement": 0.25732952760397726,
+          "energy_consumption": 835.4187441983911
+        },
+        "1.3": {
+          "displacement": 0.3888550578901519,
+          "energy_consumption": 1014.4087625121356
+        },
+        "1.35": {
+          "displacement": 0.5510809686663887,
+          "energy_consumption": 1199.283342506745
+        },
+        "1.4": {
+          "displacement": 0.7443227591718208,
+          "energy_consumption": 1391.1881594161443
+        },
+        "1.45": {
+          "displacement": 0.9684224665467719,
+          "energy_consumption": 1591.3618864424088
+        },
+        "1.5": {
+          "displacement": 1.222262176510293,
+          "energy_consumption": 1801.7341933650887
+        },
+        "1.55": {
+          "displacement": 1.4987928129286827,
+          "energy_consumption": 2020.0511007065284
+        },
+        "1.6": {
+          "displacement": 1.4987928129286827,
+          "energy_consumption": 2020.0511007065284
+        },
+        "1.65": {
+          "displacement": 1.4987928129286827,
+          "energy_consumption": 2020.0511007065284
+        },
+        "1.7": {
+          "displacement": 1.4987928129286827,
+          "energy_consumption": 2020.0511007065284
+        },
+        "1.75": {
+          "displacement": 1.4987928129286827,
+          "energy_consumption": 2020.0511007065284
+        },
+        "1.8": {
+          "displacement": 1.4987928129286827,
+          "energy_consumption": 2020.0511007065284
+        },
+        "1.85": {
+          "displacement": 1.4987928129286827,
+          "energy_consumption": 2020.0511007065284
+        },
+        "1.9": {
+          "displacement": 1.4987928129286827,
+          "energy_consumption": 2020.0511007065284
+        },
+        "1.95": {
+          "displacement": 1.4987928129286827,
+          "energy_consumption": 2020.0511007065284
+        }
+      },
+      "0.6": {
+        "1.05": {
+          "displacement": 0.0076651175945065915,
+          "energy_consumption": 149.48275142181234
+        },
+        "1.1": {
+          "displacement": 0.031761538448164844,
+          "energy_consumption": 298.58061832252616
+        },
+        "1.15": {
+          "displacement": 0.07627891604974496,
+          "energy_consumption": 450.6014193430798
+        },
+        "1.2": {
+          "displacement": 0.14424883767032456,
+          "energy_consumption": 606.0511787400068
+        },
+        "1.25": {
+          "displacement": 0.23798972968752782,
+          "energy_consumption": 765.4188489272188
+        },
+        "1.3": {
+          "displacement": 0.35896121820959803,
+          "energy_consumption": 929.4117834063538
+        },
+        "1.35": {
+          "displacement": 0.5081189820046975,
+          "energy_consumption": 1098.7935293992577
+        },
+        "1.4": {
+          "displacement": 0.6856981923882968,
+          "energy_consumption": 1274.6024888522825
+        },
+        "1.45": {
+          "displacement": 0.8915161805842153,
+          "energy_consumption": 1457.9913474687671
+        },
+        "1.5": {
+          "displacement": 1.1246556173675823,
+          "energy_consumption": 1650.7639145125795
+        },
+        "1.55": {
+          "displacement": 1.3839613103459243,
+          "energy_consumption": 1854.7652452856616
+        },
+        "1.6": {
+          "displacement": 1.6615221781595892,
+          "energy_consumption": 2068.6953361803467
+        },
+        "1.65": {
+          "displacement": 1.6615221781595892,
+          "energy_consumption": 2068.6953361803467
+        },
+        "1.7": {
+          "displacement": 1.6615221781595892,
+          "energy_consumption": 2068.6953361803467
+        },
+        "1.75": {
+          "displacement": 1.6615221781595892,
+          "energy_consumption": 2068.6953361803467
+        },
+        "1.8": {
+          "displacement": 1.6615221781595892,
+          "energy_consumption": 2068.6953361803467
+        },
+        "1.85": {
+          "displacement": 1.6615221781595892,
+          "energy_consumption": 2068.6953361803467
+        },
+        "1.9": {
+          "displacement": 1.6615221781595892,
+          "energy_consumption": 2068.6953361803467
+        },
+        "1.95": {
+          "displacement": 1.6615221781595892,
+          "energy_consumption": 2068.6953361803467
+        }
+      },
+      "0.65": {
+        "1.05": {
+          "displacement": 0.005841025078325827,
+          "energy_consumption": 138.0538527910233
+        },
+        "1.1": {
+          "displacement": 0.02686031506247803,
+          "energy_consumption": 275.7536584221157
+        },
+        "1.15": {
+          "displacement": 0.0666861445498801,
+          "energy_consumption": 416.151892959119
+        },
+        "1.2": {
+          "displacement": 0.12814707624287924,
+          "energy_consumption": 559.7178444064375
+        },
+        "1.25": {
+          "displacement": 0.21335934898277856,
+          "energy_consumption": 706.9007252010235
+        },
+        "1.3": {
+          "displacement": 0.32371240934755097,
+          "energy_consumption": 858.3648655814176
+        },
+        "1.35": {
+          "displacement": 0.46005312072093507,
+          "energy_consumption": 1014.8028327068323
+        },
+        "1.4": {
+          "displacement": 0.6226176039201334,
+          "energy_consumption": 1177.178900485159
+        },
+        "1.45": {
+          "displacement": 0.8112333278835774,
+          "energy_consumption": 1346.5558346267712
+        },
+        "1.5": {
+          "displacement": 1.0251092588871924,
+          "energy_consumption": 1524.6019420844968
+        },
+        "1.55": {
+          "displacement": 1.263106857342838,
+          "energy_consumption": 1713.025137996132
+        },
+        "1.6": {
+          "displacement": 1.523410194393149,
+          "energy_consumption": 1914.5670079776423
+        },
+        "1.65": {
+          "displacement": 1.79811443887778,
+          "energy_consumption": 2128.6026875613707
+        },
+        "1.7": {
+          "displacement": 1.79811443887778,
+          "energy_consumption": 2128.6026875613707
+        },
+        "1.75": {
+          "displacement": 1.79811443887778,
+          "energy_consumption": 2128.6026875613707
+        },
+        "1.8": {
+          "displacement": 1.79811443887778,
+          "energy_consumption": 2128.6026875613707
+        },
+        "1.85": {
+          "displacement": 1.79811443887778,
+          "energy_consumption": 2128.6026875613707
+        },
+        "1.9": {
+          "displacement": 1.79811443887778,
+          "energy_consumption": 2128.6026875613707
+        },
+        "1.95": {
+          "displacement": 1.79811443887778,
+          "energy_consumption": 2128.6026875613707
+        }
+      },
+      "0.7": {
+        "1.05": {
+          "displacement": 0.006219782888009839,
+          "energy_consumption": 128.15426405138288
+        },
+        "1.1": {
+          "displacement": 0.026504980522052985,
+          "energy_consumption": 255.9793277027287
+        },
+        "1.15": {
+          "displacement": 0.06429051676727164,
+          "energy_consumption": 386.305782550657
+        },
+        "1.2": {
+          "displacement": 0.12217531323861823,
+          "energy_consumption": 519.5725950384101
+        },
+        "1.25": {
+          "displacement": 0.20212685373881248,
+          "energy_consumption": 656.2010635226427
+        },
+        "1.3": {
+          "displacement": 0.3054344817498765,
+          "energy_consumption": 796.7972162308863
+        },
+        "1.35": {
+          "displacement": 0.4328783376485805,
+          "energy_consumption": 942.0089914657653
+        },
+        "1.4": {
+          "displacement": 0.5846585698663828,
+          "energy_consumption": 1092.7367292351914
+        },
+        "1.45": {
+          "displacement": 0.7606021153530697,
+          "energy_consumption": 1249.9742569586565
+        },
+        "1.5": {
+          "displacement": 0.9600553528917747,
+          "energy_consumption": 1415.2218824178876
+        },
+        "1.55": {
+          "displacement": 1.181867126920209,
+          "energy_consumption": 1590.1388622335985
+        },
+        "1.6": {
+          "displacement": 1.424387226451925,
+          "energy_consumption": 1777.2196628364497
+        },
+        "1.65": {
+          "displacement": 1.685316445353319,
+          "energy_consumption": 1979.7236710570246
+        },
+        "1.7": {
+          "displacement": 1.9515794844739787,
+          "energy_consumption": 2193.987531644858
+        },
+        "1.75": {
+          "displacement": 1.9515794844739787,
+          "energy_consumption": 2193.987531644858
+        },
+        "1.8": {
+          "displacement": 1.9515794844739787,
+          "energy_consumption": 2193.987531644858
+        },
+        "1.85": {
+          "displacement": 1.9515794844739787,
+          "energy_consumption": 2193.987531644858
+        },
+        "1.9": {
+          "displacement": 1.9515794844739787,
+          "energy_consumption": 2193.987531644858
+        },
+        "1.95": {
+          "displacement": 1.9515794844739787,
+          "energy_consumption": 2193.987531644858
+        }
+      },
+      "0.75": {
+        "1.05": {
+          "displacement": 0.0062162583693176066,
+          "energy_consumption": 119.59913857230671
+        },
+        "1.1": {
+          "displacement": 0.025589840651154255,
+          "energy_consumption": 238.8938824715041
+        },
+        "1.15": {
+          "displacement": 0.06127161717853119,
+          "energy_consumption": 360.51814667640315
+        },
+        "1.2": {
+          "displacement": 0.1157283280413484,
+          "energy_consumption": 484.8869501020592
+        },
+        "1.25": {
+          "displacement": 0.19077137259250984,
+          "energy_consumption": 612.3910885518683
+        },
+        "1.3": {
+          "displacement": 0.2876258415622061,
+          "energy_consumption": 743.6014705869193
+        },
+        "1.35": {
+          "displacement": 0.40698828142780213,
+          "energy_consumption": 879.1241739785951
+        },
+        "1.4": {
+          "displacement": 0.549085574579019,
+          "energy_consumption": 1019.7791810732238
+        },
+        "1.45": {
+          "displacement": 0.7137159848726213,
+          "energy_consumption": 1166.518482723663
+        },
+        "1.5": {
+          "displacement": 0.9002698727131392,
+          "energy_consumption": 1320.7378809603972
+        },
+        "1.55": {
+          "displacement": 1.1077216349817127,
+          "energy_consumption": 1483.9544246191672
+        },
+        "1.6": {
+          "displacement": 1.334472325815806,
+          "energy_consumption": 1658.5321365907398
+        },
+        "1.65": {
+          "displacement": 1.5783477931535774,
+          "energy_consumption": 1847.4863367260891
+        },
+        "1.7": {
+          "displacement": 1.8382090467339252,
+          "energy_consumption": 2055.891322744248
+        },
+        "1.75": {
+          "displacement": 2.1044509342493884,
+          "energy_consumption": 2285.8165109228394
+        },
+        "1.8": {
+          "displacement": 2.1044509342493884,
+          "energy_consumption": 2285.8165109228394
+        },
+        "1.85": {
+          "displacement": 2.1044509342493884,
+          "energy_consumption": 2285.8165109228394
+        },
+        "1.9": {
+          "displacement": 2.1044509342493884,
+          "energy_consumption": 2285.8165109228394
+        },
+        "1.95": {
+          "displacement": 2.1044509342493884,
+          "energy_consumption": 2285.8165109228394
+        }
+      },
+      "0.8": {
+        "1.05": {
+          "displacement": 0.004602013188723886,
+          "energy_consumption": 112.20646142674792
+        },
+        "1.1": {
+          "displacement": 0.021519394238751155,
+          "energy_consumption": 224.13225817865595
+        },
+        "1.15": {
+          "displacement": 0.053726854255577466,
+          "energy_consumption": 338.2402751886987
+        },
+        "1.2": {
+          "displacement": 0.10350601863094126,
+          "energy_consumption": 454.9275361034411
+        },
+        "1.25": {
+          "displacement": 0.1725999744196355,
+          "energy_consumption": 574.5557776054426
+        },
+        "1.3": {
+          "displacement": 0.2621149979544411,
+          "energy_consumption": 697.6638505565984
+        },
+        "1.35": {
+          "displacement": 0.3727511603187528,
+          "energy_consumption": 824.8185748842022
+        },
+        "1.4": {
+          "displacement": 0.5047151568817679,
+          "energy_consumption": 956.7908760365121
+        },
+        "1.45": {
+          "displacement": 0.6578059254763223,
+          "energy_consumption": 1094.484024714236
+        },
+        "1.5": {
+          "displacement": 0.8314776103769912,
+          "energy_consumption": 1239.184304110774
+        },
+        "1.55": {
+          "displacement": 1.0247528293881851,
+          "energy_consumption": 1392.324572203769
+        },
+        "1.6": {
+          "displacement": 1.23610214599938,
+          "energy_consumption": 1556.1389610116785
+        },
+        "1.65": {
+          "displacement": 1.4636840140622258,
+          "energy_consumption": 1733.4302874273276
+        },
+        "1.7": {
+          "displacement": 1.7060354370622581,
+          "energy_consumption": 1928.9977246195444
+        },
+        "1.75": {
+          "displacement": 1.9595184006675186,
+          "energy_consumption": 2149.1287751632635
+        },
+        "1.8": {
+          "displacement": 2.21602194356841,
+          "energy_consumption": 2400.2674314014175
+        },
+        "1.85": {
+          "displacement": 2.21602194356841,
+          "energy_consumption": 2400.2674314014175
+        },
+        "1.9": {
+          "displacement": 2.21602194356841,
+          "energy_consumption": 2400.2674314014175
+        },
+        "1.95": {
+          "displacement": 2.21602194356841,
+          "energy_consumption": 2400.2674314014175
+        }
+      },
+      "0.85": {
+        "1.05": {
+          "displacement": 0.005115652550977512,
+          "energy_consumption": 105.53434440776573
+        },
+        "1.1": {
+          "displacement": 0.021822259579818648,
+          "energy_consumption": 210.81012068413918
+        },
+        "1.15": {
+          "displacement": 0.052931049973233224,
+          "energy_consumption": 318.13489338884267
+        },
+        "1.2": {
+          "displacement": 0.1006012018973631,
+          "energy_consumption": 427.88481667577014
+        },
+        "1.25": {
+          "displacement": 0.16644091316485662,
+          "energy_consumption": 540.3986513121561
+        },
+        "1.3": {
+          "displacement": 0.25152692217152794,
+          "energy_consumption": 656.1853394682414
+        },
+        "1.35": {
+          "displacement": 0.3564781649200006,
+          "energy_consumption": 775.7722901629033
+        },
+        "1.4": {
+          "displacement": 0.4815008741780534,
+          "energy_consumption": 899.9018651527253
+        },
+        "1.45": {
+          "displacement": 0.6263782679642885,
+          "energy_consumption": 1029.4087999142594
+        },
+        "1.5": {
+          "displacement": 0.7906383933927752,
+          "energy_consumption": 1165.4846665975347
+        },
+        "1.55": {
+          "displacement": 0.9732922820072315,
+          "energy_consumption": 1309.5289263117877
+        },
+        "1.6": {
+          "displacement": 1.173015533899366,
+          "energy_consumption": 1463.5988399433702
+        },
+        "1.65": {
+          "displacement": 1.3879905599535352,
+          "energy_consumption": 1630.3270120122208
+        },
+        "1.7": {
+          "displacement": 1.6167979719684187,
+          "energy_consumption": 1814.2662973061792
+        },
+        "1.75": {
+          "displacement": 1.8561561483956523,
+          "energy_consumption": 2021.2792065606745
+        },
+        "1.8": {
+          "displacement": 2.1033454328704573,
+          "energy_consumption": 2262.2210795322753
+        },
+        "1.85": {
+          "displacement": 2.3487271924900335,
+          "energy_consumption": 2551.0631925728076
+        },
+        "1.9": {
+          "displacement": 2.3487271924900335,
+          "energy_consumption": 2551.0631925728076
+        },
+        "1.95": {
+          "displacement": 2.3487271924900335,
+          "energy_consumption": 2551.0631925728076
+        }
+      },
+      "0.9": {
+        "1.05": {
+          "displacement": 0.0052462559277761485,
+          "energy_consumption": 99.67426343727334
+        },
+        "1.1": {
+          "displacement": 0.02145426077017935,
+          "energy_consumption": 199.10124679799546
+        },
+        "1.15": {
+          "displacement": 0.0512718928798608,
+          "energy_consumption": 300.46233638697805
+        },
+        "1.2": {
+          "displacement": 0.09673400447498642,
+          "energy_consumption": 404.1129376826849
+        },
+        "1.25": {
+          "displacement": 0.1593614166926757,
+          "energy_consumption": 510.37958247786213
+        },
+        "1.3": {
+          "displacement": 0.2401427712598471,
+          "energy_consumption": 619.7291039366651
+        },
+        "1.35": {
+          "displacement": 0.33969025560459115,
+          "energy_consumption": 732.6699194177517
+        },
+        "1.4": {
+          "displacement": 0.4581980222038011,
+          "energy_consumption": 849.8994555271591
+        },
+        "1.45": {
+          "displacement": 0.5954761211203968,
+          "energy_consumption": 972.2187334315316
+        },
+        "1.5": {
+          "displacement": 0.7510329797751066,
+          "energy_consumption": 1100.7085658467026
+        },
+        "1.55": {
+          "displacement": 0.9239760800317719,
+          "energy_consumption": 1236.7472567985774
+        },
+        "1.6": {
+          "displacement": 1.1130166411222528,
+          "energy_consumption": 1382.2481107659853
+        },
+        "1.65": {
+          "displacement": 1.3164098755573344,
+          "energy_consumption": 1539.7092773049071
+        },
+        "1.7": {
+          "displacement": 1.532998839941967,
+          "energy_consumption": 1713.4197734549257
+        },
+        "1.75": {
+          "displacement": 1.7594707615960836,
+          "energy_consumption": 1908.9105779649924
+        },
+        "1.8": {
+          "displacement": 1.9933366201760834,
+          "energy_consumption": 2136.444861854619
+        },
+        "1.85": {
+          "displacement": 2.230397446882933,
+          "energy_consumption": 2414.702408502085
+        },
+        "1.9": {
+          "displacement": 2.459855818061346,
+          "energy_consumption": 2778.568798362502
+        },
+        "1.95": {
+          "displacement": 2.459855818061346,
+          "energy_consumption": 2778.568798362502
+        }
+      },
+      "0.95": {
+        "1.05": {
+          "displacement": 0.003720446053071406,
+          "energy_consumption": 94.43711895662824
+        },
+        "1.1": {
+          "displacement": 0.0178153095751431,
+          "energy_consumption": 188.63837746441095
+        },
+        "1.15": {
+          "displacement": 0.04479566418376918,
+          "energy_consumption": 284.67837823845025
+        },
+        "1.2": {
+          "displacement": 0.08658001258327301,
+          "energy_consumption": 382.88213565483034
+        },
+        "1.25": {
+          "displacement": 0.14456082726488192,
+          "energy_consumption": 483.5729921791841
+        },
+        "1.3": {
+          "displacement": 0.21976609004764314,
+          "energy_consumption": 587.1832066421789
+        },
+        "1.35": {
+          "displacement": 0.31274323403598786,
+          "energy_consumption": 694.1994003252847
+        },
+        "1.4": {
+          "displacement": 0.4236449592628157,
+          "energy_consumption": 805.2810518112874
+        },
+        "1.45": {
+          "displacement": 0.5523812384079186,
+          "energy_consumption": 921.18539435209
+        },
+        "1.5": {
+          "displacement": 0.6983650807497046,
+          "energy_consumption": 1042.9391675862362
+        },
+        "1.55": {
+          "displacement": 0.8608500471458597,
+          "energy_consumption": 1171.8388877531233
+        },
+        "1.6": {
+          "displacement": 1.038612333059347,
+          "energy_consumption": 1309.7186032137192
+        },
+        "1.65": {
+          "displacement": 1.2300222969561052,
+          "energy_consumption": 1458.9331607830168
+        },
+        "1.7": {
+          "displacement": 1.4338155949199123,
+          "energy_consumption": 1623.5353366235836
+        },
+        "1.75": {
+          "displacement": 1.6470186130948619,
+          "energy_consumption": 1808.8122204479735
+        },
+        "1.8": {
+          "displacement": 1.8672412637429494,
+          "energy_consumption": 2024.447956846136
+        },
+        "1.85": {
+          "displacement": 2.090505340521731,
+          "energy_consumption": 2288.131987052372
+        },
+        "1.9": {
+          "displacement": 2.312116237378933,
+          "energy_consumption": 2640.2454931986294
+        },
+        "1.95": {
+          "displacement": 2.517594407739331,
+          "energy_consumption": 3181.686241285634
+        }
+      }
+    }
+  }
+}

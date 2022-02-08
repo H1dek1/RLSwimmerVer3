@@ -1,0 +1,1484 @@
+{
+  "0.05": {
+    "1.05": {
+      "name": "b_triangle",
+      "displacement": 0.14924506381701205
+    },
+    "1.1": {
+      "name": "b_triangle",
+      "displacement": 0.14924506381701205
+    },
+    "1.15": {
+      "name": "b_triangle",
+      "displacement": 0.14924506381701205
+    },
+    "1.2": {
+      "name": "b_triangle",
+      "displacement": 0.14924506381701205
+    },
+    "1.25": {
+      "name": "b_triangle",
+      "displacement": 0.14924506381701205
+    },
+    "1.3": {
+      "name": "b_triangle",
+      "displacement": 0.14924506381701205
+    },
+    "1.35": {
+      "name": "b_triangle",
+      "displacement": 0.14924506381701205
+    },
+    "1.4": {
+      "name": "b_triangle",
+      "displacement": 0.14924506381701205
+    },
+    "1.45": {
+      "name": "b_triangle",
+      "displacement": 0.14924506381701205
+    },
+    "1.5": {
+      "name": "b_triangle",
+      "displacement": 0.14924506381701205
+    },
+    "1.55": {
+      "name": "b_triangle",
+      "displacement": 0.14924506381701205
+    },
+    "1.6": {
+      "name": "b_triangle",
+      "displacement": 0.14924506381701205
+    },
+    "1.65": {
+      "name": "b_triangle",
+      "displacement": 0.14924506381701205
+    },
+    "1.7": {
+      "name": "b_triangle",
+      "displacement": 0.14924506381701205
+    },
+    "1.75": {
+      "name": "b_triangle",
+      "displacement": 0.14924506381701205
+    },
+    "1.8": {
+      "name": "b_triangle",
+      "displacement": 0.14924506381701205
+    },
+    "1.85": {
+      "name": "b_triangle",
+      "displacement": 0.14924506381701205
+    },
+    "1.9": {
+      "name": "b_triangle",
+      "displacement": 0.14924506381701205
+    },
+    "1.95": {
+      "name": "b_triangle",
+      "displacement": 0.14924506381701205
+    }
+  },
+  "0.1": {
+    "1.05": {
+      "name": "b_triangle",
+      "displacement": 0.07845841872212819
+    },
+    "1.1": {
+      "name": "b_triangle",
+      "displacement": 0.27480933204940966
+    },
+    "1.15": {
+      "name": "b_triangle",
+      "displacement": 0.27480933204940966
+    },
+    "1.2": {
+      "name": "b_triangle",
+      "displacement": 0.27480933204940966
+    },
+    "1.25": {
+      "name": "b_triangle",
+      "displacement": 0.27480933204940966
+    },
+    "1.3": {
+      "name": "b_triangle",
+      "displacement": 0.27480933204940966
+    },
+    "1.35": {
+      "name": "b_triangle",
+      "displacement": 0.27480933204940966
+    },
+    "1.4": {
+      "name": "b_triangle",
+      "displacement": 0.27480933204940966
+    },
+    "1.45": {
+      "name": "b_triangle",
+      "displacement": 0.27480933204940966
+    },
+    "1.5": {
+      "name": "b_triangle",
+      "displacement": 0.27480933204940966
+    },
+    "1.55": {
+      "name": "b_triangle",
+      "displacement": 0.27480933204940966
+    },
+    "1.6": {
+      "name": "b_triangle",
+      "displacement": 0.27480933204940966
+    },
+    "1.65": {
+      "name": "b_triangle",
+      "displacement": 0.27480933204940966
+    },
+    "1.7": {
+      "name": "b_triangle",
+      "displacement": 0.27480933204940966
+    },
+    "1.75": {
+      "name": "b_triangle",
+      "displacement": 0.27480933204940966
+    },
+    "1.8": {
+      "name": "b_triangle",
+      "displacement": 0.27480933204940966
+    },
+    "1.85": {
+      "name": "b_triangle",
+      "displacement": 0.27480933204940966
+    },
+    "1.9": {
+      "name": "b_triangle",
+      "displacement": 0.27480933204940966
+    },
+    "1.95": {
+      "name": "b_triangle",
+      "displacement": 0.27480933204940966
+    }
+  },
+  "0.15": {
+    "1.05": {
+      "name": "b_triangle",
+      "displacement": 0.05192048300753318
+    },
+    "1.1": {
+      "name": "b_triangle",
+      "displacement": 0.18543528550110747
+    },
+    "1.15": {
+      "name": "b_triangle",
+      "displacement": 0.38835377732190396
+    },
+    "1.2": {
+      "name": "b_triangle",
+      "displacement": 0.38835377732190396
+    },
+    "1.25": {
+      "name": "b_triangle",
+      "displacement": 0.38835377732190396
+    },
+    "1.3": {
+      "name": "b_triangle",
+      "displacement": 0.38835377732190396
+    },
+    "1.35": {
+      "name": "b_triangle",
+      "displacement": 0.38835377732190396
+    },
+    "1.4": {
+      "name": "b_triangle",
+      "displacement": 0.38835377732190396
+    },
+    "1.45": {
+      "name": "b_triangle",
+      "displacement": 0.38835377732190396
+    },
+    "1.5": {
+      "name": "b_triangle",
+      "displacement": 0.38835377732190396
+    },
+    "1.55": {
+      "name": "b_triangle",
+      "displacement": 0.38835377732190396
+    },
+    "1.6": {
+      "name": "b_triangle",
+      "displacement": 0.38835377732190396
+    },
+    "1.65": {
+      "name": "b_triangle",
+      "displacement": 0.38835377732190396
+    },
+    "1.7": {
+      "name": "b_triangle",
+      "displacement": 0.38835377732190396
+    },
+    "1.75": {
+      "name": "b_triangle",
+      "displacement": 0.38835377732190396
+    },
+    "1.8": {
+      "name": "b_triangle",
+      "displacement": 0.38835377732190396
+    },
+    "1.85": {
+      "name": "b_triangle",
+      "displacement": 0.38835377732190396
+    },
+    "1.9": {
+      "name": "b_triangle",
+      "displacement": 0.38835377732190396
+    },
+    "1.95": {
+      "name": "b_triangle",
+      "displacement": 0.38835377732190396
+    }
+  },
+  "0.2": {
+    "1.05": {
+      "name": "b_triangle",
+      "displacement": 0.03810810485430236
+    },
+    "1.1": {
+      "name": "b_triangle",
+      "displacement": 0.1374889414223872
+    },
+    "1.15": {
+      "name": "b_triangle",
+      "displacement": 0.29229661096590076
+    },
+    "1.2": {
+      "name": "b_triangle",
+      "displacement": 0.49250970062821436
+    },
+    "1.25": {
+      "name": "b_triangle",
+      "displacement": 0.49250970062821436
+    },
+    "1.3": {
+      "name": "b_triangle",
+      "displacement": 0.49250970062821436
+    },
+    "1.35": {
+      "name": "b_triangle",
+      "displacement": 0.49250970062821436
+    },
+    "1.4": {
+      "name": "b_triangle",
+      "displacement": 0.49250970062821436
+    },
+    "1.45": {
+      "name": "b_triangle",
+      "displacement": 0.49250970062821436
+    },
+    "1.5": {
+      "name": "b_triangle",
+      "displacement": 0.49250970062821436
+    },
+    "1.55": {
+      "name": "b_triangle",
+      "displacement": 0.49250970062821436
+    },
+    "1.6": {
+      "name": "b_triangle",
+      "displacement": 0.49250970062821436
+    },
+    "1.65": {
+      "name": "b_triangle",
+      "displacement": 0.49250970062821436
+    },
+    "1.7": {
+      "name": "b_triangle",
+      "displacement": 0.49250970062821436
+    },
+    "1.75": {
+      "name": "b_triangle",
+      "displacement": 0.49250970062821436
+    },
+    "1.8": {
+      "name": "b_triangle",
+      "displacement": 0.49250970062821436
+    },
+    "1.85": {
+      "name": "b_triangle",
+      "displacement": 0.49250970062821436
+    },
+    "1.9": {
+      "name": "b_triangle",
+      "displacement": 0.49250970062821436
+    },
+    "1.95": {
+      "name": "b_triangle",
+      "displacement": 0.49250970062821436
+    }
+  },
+  "0.25": {
+    "1.05": {
+      "name": "b_triangle",
+      "displacement": 0.03192891331963157
+    },
+    "1.1": {
+      "name": "b_triangle",
+      "displacement": 0.11282625302252876
+    },
+    "1.15": {
+      "name": "b_triangle",
+      "displacement": 0.2379238642811463
+    },
+    "1.2": {
+      "name": "b_triangle",
+      "displacement": 0.40283579683863885
+    },
+    "1.25": {
+      "name": "b_triangle",
+      "displacement": 0.5994218252384623
+    },
+    "1.3": {
+      "name": "b_triangle",
+      "displacement": 0.5994218252384623
+    },
+    "1.35": {
+      "name": "b_triangle",
+      "displacement": 0.5994218252384623
+    },
+    "1.4": {
+      "name": "b_triangle",
+      "displacement": 0.5994218252384623
+    },
+    "1.45": {
+      "name": "b_triangle",
+      "displacement": 0.5994218252384623
+    },
+    "1.5": {
+      "name": "b_triangle",
+      "displacement": 0.5994218252384623
+    },
+    "1.55": {
+      "name": "b_triangle",
+      "displacement": 0.5994218252384623
+    },
+    "1.6": {
+      "name": "b_triangle",
+      "displacement": 0.5994218252384623
+    },
+    "1.65": {
+      "name": "b_triangle",
+      "displacement": 0.5994218252384623
+    },
+    "1.7": {
+      "name": "b_triangle",
+      "displacement": 0.5994218252384623
+    },
+    "1.75": {
+      "name": "b_triangle",
+      "displacement": 0.5994218252384623
+    },
+    "1.8": {
+      "name": "b_triangle",
+      "displacement": 0.5994218252384623
+    },
+    "1.85": {
+      "name": "b_triangle",
+      "displacement": 0.5994218252384623
+    },
+    "1.9": {
+      "name": "b_triangle",
+      "displacement": 0.5994218252384623
+    },
+    "1.95": {
+      "name": "b_triangle",
+      "displacement": 0.5994218252384623
+    }
+  },
+  "0.3": {
+    "1.05": {
+      "name": "b_triangle",
+      "displacement": 0.02595007026720055
+    },
+    "1.1": {
+      "name": "b_triangle",
+      "displacement": 0.09279206928997276
+    },
+    "1.15": {
+      "name": "b_triangle",
+      "displacement": 0.19653292514460685
+    },
+    "1.2": {
+      "name": "b_triangle",
+      "displacement": 0.333515177855838
+    },
+    "1.25": {
+      "name": "b_triangle",
+      "displacement": 0.5004687749983012
+    },
+    "1.3": {
+      "name": "a_triangle",
+      "displacement": 0.7074964626372245
+    },
+    "1.35": {
+      "name": "a_triangle",
+      "displacement": 0.7074964626372245
+    },
+    "1.4": {
+      "name": "a_triangle",
+      "displacement": 0.7074964626372245
+    },
+    "1.45": {
+      "name": "a_triangle",
+      "displacement": 0.7074964626372245
+    },
+    "1.5": {
+      "name": "a_triangle",
+      "displacement": 0.7074964626372245
+    },
+    "1.55": {
+      "name": "a_triangle",
+      "displacement": 0.7074964626372245
+    },
+    "1.6": {
+      "name": "a_triangle",
+      "displacement": 0.7074964626372245
+    },
+    "1.65": {
+      "name": "a_triangle",
+      "displacement": 0.7074964626372245
+    },
+    "1.7": {
+      "name": "a_triangle",
+      "displacement": 0.7074964626372245
+    },
+    "1.75": {
+      "name": "a_triangle",
+      "displacement": 0.7074964626372245
+    },
+    "1.8": {
+      "name": "a_triangle",
+      "displacement": 0.7074964626372245
+    },
+    "1.85": {
+      "name": "a_triangle",
+      "displacement": 0.7074964626372245
+    },
+    "1.9": {
+      "name": "a_triangle",
+      "displacement": 0.7074964626372245
+    },
+    "1.95": {
+      "name": "a_triangle",
+      "displacement": 0.7074964626372245
+    }
+  },
+  "0.35": {
+    "1.05": {
+      "name": "b_triangle",
+      "displacement": 0.023024386921872402
+    },
+    "1.1": {
+      "name": "b_triangle",
+      "displacement": 0.08100186383949132
+    },
+    "1.15": {
+      "name": "b_triangle",
+      "displacement": 0.1705252942324729
+    },
+    "1.2": {
+      "name": "b_triangle",
+      "displacement": 0.2884495458064609
+    },
+    "1.25": {
+      "name": "b_triangle",
+      "displacement": 0.43201164126793823
+    },
+    "1.3": {
+      "name": "a_triangle",
+      "displacement": 0.6135852569576254
+    },
+    "1.35": {
+      "name": "a_triangle",
+      "displacement": 0.8578000234751824
+    },
+    "1.4": {
+      "name": "a_triangle",
+      "displacement": 0.8578000234751824
+    },
+    "1.45": {
+      "name": "a_triangle",
+      "displacement": 0.8578000234751824
+    },
+    "1.5": {
+      "name": "a_triangle",
+      "displacement": 0.8578000234751824
+    },
+    "1.55": {
+      "name": "a_triangle",
+      "displacement": 0.8578000234751824
+    },
+    "1.6": {
+      "name": "a_triangle",
+      "displacement": 0.8578000234751824
+    },
+    "1.65": {
+      "name": "a_triangle",
+      "displacement": 0.8578000234751824
+    },
+    "1.7": {
+      "name": "a_triangle",
+      "displacement": 0.8578000234751824
+    },
+    "1.75": {
+      "name": "a_triangle",
+      "displacement": 0.8578000234751824
+    },
+    "1.8": {
+      "name": "a_triangle",
+      "displacement": 0.8578000234751824
+    },
+    "1.85": {
+      "name": "a_triangle",
+      "displacement": 0.8578000234751824
+    },
+    "1.9": {
+      "name": "a_triangle",
+      "displacement": 0.8578000234751824
+    },
+    "1.95": {
+      "name": "a_triangle",
+      "displacement": 0.8578000234751824
+    }
+  },
+  "0.4": {
+    "1.05": {
+      "name": "b_triangle",
+      "displacement": 0.020261316547194874
+    },
+    "1.1": {
+      "name": "b_triangle",
+      "displacement": 0.07105622392984713
+    },
+    "1.15": {
+      "name": "b_triangle",
+      "displacement": 0.14946363315905667
+    },
+    "1.2": {
+      "name": "b_triangle",
+      "displacement": 0.252721302525474
+    },
+    "1.25": {
+      "name": "b_triangle",
+      "displacement": 0.37840141922572096
+    },
+    "1.3": {
+      "name": "a_triangle",
+      "displacement": 0.5373595467109322
+    },
+    "1.35": {
+      "name": "a_triangle",
+      "displacement": 0.7609207699941404
+    },
+    "1.4": {
+      "name": "a_triangle",
+      "displacement": 1.0214332178395622
+    },
+    "1.45": {
+      "name": "a_triangle",
+      "displacement": 1.0214332178395622
+    },
+    "1.5": {
+      "name": "a_triangle",
+      "displacement": 1.0214332178395622
+    },
+    "1.55": {
+      "name": "a_triangle",
+      "displacement": 1.0214332178395622
+    },
+    "1.6": {
+      "name": "a_triangle",
+      "displacement": 1.0214332178395622
+    },
+    "1.65": {
+      "name": "a_triangle",
+      "displacement": 1.0214332178395622
+    },
+    "1.7": {
+      "name": "a_triangle",
+      "displacement": 1.0214332178395622
+    },
+    "1.75": {
+      "name": "a_triangle",
+      "displacement": 1.0214332178395622
+    },
+    "1.8": {
+      "name": "a_triangle",
+      "displacement": 1.0214332178395622
+    },
+    "1.85": {
+      "name": "a_triangle",
+      "displacement": 1.0214332178395622
+    },
+    "1.9": {
+      "name": "a_triangle",
+      "displacement": 1.0214332178395622
+    },
+    "1.95": {
+      "name": "a_triangle",
+      "displacement": 1.0214332178395622
+    }
+  },
+  "0.45": {
+    "1.05": {
+      "name": "b_triangle",
+      "displacement": 0.016468666752908884
+    },
+    "1.1": {
+      "name": "b_triangle",
+      "displacement": 0.06017737003350632
+    },
+    "1.15": {
+      "name": "b_triangle",
+      "displacement": 0.1284828743494295
+    },
+    "1.2": {
+      "name": "b_triangle",
+      "displacement": 0.21891299878399248
+    },
+    "1.25": {
+      "name": "b_triangle",
+      "displacement": 0.3293111862256097
+    },
+    "1.3": {
+      "name": "a_triangle",
+      "displacement": 0.47002251456269284
+    },
+    "1.35": {
+      "name": "a_triangle",
+      "displacement": 0.6673859761758267
+    },
+    "1.4": {
+      "name": "a_triangle",
+      "displacement": 0.9026785689045198
+    },
+    "1.45": {
+      "name": "a_triangle",
+      "displacement": 1.1696684517714233
+    },
+    "1.5": {
+      "name": "a_triangle",
+      "displacement": 1.1696684517714233
+    },
+    "1.55": {
+      "name": "a_triangle",
+      "displacement": 1.1696684517714233
+    },
+    "1.6": {
+      "name": "a_triangle",
+      "displacement": 1.1696684517714233
+    },
+    "1.65": {
+      "name": "a_triangle",
+      "displacement": 1.1696684517714233
+    },
+    "1.7": {
+      "name": "a_triangle",
+      "displacement": 1.1696684517714233
+    },
+    "1.75": {
+      "name": "a_triangle",
+      "displacement": 1.1696684517714233
+    },
+    "1.8": {
+      "name": "a_triangle",
+      "displacement": 1.1696684517714233
+    },
+    "1.85": {
+      "name": "a_triangle",
+      "displacement": 1.1696684517714233
+    },
+    "1.9": {
+      "name": "a_triangle",
+      "displacement": 1.1696684517714233
+    },
+    "1.95": {
+      "name": "a_triangle",
+      "displacement": 1.1696684517714233
+    }
+  },
+  "0.5": {
+    "1.05": {
+      "name": "b_triangle",
+      "displacement": 0.014727083852016062
+    },
+    "1.1": {
+      "name": "b_triangle",
+      "displacement": 0.05399251014593028
+    },
+    "1.15": {
+      "name": "b_triangle",
+      "displacement": 0.11539205145102373
+    },
+    "1.2": {
+      "name": "b_triangle",
+      "displacement": 0.19667876849285812
+    },
+    "1.25": {
+      "name": "b_triangle",
+      "displacement": 0.29597084462566786
+    },
+    "1.3": {
+      "name": "a_triangle",
+      "displacement": 0.42252576374882594
+    },
+    "1.35": {
+      "name": "a_triangle",
+      "displacement": 0.600095753927372
+    },
+    "1.4": {
+      "name": "a_triangle",
+      "displacement": 0.8117867087903635
+    },
+    "1.45": {
+      "name": "a_triangle",
+      "displacement": 1.0573970225711322
+    },
+    "1.5": {
+      "name": "a_triangle",
+      "displacement": 1.3298198537829646
+    },
+    "1.55": {
+      "name": "a_triangle",
+      "displacement": 1.3298198537829646
+    },
+    "1.6": {
+      "name": "a_triangle",
+      "displacement": 1.3298198537829646
+    },
+    "1.65": {
+      "name": "a_triangle",
+      "displacement": 1.3298198537829646
+    },
+    "1.7": {
+      "name": "a_triangle",
+      "displacement": 1.3298198537829646
+    },
+    "1.75": {
+      "name": "a_triangle",
+      "displacement": 1.3298198537829646
+    },
+    "1.8": {
+      "name": "a_triangle",
+      "displacement": 1.3298198537829646
+    },
+    "1.85": {
+      "name": "a_triangle",
+      "displacement": 1.3298198537829646
+    },
+    "1.9": {
+      "name": "a_triangle",
+      "displacement": 1.3298198537829646
+    },
+    "1.95": {
+      "name": "a_triangle",
+      "displacement": 1.3298198537829646
+    }
+  },
+  "0.55": {
+    "1.05": {
+      "name": "b_triangle",
+      "displacement": 0.014148693266527198
+    },
+    "1.1": {
+      "name": "b_triangle",
+      "displacement": 0.05061175683554628
+    },
+    "1.15": {
+      "name": "b_triangle",
+      "displacement": 0.10719192036768599
+    },
+    "1.2": {
+      "name": "b_triangle",
+      "displacement": 0.18190630344343517
+    },
+    "1.25": {
+      "name": "b_triangle",
+      "displacement": 0.27297175860089323
+    },
+    "1.3": {
+      "name": "a_triangle",
+      "displacement": 0.3888550578901519
+    },
+    "1.35": {
+      "name": "a_triangle",
+      "displacement": 0.5510809686663887
+    },
+    "1.4": {
+      "name": "a_triangle",
+      "displacement": 0.7443227591718208
+    },
+    "1.45": {
+      "name": "a_triangle",
+      "displacement": 0.9684224665467719
+    },
+    "1.5": {
+      "name": "a_triangle",
+      "displacement": 1.222262176510293
+    },
+    "1.55": {
+      "name": "a_triangle",
+      "displacement": 1.4987928129286827
+    },
+    "1.6": {
+      "name": "a_triangle",
+      "displacement": 1.4987928129286827
+    },
+    "1.65": {
+      "name": "a_triangle",
+      "displacement": 1.4987928129286827
+    },
+    "1.7": {
+      "name": "a_triangle",
+      "displacement": 1.4987928129286827
+    },
+    "1.75": {
+      "name": "a_triangle",
+      "displacement": 1.4987928129286827
+    },
+    "1.8": {
+      "name": "a_triangle",
+      "displacement": 1.4987928129286827
+    },
+    "1.85": {
+      "name": "a_triangle",
+      "displacement": 1.4987928129286827
+    },
+    "1.9": {
+      "name": "a_triangle",
+      "displacement": 1.4987928129286827
+    },
+    "1.95": {
+      "name": "a_triangle",
+      "displacement": 1.4987928129286827
+    }
+  },
+  "0.6": {
+    "1.05": {
+      "name": "b_triangle",
+      "displacement": 0.013753248567431153
+    },
+    "1.1": {
+      "name": "b_triangle",
+      "displacement": 0.04783512733357396
+    },
+    "1.15": {
+      "name": "b_triangle",
+      "displacement": 0.10028313078805806
+    },
+    "1.2": {
+      "name": "b_triangle",
+      "displacement": 0.16925919815655785
+    },
+    "1.25": {
+      "name": "b_triangle",
+      "displacement": 0.2531714552144012
+    },
+    "1.3": {
+      "name": "a_triangle",
+      "displacement": 0.35896121820959803
+    },
+    "1.35": {
+      "name": "a_triangle",
+      "displacement": 0.5081189820046975
+    },
+    "1.4": {
+      "name": "a_triangle",
+      "displacement": 0.6856981923882968
+    },
+    "1.45": {
+      "name": "a_triangle",
+      "displacement": 0.8915161805842153
+    },
+    "1.5": {
+      "name": "a_triangle",
+      "displacement": 1.1246556173675823
+    },
+    "1.55": {
+      "name": "a_triangle",
+      "displacement": 1.3839613103459243
+    },
+    "1.6": {
+      "name": "a_triangle",
+      "displacement": 1.6615221781595892
+    },
+    "1.65": {
+      "name": "a_triangle",
+      "displacement": 1.6615221781595892
+    },
+    "1.7": {
+      "name": "a_triangle",
+      "displacement": 1.6615221781595892
+    },
+    "1.75": {
+      "name": "a_triangle",
+      "displacement": 1.6615221781595892
+    },
+    "1.8": {
+      "name": "a_triangle",
+      "displacement": 1.6615221781595892
+    },
+    "1.85": {
+      "name": "a_triangle",
+      "displacement": 1.6615221781595892
+    },
+    "1.9": {
+      "name": "a_triangle",
+      "displacement": 1.6615221781595892
+    },
+    "1.95": {
+      "name": "a_triangle",
+      "displacement": 1.6615221781595892
+    }
+  },
+  "0.65": {
+    "1.05": {
+      "name": "b_triangle",
+      "displacement": 0.011133696478392371
+    },
+    "1.1": {
+      "name": "b_triangle",
+      "displacement": 0.041130859087138844
+    },
+    "1.15": {
+      "name": "b_triangle",
+      "displacement": 0.0881385942077364
+    },
+    "1.2": {
+      "name": "b_triangle",
+      "displacement": 0.15045049544809447
+    },
+    "1.25": {
+      "name": "b_triangle",
+      "displacement": 0.2266045989239054
+    },
+    "1.3": {
+      "name": "a_triangle",
+      "displacement": 0.32371240934755097
+    },
+    "1.35": {
+      "name": "a_triangle",
+      "displacement": 0.46005312072093507
+    },
+    "1.4": {
+      "name": "a_triangle",
+      "displacement": 0.6226176039201334
+    },
+    "1.45": {
+      "name": "a_triangle",
+      "displacement": 0.8112333278835774
+    },
+    "1.5": {
+      "name": "a_triangle",
+      "displacement": 1.0251092588871924
+    },
+    "1.55": {
+      "name": "a_triangle",
+      "displacement": 1.263106857342838
+    },
+    "1.6": {
+      "name": "a_triangle",
+      "displacement": 1.523410194393149
+    },
+    "1.65": {
+      "name": "a_triangle",
+      "displacement": 1.79811443887778
+    },
+    "1.7": {
+      "name": "a_triangle",
+      "displacement": 1.79811443887778
+    },
+    "1.75": {
+      "name": "a_triangle",
+      "displacement": 1.79811443887778
+    },
+    "1.8": {
+      "name": "a_triangle",
+      "displacement": 1.79811443887778
+    },
+    "1.85": {
+      "name": "a_triangle",
+      "displacement": 1.79811443887778
+    },
+    "1.9": {
+      "name": "a_triangle",
+      "displacement": 1.79811443887778
+    },
+    "1.95": {
+      "name": "a_triangle",
+      "displacement": 1.79811443887778
+    }
+  },
+  "0.7": {
+    "1.05": {
+      "name": "b_triangle",
+      "displacement": 0.011118824813596903
+    },
+    "1.1": {
+      "name": "b_triangle",
+      "displacement": 0.03974334954231776
+    },
+    "1.15": {
+      "name": "b_triangle",
+      "displacement": 0.08420807052135681
+    },
+    "1.2": {
+      "name": "b_triangle",
+      "displacement": 0.14287438539204442
+    },
+    "1.25": {
+      "name": "b_triangle",
+      "displacement": 0.2144191779386411
+    },
+    "1.3": {
+      "name": "a_triangle",
+      "displacement": 0.3054344817498765
+    },
+    "1.35": {
+      "name": "a_triangle",
+      "displacement": 0.4328783376485805
+    },
+    "1.4": {
+      "name": "a_triangle",
+      "displacement": 0.5846585698663828
+    },
+    "1.45": {
+      "name": "a_triangle",
+      "displacement": 0.7606021153530697
+    },
+    "1.5": {
+      "name": "a_triangle",
+      "displacement": 0.9600553528917747
+    },
+    "1.55": {
+      "name": "a_triangle",
+      "displacement": 1.181867126920209
+    },
+    "1.6": {
+      "name": "a_triangle",
+      "displacement": 1.424387226451925
+    },
+    "1.65": {
+      "name": "a_triangle",
+      "displacement": 1.685316445353319
+    },
+    "1.7": {
+      "name": "a_triangle",
+      "displacement": 1.9515794844739787
+    },
+    "1.75": {
+      "name": "a_triangle",
+      "displacement": 1.9515794844739787
+    },
+    "1.8": {
+      "name": "a_triangle",
+      "displacement": 1.9515794844739787
+    },
+    "1.85": {
+      "name": "a_triangle",
+      "displacement": 1.9515794844739787
+    },
+    "1.9": {
+      "name": "a_triangle",
+      "displacement": 1.9515794844739787
+    },
+    "1.95": {
+      "name": "a_triangle",
+      "displacement": 1.9515794844739787
+    }
+  },
+  "0.75": {
+    "1.05": {
+      "name": "b_triangle",
+      "displacement": 0.011150524109403351
+    },
+    "1.1": {
+      "name": "b_triangle",
+      "displacement": 0.0385664642440513
+    },
+    "1.15": {
+      "name": "b_triangle",
+      "displacement": 0.08064650171807895
+    },
+    "1.2": {
+      "name": "b_triangle",
+      "displacement": 0.13593849522411244
+    },
+    "1.25": {
+      "name": "b_triangle",
+      "displacement": 0.20317217407531238
+    },
+    "1.3": {
+      "name": "a_triangle",
+      "displacement": 0.2876258415622061
+    },
+    "1.35": {
+      "name": "a_triangle",
+      "displacement": 0.40698828142780213
+    },
+    "1.4": {
+      "name": "a_triangle",
+      "displacement": 0.549085574579019
+    },
+    "1.45": {
+      "name": "a_triangle",
+      "displacement": 0.7137159848726213
+    },
+    "1.5": {
+      "name": "a_triangle",
+      "displacement": 0.9002698727131392
+    },
+    "1.55": {
+      "name": "a_triangle",
+      "displacement": 1.1077216349817127
+    },
+    "1.6": {
+      "name": "a_triangle",
+      "displacement": 1.334472325815806
+    },
+    "1.65": {
+      "name": "a_triangle",
+      "displacement": 1.5783477931535774
+    },
+    "1.7": {
+      "name": "a_triangle",
+      "displacement": 1.8382090467339252
+    },
+    "1.75": {
+      "name": "a_triangle",
+      "displacement": 2.1044509342493884
+    },
+    "1.8": {
+      "name": "a_triangle",
+      "displacement": 2.1044509342493884
+    },
+    "1.85": {
+      "name": "a_triangle",
+      "displacement": 2.1044509342493884
+    },
+    "1.9": {
+      "name": "a_triangle",
+      "displacement": 2.1044509342493884
+    },
+    "1.95": {
+      "name": "a_triangle",
+      "displacement": 2.1044509342493884
+    }
+  },
+  "0.8": {
+    "1.05": {
+      "name": "b_triangle",
+      "displacement": 0.008893661594515693
+    },
+    "1.1": {
+      "name": "b_triangle",
+      "displacement": 0.03310805789449839
+    },
+    "1.15": {
+      "name": "b_triangle",
+      "displacement": 0.0711527951236083
+    },
+    "1.2": {
+      "name": "b_triangle",
+      "displacement": 0.12163118619255209
+    },
+    "1.25": {
+      "name": "b_triangle",
+      "displacement": 0.18334885667228776
+    },
+    "1.3": {
+      "name": "a_triangle",
+      "displacement": 0.2621149979544411
+    },
+    "1.35": {
+      "name": "a_triangle",
+      "displacement": 0.3727511603187528
+    },
+    "1.4": {
+      "name": "a_triangle",
+      "displacement": 0.5047151568817679
+    },
+    "1.45": {
+      "name": "a_triangle",
+      "displacement": 0.6578059254763223
+    },
+    "1.5": {
+      "name": "a_triangle",
+      "displacement": 0.8314776103769912
+    },
+    "1.55": {
+      "name": "a_triangle",
+      "displacement": 1.0247528293881851
+    },
+    "1.6": {
+      "name": "a_triangle",
+      "displacement": 1.23610214599938
+    },
+    "1.65": {
+      "name": "a_triangle",
+      "displacement": 1.4636840140622258
+    },
+    "1.7": {
+      "name": "a_triangle",
+      "displacement": 1.7060354370622581
+    },
+    "1.75": {
+      "name": "a_triangle",
+      "displacement": 1.9595184006675186
+    },
+    "1.8": {
+      "name": "a_triangle",
+      "displacement": 2.21602194356841
+    },
+    "1.85": {
+      "name": "a_triangle",
+      "displacement": 2.21602194356841
+    },
+    "1.9": {
+      "name": "a_triangle",
+      "displacement": 2.21602194356841
+    },
+    "1.95": {
+      "name": "a_triangle",
+      "displacement": 2.21602194356841
+    }
+  },
+  "0.85": {
+    "1.05": {
+      "name": "b_triangle",
+      "displacement": 0.009153831510971414
+    },
+    "1.1": {
+      "name": "b_triangle",
+      "displacement": 0.03274129067576511
+    },
+    "1.15": {
+      "name": "b_triangle",
+      "displacement": 0.06934155017118648
+    },
+    "1.2": {
+      "name": "b_triangle",
+      "displacement": 0.11766054178389758
+    },
+    "1.25": {
+      "name": "b_triangle",
+      "displacement": 0.17657202317242593
+    },
+    "1.3": {
+      "name": "a_triangle",
+      "displacement": 0.25152692217152794
+    },
+    "1.35": {
+      "name": "a_triangle",
+      "displacement": 0.3564781649200006
+    },
+    "1.4": {
+      "name": "a_triangle",
+      "displacement": 0.4815008741780534
+    },
+    "1.45": {
+      "name": "a_triangle",
+      "displacement": 0.6263782679642885
+    },
+    "1.5": {
+      "name": "a_triangle",
+      "displacement": 0.7906383933927752
+    },
+    "1.55": {
+      "name": "a_triangle",
+      "displacement": 0.9732922820072315
+    },
+    "1.6": {
+      "name": "a_triangle",
+      "displacement": 1.173015533899366
+    },
+    "1.65": {
+      "name": "a_triangle",
+      "displacement": 1.3879905599535352
+    },
+    "1.7": {
+      "name": "a_triangle",
+      "displacement": 1.6167979719684187
+    },
+    "1.75": {
+      "name": "a_triangle",
+      "displacement": 1.8561561483956523
+    },
+    "1.8": {
+      "name": "a_triangle",
+      "displacement": 2.1033454328704573
+    },
+    "1.85": {
+      "name": "a_triangle",
+      "displacement": 2.3487271924900335
+    },
+    "1.9": {
+      "name": "a_triangle",
+      "displacement": 2.3487271924900335
+    },
+    "1.95": {
+      "name": "a_triangle",
+      "displacement": 2.3487271924900335
+    }
+  },
+  "0.9": {
+    "1.05": {
+      "name": "b_triangle",
+      "displacement": 0.00942692568580881
+    },
+    "1.1": {
+      "name": "b_triangle",
+      "displacement": 0.03238406180852129
+    },
+    "1.15": {
+      "name": "b_triangle",
+      "displacement": 0.06755484451428677
+    },
+    "1.2": {
+      "name": "b_triangle",
+      "displacement": 0.11372617750201713
+    },
+    "1.25": {
+      "name": "b_triangle",
+      "displacement": 0.16983286598586889
+    },
+    "1.3": {
+      "name": "a_triangle",
+      "displacement": 0.2401427712598471
+    },
+    "1.35": {
+      "name": "a_triangle",
+      "displacement": 0.33969025560459115
+    },
+    "1.4": {
+      "name": "a_triangle",
+      "displacement": 0.4581980222038011
+    },
+    "1.45": {
+      "name": "a_triangle",
+      "displacement": 0.5954761211203968
+    },
+    "1.5": {
+      "name": "a_triangle",
+      "displacement": 0.7510329797751066
+    },
+    "1.55": {
+      "name": "a_triangle",
+      "displacement": 0.9239760800317719
+    },
+    "1.6": {
+      "name": "a_triangle",
+      "displacement": 1.1130166411222528
+    },
+    "1.65": {
+      "name": "a_triangle",
+      "displacement": 1.3164098755573344
+    },
+    "1.7": {
+      "name": "a_triangle",
+      "displacement": 1.532998839941967
+    },
+    "1.75": {
+      "name": "a_triangle",
+      "displacement": 1.7594707615960836
+    },
+    "1.8": {
+      "name": "a_triangle",
+      "displacement": 1.9933366201760834
+    },
+    "1.85": {
+      "name": "a_triangle",
+      "displacement": 2.230397446882933
+    },
+    "1.9": {
+      "name": "a_triangle",
+      "displacement": 2.459855818061346
+    },
+    "1.95": {
+      "name": "a_triangle",
+      "displacement": 2.459855818061346
+    }
+  },
+  "0.95": {
+    "1.05": {
+      "name": "b_triangle",
+      "displacement": 0.007346929464921122
+    },
+    "1.1": {
+      "name": "b_triangle",
+      "displacement": 0.0276061988481327
+    },
+    "1.15": {
+      "name": "b_triangle",
+      "displacement": 0.05948628775344733
+    },
+    "1.2": {
+      "name": "b_triangle",
+      "displacement": 0.1018295131776888
+    },
+    "1.25": {
+      "name": "b_triangle",
+      "displacement": 0.1536301991343908
+    },
+    "1.3": {
+      "name": "a_triangle",
+      "displacement": 0.21976609004764314
+    },
+    "1.35": {
+      "name": "a_triangle",
+      "displacement": 0.31274323403598786
+    },
+    "1.4": {
+      "name": "a_triangle",
+      "displacement": 0.4236449592628157
+    },
+    "1.45": {
+      "name": "a_triangle",
+      "displacement": 0.5523812384079186
+    },
+    "1.5": {
+      "name": "a_triangle",
+      "displacement": 0.6983650807497046
+    },
+    "1.55": {
+      "name": "a_triangle",
+      "displacement": 0.8608500471458597
+    },
+    "1.6": {
+      "name": "a_triangle",
+      "displacement": 1.038612333059347
+    },
+    "1.65": {
+      "name": "a_triangle",
+      "displacement": 1.2300222969561052
+    },
+    "1.7": {
+      "name": "a_triangle",
+      "displacement": 1.4338155949199123
+    },
+    "1.75": {
+      "name": "a_triangle",
+      "displacement": 1.6470186130948619
+    },
+    "1.8": {
+      "name": "a_triangle",
+      "displacement": 1.8672412637429494
+    },
+    "1.85": {
+      "name": "a_triangle",
+      "displacement": 2.090505340521731
+    },
+    "1.9": {
+      "name": "a_triangle",
+      "displacement": 2.312116237378933
+    },
+    "1.95": {
+      "name": "a_triangle",
+      "displacement": 2.517594407739331
+    }
+  }
+}

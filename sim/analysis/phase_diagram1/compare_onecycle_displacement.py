@@ -6,12 +6,12 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 def main():
-    n_step = {'a': 8, 'b': 4}
+    n_step = {'a': 6, 'b': 3}
     strategy_name_list = ['a', 'b']
     all_strategies = dict()
     for strategy in strategy_name_list:
         with open(
-                f'../data/without_energy/{strategy}.json',
+                f'../data/with_energy/{strategy}_triangle.json',
                 mode='rt',
                 encoding='utf-8'
                 ) as f:
@@ -46,7 +46,7 @@ def main():
             optimal_strategy[str(round(interval, 2))][str(round(max_length, 2))]['displacement'] = max_displacement
 
     # print(optimal_strategy)
-    with open('../data/optimals/without_energy/withoutEnergy_onecycle_displacement_1.json', mode='wt', encoding='utf-8') as f:
+    with open('../data/optimals/with_energy/withEnergy_onecycle_displacement_1.json', mode='wt', encoding='utf-8') as f:
         json.dump(optimal_strategy, f, ensure_ascii=False, indent=2)
 
 
