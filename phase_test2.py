@@ -11,7 +11,7 @@ import skeleton_swimmer_env
 
 def main():
     swimmer_type = 20
-    swimming_way = 'a'
+    swimming_way = 'a_triangle'
     # df = pd.DataFrame(columns=['action_interval', 'max_length', 'displacement'])
     results = dict()
     results['name'] = swimming_way
@@ -23,10 +23,10 @@ def main():
     # max_length_list = np.round(np.arange(1.3, 2.0, 0.3), decimals=2)
     interval_list = np.round(np.arange(0.05, 1.0, 0.05), decimals=2)
     max_length_list = np.round(np.arange(1.05, 2.0, 0.05), decimals=2)
-    beat_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+    beat_list = [1]
+    # beat_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
     print(interval_list)
     print(max_length_list)
-    # exit()
 
     
     for beat in tqdm(beat_list):
@@ -65,7 +65,7 @@ def main():
                 results['data'][beat][interval][max_length]['energy_consumption'] = np.array(energy_consumption).sum()
 
     # with open(f'sim/analysis/data/without_energy/{swimming_way}_v2.json', mode='wt', encoding='utf-8') as f:
-    with open(f'./{swimming_way}_v2.json', mode='wt', encoding='utf-8') as f:
+    with open(f'./{swimming_way}.json', mode='wt', encoding='utf-8') as f:
           json.dump(results, f, ensure_ascii=False, indent=2)
 
 

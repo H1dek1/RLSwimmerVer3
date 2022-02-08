@@ -10,9 +10,19 @@ plt.rcParams['font.size'] = 10
 from n_cycle import plotNumPeriod
 from cycle_displacement import plotCycleDisplacement
 from total_displacement import plotTotalDisplacement
+from matplotlib.gridspec import GridSpec, GridSpecFromSubplotSpec
 
 def main():
-    fig, axes = plt.subplots(3, 1, figsize=(6, 15), constrained_layout=True)
+    # fig, axes = plt.subplots(3, 1, figsize=(6, 15), constrained_layout=True)
+    fig = plt.figure(figsize=(8, 15))
+    gs_master = GridSpec(nrows=3, ncols=1, height_ratios=[1, 1, 1])
+    gs_master.update(top=0.97, bottom=0.05)
+    gs = GridSpecFromSubplotSpec(nrows=3, ncols=1, subplot_spec=gs_master[:,:])
+    axes = [
+            fig.add_subplot(gs[0]),
+            fig.add_subplot(gs[1]),
+            fig.add_subplot(gs[2]),
+            ]
     with open(
             '../data/optimals/without_energy/withoutEnergy_phaseDiagram1.json',
             mode='rt',
@@ -48,7 +58,7 @@ def main():
     axes[0].set_position([axpos2.x0, axpos0.y0, axpos2.width, axpos0.height])
     axes[1].set_position([axpos2.x0, axpos1.y0, axpos2.width, axpos1.height])
     # plt.show()
-    fig.savefig('assembled_fig.png')
+    fig.savefig('pd_noenergy.pdf')
 
 
 if __name__ == '__main__':

@@ -6,18 +6,20 @@ import gym
 import skeleton_swimmer_env
 
 def main():
+    original_actions = np.loadtxt('swimming_method/type20/b.csv', delimiter=',')
+    actions = original_actions.repeat(1, axis=0)
     params = {
             'swimmer_type':       20,
-            'on_record':          True,
+            'on_record':          False,
             'action_interval':    0.5,
             'max_length':         1.5,
-            'consider_energy':    False,
+            'consider_energy':    True,
             'random_init_states': False
             }
     df = pd.read_csv('sim/analysis/data/characteristic_values/type202/displacement_energy.csv')
     ref = df[(df['action_interval'] == params['action_interval']) & (df['max_arm_length'] == params['max_length'])]
-    # params['displacement_gain'] = 1.0 / ref['onestep_displacement'].values[0]
-    # params['energy_gain'] = 1.0 / ref['onestep_energyconsumption'].values[0]
+    params['displacement_gain'] = 1.0 / ref['onestep_displacement'].values[0]
+    params['energy_gain'] = 1.0 / ref['onestep_energyconsumption'].values[0]
     params['displacement_gain'] = 1.0 
     params['energy_gain'] = 1.0
 
@@ -33,8 +35,6 @@ def main():
             random_init_states=params['random_init_states']
             )
 
-    original_actions = np.loadtxt('swimming_method/type20/a.csv', delimiter=',')
-    actions = original_actions.repeat(1, axis=0)
     """
     actions = np.array([
         [1, 1, -1],
@@ -67,6 +67,7 @@ def main():
 
     done = False
     episode_reward = 0
+    episode_energy_comsumption = 0
     step_counter = 0
     env.reset()
     while not done:
@@ -82,10 +83,12 @@ def main():
         #print('reward:', reward)
         step_counter += 1
         episode_reward += reward
+        episode_energy_comsumption += info['energy_consumption'].sum()
         if done == True:
             break
 
-    print('final position ', info)
+    print('final position ', info['center'][0])
+    print('Energy consumption:', episode_energy_comsumption)
     print('Episode Reward:', episode_reward)
 
 

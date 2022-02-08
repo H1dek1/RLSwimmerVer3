@@ -5,11 +5,8 @@ import matplotlib.pyplot as plt
 
 def main():
     with open(
-<<<<<<< HEAD
-            '../data/optimals/withoutEnergy_phaseDiagram2.json',
-=======
+            # '../data/optimals/withoutEnergy_phaseDiagram2.json',
             '../data/optimals/without_energy/withoutEnergy_phaseDiagram2.json',
->>>>>>> 901802ed8d6dee0f63b7156344e6531592b2d2d0
             mode='rt',
             encoding='utf-8'
             ) as f:

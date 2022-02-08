@@ -13,8 +13,8 @@ def plotTotalDisplacement(fig, ax, phase, action_intervals, max_lengths, per_sec
         pass
     else:
         ax.set_title('1 Episode displacement')
-    ax.set_xlabel(r'$T^{a*}$')
-    ax.set_ylabel(r'$\ell^{\rm max*}$')
+    ax.set_xlabel(r'$T^{a*}$', fontsize=20)
+    ax.set_ylabel(r'$\ell^{\rm max*}$', fontsize=20)
     data = dict()
     for interval in action_intervals:
         for length in max_lengths:
