@@ -21,14 +21,9 @@ def main():
     params = {
             'swimmer_type':       20,
             'on_record':          False,
-<<<<<<< HEAD
-            'action_interval':    0.7,
-            'max_length':         1.1,
-=======
             'action_interval':    0.9,
-            'max_length':         1.3,
->>>>>>> 8065d2d673b92d175ff05badd5eae7af6e994836
-            'consider_energy':    False,
+            'max_length':         1.5,
+            'consider_energy':    True,
             'random_init_states': False
             }
     df = pd.read_csv(f'sim/analysis/data/characteristic_values/type{params["swimmer_type"]}/displacement_energy.csv')
@@ -39,7 +34,7 @@ def main():
     " Hyper Parameters "
     """"""""""""""""""""
     n_envs     = 16
-    time_steps = int(8_000_000)
+    time_steps = int(4_000_000)
     epoch      = 10
     
     """"""""""""""""""""
