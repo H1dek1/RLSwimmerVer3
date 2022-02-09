@@ -26,7 +26,7 @@ def drawDeformation(ax, df, draw_arms=True):
         df['centroid_x'] = df['sphere_pos_0_x']
         df['centroid_y'] = df['sphere_pos_0_y']
         ax.set_xlim(-2.0, 0.5)
-        ax.set_ylim(-1.2, 1.1)
+        ax.set_ylim(-1.5, 1.4)
 
     start = 0
     end = 40
@@ -71,6 +71,66 @@ def drawDeformation(ax, df, draw_arms=True):
                 color='k',
                 ls='-'
                 )
+        ax.text(-1.75,  0.55, 'E', fontsize=15, ha='left', va='bottom')
+        ax.text(-1.35,  1.05, 'F', fontsize=15, ha='left', va='bottom')
+        ax.text(-0.60,  0.70, 'D', fontsize=15, ha='left', va='bottom')
+        ax.text(-0.80,  0.10, 'A', fontsize=15, ha='left', va='bottom')
+        ax.text(-0.70, -0.65, 'A', fontsize=15, ha='left', va='bottom')
+        ax.text(-1.65,  -0.95, 'G', fontsize=15, ha='left', va='bottom')
+        ax.text(-1.15,  -1.50, 'H', fontsize=15, ha='left', va='bottom')
+        ax.text(-0.55,  -0.95, 'D', fontsize=15, ha='left', va='bottom')
+        E = np.array([-1.45, 0.68])
+        F = np.array([-1.22, 1.05])
+        DL = np.array([-0.85, 0.85])
+        AL = np.array([-1.10, 0.50])
+        left = [AL, E, F, DL, AL]
+
+        AR = np.array([-0.95, -0.60])
+        DR = np.array([-0.65, -0.90])
+        H  = np.array([-1.05, -1.20])
+        G  = np.array([-1.33, -0.85])
+        right = [AR, G, H, DR, AR]
+        for i, pos in enumerate(right):
+            if i == 0: continue
+            color = 'blue'
+            if i == 1: color = 'red'
+            if i == 4: color = 'red'
+            ax.annotate('',
+                    xy=(right[i][0], right[i][1]),
+                    xytext=(right[i-1][0], right[i-1][1]),
+                    arrowprops=dict(
+                        arrowstyle='-|>',
+                        connectionstyle='arc3',
+                        fc=color,
+                        ec=color,
+                        shrinkA=0.0,
+                        shrinkB=0.0,
+                        lw=1
+                        )
+                    )
+        for i, pos in enumerate(left):
+            if i == 0: continue
+            color = 'blue'
+            if i == 1: color = 'red'
+            if i == 4: color = 'red'
+            ax.annotate('',
+                    xy=(left[i][0], left[i][1]),
+                    xytext=(left[i-1][0], left[i-1][1]),
+                    arrowprops=dict(
+                        arrowstyle='-|>',
+                        connectionstyle='arc3',
+                        fc=color,
+                        ec=color,
+                        shrinkA=0.0,
+                        shrinkB=0.0,
+                        lw=1
+                        )
+                    )
+
+
+
+        
+
         """
         point0 = np.array([-1.0, 0.42])
         point1 = np.array([-1.55, 0.42])
@@ -79,8 +139,6 @@ def drawDeformation(ax, df, draw_arms=True):
         end = np.array([-0.7, 0.5])
         pointA = np.array([-1.0, 0.42])
         pointE = np.array([-1.0, 0.42])
-        ax.text(-0.8, 0.42, 'A', fontsize=15, ha='left', va='top')
-        ax.text(-1.6, 0.45, 'E', fontsize=15, ha='left', va='bottom')
         ax.text(-1.3, 1.0, 'F', fontsize=15, ha='left', va='bottom')
 
         ax.text(point1[0]-0.10, point1[1]-0.05, 'B', fontsize=15, ha='right', va='top')
