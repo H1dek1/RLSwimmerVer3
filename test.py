@@ -31,7 +31,7 @@ def main():
             'on_record' :         False,
             'action_interval':    0.7,   # 0.5 ~ 30
             'max_length':         1.3,   # 0.1 ~ 0.9
-            'consider_energy':    False,
+            'consider_energy':    True,
             'random_init_states': False,
             }
     df = pd.read_csv(f'sim/analysis/data/characteristic_values/type{params["swimmer_type"]}/displacement_energy.csv')
