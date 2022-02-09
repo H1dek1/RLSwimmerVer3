@@ -18,6 +18,14 @@ def drawRLPhase(fig, ax):
     yticks = np.arange(1.1, 2.0, 0.2)
     ax.set_yticks(yticks)
     ax.set_yticklabels(np.vectorize(str)(np.round(yticks, 2)))
+    
+    ax.plot(
+            [0.0, 1.0],
+            [1.0, 2.0],
+            ls='--',
+            color='k',
+            zorder=0,
+            )
 
     data_list = dict()
     data_list['b'] = np.array([
@@ -70,7 +78,8 @@ def drawRLPhase(fig, ax):
     for i, data in enumerate(data_list.values()):
         ax.scatter(data.T[0], data.T[1], s=100, marker=marker_list[i], color=f'C{i}', label=name[i])
 
-    ax.legend(ncol=3, bbox_to_anchor=(0.98, 0.08), fontsize=13)
+    # ax.legend(ncol=3, bbox_to_anchor=(0.78, 0.8), fontsize=13)
+    ax.legend(ncol=3, loc='lower right', fontsize=13)
 
 
 

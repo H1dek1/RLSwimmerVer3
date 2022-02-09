@@ -76,11 +76,17 @@ def armSpaceSetting(ax):
     ax.set_ylabel(r'$\ell_1^*$', fontsize=20)
 
 def drawSquare(ax):
+    ax.set_xlabel(r'$\ell_0$', fontsize=30)
+    ax.set_ylabel(r'$\ell_1$', fontsize=30)
     ticks = [1.0, 1.3]
     ax.set_xticks(ticks)
-    ax.set_xticklabels(['$1.0$\n$(\ell^{\min*})$', '$1.3$\n$(\ell^{\max*})$'])
+    # ax.set_xticklabels(['$1.0$\n$(\ell^{\min*})$', '$1.3$\n$(\ell^{\max*})$'])
     ax.set_yticks(ticks)
-    ax.set_yticklabels(['$1.0$\n$(\ell^{\min*})$', '$1.3$\n$(\ell^{\max*})$'])
+    # ax.set_yticklabels(['$1.0$\n$(\ell^{\min*})$', '$1.3$\n$(\ell^{\max*})$'])
+    ax.tick_params(labelbottom=False,
+            labelleft=False,
+            labelright=False,
+            labeltop=False)
     A = np.array([1.0, 1.0])
     B = np.array([1.3, 1.0])
     C = np.array([1.3, 1.3])
@@ -95,10 +101,10 @@ def drawSquare(ax):
     numbering(ax, B, C, r'$2$')
     numbering(ax, C, D, r'$3$')
     numbering(ax, D, A, r'$4$')
-    ax.text(A[0]-0.02, A[1]-0.02, r'$\mathscr{A}$', fontsize=15, ha='right', va='top')
-    ax.text(B[0]-0.02, B[1]-0.02, r'$\mathscr{B}$', fontsize=15, ha='right', va='top')
-    ax.text(C[0]-0.02, C[1]-0.02, r'$\mathscr{C}$', fontsize=15, ha='right', va='top')
-    ax.text(D[0]-0.02, D[1]-0.02, r'$\mathscr{D}$', fontsize=15, ha='right', va='top')
+    ax.text(A[0]-0.02, A[1]-0.02, r'$A$', fontsize=20, ha='right', va='top')
+    ax.text(B[0]-0.02, B[1]-0.02, r'$B$', fontsize=20, ha='right', va='top')
+    ax.text(C[0]-0.02, C[1]-0.02, r'$C$', fontsize=20, ha='right', va='top')
+    ax.text(D[0]-0.02, D[1]-0.02, r'$D$', fontsize=20, ha='right', va='top')
     
     ax.vlines(x=[1.0, 1.3], ymin=0.0, ymax=1.0, ls='--', lw=0.5, color='k')
     ax.hlines(y=[1.0, 1.3], xmin=0.0, xmax=1.0, ls='--', lw=0.5, color='k')
@@ -153,7 +159,7 @@ def numbering(ax, pos0, pos1, n, color='k'):
     vec /= np.linalg.norm(vec)
     center = (pos0 + pos1) / 2
     pos = center + 0.08*np.array([vec[1], -vec[0]])
-    ax.text(pos[0], pos[1], n, fontsize=15, va='center', ha='center', color=color)
+    ax.text(pos[0], pos[1], n, fontsize=20, va='center', ha='center', color=color)
     circ = patches.Circle(xy=(pos[0]+0.003, pos[1]+0.005), radius=0.04, fill=False, ec=color)
     ax.add_patch(circ)
 

@@ -32,7 +32,17 @@ def main():
 
     ax[0].set_title('(a)', loc='left', fontsize=15)
     ax[1].set_title('(b)', loc='left', fontsize=15)
+    ax[0].text(-0.34, -0.9, r'$A$', ha='center', va='center', fontsize=20)
+    ax[0].text(-0.50, -0.5, r'$E$', ha='center', va='center', fontsize=20)
+    ax[0].text(-0.00, -0.1, r'$F$', ha='center', va='center', fontsize=20)
+    ax[0].text( 0.15, -0.6, r'$D$', ha='center', va='center', fontsize=20)
+    ax[0].text( 0.00, -0.9, r"$A'$", ha='center', va='center', fontsize=20)
 
+    ax[1].text(-0.42, 0.85, r'$A$', ha='center', va='center', fontsize=20)
+    ax[1].text(-0.50, 0.3, r'$G$', ha='center', va='center', fontsize=20)
+    ax[1].text(-0.05, 0.1, r'$H$', ha='center', va='center', fontsize=20)
+    ax[1].text( 0.15, 0.6, r'$D$', ha='center', va='center', fontsize=20)
+    ax[1].text( 0.00, 0.85, r"$A'$", ha='center', va='center', fontsize=20)
     # plt.show()
     fig.savefig('alt_trajectory.pdf')
 

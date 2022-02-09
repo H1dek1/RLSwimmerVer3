@@ -1,0 +1,1484 @@
+{
+  "0.05": {
+    "1.05": {
+      "name": "b_triangle",
+      "efficiency": 6.248920876981241e-05
+    },
+    "1.1": {
+      "name": "b_triangle",
+      "efficiency": 6.248920876981241e-05
+    },
+    "1.15": {
+      "name": "b_triangle",
+      "efficiency": 6.248920876981241e-05
+    },
+    "1.2": {
+      "name": "b_triangle",
+      "efficiency": 6.248920876981241e-05
+    },
+    "1.25": {
+      "name": "b_triangle",
+      "efficiency": 6.248920876981241e-05
+    },
+    "1.3": {
+      "name": "b_triangle",
+      "efficiency": 6.248920876981241e-05
+    },
+    "1.35": {
+      "name": "b_triangle",
+      "efficiency": 6.248920876981241e-05
+    },
+    "1.4": {
+      "name": "b_triangle",
+      "efficiency": 6.248920876981241e-05
+    },
+    "1.45": {
+      "name": "b_triangle",
+      "efficiency": 6.248920876981241e-05
+    },
+    "1.5": {
+      "name": "b_triangle",
+      "efficiency": 6.248920876981241e-05
+    },
+    "1.55": {
+      "name": "b_triangle",
+      "efficiency": 6.248920876981241e-05
+    },
+    "1.6": {
+      "name": "b_triangle",
+      "efficiency": 6.248920876981241e-05
+    },
+    "1.65": {
+      "name": "b_triangle",
+      "efficiency": 6.248920876981241e-05
+    },
+    "1.7": {
+      "name": "b_triangle",
+      "efficiency": 6.248920876981241e-05
+    },
+    "1.75": {
+      "name": "b_triangle",
+      "efficiency": 6.248920876981241e-05
+    },
+    "1.8": {
+      "name": "b_triangle",
+      "efficiency": 6.248920876981241e-05
+    },
+    "1.85": {
+      "name": "b_triangle",
+      "efficiency": 6.248920876981241e-05
+    },
+    "1.9": {
+      "name": "b_triangle",
+      "efficiency": 6.248920876981241e-05
+    },
+    "1.95": {
+      "name": "b_triangle",
+      "efficiency": 6.248920876981241e-05
+    }
+  },
+  "0.1": {
+    "1.05": {
+      "name": "b_triangle",
+      "efficiency": 6.434934523477949e-05
+    },
+    "1.1": {
+      "name": "b_triangle",
+      "efficiency": 0.0001155522863688313
+    },
+    "1.15": {
+      "name": "b_triangle",
+      "efficiency": 0.0001155522863688313
+    },
+    "1.2": {
+      "name": "b_triangle",
+      "efficiency": 0.0001155522863688313
+    },
+    "1.25": {
+      "name": "b_triangle",
+      "efficiency": 0.0001155522863688313
+    },
+    "1.3": {
+      "name": "b_triangle",
+      "efficiency": 0.0001155522863688313
+    },
+    "1.35": {
+      "name": "b_triangle",
+      "efficiency": 0.0001155522863688313
+    },
+    "1.4": {
+      "name": "b_triangle",
+      "efficiency": 0.0001155522863688313
+    },
+    "1.45": {
+      "name": "b_triangle",
+      "efficiency": 0.0001155522863688313
+    },
+    "1.5": {
+      "name": "b_triangle",
+      "efficiency": 0.0001155522863688313
+    },
+    "1.55": {
+      "name": "b_triangle",
+      "efficiency": 0.0001155522863688313
+    },
+    "1.6": {
+      "name": "b_triangle",
+      "efficiency": 0.0001155522863688313
+    },
+    "1.65": {
+      "name": "b_triangle",
+      "efficiency": 0.0001155522863688313
+    },
+    "1.7": {
+      "name": "b_triangle",
+      "efficiency": 0.0001155522863688313
+    },
+    "1.75": {
+      "name": "b_triangle",
+      "efficiency": 0.0001155522863688313
+    },
+    "1.8": {
+      "name": "b_triangle",
+      "efficiency": 0.0001155522863688313
+    },
+    "1.85": {
+      "name": "b_triangle",
+      "efficiency": 0.0001155522863688313
+    },
+    "1.9": {
+      "name": "b_triangle",
+      "efficiency": 0.0001155522863688313
+    },
+    "1.95": {
+      "name": "b_triangle",
+      "efficiency": 0.0001155522863688313
+    }
+  },
+  "0.15": {
+    "1.05": {
+      "name": "b_triangle",
+      "efficiency": 6.391874319553623e-05
+    },
+    "1.1": {
+      "name": "b_triangle",
+      "efficiency": 0.0001156958984077453
+    },
+    "1.15": {
+      "name": "a_triangle",
+      "efficiency": 0.00016505878712831434
+    },
+    "1.2": {
+      "name": "a_triangle",
+      "efficiency": 0.00016505878712831434
+    },
+    "1.25": {
+      "name": "a_triangle",
+      "efficiency": 0.00016505878712831434
+    },
+    "1.3": {
+      "name": "a_triangle",
+      "efficiency": 0.00016505878712831434
+    },
+    "1.35": {
+      "name": "a_triangle",
+      "efficiency": 0.00016505878712831434
+    },
+    "1.4": {
+      "name": "a_triangle",
+      "efficiency": 0.00016505878712831434
+    },
+    "1.45": {
+      "name": "a_triangle",
+      "efficiency": 0.00016505878712831434
+    },
+    "1.5": {
+      "name": "a_triangle",
+      "efficiency": 0.00016505878712831434
+    },
+    "1.55": {
+      "name": "a_triangle",
+      "efficiency": 0.00016505878712831434
+    },
+    "1.6": {
+      "name": "a_triangle",
+      "efficiency": 0.00016505878712831434
+    },
+    "1.65": {
+      "name": "a_triangle",
+      "efficiency": 0.00016505878712831434
+    },
+    "1.7": {
+      "name": "a_triangle",
+      "efficiency": 0.00016505878712831434
+    },
+    "1.75": {
+      "name": "a_triangle",
+      "efficiency": 0.00016505878712831434
+    },
+    "1.8": {
+      "name": "a_triangle",
+      "efficiency": 0.00016505878712831434
+    },
+    "1.85": {
+      "name": "a_triangle",
+      "efficiency": 0.00016505878712831434
+    },
+    "1.9": {
+      "name": "a_triangle",
+      "efficiency": 0.00016505878712831434
+    },
+    "1.95": {
+      "name": "a_triangle",
+      "efficiency": 0.00016505878712831434
+    }
+  },
+  "0.2": {
+    "1.05": {
+      "name": "b_triangle",
+      "efficiency": 6.253501687225808e-05
+    },
+    "1.1": {
+      "name": "b_triangle",
+      "efficiency": 0.00011442433424120753
+    },
+    "1.15": {
+      "name": "a_triangle",
+      "efficiency": 0.00016448663529183288
+    },
+    "1.2": {
+      "name": "a_triangle",
+      "efficiency": 0.00023180021761443146
+    },
+    "1.25": {
+      "name": "a_triangle",
+      "efficiency": 0.00023180021761443146
+    },
+    "1.3": {
+      "name": "a_triangle",
+      "efficiency": 0.00023180021761443146
+    },
+    "1.35": {
+      "name": "a_triangle",
+      "efficiency": 0.00023180021761443146
+    },
+    "1.4": {
+      "name": "a_triangle",
+      "efficiency": 0.00023180021761443146
+    },
+    "1.45": {
+      "name": "a_triangle",
+      "efficiency": 0.00023180021761443146
+    },
+    "1.5": {
+      "name": "a_triangle",
+      "efficiency": 0.00023180021761443146
+    },
+    "1.55": {
+      "name": "a_triangle",
+      "efficiency": 0.00023180021761443146
+    },
+    "1.6": {
+      "name": "a_triangle",
+      "efficiency": 0.00023180021761443146
+    },
+    "1.65": {
+      "name": "a_triangle",
+      "efficiency": 0.00023180021761443146
+    },
+    "1.7": {
+      "name": "a_triangle",
+      "efficiency": 0.00023180021761443146
+    },
+    "1.75": {
+      "name": "a_triangle",
+      "efficiency": 0.00023180021761443146
+    },
+    "1.8": {
+      "name": "a_triangle",
+      "efficiency": 0.00023180021761443146
+    },
+    "1.85": {
+      "name": "a_triangle",
+      "efficiency": 0.00023180021761443146
+    },
+    "1.9": {
+      "name": "a_triangle",
+      "efficiency": 0.00023180021761443146
+    },
+    "1.95": {
+      "name": "a_triangle",
+      "efficiency": 0.00023180021761443146
+    }
+  },
+  "0.25": {
+    "1.05": {
+      "name": "b_triangle",
+      "efficiency": 6.549749212669734e-05
+    },
+    "1.1": {
+      "name": "b_triangle",
+      "efficiency": 0.00011743634186983029
+    },
+    "1.15": {
+      "name": "a_triangle",
+      "efficiency": 0.00016757821588899016
+    },
+    "1.2": {
+      "name": "a_triangle",
+      "efficiency": 0.00023635366686896114
+    },
+    "1.25": {
+      "name": "a_triangle",
+      "efficiency": 0.00030771174919638495
+    },
+    "1.3": {
+      "name": "a_triangle",
+      "efficiency": 0.00030771174919638495
+    },
+    "1.35": {
+      "name": "a_triangle",
+      "efficiency": 0.00030771174919638495
+    },
+    "1.4": {
+      "name": "a_triangle",
+      "efficiency": 0.00030771174919638495
+    },
+    "1.45": {
+      "name": "a_triangle",
+      "efficiency": 0.00030771174919638495
+    },
+    "1.5": {
+      "name": "a_triangle",
+      "efficiency": 0.00030771174919638495
+    },
+    "1.55": {
+      "name": "a_triangle",
+      "efficiency": 0.00030771174919638495
+    },
+    "1.6": {
+      "name": "a_triangle",
+      "efficiency": 0.00030771174919638495
+    },
+    "1.65": {
+      "name": "a_triangle",
+      "efficiency": 0.00030771174919638495
+    },
+    "1.7": {
+      "name": "a_triangle",
+      "efficiency": 0.00030771174919638495
+    },
+    "1.75": {
+      "name": "a_triangle",
+      "efficiency": 0.00030771174919638495
+    },
+    "1.8": {
+      "name": "a_triangle",
+      "efficiency": 0.00030771174919638495
+    },
+    "1.85": {
+      "name": "a_triangle",
+      "efficiency": 0.00030771174919638495
+    },
+    "1.9": {
+      "name": "a_triangle",
+      "efficiency": 0.00030771174919638495
+    },
+    "1.95": {
+      "name": "a_triangle",
+      "efficiency": 0.00030771174919638495
+    }
+  },
+  "0.3": {
+    "1.05": {
+      "name": "b_triangle",
+      "efficiency": 6.387766557204471e-05
+    },
+    "1.1": {
+      "name": "b_triangle",
+      "efficiency": 0.0001159057306714471
+    },
+    "1.15": {
+      "name": "a_triangle",
+      "efficiency": 0.00016639620717494695
+    },
+    "1.2": {
+      "name": "a_triangle",
+      "efficiency": 0.0002351381242138686
+    },
+    "1.25": {
+      "name": "a_triangle",
+      "efficiency": 0.00030801395598328385
+    },
+    "1.3": {
+      "name": "a_triangle",
+      "efficiency": 0.0003817602903764979
+    },
+    "1.35": {
+      "name": "a_triangle",
+      "efficiency": 0.0003817602903764979
+    },
+    "1.4": {
+      "name": "a_triangle",
+      "efficiency": 0.0003817602903764979
+    },
+    "1.45": {
+      "name": "a_triangle",
+      "efficiency": 0.0003817602903764979
+    },
+    "1.5": {
+      "name": "a_triangle",
+      "efficiency": 0.0003817602903764979
+    },
+    "1.55": {
+      "name": "a_triangle",
+      "efficiency": 0.0003817602903764979
+    },
+    "1.6": {
+      "name": "a_triangle",
+      "efficiency": 0.0003817602903764979
+    },
+    "1.65": {
+      "name": "a_triangle",
+      "efficiency": 0.0003817602903764979
+    },
+    "1.7": {
+      "name": "a_triangle",
+      "efficiency": 0.0003817602903764979
+    },
+    "1.75": {
+      "name": "a_triangle",
+      "efficiency": 0.0003817602903764979
+    },
+    "1.8": {
+      "name": "a_triangle",
+      "efficiency": 0.0003817602903764979
+    },
+    "1.85": {
+      "name": "a_triangle",
+      "efficiency": 0.0003817602903764979
+    },
+    "1.9": {
+      "name": "a_triangle",
+      "efficiency": 0.0003817602903764979
+    },
+    "1.95": {
+      "name": "a_triangle",
+      "efficiency": 0.0003817602903764979
+    }
+  },
+  "0.35": {
+    "1.05": {
+      "name": "b_triangle",
+      "efficiency": 6.61174832398133e-05
+    },
+    "1.1": {
+      "name": "b_triangle",
+      "efficiency": 0.00011804503321141986
+    },
+    "1.15": {
+      "name": "a_triangle",
+      "efficiency": 0.00016804624914911
+    },
+    "1.2": {
+      "name": "a_triangle",
+      "efficiency": 0.0002367899964781032
+    },
+    "1.25": {
+      "name": "a_triangle",
+      "efficiency": 0.0003096473456423092
+    },
+    "1.3": {
+      "name": "a_triangle",
+      "efficiency": 0.0003849435022940463
+    },
+    "1.35": {
+      "name": "a_triangle",
+      "efficiency": 0.0004580231306733532
+    },
+    "1.4": {
+      "name": "a_triangle",
+      "efficiency": 0.0004580231306733532
+    },
+    "1.45": {
+      "name": "a_triangle",
+      "efficiency": 0.0004580231306733532
+    },
+    "1.5": {
+      "name": "a_triangle",
+      "efficiency": 0.0004580231306733532
+    },
+    "1.55": {
+      "name": "a_triangle",
+      "efficiency": 0.0004580231306733532
+    },
+    "1.6": {
+      "name": "a_triangle",
+      "efficiency": 0.0004580231306733532
+    },
+    "1.65": {
+      "name": "a_triangle",
+      "efficiency": 0.0004580231306733532
+    },
+    "1.7": {
+      "name": "a_triangle",
+      "efficiency": 0.0004580231306733532
+    },
+    "1.75": {
+      "name": "a_triangle",
+      "efficiency": 0.0004580231306733532
+    },
+    "1.8": {
+      "name": "a_triangle",
+      "efficiency": 0.0004580231306733532
+    },
+    "1.85": {
+      "name": "a_triangle",
+      "efficiency": 0.0004580231306733532
+    },
+    "1.9": {
+      "name": "a_triangle",
+      "efficiency": 0.0004580231306733532
+    },
+    "1.95": {
+      "name": "a_triangle",
+      "efficiency": 0.0004580231306733532
+    }
+  },
+  "0.4": {
+    "1.05": {
+      "name": "b_triangle",
+      "efficiency": 6.651389322669296e-05
+    },
+    "1.1": {
+      "name": "b_triangle",
+      "efficiency": 0.00011833894964499468
+    },
+    "1.15": {
+      "name": "a_triangle",
+      "efficiency": 0.00016831042763048153
+    },
+    "1.2": {
+      "name": "a_triangle",
+      "efficiency": 0.00023707601092510974
+    },
+    "1.25": {
+      "name": "a_triangle",
+      "efficiency": 0.0003099529071194533
+    },
+    "1.3": {
+      "name": "a_triangle",
+      "efficiency": 0.0003852691674373025
+    },
+    "1.35": {
+      "name": "a_triangle",
+      "efficiency": 0.00046145262351658623
+    },
+    "1.4": {
+      "name": "a_triangle",
+      "efficiency": 0.0005354571866178032
+    },
+    "1.45": {
+      "name": "a_triangle",
+      "efficiency": 0.0005354571866178032
+    },
+    "1.5": {
+      "name": "a_triangle",
+      "efficiency": 0.0005354571866178032
+    },
+    "1.55": {
+      "name": "a_triangle",
+      "efficiency": 0.0005354571866178032
+    },
+    "1.6": {
+      "name": "a_triangle",
+      "efficiency": 0.0005354571866178032
+    },
+    "1.65": {
+      "name": "a_triangle",
+      "efficiency": 0.0005354571866178032
+    },
+    "1.7": {
+      "name": "a_triangle",
+      "efficiency": 0.0005354571866178032
+    },
+    "1.75": {
+      "name": "a_triangle",
+      "efficiency": 0.0005354571866178032
+    },
+    "1.8": {
+      "name": "a_triangle",
+      "efficiency": 0.0005354571866178032
+    },
+    "1.85": {
+      "name": "a_triangle",
+      "efficiency": 0.0005354571866178032
+    },
+    "1.9": {
+      "name": "a_triangle",
+      "efficiency": 0.0005354571866178032
+    },
+    "1.95": {
+      "name": "a_triangle",
+      "efficiency": 0.0005354571866178032
+    }
+  },
+  "0.45": {
+    "1.05": {
+      "name": "b_triangle",
+      "efficiency": 6.0824719606904784e-05
+    },
+    "1.1": {
+      "name": "b_triangle",
+      "efficiency": 0.00011272555453833187
+    },
+    "1.15": {
+      "name": "a_triangle",
+      "efficiency": 0.00016211259362384524
+    },
+    "1.2": {
+      "name": "a_triangle",
+      "efficiency": 0.00023085249857858565
+    },
+    "1.25": {
+      "name": "a_triangle",
+      "efficiency": 0.00030373931643913214
+    },
+    "1.3": {
+      "name": "a_triangle",
+      "efficiency": 0.0003790443169436242
+    },
+    "1.35": {
+      "name": "a_triangle",
+      "efficiency": 0.00045523582881345847
+    },
+    "1.4": {
+      "name": "a_triangle",
+      "efficiency": 0.0005308007793352687
+    },
+    "1.45": {
+      "name": "a_triangle",
+      "efficiency": 0.0006027573180216538
+    },
+    "1.5": {
+      "name": "a_triangle",
+      "efficiency": 0.0006027573180216538
+    },
+    "1.55": {
+      "name": "a_triangle",
+      "efficiency": 0.0006027573180216538
+    },
+    "1.6": {
+      "name": "a_triangle",
+      "efficiency": 0.0006027573180216538
+    },
+    "1.65": {
+      "name": "a_triangle",
+      "efficiency": 0.0006027573180216538
+    },
+    "1.7": {
+      "name": "a_triangle",
+      "efficiency": 0.0006027573180216538
+    },
+    "1.75": {
+      "name": "a_triangle",
+      "efficiency": 0.0006027573180216538
+    },
+    "1.8": {
+      "name": "a_triangle",
+      "efficiency": 0.0006027573180216538
+    },
+    "1.85": {
+      "name": "a_triangle",
+      "efficiency": 0.0006027573180216538
+    },
+    "1.9": {
+      "name": "a_triangle",
+      "efficiency": 0.0006027573180216538
+    },
+    "1.95": {
+      "name": "a_triangle",
+      "efficiency": 0.0006027573180216538
+    }
+  },
+  "0.5": {
+    "1.05": {
+      "name": "b_triangle",
+      "efficiency": 6.0428568881069704e-05
+    },
+    "1.1": {
+      "name": "b_triangle",
+      "efficiency": 0.00011236440880875743
+    },
+    "1.15": {
+      "name": "a_triangle",
+      "efficiency": 0.00016163233763715352
+    },
+    "1.2": {
+      "name": "a_triangle",
+      "efficiency": 0.00023037422076555586
+    },
+    "1.25": {
+      "name": "a_triangle",
+      "efficiency": 0.0003032384043707652
+    },
+    "1.3": {
+      "name": "a_triangle",
+      "efficiency": 0.0003785569212097405
+    },
+    "1.35": {
+      "name": "a_triangle",
+      "efficiency": 0.00045476394500875144
+    },
+    "1.4": {
+      "name": "a_triangle",
+      "efficiency": 0.0005303304774336208
+    },
+    "1.45": {
+      "name": "a_triangle",
+      "efficiency": 0.0006038793836937402
+    },
+    "1.5": {
+      "name": "a_triangle",
+      "efficiency": 0.0006723448095720108
+    },
+    "1.55": {
+      "name": "a_triangle",
+      "efficiency": 0.0006723448095720108
+    },
+    "1.6": {
+      "name": "a_triangle",
+      "efficiency": 0.0006723448095720108
+    },
+    "1.65": {
+      "name": "a_triangle",
+      "efficiency": 0.0006723448095720108
+    },
+    "1.7": {
+      "name": "a_triangle",
+      "efficiency": 0.0006723448095720108
+    },
+    "1.75": {
+      "name": "a_triangle",
+      "efficiency": 0.0006723448095720108
+    },
+    "1.8": {
+      "name": "a_triangle",
+      "efficiency": 0.0006723448095720108
+    },
+    "1.85": {
+      "name": "a_triangle",
+      "efficiency": 0.0006723448095720108
+    },
+    "1.9": {
+      "name": "a_triangle",
+      "efficiency": 0.0006723448095720108
+    },
+    "1.95": {
+      "name": "a_triangle",
+      "efficiency": 0.0006723448095720108
+    }
+  },
+  "0.55": {
+    "1.05": {
+      "name": "b_triangle",
+      "efficiency": 6.388364922856105e-05
+    },
+    "1.1": {
+      "name": "b_triangle",
+      "efficiency": 0.00011590166824647592
+    },
+    "1.15": {
+      "name": "a_triangle",
+      "efficiency": 0.00016640945694199223
+    },
+    "1.2": {
+      "name": "a_triangle",
+      "efficiency": 0.0002351386284051927
+    },
+    "1.25": {
+      "name": "a_triangle",
+      "efficiency": 0.00030802460369846324
+    },
+    "1.3": {
+      "name": "a_triangle",
+      "efficiency": 0.0003833317221424336
+    },
+    "1.35": {
+      "name": "a_triangle",
+      "efficiency": 0.00045950856576938514
+    },
+    "1.4": {
+      "name": "a_triangle",
+      "efficiency": 0.0005350266634559333
+    },
+    "1.45": {
+      "name": "a_triangle",
+      "efficiency": 0.000608549491349037
+    },
+    "1.5": {
+      "name": "a_triangle",
+      "efficiency": 0.0006783809626366034
+    },
+    "1.55": {
+      "name": "a_triangle",
+      "efficiency": 0.0007419578704739046
+    },
+    "1.6": {
+      "name": "a_triangle",
+      "efficiency": 0.0007419578704739046
+    },
+    "1.65": {
+      "name": "a_triangle",
+      "efficiency": 0.0007419578704739046
+    },
+    "1.7": {
+      "name": "a_triangle",
+      "efficiency": 0.0007419578704739046
+    },
+    "1.75": {
+      "name": "a_triangle",
+      "efficiency": 0.0007419578704739046
+    },
+    "1.8": {
+      "name": "a_triangle",
+      "efficiency": 0.0007419578704739046
+    },
+    "1.85": {
+      "name": "a_triangle",
+      "efficiency": 0.0007419578704739046
+    },
+    "1.9": {
+      "name": "a_triangle",
+      "efficiency": 0.0007419578704739046
+    },
+    "1.95": {
+      "name": "a_triangle",
+      "efficiency": 0.0007419578704739046
+    }
+  },
+  "0.6": {
+    "1.05": {
+      "name": "b_triangle",
+      "efficiency": 6.777074832445851e-05
+    },
+    "1.1": {
+      "name": "b_triangle",
+      "efficiency": 0.00011955236073611452
+    },
+    "1.15": {
+      "name": "a_triangle",
+      "efficiency": 0.00016928245845507995
+    },
+    "1.2": {
+      "name": "a_triangle",
+      "efficiency": 0.0002380142844870312
+    },
+    "1.25": {
+      "name": "a_triangle",
+      "efficiency": 0.0003109274484435351
+    },
+    "1.3": {
+      "name": "a_triangle",
+      "efficiency": 0.0003862240877708502
+    },
+    "1.35": {
+      "name": "a_triangle",
+      "efficiency": 0.0004624335404327516
+    },
+    "1.4": {
+      "name": "a_triangle",
+      "efficiency": 0.0005379702286677116
+    },
+    "1.45": {
+      "name": "a_triangle",
+      "efficiency": 0.0006114687732077321
+    },
+    "1.5": {
+      "name": "a_triangle",
+      "efficiency": 0.0006812940405834223
+    },
+    "1.55": {
+      "name": "a_triangle",
+      "efficiency": 0.000746165216252353
+    },
+    "1.6": {
+      "name": "a_triangle",
+      "efficiency": 0.0008031739372639739
+    },
+    "1.65": {
+      "name": "a_triangle",
+      "efficiency": 0.0008031739372639739
+    },
+    "1.7": {
+      "name": "a_triangle",
+      "efficiency": 0.0008031739372639739
+    },
+    "1.75": {
+      "name": "a_triangle",
+      "efficiency": 0.0008031739372639739
+    },
+    "1.8": {
+      "name": "a_triangle",
+      "efficiency": 0.0008031739372639739
+    },
+    "1.85": {
+      "name": "a_triangle",
+      "efficiency": 0.0008031739372639739
+    },
+    "1.9": {
+      "name": "a_triangle",
+      "efficiency": 0.0008031739372639739
+    },
+    "1.95": {
+      "name": "a_triangle",
+      "efficiency": 0.0008031739372639739
+    }
+  },
+  "0.65": {
+    "1.05": {
+      "name": "b_triangle",
+      "efficiency": 5.940278853136626e-05
+    },
+    "1.1": {
+      "name": "b_triangle",
+      "efficiency": 0.00011130273523204896
+    },
+    "1.15": {
+      "name": "a_triangle",
+      "efficiency": 0.00016024472236734742
+    },
+    "1.2": {
+      "name": "a_triangle",
+      "efficiency": 0.00022894942071888924
+    },
+    "1.25": {
+      "name": "a_triangle",
+      "efficiency": 0.000301823638562692
+    },
+    "1.3": {
+      "name": "a_triangle",
+      "efficiency": 0.00037712681672761943
+    },
+    "1.35": {
+      "name": "a_triangle",
+      "efficiency": 0.0004533423694667991
+    },
+    "1.4": {
+      "name": "a_triangle",
+      "efficiency": 0.0005289065270058185
+    },
+    "1.45": {
+      "name": "a_triangle",
+      "efficiency": 0.00060245056834827
+    },
+    "1.5": {
+      "name": "a_triangle",
+      "efficiency": 0.0006723782979612514
+    },
+    "1.55": {
+      "name": "a_triangle",
+      "efficiency": 0.0007373545369102984
+    },
+    "1.6": {
+      "name": "a_triangle",
+      "efficiency": 0.0007956943726938697
+    },
+    "1.65": {
+      "name": "a_triangle",
+      "efficiency": 0.000844739344446561
+    },
+    "1.7": {
+      "name": "a_triangle",
+      "efficiency": 0.000844739344446561
+    },
+    "1.75": {
+      "name": "a_triangle",
+      "efficiency": 0.000844739344446561
+    },
+    "1.8": {
+      "name": "a_triangle",
+      "efficiency": 0.000844739344446561
+    },
+    "1.85": {
+      "name": "a_triangle",
+      "efficiency": 0.000844739344446561
+    },
+    "1.9": {
+      "name": "a_triangle",
+      "efficiency": 0.000844739344446561
+    },
+    "1.95": {
+      "name": "a_triangle",
+      "efficiency": 0.000844739344446561
+    }
+  },
+  "0.7": {
+    "1.05": {
+      "name": "b_triangle",
+      "efficiency": 6.391442730685276e-05
+    },
+    "1.1": {
+      "name": "b_triangle",
+      "efficiency": 0.0001158690807448013
+    },
+    "1.15": {
+      "name": "a_triangle",
+      "efficiency": 0.00016642390476989845
+    },
+    "1.2": {
+      "name": "a_triangle",
+      "efficiency": 0.0002351457994615483
+    },
+    "1.25": {
+      "name": "a_triangle",
+      "efficiency": 0.0003080257941883661
+    },
+    "1.3": {
+      "name": "a_triangle",
+      "efficiency": 0.0003833277470454557
+    },
+    "1.35": {
+      "name": "a_triangle",
+      "efficiency": 0.0004595267577807534
+    },
+    "1.4": {
+      "name": "a_triangle",
+      "efficiency": 0.0005350406499794204
+    },
+    "1.45": {
+      "name": "a_triangle",
+      "efficiency": 0.0006084942238760257
+    },
+    "1.5": {
+      "name": "a_triangle",
+      "efficiency": 0.0006783779736726039
+    },
+    "1.55": {
+      "name": "a_triangle",
+      "efficiency": 0.0007432477470930381
+    },
+    "1.6": {
+      "name": "a_triangle",
+      "efficiency": 0.0008014694279144972
+    },
+    "1.65": {
+      "name": "a_triangle",
+      "efficiency": 0.0008512887278119404
+    },
+    "1.7": {
+      "name": "a_triangle",
+      "efficiency": 0.000889512568474287
+    },
+    "1.75": {
+      "name": "a_triangle",
+      "efficiency": 0.000889512568474287
+    },
+    "1.8": {
+      "name": "a_triangle",
+      "efficiency": 0.000889512568474287
+    },
+    "1.85": {
+      "name": "a_triangle",
+      "efficiency": 0.000889512568474287
+    },
+    "1.9": {
+      "name": "a_triangle",
+      "efficiency": 0.000889512568474287
+    },
+    "1.95": {
+      "name": "a_triangle",
+      "efficiency": 0.000889512568474287
+    }
+  },
+  "0.75": {
+    "1.05": {
+      "name": "b_triangle",
+      "efficiency": 6.86745126739811e-05
+    },
+    "1.1": {
+      "name": "b_triangle",
+      "efficiency": 0.00012046996131749792
+    },
+    "1.15": {
+      "name": "a_triangle",
+      "efficiency": 0.00016995432197627455
+    },
+    "1.2": {
+      "name": "a_triangle",
+      "efficiency": 0.00023867074174091477
+    },
+    "1.25": {
+      "name": "a_triangle",
+      "efficiency": 0.00031151885806116183
+    },
+    "1.3": {
+      "name": "a_triangle",
+      "efficiency": 0.0003868010660807127
+    },
+    "1.35": {
+      "name": "a_triangle",
+      "efficiency": 0.0004629474350431313
+    },
+    "1.4": {
+      "name": "a_triangle",
+      "efficiency": 0.000538435756259661
+    },
+    "1.45": {
+      "name": "a_triangle",
+      "efficiency": 0.0006118342704748157
+    },
+    "1.5": {
+      "name": "a_triangle",
+      "efficiency": 0.0006816415926970252
+    },
+    "1.55": {
+      "name": "a_triangle",
+      "efficiency": 0.0007464660751060407
+    },
+    "1.6": {
+      "name": "a_triangle",
+      "efficiency": 0.0008046104723414842
+    },
+    "1.65": {
+      "name": "a_triangle",
+      "efficiency": 0.0008543217677866841
+    },
+    "1.7": {
+      "name": "a_triangle",
+      "efficiency": 0.0008941178098267588
+    },
+    "1.75": {
+      "name": "a_triangle",
+      "efficiency": 0.0009206561087441663
+    },
+    "1.8": {
+      "name": "a_triangle",
+      "efficiency": 0.0009206561087441663
+    },
+    "1.85": {
+      "name": "a_triangle",
+      "efficiency": 0.0009206561087441663
+    },
+    "1.9": {
+      "name": "a_triangle",
+      "efficiency": 0.0009206561087441663
+    },
+    "1.95": {
+      "name": "a_triangle",
+      "efficiency": 0.0009206561087441663
+    }
+  },
+  "0.8": {
+    "1.05": {
+      "name": "b_triangle",
+      "efficiency": 5.8379789546051346e-05
+    },
+    "1.1": {
+      "name": "b_triangle",
+      "efficiency": 0.00011022548785257524
+    },
+    "1.15": {
+      "name": "b_triangle",
+      "efficiency": 0.0001588907364663909
+    },
+    "1.2": {
+      "name": "a_triangle",
+      "efficiency": 0.00022752199068338245
+    },
+    "1.25": {
+      "name": "a_triangle",
+      "efficiency": 0.00030040595038305037
+    },
+    "1.3": {
+      "name": "a_triangle",
+      "efficiency": 0.0003757038547221917
+    },
+    "1.35": {
+      "name": "a_triangle",
+      "efficiency": 0.00045191896941831607
+    },
+    "1.4": {
+      "name": "a_triangle",
+      "efficiency": 0.000527508329691166
+    },
+    "1.45": {
+      "name": "a_triangle",
+      "efficiency": 0.0006010192114481269
+    },
+    "1.5": {
+      "name": "a_triangle",
+      "efficiency": 0.000670987848715249
+    },
+    "1.55": {
+      "name": "a_triangle",
+      "efficiency": 0.000736001396403001
+    },
+    "1.6": {
+      "name": "a_triangle",
+      "efficiency": 0.0007943391798350477
+    },
+    "1.65": {
+      "name": "a_triangle",
+      "efficiency": 0.0008443858542673522
+    },
+    "1.7": {
+      "name": "a_triangle",
+      "efficiency": 0.0008844154740507736
+    },
+    "1.75": {
+      "name": "a_triangle",
+      "efficiency": 0.0009117733768739192
+    },
+    "1.8": {
+      "name": "a_triangle",
+      "efficiency": 0.0009232396001284598
+    },
+    "1.85": {
+      "name": "a_triangle",
+      "efficiency": 0.0009232396001284598
+    },
+    "1.9": {
+      "name": "a_triangle",
+      "efficiency": 0.0009232396001284598
+    },
+    "1.95": {
+      "name": "a_triangle",
+      "efficiency": 0.0009232396001284598
+    }
+  },
+  "0.85": {
+    "1.05": {
+      "name": "b_triangle",
+      "efficiency": 6.389231354125324e-05
+    },
+    "1.1": {
+      "name": "b_triangle",
+      "efficiency": 0.00011590889921580547
+    },
+    "1.15": {
+      "name": "a_triangle",
+      "efficiency": 0.00016637926575547896
+    },
+    "1.2": {
+      "name": "a_triangle",
+      "efficiency": 0.00023511281068333326
+    },
+    "1.25": {
+      "name": "a_triangle",
+      "efficiency": 0.00030799653692827896
+    },
+    "1.3": {
+      "name": "a_triangle",
+      "efficiency": 0.00038331688784049944
+    },
+    "1.35": {
+      "name": "a_triangle",
+      "efficiency": 0.00045951391850454504
+    },
+    "1.4": {
+      "name": "a_triangle",
+      "efficiency": 0.0005350593134911841
+    },
+    "1.45": {
+      "name": "a_triangle",
+      "efficiency": 0.0006084834985056086
+    },
+    "1.5": {
+      "name": "a_triangle",
+      "efficiency": 0.0006783773446809306
+    },
+    "1.55": {
+      "name": "a_triangle",
+      "efficiency": 0.0007432384748830656
+    },
+    "1.6": {
+      "name": "a_triangle",
+      "efficiency": 0.0008014597319199519
+    },
+    "1.65": {
+      "name": "a_triangle",
+      "efficiency": 0.0008513571508825193
+    },
+    "1.7": {
+      "name": "a_triangle",
+      "efficiency": 0.0008911580259022828
+    },
+    "1.75": {
+      "name": "a_triangle",
+      "efficiency": 0.0009183076451639807
+    },
+    "1.8": {
+      "name": "a_triangle",
+      "efficiency": 0.0009297700617772219
+    },
+    "1.85": {
+      "name": "a_triangle",
+      "efficiency": 0.0009206856181877982
+    },
+    "1.9": {
+      "name": "a_triangle",
+      "efficiency": 0.0009206856181877982
+    },
+    "1.95": {
+      "name": "a_triangle",
+      "efficiency": 0.0009206856181877982
+    }
+  },
+  "0.9": {
+    "1.05": {
+      "name": "b_triangle",
+      "efficiency": 6.965967703628747e-05
+    },
+    "1.1": {
+      "name": "b_triangle",
+      "efficiency": 0.00012137386581235461
+    },
+    "1.15": {
+      "name": "a_triangle",
+      "efficiency": 0.00017064332753448865
+    },
+    "1.2": {
+      "name": "a_triangle",
+      "efficiency": 0.00023937368852799092
+    },
+    "1.25": {
+      "name": "a_triangle",
+      "efficiency": 0.00031224097155098884
+    },
+    "1.3": {
+      "name": "a_triangle",
+      "efficiency": 0.0003874963588677758
+    },
+    "1.35": {
+      "name": "a_triangle",
+      "efficiency": 0.0004636334133582841
+    },
+    "1.4": {
+      "name": "a_triangle",
+      "efficiency": 0.0005391202679611072
+    },
+    "1.45": {
+      "name": "a_triangle",
+      "efficiency": 0.0006124919224901287
+    },
+    "1.5": {
+      "name": "a_triangle",
+      "efficiency": 0.0006823177388443292
+    },
+    "1.55": {
+      "name": "a_triangle",
+      "efficiency": 0.0007471017824802462
+    },
+    "1.6": {
+      "name": "a_triangle",
+      "efficiency": 0.0008052220382529332
+    },
+    "1.65": {
+      "name": "a_triangle",
+      "efficiency": 0.0008549730101396583
+    },
+    "1.7": {
+      "name": "a_triangle",
+      "efficiency": 0.0008947012656745758
+    },
+    "1.75": {
+      "name": "a_triangle",
+      "efficiency": 0.0009217146061769849
+    },
+    "1.8": {
+      "name": "a_triangle",
+      "efficiency": 0.0009330157102419647
+    },
+    "1.85": {
+      "name": "a_triangle",
+      "efficiency": 0.0009236738403166284
+    },
+    "1.9": {
+      "name": "a_triangle",
+      "efficiency": 0.000885295991055185
+    },
+    "1.95": {
+      "name": "a_triangle",
+      "efficiency": 0.000885295991055185
+    }
+  },
+  "0.95": {
+    "1.05": {
+      "name": "b_triangle",
+      "efficiency": 5.7297984812915784e-05
+    },
+    "1.1": {
+      "name": "b_triangle",
+      "efficiency": 0.0001091992483756557
+    },
+    "1.15": {
+      "name": "b_triangle",
+      "efficiency": 0.00015782982569686845
+    },
+    "1.2": {
+      "name": "a_triangle",
+      "efficiency": 0.0002261270624057666
+    },
+    "1.25": {
+      "name": "a_triangle",
+      "efficiency": 0.00029894313702969594
+    },
+    "1.3": {
+      "name": "a_triangle",
+      "efficiency": 0.00037427175634736004
+    },
+    "1.35": {
+      "name": "a_triangle",
+      "efficiency": 0.00045050922528807154
+    },
+    "1.4": {
+      "name": "a_triangle",
+      "efficiency": 0.0005260833572451848
+    },
+    "1.45": {
+      "name": "a_triangle",
+      "efficiency": 0.0005996417678728314
+    },
+    "1.5": {
+      "name": "a_triangle",
+      "efficiency": 0.0006696124783250695
+    },
+    "1.55": {
+      "name": "a_triangle",
+      "efficiency": 0.0007346146779583738
+    },
+    "1.6": {
+      "name": "a_triangle",
+      "efficiency": 0.0007930041846476443
+    },
+    "1.65": {
+      "name": "a_triangle",
+      "efficiency": 0.0008430970862955408
+    },
+    "1.7": {
+      "name": "a_triangle",
+      "efficiency": 0.0008831440638069353
+    },
+    "1.75": {
+      "name": "a_triangle",
+      "efficiency": 0.000910552568406995
+    },
+    "1.8": {
+      "name": "a_triangle",
+      "efficiency": 0.0009223458955457185
+    },
+    "1.85": {
+      "name": "a_triangle",
+      "efficiency": 0.0009136296998385882
+    },
+    "1.9": {
+      "name": "a_triangle",
+      "efficiency": 0.0008757201719821246
+    },
+    "1.95": {
+      "name": "a_triangle",
+      "efficiency": 0.0007912767686112376
+    }
+  }
+}

@@ -6,7 +6,7 @@ plt.rcParams['font.family'] = 'Times New Roman'
 plt.rcParams['mathtext.fontset'] = 'cm'
 plt.rcParams['font.size'] = 15
 
-def plotTotalDisplacement(fig, ax, phase, action_intervals, max_lengths, per_second=False):
+def plotDisplacement(fig, ax, phase, action_intervals, max_lengths, per_second=False, adjust_vlimit=False):
     strategy_name = {'a': 'figure eight', 'b': 'chlamy'}
     if per_second:
         # ax.set_title('velocity')
@@ -32,9 +32,14 @@ def plotTotalDisplacement(fig, ax, phase, action_intervals, max_lengths, per_sec
                 data[one_data['name']]['displacement'].append(one_data['displacement'])
 
     cmap_list = ['PuRd', 'GnBu']
-    vmax = 0.002
+    if adjust_vlimit:
+        vmin = min(min(data['a_triangle']['displacement']), min(data['b_triangle']['displacement']))
+        vmax = max(max(data['a_triangle']['displacement']), max(data['b_triangle']['displacement']))
+    else:
+        vmin, vmax = None, None
+
     for idx, key in enumerate(data):
-        mappable = ax.scatter(data[key]['x'], data[key]['y'], c=data[key]['displacement'], cmap=cmap_list[idx], vmax=vmax)
+        mappable = ax.scatter(data[key]['x'], data[key]['y'], c=data[key]['displacement'], cmap=cmap_list[idx], vmax=vmax, vmin=vmin)
         if idx == 0:
             fig.colorbar(mappable, ax=ax, label=f'Synchronous')
         else:

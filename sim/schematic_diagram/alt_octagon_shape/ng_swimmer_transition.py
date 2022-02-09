@@ -9,26 +9,26 @@ plt.rcParams['font.size'] = 12
 
 def drawNGSwimmerTransition(ax):
     ax.axis('off')
-    ax.text(-0.5, 0.2, r'$\ell_0^*$', ha='center', fontsize=15)
-    ax.text(0.5, 0.2, r'$\ell_1^*$', ha='center', fontsize=15)
+    ax.text(-0.5, 0.2, r'$\ell_0$', ha='center', fontsize=20)
+    ax.text(0.5, 0.2, r'$\ell_1$', ha='center', fontsize=20)
     ax.set_aspect('equal')
     ax.set_xlim(-2.5, 3.2)
     # ax.set_ylim(-4.0, 1.0)
-    centers = 5*np.array([0.0, -0.06, 0.05, 0.1, 0.08])
+    centers = 5*np.array([0.0, 0.1, 0.05, -0.06, 0.08])
     y_list = -np.linspace(0.0, 3.0, 5)
     arm_lengths = np.array([
         [1.0, 1.0],
-        [1.0, 1.8],
-        [1.8, 1.8],
         [1.8, 1.0],
+        [1.8, 1.8],
+        [1.0, 1.8],
         [1.0, 1.0],
         ])
     label_list = [
-            r'$\mathscr{A}$',
-            r'$\mathscr{B}$',
-            r'$\mathscr{C}$',
-            r'$\mathscr{D}$',
-            r'$\mathscr{A}$']
+            r'$A$',
+            r'$B$',
+            r'$C$',
+            r'$D$',
+            r'$A$']
     arrow_dict = dict(arrowstyle='->', color='k', connectionstyle='angle3, angleA=-45, angleB=45', lw=2, ls='-')
     for i in range(5):
         drawOneSwimmer(ax, center=centers[i], y=y_list[i], arm_lengths=arm_lengths[i])
@@ -56,5 +56,5 @@ def drawOneSwimmer(ax, center, y, arm_lengths):
             zorder=0,
             )
     for i in range(3):
-        sph = patches.Circle(xy=sph_pos[i], radius=0.2, fc='gray', ec='k', zorder=1)
+        sph = patches.Circle(xy=sph_pos[i], radius=0.25, fc='lightgray', ec='k', zorder=1)
         ax.add_patch(sph)

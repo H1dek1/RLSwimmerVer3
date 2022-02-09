@@ -30,7 +30,7 @@ def main():
     ax[1].set_title('(b)', loc='left', fontsize=20)
 
     drawK(ax[1])
-    ax[1].text(1.02, -0.02, r'$k_c$', ha='center', va='center', fontsize=30)
+    ax[1].text(1.05, -0.004, r'$k_c$', ha='center', va='center', fontsize=30)
     
     ax0_pos = ax[0].get_position()
     ax1_pos = ax[1].get_position()

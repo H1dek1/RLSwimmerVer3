@@ -8,7 +8,7 @@ plt.rcParams['mathtext.fontset'] = 'cm'
 plt.rcParams['font.size'] = 18
 
 def main():
-    img = plt.imread('phase_image300.png')
+    img = plt.imread('phase_image_energy300.png')
     
     fig, ax = plt.subplots(1, 1, figsize=(10, 10), tight_layout=True)
     ax.imshow(img)
@@ -26,7 +26,7 @@ def main():
     ax.set_ylabel(r'$\ell^{\max*}$', fontsize=20)
 
     # plt.show()
-    fig.savefig('pd_rl_noenergy.pdf')
+    fig.savefig('pd_rl_energy.pdf')
 
 
 

@@ -34,20 +34,18 @@ def main():
             optimal_strategy[str(round(interval, 2))][str(round(max_length, 2))] = dict()
             max_name = 'None'
             max_displacement = 0.0
+            max_efficiency = 0.0
             for name, phases in all_strategies.items():
                 """ strategy A or B """
-                if phases['data']['1'][str(round(interval, 2))][str(round(max_length, 2))]['displacement'] > max_displacement:
+                efficiency = phases['data']['1'][str(round(interval, 2))][str(round(max_length, 2))]['displacement'] / phases['data']['1'][str(round(interval, 2))][str(round(max_length, 2))]['energy_consumption']
+
+                if efficiency > max_efficiency:
                     max_name = name
-                    max_displacement = phases['data']['1'][str(round(interval, 2))][str(round(max_length, 2))]['displacement']
-
-            # print(max_name)
-            if round(interval, 2) == 0.95 and round(max_length, 2) == 1.05:
-                print(max_name, max_displacement)
+                    max_efficiency = efficiency
             optimal_strategy[str(round(interval, 2))][str(round(max_length, 2))]['name'] = max_name
-            optimal_strategy[str(round(interval, 2))][str(round(max_length, 2))]['displacement'] = max_displacement
+            optimal_strategy[str(round(interval, 2))][str(round(max_length, 2))]['efficiency'] = max_efficiency
 
-    # print(optimal_strategy)
-    with open('../data/optimals/withEnergy_phaseDiagram.json', mode='wt', encoding='utf-8') as f:
+    with open('../data/optimals/with_energy/withEnergy_phaseDiagram_efficiency.json', mode='wt', encoding='utf-8') as f:
         json.dump(optimal_strategy, f, ensure_ascii=False, indent=2)
 
 

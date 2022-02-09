@@ -7,9 +7,9 @@ plt.rcParams['font.family'] = 'Times New Roman'
 plt.rcParams['mathtext.fontset'] = 'cm'
 plt.rcParams['font.size'] = 10
 
-from n_cycle import plotNumPeriod
-from cycle_displacement import plotCycleDisplacement
-from total_displacement import plotTotalDisplacement
+from displacement import plotDisplacement
+from energy import plotEnergy
+from efficiency import plotEfficiency
 from matplotlib.gridspec import GridSpec, GridSpecFromSubplotSpec
 
 def main():
@@ -24,23 +24,34 @@ def main():
             fig.add_subplot(gs[2]),
             ]
     with open(
-            '../data/optimals/with_energy/withEnergy_phaseDiagram.json',
+            '../data/optimals/with_energy/withEnergy_phaseDiagram_efficiency.json',
             mode='rt',
             encoding='utf-8'
             ) as f:
-        velocity_phase = json.load(f)
+        efficiency_phase = json.load(f)
+
     with open(
-            '../data/with_energy/a_triangle.json',
+            '../data/optimals/with_energy/withEnergy_phaseDiagram_displacement.json',
             mode='rt',
             encoding='utf-8'
             ) as f:
         displacement_phase = json.load(f)
 
+    with open(
+            '../data/optimals/with_energy/withEnergy_phaseDiagram_energy.json',
+            mode='rt',
+            encoding='utf-8'
+            ) as f:
+        energy_phase = json.load(f)
+
     action_intervals = np.arange(0.05, 1.0, 0.05)
     max_lengths = np.arange(1.05, 2.0, 0.05)
-    plotNumPeriod(fig, axes[0], action_intervals, max_lengths)
-    plotCycleDisplacement(fig, axes[1], displacement_phase, action_intervals, max_lengths)
-    plotTotalDisplacement(fig, axes[2], velocity_phase, action_intervals, max_lengths, per_second=True)
+    plotEfficiency(fig, axes[0], efficiency_phase,
+            action_intervals, max_lengths, per_second=True, adjust_vlimit=True)
+    plotDisplacement(fig, axes[1], displacement_phase,
+            action_intervals, max_lengths, per_second=True, adjust_vlimit=True)
+    plotEnergy(fig, axes[2], energy_phase,
+            action_intervals, max_lengths, per_second=True, adjust_vlimit=True)
     axes[0].set_title('(a)', loc='left')
     axes[1].set_title('(b)', loc='left')
     axes[2].set_title('(c)', loc='left')
@@ -55,8 +66,8 @@ def main():
     axpos0 = axes[0].get_position()
     axpos1 = axes[1].get_position()
     axpos2 = axes[2].get_position()
-    axes[0].set_position([axpos2.x0, axpos0.y0, axpos2.width, axpos0.height])
-    axes[1].set_position([axpos2.x0, axpos1.y0, axpos2.width, axpos1.height])
+    # axes[0].set_position([axpos2.x0, axpos0.y0, axpos2.width, axpos0.height])
+    axes[2].set_position([axpos2.x0, axpos2.y0, axpos0.width, axpos0.height])
     # plt.show()
     fig.savefig('pd_energy.pdf')
 

@@ -9,14 +9,14 @@ plt.rcParams['mathtext.fontset'] = 'cm'
 plt.rcParams['font.size'] = 15
 
 def drawSwimmer(ax, df, plot_time, ymax=5.0, ymin=0.0):
-    ax.tick_params(labelbottom=False,
-            labelleft=False,
-            labelright=False,
-            labeltop=False)
-    ax.tick_params(bottom=False,
-            left=False,
-            right=False,
-            top=False)
+    # ax.tick_params(labelbottom=False,
+    #         labelleft=False,
+    #         labelright=False,
+    #         labeltop=False)
+    # ax.tick_params(bottom=False,
+    #         left=False,
+    #         right=False,
+    #         top=False)
     ax.set_aspect('equal')
     ax.set_xlabel(r'$x^*$', fontsize=25)
     ax.set_ylabel(r'$y^*$', fontsize=25)

@@ -36,8 +36,6 @@ def main():
         for j in range(5):
             interval = action_intervals[j]
             length = max_lengths[i]
-            if interval == 0.7 and length == 1.3:
-                continue
             df = pd.read_csv(
                     '../data/with_energy/rl_phase/'
                     + 'type20_radius0.1'
@@ -49,7 +47,7 @@ def main():
                     df['arm_length_1'][start:end],
                     df['arm_length_2'][start:end],
                     )
-            ax_matrix[i][j].view_init(elev=30, azim=20)
+            ax_matrix[i][j].view_init(elev=30, azim=15)
             ax_matrix[i][j].set_xlim(1, length+0.1)
             ax_matrix[i][j].set_ylim(1, length+0.1)
             ax_matrix[i][j].set_zlim(1, length+0.1)

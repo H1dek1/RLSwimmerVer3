@@ -13,8 +13,8 @@ def main():
 
     fig, ax = plt.subplots(1, 1, tight_layout=True, figsize=(10, 7))
     ax.set_aspect('equal')
-    ax.set_xlim(-2, 2.5)
-    ax.set_ylim(-1.5, 1.5)
+    ax.set_xlim(-2.6, 2.4)
+    ax.set_ylim(-1.55, 1.5)
     ax.set_xlabel(r'$x/\ell^{\min}$', fontsize=25)
     ax.set_ylabel(r'$y/\ell^{\min}$', fontsize=25)
     xticks = np.arange(-2, 3, 1)
@@ -117,46 +117,46 @@ def drawSpheres(ax, sphere_pos):
         ax.add_patch(sph)
 
     ax.text(
-            sphere_pos[0][0] + 0.7*np.cos(-np.pi/3) + 0.05,
-            sphere_pos[0][1] + 0.7*np.sin(-np.pi/3) - 0.03,
+            sphere_pos[0][0] + 0.6*np.cos(-np.pi/6) + 0.05,
+            sphere_pos[0][1] + 0.6*np.sin(-np.pi/6) - 0.03,
             r'$S_f$',
             c='k',
             fontsize=30,
             va='center'
             )
     ax.plot(
-            [sphere_pos[0][0], sphere_pos[0][0] + 0.7*np.cos(-np.pi/3)],
-            [sphere_pos[0][1], sphere_pos[0][1] + 0.7*np.sin(-np.pi/3)],
+            [sphere_pos[0][0], sphere_pos[0][0] + 0.6*np.cos(-np.pi/6)],
+            [sphere_pos[0][1], sphere_pos[0][1] + 0.6*np.sin(-np.pi/6)],
             c='k',
             zorder=0
             )
 
     ax.text(
-            sphere_pos[1][0] + 0.7*np.cos(np.pi/5) + 0.05,
-            sphere_pos[1][1] + 0.7*np.sin(np.pi/5) - 0.03,
+            sphere_pos[1][0] + 0.7*np.cos(np.pi/3) + 0.05,
+            sphere_pos[1][1] + 0.7*np.sin(np.pi/3) - 0.03,
             r'$S_{b1}$',
             c='k',
             fontsize=30,
             va='center'
             )
     ax.plot(
-            [sphere_pos[1][0], sphere_pos[1][0] + 0.7*np.cos(np.pi/5)],
-            [sphere_pos[1][1], sphere_pos[1][1] + 0.7*np.sin(np.pi/5)],
+            [sphere_pos[1][0], sphere_pos[1][0] + 0.7*np.cos(np.pi/3)],
+            [sphere_pos[1][1], sphere_pos[1][1] + 0.7*np.sin(np.pi/3)],
             c='k',
             zorder=0
             )
 
     ax.text(
-            sphere_pos[2][0] + 0.7*np.cos(-np.pi/5) + 0.05,
-            sphere_pos[2][1] + 0.7*np.sin(-np.pi/5) - 0.03,
+            sphere_pos[2][0] + 0.7*np.cos(-np.pi/3) + 0.05,
+            sphere_pos[2][1] + 0.7*np.sin(-np.pi/3) - 0.03,
             r'$S_{b2}$',
             c='k',
             fontsize=30,
             va='center'
             )
     ax.plot(
-            [sphere_pos[2][0], sphere_pos[2][0] + 0.7*np.cos(-np.pi/5)],
-            [sphere_pos[2][1], sphere_pos[2][1] + 0.7*np.sin(-np.pi/5)],
+            [sphere_pos[2][0], sphere_pos[2][0] + 0.7*np.cos(-np.pi/3)],
+            [sphere_pos[2][1], sphere_pos[2][1] + 0.7*np.sin(-np.pi/3)],
             c='k',
             zorder=0
             )
@@ -165,28 +165,43 @@ def drawSpheres(ax, sphere_pos):
 def drawArmLabel(ax, sphere_pos):
     label_size=30
     ax.text(
-            (sphere_pos[0][0] + sphere_pos[1][0]) / 2.0 + 0.25,
-            (sphere_pos[0][1] + sphere_pos[1][1]) / 2.0 + 0.25,
-            r'$\ell_1^*$',
+            (sphere_pos[0][0] + sphere_pos[1][0]) / 2.0 + 0.45,
+            (sphere_pos[0][1] + sphere_pos[1][1]) / 2.0 + 0.65,
+            r'$A_{f1}$ ($\ell_1^*$)',
             fontsize=label_size,
-            horizontalalignment='center',
+            horizontalalignment='left',
             verticalalignment='center',
+            )
+    ax.plot(
+            [(sphere_pos[0][0] + sphere_pos[1][0]) / 2.0 + 0.45, (sphere_pos[0][0] + sphere_pos[1][0]) /2.0],
+            [(sphere_pos[0][1] + sphere_pos[1][1]) / 2.0 + 0.65, (sphere_pos[0][1] + sphere_pos[1][1]) /2.0],
+            color='k'
             )
     ax.text(
             (sphere_pos[1][0] + sphere_pos[2][0]) / 2.0 - 0.25,
             (sphere_pos[1][1] + sphere_pos[2][1]) / 2.0 + 0.00,
-            r'$\ell_2^*$',
+            r'$A_{b}$ ($\ell_2^*$)',
             fontsize=label_size,
-            horizontalalignment='center',
+            horizontalalignment='right',
             verticalalignment='center',
             )
+    ax.plot(
+            [(sphere_pos[1][0] + sphere_pos[2][0]) / 2.0 - 0.15, (sphere_pos[2][0] + sphere_pos[1][0]) /2.0],
+            [(sphere_pos[1][1] + sphere_pos[2][1]) / 2.0 + 0.00, (sphere_pos[2][1] + sphere_pos[1][1]) /2.0],
+            color='k'
+            )
     ax.text(
-            (sphere_pos[2][0] + sphere_pos[0][0]) / 2.0 + 0.25,
-            (sphere_pos[2][1] + sphere_pos[0][1]) / 2.0 - 0.25,
-            r'$\ell_0^*$',
+            (sphere_pos[2][0] + sphere_pos[0][0]) / 2.0 + 0.45,
+            (sphere_pos[2][1] + sphere_pos[0][1]) / 2.0 - 0.65,
+            r'$A_{f2}$ ($\ell_0^*$)',
             fontsize=label_size,
-            horizontalalignment='center',
+            horizontalalignment='left',
             verticalalignment='center',
+            )
+    ax.plot(
+            [(sphere_pos[2][0] + sphere_pos[0][0]) / 2.0 + 0.45, (sphere_pos[2][0] + sphere_pos[0][0]) /2.0],
+            [(sphere_pos[2][1] + sphere_pos[0][1]) / 2.0 - 0.65, (sphere_pos[2][1] + sphere_pos[0][1]) /2.0],
+            color='k'
             )
 
 
