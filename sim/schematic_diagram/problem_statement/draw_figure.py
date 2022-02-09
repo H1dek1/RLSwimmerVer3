@@ -108,10 +108,12 @@ def drawArmForce(ax, sphere_pos):
 
 
 def drawSpheres(ax, sphere_pos):
-    sph_color = 'gray'
+    fc = 'lightgray'
+    ec = 'black'
+
     sph_radius = 0.3
     for pos in sphere_pos:
-        sph = patches.Circle(xy=pos, radius=sph_radius, fc=sph_color, zorder=1)
+        sph = patches.Circle(xy=pos, radius=sph_radius, fc=fc, ec=ec, zorder=1)
         ax.add_patch(sph)
 
     ax.text(

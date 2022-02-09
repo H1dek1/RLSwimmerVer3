@@ -25,7 +25,6 @@ def drawRLPhase(fig, ax):
         [0.3, 1.1],
         [0.5, 1.1],
         [0.7, 1.1],
-        [0.9, 1.1],
 
         [0.1, 1.3],
         [0.3, 1.3],
@@ -48,31 +47,32 @@ def drawRLPhase(fig, ax):
         # [0.7, 1.9], 
         [0.9, 1.9],
         ])
-    # data_list['c'] = np.array([
-    #     [0.1, 1.3],
-    #     [0.1, 1.5],
-    #     [0.1, 1.7],
-    #     [0.1, 1.9],
-    #     [0.3, 1.9],
-    #     [0.5, 1.9],
-    #     [0.3, 1.7],
-    #     ])
+    data_list['c'] = np.array([
+        [0.1, 1.9],
+        [0.3, 1.9],
+        [0.5, 1.9],
+        [0.7, 1.9],
+        [0.1, 1.7],
+        [0.3, 1.7],
+        [0.9, 1.1],
+        ])
     # data_list['e'] = np.array([
     #     [0.3, 1.9],
     #     [0.5, 1.9],
     #     [0.9, 1.9],
     #         ])
 
-    marker_list = ['s', '^', 'v', 'D']
+    marker_list = ['s', '^', 'D', 'D']
     name = [
-            'Synchronous',
-            'Alternate',
-            'Incomplete alternate',
+            'Compact Synchronous',
+            'Compact Alternate',
+            'Unclassified',
             ]
+    colors = ['C0', 'C1', 'C3']
     for i, data in enumerate(data_list.values()):
-        ax.scatter(data.T[0], data.T[1], s=100, marker=marker_list[i], color=f'C{i}', label=name[i])
+        ax.scatter(data.T[0], data.T[1], s=100, marker=marker_list[i], color=colors[i], label=name[i])
 
-    ax.legend(ncol=3, bbox_to_anchor=(0.98, 0.08), fontsize=13)
+    ax.legend(ncol=3, bbox_to_anchor=(1.008, 0.08), fontsize=12)
 
 
 
@@ -80,7 +80,7 @@ def main():
     fig, ax = plt.subplots(1, 1, figsize=(7, 7), tight_layout=True)
     drawRLPhase(fig, ax)
     plt.show()
-    # fig.savefig('rl_phase.pdf')
+    fig.savefig('rl_phase_energy.pdf')
 
 
 if __name__ == '__main__':

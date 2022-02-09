@@ -30,17 +30,19 @@ def main():
 
     action_intervals = [0.1, 0.3, 0.5, 0.7, 0.9]
     max_lengths = [1.9, 1.7, 1.5, 1.3, 1.1]
-    start = 5000
+    start = 7000
     end = 10000
     for i in range(5):
         for j in range(5):
             interval = action_intervals[j]
             length = max_lengths[i]
+            if interval == 0.7 and length == 1.3:
+                continue
             df = pd.read_csv(
-                    '../data/without_energy/rl_phase/'
+                    '../data/with_energy/rl_phase/'
                     + 'type20_radius0.1'
                     + f'_interval{interval}_maxlength{length}'
-                    + '_withoutEnergy.csv'
+                    + '_withEnergy.csv'
                     )
             ax_matrix[i][j].plot(
                     df['arm_length_0'][start:end],
@@ -60,7 +62,7 @@ def main():
             ax_matrix[i][j].set_zticks(ticks)
     
     # plt.show()
-    fig.savefig('phase_image300.png', dpi=300)
+    fig.savefig('phase_image_energy300.png', dpi=300)
 
 
 if __name__ == '__main__':
